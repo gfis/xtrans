@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Format CFONB for Account Statements in France
+    @(#)$Id: CFONB.spec.xml 9 2008-09-05 05:21:15Z gfis $
+    2008-06-20, Dr. Georg Fischer: UTF-8 encoding, äöüÄÖÜß
+-->
+<!--
+ * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<record name="CFONB" version="1.0"
+        xmlns="http://www.teherba.org/2006/xtrans/Record"
+        package="org.teherba.xtrans.finance" type="Char" order="LSB" code="ASCII" length="120" 
+        remark="CFONB French Account Statement File">
+    <field  name="cdEnreg"                  len="2"     type="char" rem="code enregistrement"/>
+<choice>
+<variant name="c1" pos="2" test="cdEnreg" value="01" rem="ancien solde" >
+    <field  name="c1CdBanque"               len="5"     type="char" rem="M bank code" />
+    <field  name="c1Reserve1"               len="4"     type="char" rem="X" />
+    <field  name="c1CdGuichet"              len="5"     type="char" rem="M branch" />
+    <field  name="c1CdDevise"               len="3"     type="char" rem="O currency code ISO 4217" />
+    <field  name="c1NoChiffres"             len="1"     type="num"  rem="D apres la virgule du montant" />
+    <field  name="c1Reserve2"               len="1"     type="char" rem="X" />
+    <field  name="c1NoCompte"               len="11"    type="char" rem="M" />
+    <field  name="c1Reserve3"               len="2"     type="char" rem="X" />
+    <field  name="c1DateSolde"              len="6"     type="num"  rem="M DDMMYY" />
+    <field  name="c1Reserve4"               len="50"    type="char" rem="X" />
+    <field  name="c1MontantSolde"           len="14"    type="num"  rem="M ancien" />
+    <field  name="c1Reserve5"               len="16"    type="char" rem="X" />
+</variant>
+<variant name="c4" pos="2" test="cdEnreg" value="04" rem="movement" >
+    <field  name="c4CdBanque"               len="5"     type="char" rem="M bank code" />
+    <field  name="c4OperInterne"            len="4"     type="char" rem="O code opération interne" />
+    <field  name="c4CdGuichet"              len="5"     type="char" rem="M branch" />
+    <field  name="c4CdDevise"               len="3"     type="char" rem="O currency code ISO 4217" />
+    <field  name="c4NoChiffres"             len="1"     type="num"  rem="D apres la virgule du montant" />
+    <field  name="c4MonaieOrigine"          len="1"     type="char" rem="M" />
+    <field  name="c4NoCompte"               len="11"    type="char" rem="M" />
+    <field  name="c4CdOperInterbancaire"    len="2"     type="char" rem="M" />
+    <field  name="c4DateOper"               len="6"     type="num"  rem="M DDMMYY" />
+    <field  name="c4CdMotifRejet"           len="2"     type="char" rem="M" />
+    <field  name="c4DateValeur"             len="6"     type="num"  rem="M DDMMYY" />
+    <field  name="c4Libelle"                len="31"    type="num"  rem="M" />
+    <field  name="c4Reserve1"               len="2"     type="char" rem="X" />
+    <field  name="c4NoEcrit"                len="7"     type="num"  rem="M" />
+    <field  name="c4IxExoner"               len="1"     type="num"  rem="O" />
+    <field  name="c4IxIndispon"             len="1"     type="num"  rem="O" />
+    <field  name="c4MontantMovem"           len="14"    type="num"  rem="M movement" />
+    <field  name="c4ZoneRef"                len="16"    type="char" rem="O" />
+</variant>
+<variant name="c7" pos="2" test="cdEnreg" value="01" rem="nouveau solde" >
+    <field  name="c7CdBanque"               len="5"     type="char" rem="M bank code" />
+    <field  name="c7Reserve1"               len="4"     type="char" rem="X" />
+    <field  name="c7CdGuichet"              len="5"     type="char" rem="M branch" />
+    <field  name="c7CdDevise"               len="3"     type="char" rem="O currency code ISO 4217" />
+    <field  name="c7NoChiffres"             len="1"     type="num"  rem="D apres la virgule du montant" />
+    <field  name="c7Reserve2"               len="1"     type="char" rem="X" />
+    <field  name="c7NoCompte"               len="11"    type="char" rem="M" />
+    <field  name="c7Reserve3"               len="2"     type="char" rem="X" />
+    <field  name="c7DateSolde"              len="6"     type="num"  rem="M YYMMDD" />
+    <field  name="c7Reserve4"               len="50"    type="char" rem="X" />
+    <field  name="c7MontantSolde"           len="14"    type="num"  rem="M nouveau" />
+    <field  name="c7Reserve5"               len="16"    type="char" rem="X" />
+</variant>
+</choice>
+</record>

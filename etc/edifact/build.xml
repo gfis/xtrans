@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    ant-buildfile for commandline, web application and web service
+    @(#) $Id: build.xml 9 2008-09-05 05:21:15Z gfis $
+    2008-03-21: image.vector.WMF
+    2007-02-14: use ant file build-import.xml
+    2006-10-17: use loadproperties
+    2006-05-27: copied from numword
+-->
+<!--
+ * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<project name="xtrans" default="all" basedir=".">
+    <property name="un.dir"    value="c:/pushare/edifact/d07a"/>
+    <property name="un.ver"    value="07a"/>
+
+  	<target name="all" depends="doc,exp" />
+
+  	<target name="doc" depends="edcd,eded,edsd,finsta" />
+
+    <target name="edcd">
+        <exec executable="perl" output="edcd.xml">
+            <arg line="undoc-xml.pl ${un.dir}/edcd.${un.ver}" />
+        </exec>
+    </target>
+
+    <target name="eded">
+        <exec executable="perl" output="eded.xml">
+            <arg line="undoc-xml.pl ${un.dir}/eded.${un.ver}" />
+        </exec>
+    </target>
+
+    <target name="edsd">
+        <exec executable="perl" output="edsd.xml">
+            <arg line="undoc-xml.pl ${un.dir}/edsd.${un.ver}" />
+        </exec>
+    </target>
+
+    <target name="finsta">
+        <exec executable="perl" output="finsta.xml">
+            <arg line="undoc-xml.pl ${un.dir}/FINSTA_D.${un.ver}" />
+        </exec>
+    </target>
+
+  	<target name="exp" depends="edsd.xsl,finsta.xsl,finsta.exp" />
+
+    <target name="edsd.xsl" depends="" >
+        <xslt in="edsd.xml" style="edsd-xsl.xsl" out="edsd.xsl" />
+    </target>
+
+    <target name="finsta.xsl" depends="" >
+        <xslt in="finsta.xml" style="message-xsl.xsl" out="finsta.xsl" />
+    </target>
+
+    <target name="finsta.exp" depends="" >
+        <xslt in="message.xml" style="finsta.xsl" out="finsta.exp.xml" />
+    </target>
+
+</project>

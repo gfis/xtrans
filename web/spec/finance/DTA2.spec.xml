@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    DTA MCV German Payments Exchange File
+    2008-06-24: with <choice>, shorter attributes, XSD
+    2007-09-04: C13 was ebcdic
+    2006-09-27, Dr. Georg Fischer
+    @(#) $Id: DTA2.spec.xml 9 2008-09-05 05:21:15Z gfis $
+    specified in
+    http://www.zentraler-kreditausschuss.de/upload/1063103817.DFU_Abkommen-Stand-12-08-2003.pdf
+    section 3.1.2
+-->
+<!--
+ * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<record name="DTA2" version="1.0"
+        xmlns="http://www.teherba.org/2006/xtrans/Record"
+        package="org.teherba.xtrans.finance" type="Byte" order="MSB" code="EBCDIC" length="585"
+        rem="DTA MCV German Payments Exchange File">
+    <field name="rlen"  rem="length of record"              len="2"     type="binary"   />
+    <field name="l0"    rem="2 zero bytes"                  len="2"     type="binary"   />
+    <field name="rtyp"  rem="A(header), C(tx) or E(sums)"   len="1"     type="ebcdic"   />
+<choice>
+  <variant name="A" pos="5" test="rtyp" value="A" rem="header">
+    <field name="A3"    rem="Kennzeichen"                   len="2"     type="ebcdic"   />
+    <field name="A4"    rem="BLZ Empfaenger"                len="5"     type="packed"   />
+    <field name="A5"    rem="BLZ Absender"                  len="5"     type="packed"   />
+    <field name="A6"    rem="Name"                          len="27"    type="ebcdic"   />
+    <field name="A7"    rem="Dateierstellungsdatum TTMMJJ"  len="4"     type="packed"   />
+    <field name="A8"    rem="Intern 1"                      len="4"     type="unsignedpacked"   />
+    <field name="A9"    rem="Kontonr"                       len="6"     type="packed"   />
+    <field name="A10"   rem="Referenz"                      len="10"    type="ebcdic"   />
+    <field name="A11a"  rem="Reserve 1"                     len="15"    type="ebcdic"   />
+    <field name="A11b"  rem="Ausfuehrungsdatum TTMMJJJJ"    len="8"     type="ebcdic"   />
+    <field name="A11c"  rem="Reserve 2"                     len="58"    type="ebcdic"   />
+    <field name="A12"   rem="Waehrung EUR=1"                len="1"     type="ebcdic"   />
+  </variant>
+  <variant name="C" pos="5" test="rtyp" value="C" rem="transaction">
+    <field name="C3"    rem="BLZ Erstbezogener"             len="5"     type="packed"   />
+    <field name="C4"    rem="BLZ Endbeguenstigter"          len="5"     type="packed"   />
+    <field name="C5"    rem="Kontonr"                       len="6"     type="packed"   />
+    <field name="C6a"   rem="Interne Kundennummer"          len="6"     type="unsignedpacked"   />
+    <field name="C6b"   rem="Intern 2"                      len="7"     type="packed"   />
+    <field name="C7a"   rem="Textschluessel"                len="1"     type="unsignedpacked"   />
+    <field name="C7b"   rem="Textschluessel-Ergaenzung"     len="2"     type="packed"   />
+    <field name="C8"    rem="Intern 3"                      len="1"     type="ebcdic"   />
+    <field name="C9"    rem="Reserve 3"                     len="6"     type="packed"   />
+    <field name="C10"   rem="BLZ Erstbezogener"             len="5"     type="packed"   />
+    <field name="C11"   rem="Kontonr"                       len="6"     type="packed"   />
+    <field name="C12"   rem="Betrag EUR"                    len="6"     type="packed"   />
+    <field name="C13"   rem="Intern 4"                      len="3"     type="ebcdic"   />
+    <field name="C14"   rem="Name Empfaenger"               len="27"    type="ebcdic"   />
+    <field name="C15"   rem="Name Auftraggeber"             len="27"    type="ebcdic"   />
+    <field name="C16"   rem="Verwendungszweck"              len="27"    type="ebcdic"   />
+    <field name="C17a"  rem="Waehrung EUR=1"                len="1"     type="ebcdic"   />
+    <field name="C17b"  rem="Reserve 4"                     len="2"     type="ebcdic"   />
+    <field name="C18"   rem="Anzahl Erweiterungsteile"      len="2"     type="packed"   />
+    <array name="CE"    rem="Erweiterungsteile" occurs="15" count="Integer.parseInt(getC18())"  pos="150"   len="29"  >
+        <field name="CE01"  rem="Erweiterungskennzeichen"   len="2"     type="ebcdic"   />
+        <field name="CE02"  rem="Erweiterungstext"          len="27"    type="ebcdic"   />
+    </array>
+  </variant>
+  <variant name="E" pos="5" test="rtyp" value="E" rem="trailer, control sums">
+    <field name="E3"    rem="Reserve 5"                     len="5"     type="ebcdic"   />
+    <field name="E4"    rem="Anzahl C-Saetze"               len="4"     type="packed"   />
+    <field name="E5"    rem="Reserve 6"                     len="7"     type="packed"   />
+    <field name="E6"    rem="SummeKontonummern"             len="9"     type="packed"   />
+    <field name="E7"    rem="SummeBankleitzahlen"           len="9"     type="packed"   />
+    <field name="E8"    rem="SummeBetraege"                 len="7"     type="packed"   />
+    <field name="E9"    rem="Reserve 7"                     len="104"   type="ebcdic"   />
+  </variant>
+</choice>
+</record>

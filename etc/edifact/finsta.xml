@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<!-- 
+	Edifact codelist derived from UN/Edifact tabular documentation 
+	with doc2xml.pl: @(#) $Id: finsta.xml 9 2008-09-05 05:21:15Z gfis $
+	automatically generated at 2008-07-18T17:23:48, do not edit here!
+-->
+  <message name="FINSTA" issue="07A">
+    <title>Financial statement of an account message</title>
+    <segm name="UNH">
+      <min>1</min><max>1</max><seq>0010</seq>
+      <n>Message header</n>
+    </segm>
+    <segm name="BGM">
+      <min>1</min><max>1</max><seq>0020</seq>
+      <n>Beginning of message</n>
+    </segm>
+    <segm name="DTM">
+      <min>1</min><max>1</max><seq>0030</seq>
+      <n>Date/time/period</n>
+    </segm>
+    <group name="1">
+      <min>0</min><max>1</max><seq>0040</seq>
+      <segm name="RFF">
+        <min>1</min><max>1</max><seq>0050</seq>
+        <n>Reference</n>
+      </segm>
+      <segm name="DTM">
+        <min>0</min><max>1</max><seq>0060</seq>
+        <n>Date/time/period</n>
+      </segm>
+    </group>
+    <group name="2">
+      <min>0</min><max>5</max><seq>0070</seq>
+      <segm name="FII">
+        <min>1</min><max>1</max><seq>0080</seq>
+        <n>Financial institution information</n>
+      </segm>
+      <segm name="CTA">
+        <min>0</min><max>1</max><seq>0090</seq>
+        <n>Contact information</n>
+      </segm>
+      <segm name="COM">
+        <min>0</min><max>5</max><seq>0100</seq>
+        <n>Communication contact</n>
+      </segm>
+    </group>
+    <group name="3">
+      <min>0</min><max>3</max><seq>0110</seq>
+      <segm name="NAD">
+        <min>1</min><max>1</max><seq>0120</seq>
+        <n>Name and address</n>
+      </segm>
+      <segm name="CTA">
+        <min>0</min><max>1</max><seq>0130</seq>
+        <n>Contact information</n>
+      </segm>
+      <segm name="COM">
+        <min>0</min><max>5</max><seq>0140</seq>
+        <n>Communication contact</n>
+      </segm>
+    </group>
+    <group name="4">
+      <min>1</min><max>9999</max><seq>0150</seq>
+      <segm name="LIN">
+        <min>1</min><max>1</max><seq>0160</seq>
+        <n>Line item</n>
+      </segm>
+      <segm name="FII">
+        <min>1</min><max>1</max><seq>0170</seq>
+        <n>Financial institution information</n>
+      </segm>
+      <segm name="RFF">
+        <min>1</min><max>1</max><seq>0180</seq>
+        <n>Reference</n>
+      </segm>
+      <segm name="FTX">
+        <min>0</min><max>1</max><seq>0190</seq>
+        <n>Free text</n>
+      </segm>
+      <group name="5">
+        <min>1</min><max>99</max><seq>0200</seq>
+        <segm name="MOA">
+          <min>1</min><max>1</max><seq>0210</seq>
+          <n>Monetary amount</n>
+        </segm>
+        <segm name="DTM">
+          <min>0</min><max>1</max><seq>0220</seq>
+          <n>Date/time/period</n>
+        </segm>
+      </group>
+      <group name="6">
+        <min>0</min><max>9999</max><seq>0230</seq>
+        <segm name="SEQ">
+          <min>1</min><max>1</max><seq>0240</seq>
+          <n>Sequence details</n>
+        </segm>
+        <segm name="RFF">
+          <min>1</min><max>5</max><seq>0250</seq>
+          <n>Reference</n>
+        </segm>
+        <segm name="DTM">
+          <min>1</min><max>2</max><seq>0260</seq>
+          <n>Date/time/period</n>
+        </segm>
+        <segm name="BUS">
+          <min>1</min><max>1</max><seq>0270</seq>
+          <n>Business function</n>
+        </segm>
+        <segm name="MOA">
+          <min>1</min><max>1</max><seq>0280</seq>
+          <n>Monetary amount</n>
+        </segm>
+        <segm name="FTX">
+          <min>0</min><max>1</max><seq>0290</seq>
+          <n>Free text</n>
+        </segm>
+      </group>
+    </group>
+    <segm name="CNT">
+      <min>0</min><max>5</max><seq>0300</seq>
+      <n>Control total</n>
+    </segm>
+    <group name="7">
+      <min>0</min><max>5</max><seq>0310</seq>
+      <segm name="AUT">
+        <min>1</min><max>1</max><seq>0320</seq>
+        <n>Authentication result</n>
+      </segm>
+      <segm name="DTM">
+        <min>0</min><max>1</max><seq>0330</seq>
+        <n>Date/time/period</n>
+      </segm>
+    </group>
+    <segm name="UNT">
+      <min>1</min><max>1</max><seq>0340</seq>
+      <n>Message trailer</n>
+    </segm>
+  </message>
+</root>

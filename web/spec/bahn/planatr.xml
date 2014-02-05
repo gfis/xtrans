@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<!--
+    2006-10-24, Dr. Georg Fischer 
+    @(#)$Id: planatr.xml 9 2008-09-05 05:21:15Z gfis $
+# 2003-07-11: copied from 'insb.pl'
+# -1:  609  items
+# -2: 23d2  items with 2-char abbreviations (blue square remark codes?)
+#     0x75 different 2-char codes  
+# -3:  bee  items
+# -4:  3f2  items (c.f. zug2.p11, many  = 0 there)
+# -5: empty
+-->
+<record name="atr" package="xtrans.bahn" type="Byte" order="LSB" remark="Attributes">
+    <field name="header"    rem=""          len="128"       type="char" />
+    <field name="len0"      rem="2 zero bytes"              len="2"     type="binary"   />
+    <field name="satzTyp"   rem="A, C or E"             len="1"     type="ebcdic"   />
+    <array name="atr1"  rem="" countref="" max="file" len="6"  >
+        <field name="CE01"  rem="Erweiterungstyp"           len="2"     type="ebcdic"   />
+        <field name="CE02"  rem="Erweiterungstext"          len="27"    type="ebcdic"   />
+    </array>
+</record>

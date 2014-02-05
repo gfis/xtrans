@@ -1,0 +1,5106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<!-- 
+	Edifact codelist derived from UN/Edifact tabular documentation 
+	with doc2xml.pl: @(#) $Id: edcd.xml 9 2008-09-05 05:21:15Z gfis $
+	automatically generated at 2008-07-17T07:16:52, do not edit here!
+-->
+  <base>EDCD</base><issue>07A</issue>
+  <title>Composite specifications</title>
+  <entry>
+    <code>C001</code><title>TRANSPORT MEANS</title>
+    <desc>
+      <n>Code and/or name identifying the type of means of</n>
+      <n>transport.</n>
+    </desc>
+    <child name="8179" seq="010">
+      <n>Transport means description code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8178" seq="040">
+      <n>Transport means description</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C002</code><title>DOCUMENT</title>
+    <desc>
+      <n>Identification of a type of document/message by code</n>
+      <n>or name. Code preferred.</n>
+    </desc>
+    <child name="1001" seq="010">
+      <n>Document name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1000" seq="040">
+      <n>Document name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C004</code><title>EVENT CATEGORY</title>
+    <desc>
+      <n>To specify the event category.</n>
+    </desc>
+    <child name="9637" seq="010">
+      <n>Event category description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9636" seq="040">
+      <n>Event category description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C008</code><title>MONETARY AMOUNT FUNCTION DETAIL</title>
+    <desc>
+      <n>To provide the detail of a monetary amount function.</n>
+    </desc>
+    <child name="5105" seq="010">
+      <n>Monetary amount function detail</n>
+      <n>description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5104" seq="040">
+      <n>Monetary amount function detail</n>
+      <n>description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C009</code><title>INFORMATION CATEGORY</title>
+    <desc>
+      <n>To specify the category of information.</n>
+    </desc>
+    <child name="9615" seq="010">
+      <n>Information category description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9614" seq="040">
+      <n>Information category description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C010</code><title>INFORMATION TYPE</title>
+    <desc>
+      <n>To specify the type of information.</n>
+    </desc>
+    <child name="4473" seq="010">
+      <n>Information type code</n>
+      <min>0</min>
+      <type>an</type><length>4</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4472" seq="040">
+      <n>Information type</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C011</code><title>INFORMATION DETAIL</title>
+    <desc>
+      <n>To provide the information details.</n>
+    </desc>
+    <child name="9617" seq="010">
+      <n>Information detail description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9616" seq="040">
+      <n>Information detail description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C012</code><title>PROCESSING INDICATOR</title>
+    <desc>
+      <n>Identification of the processing indicator.</n>
+    </desc>
+    <child name="7365" seq="010">
+      <n>Processing indicator description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7364" seq="040">
+      <n>Processing indicator description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C019</code><title>PAYMENT TERMS</title>
+    <desc>
+      <n>Terms of payment information.</n>
+    </desc>
+    <child name="4277" seq="010">
+      <n>Payment terms description identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4276" seq="040">
+      <n>Payment terms description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C030</code><title>EVENT TYPE</title>
+    <desc>
+      <n>To specify the type of event.</n>
+    </desc>
+    <child name="9171" seq="010">
+      <n>Event type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9170" seq="040">
+      <n>Event type description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C040</code><title>CARRIER</title>
+    <desc>
+      <n>Identification of a carrier by code and/or by name.</n>
+      <n>Code preferred.</n>
+    </desc>
+    <child name="3127" seq="010">
+      <n>Carrier identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3126" seq="040">
+      <n>Carrier name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C042</code><title>NATIONALITY DETAILS</title>
+    <desc>
+      <n>To specify a nationality.</n>
+    </desc>
+    <child name="3293" seq="010">
+      <n>Nationality name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3292" seq="040">
+      <n>Nationality name</n>
+      <min>0</min>
+      <type>a</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C045</code><title>BILL LEVEL IDENTIFICATION</title>
+    <desc>
+      <n>A sequenced collection of facetted codes used for</n>
+      <n>multiple indexing purposes.</n>
+    </desc>
+    <child name="7436" seq="010">
+      <n>Level one identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="7438" seq="020">
+      <n>Level two identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="7440" seq="030">
+      <n>Level three identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="7442" seq="040">
+      <n>Level four identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="7444" seq="050">
+      <n>Level five identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="7446" seq="060">
+      <n>Level six identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C049</code><title>REMUNERATION TYPE IDENTIFICATION</title>
+    <desc>
+      <n>Identification of the type of a remuneration.</n>
+    </desc>
+    <child name="5315" seq="010">
+      <n>Remuneration type name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5314" seq="040">
+      <n>Remuneration type name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="5314" seq="050">
+      <n>Remuneration type name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C056</code><title>CONTACT DETAILS</title>
+    <desc>
+      <n>Code and/or name of a contact such as a department</n>
+      <n>or employee. Code preferred.</n>
+    </desc>
+    <child name="3413" seq="010">
+      <n>Contact identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3412" seq="020">
+      <n>Contact name</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C058</code><title>NAME AND ADDRESS</title>
+    <desc>
+      <n>Unstructured name and address: one to five lines.</n>
+    </desc>
+    <child name="3124" seq="010">
+      <n>Name and address description</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3124" seq="020">
+      <n>Name and address description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3124" seq="030">
+      <n>Name and address description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3124" seq="040">
+      <n>Name and address description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3124" seq="050">
+      <n>Name and address description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C059</code><title>STREET</title>
+    <desc>
+      <n>Street address and/or PO Box number in a structured</n>
+      <n>address: one to four lines.</n>
+    </desc>
+    <child name="3042" seq="010">
+      <n>Street and number or post office box</n>
+      <n>identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3042" seq="020">
+      <n>Street and number or post office box</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3042" seq="030">
+      <n>Street and number or post office box</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3042" seq="040">
+      <n>Street and number or post office box</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C063</code><title>EVENT IDENTIFICATION</title>
+    <desc>
+      <n>To identify an event.</n>
+    </desc>
+    <child name="9173" seq="010">
+      <n>Event description code</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9172" seq="040">
+      <n>Event</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C076</code><title>COMMUNICATION CONTACT</title>
+    <desc>
+      <n>Communication number of a department or employee in</n>
+      <n>a specified channel.</n>
+    </desc>
+    <child name="3148" seq="010">
+      <n>Communication address identifier</n>
+      <min>1</min>
+      <type>an</type><length>512</length>
+    </child>
+    <child name="3155" seq="020">
+      <n>Communication means type code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C077</code><title>FILE IDENTIFICATION</title>
+    <desc>
+      <n>To identify a file.</n>
+    </desc>
+    <child name="1508" seq="010">
+      <n>File name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7008" seq="020">
+      <n>Item description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C078</code><title>ACCOUNT HOLDER IDENTIFICATION</title>
+    <desc>
+      <n>Identification of an account holder by account</n>
+      <n>number and/or account holder name in one or two</n>
+      <n>lines. Number preferred.</n>
+    </desc>
+    <child name="3194" seq="010">
+      <n>Account holder identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3192" seq="020">
+      <n>Account holder name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3192" seq="030">
+      <n>Account holder name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="6345" seq="040">
+      <n>Currency identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C079</code><title>COMPUTER ENVIRONMENT IDENTIFICATION</title>
+    <desc>
+      <n>To identify parts of a computer environment.</n>
+    </desc>
+    <child name="1511" seq="010">
+      <n>Computer environment name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1510" seq="040">
+      <n>Computer environment name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1056" seq="050">
+      <n>Version identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1058" seq="060">
+      <n>Release identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="7402" seq="070">
+      <n>Object identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C080</code><title>PARTY NAME</title>
+    <desc>
+      <n>Identification of a transaction party by name, one</n>
+      <n>to five lines. Party name may be formatted.</n>
+    </desc>
+    <child name="3036" seq="010">
+      <n>Party name</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3036" seq="020">
+      <n>Party name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3036" seq="030">
+      <n>Party name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3036" seq="040">
+      <n>Party name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3036" seq="050">
+      <n>Party name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3045" seq="060">
+      <n>Party name format code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C082</code><title>PARTY IDENTIFICATION DETAILS</title>
+    <desc>
+      <n>Identification of a transaction party by code.</n>
+    </desc>
+    <child name="3039" seq="010">
+      <n>Party identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C085</code><title>MARITAL STATUS DETAILS</title>
+    <desc>
+      <n>To specify the marital status of a person.</n>
+    </desc>
+    <child name="3479" seq="010">
+      <n>Marital status description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3478" seq="040">
+      <n>Marital status description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C088</code><title>INSTITUTION IDENTIFICATION</title>
+    <desc>
+      <n>Identification of a financial institution by code</n>
+      <n>branch number, or name and name of place. Code or</n>
+      <n>branch number preferred.</n>
+    </desc>
+    <child name="3433" seq="010">
+      <n>Institution name code</n>
+      <min>0</min>
+      <type>an</type><length>11</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3434" seq="040">
+      <n>Institution branch identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="050">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="060">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3432" seq="070">
+      <n>Institution name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="3436" seq="080">
+      <n>Institution branch location name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C090</code><title>ADDRESS DETAILS</title>
+    <desc>
+      <n>To specify the details of an address.</n>
+    </desc>
+    <child name="3477" seq="010">
+      <n>Address format code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3286" seq="020">
+      <n>Address component description</n>
+      <min>1</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="3286" seq="030">
+      <n>Address component description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="3286" seq="040">
+      <n>Address component description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="3286" seq="050">
+      <n>Address component description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="3286" seq="060">
+      <n>Address component description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C099</code><title>FILE DETAILS</title>
+    <desc>
+      <n>To define details relevant to a file.</n>
+    </desc>
+    <child name="1516" seq="010">
+      <n>File format name</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1056" seq="020">
+      <n>Version identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1503" seq="030">
+      <n>Data format description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1502" seq="040">
+      <n>Data format description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C100</code><title>TERMS OF DELIVERY OR TRANSPORT</title>
+    <desc>
+      <n>Terms of delivery or transport code from a specified</n>
+      <n>source.</n>
+    </desc>
+    <child name="4053" seq="010">
+      <n>Delivery or transport terms description</n>
+      <n>code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4052" seq="040">
+      <n>Delivery or transport terms description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="4052" seq="050">
+      <n>Delivery or transport terms description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C101</code><title>RELIGION DETAILS</title>
+    <desc>
+      <n>To specify the religion of a person.</n>
+    </desc>
+    <child name="3483" seq="010">
+      <n>Religion name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3482" seq="040">
+      <n>Religion name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C106</code><title>DOCUMENT</title>
+    <desc>
+      <n>Identification of a document/message by its number</n>
+      <n>and eventually its version or revision.</n>
+    </desc>
+    <child name="1004" seq="010">
+      <n>Document identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1056" seq="020">
+      <n>Version identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1060" seq="030">
+      <n>Revision identifier</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C107</code><title>TEXT REFERENCE</title>
+    <desc>
+      <n>Coded reference to a standard text and its source.</n>
+    </desc>
+    <child name="4441" seq="010">
+      <n>Free text description code</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C108</code><title>TEXT LITERAL</title>
+    <desc>
+      <n>Free text; one to five lines.</n>
+    </desc>
+    <child name="4440" seq="010">
+      <n>Free text</n>
+      <min>1</min>
+      <type>an</type><length>512</length>
+    </child>
+    <child name="4440" seq="020">
+      <n>Free text</n>
+      <min>0</min>
+      <type>an</type><length>512</length>
+    </child>
+    <child name="4440" seq="030">
+      <n>Free text</n>
+      <min>0</min>
+      <type>an</type><length>512</length>
+    </child>
+    <child name="4440" seq="040">
+      <n>Free text</n>
+      <min>0</min>
+      <type>an</type><length>512</length>
+    </child>
+    <child name="4440" seq="050">
+      <n>Free text</n>
+      <min>0</min>
+      <type>an</type><length>512</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C128</code><title>RATE DETAILS</title>
+    <desc>
+      <n>Rate per unit and rate basis.</n>
+    </desc>
+    <child name="5419" seq="010">
+      <n>Rate type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5420" seq="020">
+      <n>Unit price basis rate</n>
+      <min>1</min>
+      <type>n</type><length>15</length>
+    </child>
+    <child name="5284" seq="030">
+      <n>Unit price basis quantity</n>
+      <min>0</min>
+      <type>n</type><length>9</length>
+    </child>
+    <child name="6411" seq="040">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C138</code><title>PRICE MULTIPLIER INFORMATION</title>
+    <desc>
+      <n>Price multiplier and its identification.</n>
+    </desc>
+    <child name="5394" seq="010">
+      <n>Price multiplier rate</n>
+      <min>1</min>
+      <type>n</type><length>12</length>
+    </child>
+    <child name="5393" seq="020">
+      <n>Price multiplier type code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C174</code><title>VALUE</title>
+    <desc>
+      <n>Measurement value and relevant minimum and maximum</n>
+      <n>values of the measurement range.</n>
+    </desc>
+    <child name="6411" seq="010">
+      <n>Measurement unit code</n>
+      <min>1</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="6314" seq="020">
+      <n>Measure</n>
+      <min>0</min>
+      <type>an</type><length>18</length>
+    </child>
+    <child name="6162" seq="030">
+      <n>Range minimum quantity</n>
+      <min>0</min>
+      <type>n</type><length>18</length>
+    </child>
+    <child name="6152" seq="040">
+      <n>Range maximum quantity</n>
+      <min>0</min>
+      <type>n</type><length>18</length>
+    </child>
+    <child name="6432" seq="050">
+      <n>Significant digits quantity</n>
+      <min>0</min>
+      <type>n</type><length>2</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C186</code><title>QUANTITY DETAILS</title>
+    <desc>
+      <n>Quantity information in a transaction, qualified</n>
+      <n>when relevant.</n>
+    </desc>
+    <child name="6063" seq="010">
+      <n>Quantity type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6060" seq="020">
+      <n>Quantity</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="6411" seq="030">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C200</code><title>CHARGE</title>
+    <desc>
+      <n>Identification of a charge by code and/or by name.</n>
+    </desc>
+    <child name="8023" seq="010">
+      <n>Freight and other charges description</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8022" seq="040">
+      <n>Freight and other charges description</n>
+      <min>0</min>
+      <type>an</type><length>26</length>
+    </child>
+    <child name="4237" seq="050">
+      <n>Payment arrangement code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7140" seq="060">
+      <n>Item identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C202</code><title>PACKAGE TYPE</title>
+    <desc>
+      <n>Type of package by name or by code from a specified</n>
+      <n>source.</n>
+    </desc>
+    <child name="7065" seq="010">
+      <n>Package type description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7064" seq="040">
+      <n>Type of packages</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C203</code><title>RATE</title>
+    <desc>
+      <n>Identification of the applicable rate/tariff class.</n>
+    </desc>
+    <child name="5243" seq="010">
+      <n>Rate or tariff class description code</n>
+      <min>1</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5242" seq="040">
+      <n>Rate or tariff class description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="5275" seq="050">
+      <n>Supplementary rate or tariff code</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+    <child name="1131" seq="060">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="070">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5275" seq="080">
+      <n>Supplementary rate or tariff code</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+    <child name="1131" seq="090">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="100">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C205</code><title>HAZARD CODE</title>
+    <desc>
+      <n>The identification of the dangerous goods in code.</n>
+    </desc>
+    <child name="8351" seq="010">
+      <n>Hazard identification code</n>
+      <min>1</min>
+      <type>an</type><length>7</length>
+    </child>
+    <child name="8078" seq="020">
+      <n>Additional hazard classification</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>7</length>
+    </child>
+    <child name="8092" seq="030">
+      <n>Hazard code version identifier</n>
+      <min>0</min>
+      <type>an</type><length>10</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C206</code><title>IDENTIFICATION NUMBER</title>
+    <desc>
+      <n>The identification of an object.</n>
+    </desc>
+    <child name="7402" seq="010">
+      <n>Object identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7405" seq="020">
+      <n>Object identification code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4405" seq="030">
+      <n>Status description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C208</code><title>IDENTITY NUMBER RANGE</title>
+    <desc>
+      <n>Goods item identification numbers, start and end of</n>
+      <n>consecutively numbered range.</n>
+    </desc>
+    <child name="7402" seq="010">
+      <n>Object identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7402" seq="020">
+      <n>Object identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C210</code><title>MARKS </title>
+    <desc>
+      <n>Shipping marks on packages in free text; one to ten</n>
+      <n>lines.</n>
+    </desc>
+    <child name="7102" seq="010">
+      <n>Shipping marks description</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="020">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="030">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="040">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="050">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="060">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="070">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="080">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="090">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7102" seq="100">
+      <n>Shipping marks description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C211</code><title>DIMENSIONS</title>
+    <desc>
+      <n>Specification of the dimensions of a transportable</n>
+      <n>unit.</n>
+    </desc>
+    <child name="6411" seq="010">
+      <n>Measurement unit code</n>
+      <min>1</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="6168" seq="020">
+      <n>Length measure</n>
+      <min>0</min>
+      <type>n</type><length>15</length>
+    </child>
+    <child name="6140" seq="030">
+      <n>Width measure</n>
+      <min>0</min>
+      <type>n</type><length>15</length>
+    </child>
+    <child name="6008" seq="040">
+      <n>Height measure</n>
+      <min>0</min>
+      <type>n</type><length>15</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C212</code><title>ITEM NUMBER IDENTIFICATION</title>
+    <desc>
+      <n>Goods identification for a specified source.</n>
+    </desc>
+    <child name="7140" seq="010">
+      <n>Item identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7143" seq="020">
+      <n>Item type identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="030">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="040">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C213</code><title>NUMBER AND TYPE OF PACKAGES</title>
+    <desc>
+      <n>Number and type of individual parts of a shipment.</n>
+    </desc>
+    <child name="7224" seq="010">
+      <n>Package quantity</n>
+      <min>0</min>
+      <type>n</type><length>8</length>
+    </child>
+    <child name="7065" seq="020">
+      <n>Package type description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="030">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="040">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7064" seq="050">
+      <n>Type of packages</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7233" seq="060">
+      <n>Packaging related description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C214</code><title>SPECIAL SERVICES IDENTIFICATION</title>
+    <desc>
+      <n>Identification of a special service by a code from a</n>
+      <n>specified source or by description.</n>
+    </desc>
+    <child name="7161" seq="010">
+      <n>Special service description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7160" seq="040">
+      <n>Special service description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7160" seq="050">
+      <n>Special service description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C215</code><title>SEAL ISSUER</title>
+    <desc>
+      <n>Identification of the issuer of a seal on equipment</n>
+      <n>either by code or by name.</n>
+    </desc>
+    <child name="9303" seq="010">
+      <n>Sealing party name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9302" seq="040">
+      <n>Sealing party name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C218</code><title>HAZARDOUS MATERIAL</title>
+    <desc>
+      <n>To specify a hazardous material.</n>
+    </desc>
+    <child name="7419" seq="010">
+      <n>Hazardous material category name code</n>
+      <min>0</min>
+      <type>an</type><length>7</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7418" seq="040">
+      <n>Hazardous material category name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C219</code><title>MOVEMENT TYPE</title>
+    <desc>
+      <n>Description of type of service for movement of</n>
+      <n>cargo.</n>
+    </desc>
+    <child name="8335" seq="010">
+      <n>Movement type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8334" seq="020">
+      <n>Movement type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C220</code><title>MODE OF TRANSPORT</title>
+    <desc>
+      <n>Method of transport code or name. Code preferred.</n>
+    </desc>
+    <child name="8067" seq="010">
+      <n>Transport mode name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8066" seq="020">
+      <n>Transport mode name</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C222</code><title>TRANSPORT IDENTIFICATION</title>
+    <desc>
+      <n>Code and/or name identifying the means of transport.</n>
+    </desc>
+    <child name="8213" seq="010">
+      <n>Transport means identification name</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8212" seq="040">
+      <n>Transport means identification name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="8453" seq="050">
+      <n>Transport means nationality code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C223</code><title>DANGEROUS GOODS SHIPMENT FLASHPOINT</title>
+    <desc>
+      <n>Temperature at which a vapor can be ignited as per</n>
+      <n>ISO 1523/73.</n>
+    </desc>
+    <child name="7106" seq="010">
+      <n>Shipment flashpoint degree</n>
+      <min>0</min>
+      <type>n3</type><length></length>
+    </child>
+    <child name="6411" seq="020">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C224</code><title>EQUIPMENT SIZE AND TYPE</title>
+    <desc>
+      <n>Code and or name identifying size and type of</n>
+      <n>equipment. Code preferred.</n>
+    </desc>
+    <child name="8155" seq="010">
+      <n>Equipment size and type description code</n>
+      <min>0</min>
+      <type>an</type><length>10</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8154" seq="040">
+      <n>Equipment size and type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C229</code><title>CHARGE CATEGORY</title>
+    <desc>
+      <n>Identification of a category or a zone of charges.</n>
+    </desc>
+    <child name="5237" seq="010">
+      <n>Charge category code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C231</code><title>METHOD OF PAYMENT</title>
+    <desc>
+      <n>Code identifying the method of payment.</n>
+    </desc>
+    <child name="4215" seq="010">
+      <n>Transport charges payment method code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C232</code><title>GOVERNMENT ACTION</title>
+    <desc>
+      <n>Code indicating a type of government action.</n>
+    </desc>
+    <child name="9415" seq="010">
+      <n>Government agency identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9411" seq="020">
+      <n>Government involvement code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9417" seq="030">
+      <n>Government action code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9353" seq="040">
+      <n>Government procedure code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C233</code><title>SERVICE</title>
+    <desc>
+      <n>To identify a service (which may constitute an</n>
+      <n>additional component to a basic contract).</n>
+    </desc>
+    <child name="7273" seq="010">
+      <n>Service requirement code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7273" seq="040">
+      <n>Service requirement code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="050">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="060">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C234</code><title>UNDG INFORMATION</title>
+    <desc>
+      <n>Information on dangerous goods, taken from the</n>
+      <n>United Nations Dangerous Goods classification.</n>
+    </desc>
+    <child name="7124" seq="010">
+      <n>United Nations Dangerous Goods (UNDG)</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>n4</type><length></length>
+    </child>
+    <child name="7088" seq="020">
+      <n>Dangerous goods flashpoint description</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C235</code><title>HAZARD IDENTIFICATION PLACARD DETAILS</title>
+    <desc>
+      <n>These numbers appear on the hazard identification</n>
+      <n>placard required on the means of transport.</n>
+    </desc>
+    <child name="8158" seq="010">
+      <n>Orange hazard placard upper part</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>4</length>
+    </child>
+    <child name="8186" seq="020">
+      <n>Orange hazard placard lower part</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an4</type><length></length>
+    </child>
+  </entry>
+  <entry>
+    <code>C236</code><title>DANGEROUS GOODS LABEL</title>
+    <desc>
+      <n>Markings identifying the type of hazardous goods and</n>
+      <n>similar information.</n>
+    </desc>
+    <child name="8246" seq="010">
+      <n>Dangerous goods marking identifier</n>
+      <min>0</min>
+      <type>an</type><length>4</length>
+    </child>
+    <child name="8246" seq="020">
+      <n>Dangerous goods marking identifier</n>
+      <min>0</min>
+      <type>an</type><length>4</length>
+    </child>
+    <child name="8246" seq="030">
+      <n>Dangerous goods marking identifier</n>
+      <min>0</min>
+      <type>an</type><length>4</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C237</code><title>EQUIPMENT IDENTIFICATION</title>
+    <desc>
+      <n>Marks (letters/numbers) identifying equipment.</n>
+    </desc>
+    <child name="8260" seq="010">
+      <n>Equipment identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3207" seq="040">
+      <n>Country identifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C239</code><title>TEMPERATURE SETTING</title>
+    <desc>
+      <n>The temperature under which the goods are (to be)</n>
+      <n>stored or shipped.</n>
+    </desc>
+    <child name="6246" seq="010">
+      <n>Temperature degree</n>
+      <min>0</min>
+      <type>n</type><length>15</length>
+    </child>
+    <child name="6411" seq="020">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C240</code><title>CHARACTERISTIC DESCRIPTION</title>
+    <desc>
+      <n>To provide a description of a characteristic.</n>
+    </desc>
+    <child name="7037" seq="010">
+      <n>Characteristic description code</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7036" seq="040">
+      <n>Characteristic description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7036" seq="050">
+      <n>Characteristic description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C241</code><title>DUTY</title>
+    <desc>
+      <n>Code and/or name identifying duty, tax or fee.</n>
+    </desc>
+    <child name="5153" seq="010">
+      <n>Duty or tax or fee type name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5152" seq="040">
+      <n>Duty or tax or fee type name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C242</code><title>PROCESS TYPE AND DESCRIPTION</title>
+    <desc>
+      <n>Identification of process type and description.</n>
+    </desc>
+    <child name="7187" seq="010">
+      <n>Process type description code</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7186" seq="040">
+      <n>Process type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7186" seq="050">
+      <n>Process type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C243</code><title>DUTY</title>
+    <desc>
+      <n>Rate of duty/tax/fee applicable to commodities or of</n>
+      <n>tax applicable to services.</n>
+    </desc>
+    <child name="5279" seq="010">
+      <n>Duty or tax or fee rate code</n>
+      <min>0</min>
+      <type>an</type><length>7</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5278" seq="040">
+      <n>Duty or tax or fee rate</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="5273" seq="050">
+      <n>Duty or tax or fee rate basis code</n>
+      <min>0</min>
+      <type>an</type><length>12</length>
+    </child>
+    <child name="1131" seq="060">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="070">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C244</code><title>TEST METHOD</title>
+    <desc>
+      <n>Specification of the test method employed.</n>
+    </desc>
+    <child name="4415" seq="010">
+      <n>Test method identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4416" seq="040">
+      <n>Test description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C246</code><title>CUSTOMS IDENTITY CODES</title>
+    <desc>
+      <n>Specification of goods in terms of customs identity.</n>
+    </desc>
+    <child name="7361" seq="010">
+      <n>Customs goods identifier</n>
+      <min>1</min>
+      <type>an</type><length>18</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C270</code><title>CONTROL</title>
+    <desc>
+      <n>Control total for checking integrity of a message or</n>
+      <n>part of a message.</n>
+    </desc>
+    <child name="6069" seq="010">
+      <n>Control total type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6066" seq="020">
+      <n>Control total quantity</n>
+      <min>1</min>
+      <type>n</type><length>18</length>
+    </child>
+    <child name="6411" seq="030">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C272</code><title>ITEM CHARACTERISTIC</title>
+    <desc>
+      <n>To provide the characteristic of the item being</n>
+      <n>described.</n>
+    </desc>
+    <child name="7081" seq="010">
+      <n>Item characteristic code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C273</code><title>ITEM DESCRIPTION</title>
+    <desc>
+      <n>Description of an item.</n>
+    </desc>
+    <child name="7009" seq="010">
+      <n>Item description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7008" seq="040">
+      <n>Item description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+    <child name="7008" seq="050">
+      <n>Item description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+    <child name="3453" seq="060">
+      <n>Language name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C279</code><title>QUANTITY DIFFERENCE INFORMATION</title>
+    <desc>
+      <n>Information on quantity difference.</n>
+    </desc>
+    <child name="6064" seq="010">
+      <n>Variance quantity</n>
+      <min>1</min>
+      <type>n</type><length>15</length>
+    </child>
+    <child name="6063" seq="020">
+      <n>Quantity type code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C280</code><title>RANGE</title>
+    <desc>
+      <n>Range minimum and maximum limits.</n>
+    </desc>
+    <child name="6411" seq="010">
+      <n>Measurement unit code</n>
+      <min>1</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="6162" seq="020">
+      <n>Range minimum quantity</n>
+      <min>0</min>
+      <type>n</type><length>18</length>
+    </child>
+    <child name="6152" seq="030">
+      <n>Range maximum quantity</n>
+      <min>0</min>
+      <type>n</type><length>18</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C286</code><title>SEQUENCE INFORMATION</title>
+    <desc>
+      <n>Identification of a sequence and source for</n>
+      <n>sequencing.</n>
+    </desc>
+    <child name="1050" seq="010">
+      <n>Sequence position identifier</n>
+      <min>1</min>
+      <type>an</type><length>10</length>
+    </child>
+    <child name="1159" seq="020">
+      <n>Sequence identifier source code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="030">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="040">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C288</code><title>PRODUCT GROUP</title>
+    <desc>
+      <n>To give product group information.</n>
+    </desc>
+    <child name="5389" seq="010">
+      <n>Product group name code</n>
+      <min>0</min>
+      <type>an</type><length>25</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5388" seq="040">
+      <n>Product group name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C292</code><title>PRICE CHANGE INFORMATION</title>
+    <desc>
+      <n>A value assigned by the seller to indicate movement</n>
+      <n>of prices from a previous price catalogue.</n>
+    </desc>
+    <child name="5377" seq="010">
+      <n>Price change type code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <note>
+      <n></n>
+      <n>This composite data element will be removed</n>
+      <n>effective with directory D.08A.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>C329</code><title>PATTERN DESCRIPTION</title>
+    <desc>
+      <n>Shipment, delivery or production interval pattern</n>
+      <n>and timing.</n>
+    </desc>
+    <child name="2013" seq="010">
+      <n>Frequency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="2015" seq="020">
+      <n>Despatch pattern code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="2017" seq="030">
+      <n>Despatch pattern timing code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C330</code><title>INSURANCE COVER TYPE</title>
+    <desc>
+      <n>To provide the insurance cover type.</n>
+    </desc>
+    <child name="4497" seq="010">
+      <n>Insurance cover type code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C331</code><title>INSURANCE COVER DETAILS</title>
+    <desc>
+      <n>To provide the insurance cover details.</n>
+    </desc>
+    <child name="4495" seq="010">
+      <n>Insurance cover description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4494" seq="040">
+      <n>Insurance cover description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="4494" seq="050">
+      <n>Insurance cover description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C332</code><title>SALES CHANNEL IDENTIFICATION</title>
+    <desc>
+      <n>Identification of sales channel for marketing data,</n>
+      <n>sales, forecast, planning...</n>
+    </desc>
+    <child name="3496" seq="010">
+      <n>Sales channel identifier</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C333</code><title>INFORMATION REQUEST</title>
+    <desc>
+      <n>To specify the information requested in a responding</n>
+      <n>message.</n>
+    </desc>
+    <child name="4511" seq="010">
+      <n>Requested information description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4510" seq="040">
+      <n>Requested information description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C401</code><title>EXCESS TRANSPORTATION INFORMATION</title>
+    <desc>
+      <n>To provide details of reason for, and responsibility</n>
+      <n>for, use of transportation other than normally</n>
+      <n>utilized.</n>
+    </desc>
+    <child name="8457" seq="010">
+      <n>Excess transportation reason code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8459" seq="020">
+      <n>Excess transportation responsibility code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7130" seq="030">
+      <n>Customer shipment authorisation</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C402</code><title>PACKAGE TYPE IDENTIFICATION</title>
+    <desc>
+      <n>Identification of the form in which goods are</n>
+      <n>described.</n>
+    </desc>
+    <child name="7077" seq="010">
+      <n>Description format code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7064" seq="020">
+      <n>Type of packages</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7143" seq="030">
+      <n>Item type identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7064" seq="040">
+      <n>Type of packages</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7143" seq="050">
+      <n>Item type identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C501</code><title>PERCENTAGE DETAILS</title>
+    <desc>
+      <n>Percentage relating to a specified basis.</n>
+    </desc>
+    <child name="5245" seq="010">
+      <n>Percentage type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5482" seq="020">
+      <n>Percentage</n>
+      <min>0</min>
+      <type>n</type><length>10</length>
+    </child>
+    <child name="5249" seq="030">
+      <n>Percentage basis identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="040">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="050">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C502</code><title>MEASUREMENT DETAILS</title>
+    <desc>
+      <n>Identification of measurement type.</n>
+    </desc>
+    <child name="6313" seq="010">
+      <n>Measured attribute code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6321" seq="020">
+      <n>Measurement significance code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6155" seq="030">
+      <n>Non-discrete measurement name code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="6154" seq="040">
+      <n>Non-discrete measurement name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C503</code><title>DOCUMENT</title>
+    <desc>
+      <n>Identification of document/message by number,</n>
+      <n>status, source and/or language.</n>
+    </desc>
+    <child name="1004" seq="010">
+      <n>Document identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1373" seq="020">
+      <n>Document status code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1366" seq="030">
+      <n>Document source description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="3453" seq="040">
+      <n>Language name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1056" seq="050">
+      <n>Version identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1060" seq="060">
+      <n>Revision identifier</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C504</code><title>CURRENCY DETAILS</title>
+    <desc>
+      <n>The usage to which a currency relates.</n>
+    </desc>
+    <child name="6347" seq="010">
+      <n>Currency usage code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6345" seq="020">
+      <n>Currency identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6343" seq="030">
+      <n>Currency type code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6348" seq="040">
+      <n>Currency rate</n>
+      <min>0</min>
+      <type>n</type><length>4</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C506</code><title>REFERENCE</title>
+    <desc>
+      <n>Identification of a reference.</n>
+    </desc>
+    <child name="1153" seq="010">
+      <n>Reference code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1154" seq="020">
+      <n>Reference identifier</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+    <child name="1156" seq="030">
+      <n>Document line identifier</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+    <child name="1056" seq="040">
+      <n>Version identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1060" seq="050">
+      <n>Revision identifier</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C507</code><title>DATE</title>
+    <desc>
+      <n>Date and/or time, or period relevant to the</n>
+      <n>specified date/time/period type.</n>
+    </desc>
+    <child name="2005" seq="010">
+      <n>Date or time or period function code</n>
+      <n>qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="2380" seq="020">
+      <n>Date or time or period text</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="2379" seq="030">
+      <n>Date or time or period format code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C508</code><title>LANGUAGE DETAILS</title>
+    <desc>
+      <n>To identify a language.</n>
+    </desc>
+    <child name="3453" seq="010">
+      <n>Language name code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3452" seq="020">
+      <n>Language name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C509</code><title>PRICE INFORMATION</title>
+    <desc>
+      <n>Identification of price type, price and related</n>
+      <n>details.</n>
+    </desc>
+    <child name="5125" seq="010">
+      <n>Price code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5118" seq="020">
+      <n>Price amount</n>
+      <min>0</min>
+      <type>n</type><length>15</length>
+    </child>
+    <child name="5375" seq="030">
+      <n>Price type code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5387" seq="040">
+      <n>Price specification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5284" seq="050">
+      <n>Unit price basis quantity</n>
+      <min>0</min>
+      <type>n</type><length>9</length>
+    </child>
+    <child name="6411" seq="060">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C512</code><title>SIZE DETAILS</title>
+    <desc>
+      <n>Information about the number of observations.</n>
+    </desc>
+    <child name="6173" seq="010">
+      <n>Size type code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6174" seq="020">
+      <n>Size measure</n>
+      <min>0</min>
+      <type>n</type><length>15</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C514</code><title>SAMPLE LOCATION DETAILS</title>
+    <desc>
+      <n>Identification of location within the specimen, from</n>
+      <n>which the sample was taken.</n>
+    </desc>
+    <child name="3237" seq="010">
+      <n>Sample location description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3236" seq="020">
+      <n>Sample location description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C515</code><title>TEST REASON</title>
+    <desc>
+      <n>To identify the reason for the test as specified.</n>
+    </desc>
+    <child name="4425" seq="010">
+      <n>Test reason name code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4424" seq="040">
+      <n>Test reason name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C516</code><title>MONETARY AMOUNT</title>
+    <desc>
+      <n>Amount of goods or services stated as a monetary</n>
+      <n>amount in a specified currency.</n>
+    </desc>
+    <child name="5025" seq="010">
+      <n>Monetary amount type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5004" seq="020">
+      <n>Monetary amount</n>
+      <min>0</min>
+      <type>n</type><length>35</length>
+    </child>
+    <child name="6345" seq="030">
+      <n>Currency identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6343" seq="040">
+      <n>Currency type code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4405" seq="050">
+      <n>Status description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C517</code><title>LOCATION IDENTIFICATION</title>
+    <desc>
+      <n>Identification of a location by code or name.</n>
+    </desc>
+    <child name="3225" seq="010">
+      <n>Location identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3224" seq="040">
+      <n>Location name</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C519</code><title>RELATED LOCATION ONE IDENTIFICATION</title>
+    <desc>
+      <n>Identification the first related location by code or</n>
+      <n>name.</n>
+    </desc>
+    <child name="3223" seq="010">
+      <n>First related location identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3222" seq="040">
+      <n>First related location name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C521</code><title>BUSINESS FUNCTION</title>
+    <desc>
+      <n>To specify a business reason.</n>
+    </desc>
+    <child name="4027" seq="010">
+      <n>Business function type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4025" seq="020">
+      <n>Business function code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="030">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="040">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4022" seq="050">
+      <n>Business description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C522</code><title>INSTRUCTION</title>
+    <desc>
+      <n>To specify an instruction.</n>
+    </desc>
+    <child name="4403" seq="010">
+      <n>Instruction type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4401" seq="020">
+      <n>Instruction description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="030">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="040">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4400" seq="050">
+      <n>Instruction description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C523</code><title>NUMBER OF UNIT DETAILS</title>
+    <desc>
+      <n>Identification of number of units and its purpose.</n>
+    </desc>
+    <child name="6350" seq="010">
+      <n>Units quantity</n>
+      <min>0</min>
+      <type>n</type><length>15</length>
+    </child>
+    <child name="6353" seq="020">
+      <n>Unit type code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C524</code><title>HANDLING INSTRUCTIONS</title>
+    <desc>
+      <n>Instruction for the handling of goods, products or</n>
+      <n>articles in shipment, storage etc.</n>
+    </desc>
+    <child name="4079" seq="010">
+      <n>Handling instruction description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4078" seq="040">
+      <n>Handling instruction description</n>
+      <min>0</min>
+      <type>an</type><length>512</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C525</code><title>PURPOSE OF CONVEYANCE CALL</title>
+    <desc>
+      <n>Description of the purpose of the call of the</n>
+      <n>conveyance.</n>
+    </desc>
+    <child name="8025" seq="010">
+      <n>Conveyance call purpose description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8024" seq="040">
+      <n>Conveyance call purpose description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C526</code><title>FREQUENCY DETAILS</title>
+    <desc>
+      <n>Number of samples collected per specified unit of</n>
+      <n>measure.</n>
+    </desc>
+    <child name="6071" seq="010">
+      <n>Frequency code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6072" seq="020">
+      <n>Frequency rate</n>
+      <min>0</min>
+      <type>n</type><length>9</length>
+    </child>
+    <child name="6411" seq="030">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C527</code><title>STATISTICAL DETAILS</title>
+    <desc>
+      <n>Specifications related to statistical measurements.</n>
+    </desc>
+    <child name="6314" seq="010">
+      <n>Measure</n>
+      <min>0</min>
+      <type>an</type><length>18</length>
+    </child>
+    <child name="6411" seq="020">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="6313" seq="030">
+      <n>Measured attribute code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6321" seq="040">
+      <n>Measurement significance code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C528</code><title>COMMODITY</title>
+    <desc>
+      <n>Identification of commodity/rates.</n>
+    </desc>
+    <child name="7357" seq="010">
+      <n>Commodity identification code</n>
+      <min>0</min>
+      <type>an</type><length>18</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C531</code><title>PACKAGING DETAILS</title>
+    <desc>
+      <n>Packaging level and details, terms and conditions.</n>
+    </desc>
+    <child name="7075" seq="010">
+      <n>Packaging level code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7233" seq="020">
+      <n>Packaging related description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7073" seq="030">
+      <n>Packaging terms and conditions code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C532</code><title>RETURNABLE PACKAGE DETAILS</title>
+    <desc>
+      <n>Indication of responsibility for payment and load</n>
+      <n>contents of returnable packages.</n>
+    </desc>
+    <child name="8395" seq="010">
+      <n>Returnable package freight payment</n>
+      <n>responsibility code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="8393" seq="020">
+      <n>Returnable package load contents code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C533</code><title>DUTY</title>
+    <desc>
+      <n>Indication of account reference for duties, taxes</n>
+      <n>and/or fees.</n>
+    </desc>
+    <child name="5289" seq="010">
+      <n>Duty or tax or fee account code</n>
+      <min>1</min>
+      <type>an</type><length>6</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C534</code><title>PAYMENT INSTRUCTION DETAILS</title>
+    <desc>
+      <n>Indication of method of payment employed or to be</n>
+      <n>employed.</n>
+    </desc>
+    <child name="4439" seq="010">
+      <n>Payment conditions code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4431" seq="020">
+      <n>Payment guarantee means code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4461" seq="030">
+      <n>Payment means code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="040">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="050">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4435" seq="060">
+      <n>Payment channel code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C536</code><title>CONTRACT AND CARRIAGE CONDITION</title>
+    <desc>
+      <n>To identify a contract and carriage condition.</n>
+    </desc>
+    <child name="4065" seq="010">
+      <n>Contract and carriage condition code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C537</code><title>TRANSPORT PRIORITY</title>
+    <desc>
+      <n>To indicate the priority of requested transport</n>
+      <n>service.</n>
+    </desc>
+    <child name="4219" seq="010">
+      <n>Transport service priority code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C543</code><title>AGREEMENT TYPE IDENTIFICATION</title>
+    <desc>
+      <n>Identification of specific agreement type by code or</n>
+      <n>name.</n>
+    </desc>
+    <child name="7431" seq="010">
+      <n>Agreement type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7433" seq="020">
+      <n>Agreement type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="030">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="040">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7434" seq="050">
+      <n>Agreement type description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C545</code><title>INDEX IDENTIFICATION</title>
+    <desc>
+      <n>To identify an index.</n>
+    </desc>
+    <child name="5013" seq="010">
+      <n>Index code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5027" seq="020">
+      <n>Index type identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="030">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="040">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C546</code><title>INDEX VALUE</title>
+    <desc>
+      <n>To identify the value of an index.</n>
+    </desc>
+    <child name="5030" seq="010">
+      <n>Index text</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="5039" seq="020">
+      <n>Index representation code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C549</code><title>MONETARY AMOUNT FUNCTION</title>
+    <desc>
+      <n>To identify the function of a monetary amount.</n>
+    </desc>
+    <child name="5007" seq="010">
+      <n>Monetary amount function description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5006" seq="040">
+      <n>Monetary amount function description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C550</code><title>REQUIREMENT</title>
+    <desc>
+      <n>To identify the specific rule/condition requirement.</n>
+    </desc>
+    <child name="7295" seq="010">
+      <n>Requirement or condition description</n>
+      <n>identifier</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7294" seq="040">
+      <n>Requirement or condition description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C551</code><title>BANK OPERATION</title>
+    <desc>
+      <n>Identification of a bank operation by code.</n>
+    </desc>
+    <child name="4383" seq="010">
+      <n>Bank operation code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C552</code><title>ALLOWANCE</title>
+    <desc>
+      <n>Identification of allowance/charge information by</n>
+      <n>number and/or code.</n>
+    </desc>
+    <child name="1230" seq="010">
+      <n>Allowance or charge identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="5189" seq="020">
+      <n>Allowance or charge identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C553</code><title>RELATED LOCATION TWO IDENTIFICATION</title>
+    <desc>
+      <n>Identification of second related location by code or</n>
+      <n>name.</n>
+    </desc>
+    <child name="3233" seq="010">
+      <n>Second related location identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3232" seq="040">
+      <n>Second related location name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C554</code><title>RATE</title>
+    <desc>
+      <n>Identification of the applicable rate/tariff class.</n>
+    </desc>
+    <child name="5243" seq="010">
+      <n>Rate or tariff class description code</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C555</code><title>STATUS</title>
+    <desc>
+      <n>To specify a status.</n>
+    </desc>
+    <child name="4405" seq="010">
+      <n>Status description code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4404" seq="040">
+      <n>Status description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C556</code><title>STATUS REASON</title>
+    <desc>
+      <n>To specify the reason for a status.</n>
+    </desc>
+    <child name="9013" seq="010">
+      <n>Status reason description code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9012" seq="040">
+      <n>Status reason description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C564</code><title>PHYSICAL OR LOGICAL STATE INFORMATION</title>
+    <desc>
+      <n>To give information in coded or clear text form on</n>
+      <n>the physical or logical state.</n>
+    </desc>
+    <child name="7007" seq="010">
+      <n>Physical or logical state description</n>
+      <n>code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7006" seq="040">
+      <n>Physical or logical state description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C585</code><title>PRIORITY DETAILS</title>
+    <desc>
+      <n>To indicate a priority.</n>
+    </desc>
+    <child name="4037" seq="010">
+      <n>Priority description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4036" seq="040">
+      <n>Priority description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C593</code><title>ACCOUNT IDENTIFICATION</title>
+    <desc>
+      <n>Identification of an account.</n>
+    </desc>
+    <child name="1147" seq="010">
+      <n>Account identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1148" seq="040">
+      <n>Account abbreviated name</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1146" seq="050">
+      <n>Account name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1146" seq="060">
+      <n>Account name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="6345" seq="070">
+      <n>Currency identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C595</code><title>ACCOUNTING JOURNAL IDENTIFICATION</title>
+    <desc>
+      <n>Identification of an accounting journal.</n>
+    </desc>
+    <child name="1171" seq="010">
+      <n>Accounting journal identifier</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1170" seq="040">
+      <n>Accounting journal name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C596</code><title>ACCOUNTING ENTRY TYPE DETAILS</title>
+    <desc>
+      <n>Identification of the type of entry included in an</n>
+      <n>accounting journal.</n>
+    </desc>
+    <child name="4475" seq="010">
+      <n>Accounting entry type name code</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4474" seq="040">
+      <n>Accounting entry type name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C601</code><title>STATUS CATEGORY</title>
+    <desc>
+      <n>To specify the category of the status.</n>
+    </desc>
+    <child name="9015" seq="010">
+      <n>Status category code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C701</code><title>ERROR POINT DETAILS</title>
+    <desc>
+      <n>Indication of the point of error in a message.</n>
+    </desc>
+    <child name="1049" seq="010">
+      <n>Message section code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1052" seq="020">
+      <n>Message item identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1054" seq="030">
+      <n>Message sub-item identifier</n>
+      <min>0</min>
+      <type>n</type><length>6</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C702</code><title>CODE SET IDENTIFICATION</title>
+    <desc>
+      <n>To identify a code set.</n>
+    </desc>
+    <child name="9150" seq="010">
+      <n>Simple data element tag identifier</n>
+      <min>0</min>
+      <type>an</type><length>4</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C703</code><title>NATURE OF CARGO</title>
+    <desc>
+      <n>Rough classification of a type of cargo.</n>
+    </desc>
+    <child name="7085" seq="010">
+      <n>Cargo type classification code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C709</code><title>MESSAGE IDENTIFIER</title>
+    <desc>
+      <n>Identification of the message.</n>
+    </desc>
+    <child name="1003" seq="010">
+      <n>Message type code</n>
+      <min>1</min>
+      <type>an</type><length>6</length>
+    </child>
+    <child name="1056" seq="020">
+      <n>Version identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1058" seq="030">
+      <n>Release identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1476" seq="040">
+      <n>Controlling agency identifier</n>
+      <min>0</min>
+      <type>an</type><length>2</length>
+    </child>
+    <child name="1523" seq="050">
+      <n>Message implementation identification</n>
+      <n>code</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+    <child name="1060" seq="060">
+      <n>Revision identifier</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+    <child name="1373" seq="070">
+      <n>Document status code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C770</code><title>ARRAY CELL DETAILS</title>
+    <desc>
+      <n>To contain the data for a contiguous set of cells in</n>
+      <n>an array.</n>
+    </desc>
+    <child name="9424" seq="010">
+      <n>Array cell data description</n>
+      <min>0</min>
+      <type>an</type><length>512</length>
+    </child>
+    <note>
+      <n></n>
+      <n>The composite C770 - array cell details - occurs</n>
+      <n>9999 times in the segment. The use of the ARR</n>
+      <n>segment is restricted to be used only with Version 3</n>
+      <n>of ISO-9735.</n>
+      <n>The component 9424 - array cell information - occurs</n>
+      <n>100 times in the composite C770. The use of C770 is</n>
+      <n>restricted to be used only with the ARR segment</n>
+      <n>within Version 3 of ISO-9735.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>C778</code><title>POSITION IDENTIFICATION</title>
+    <desc>
+      <n>To identify the position of an object in a structure</n>
+      <n>containing the object.</n>
+    </desc>
+    <child name="7164" seq="010">
+      <n>Hierarchical structure level identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="1050" seq="020">
+      <n>Sequence position identifier</n>
+      <min>0</min>
+      <type>an</type><length>10</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C779</code><title>ARRAY STRUCTURE IDENTIFICATION</title>
+    <desc>
+      <n>The identification of an array structure.</n>
+    </desc>
+    <child name="9428" seq="010">
+      <n>Array cell structure identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7405" seq="020">
+      <n>Object identification code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C780</code><title>VALUE LIST IDENTIFICATION</title>
+    <desc>
+      <n>The identification of a coded or non coded value</n>
+      <n>list.</n>
+    </desc>
+    <child name="1518" seq="010">
+      <n>Value list identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7405" seq="020">
+      <n>Object identification code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C782</code><title>DATA SET IDENTIFICATION</title>
+    <desc>
+      <n>The identification of a data set.</n>
+    </desc>
+    <child name="1520" seq="010">
+      <n>Data set identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7405" seq="020">
+      <n>Object identification code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C783</code><title>FOOTNOTE SET IDENTIFICATION</title>
+    <desc>
+      <n>The identification of a set of footnotes.</n>
+    </desc>
+    <child name="9430" seq="010">
+      <n>Footnote set identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7405" seq="020">
+      <n>Object identification code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C784</code><title>FOOTNOTE IDENTIFICATION</title>
+    <desc>
+      <n>The identification of a footnote.</n>
+    </desc>
+    <child name="9432" seq="010">
+      <n>Footnote identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7405" seq="020">
+      <n>Object identification code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C785</code><title>STATISTICAL CONCEPT IDENTIFICATION</title>
+    <desc>
+      <n>The identification of a statistical concept.</n>
+    </desc>
+    <child name="6434" seq="010">
+      <n>Statistical concept identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7405" seq="020">
+      <n>Object identification code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C786</code><title>STRUCTURE COMPONENT IDENTIFICATION</title>
+    <desc>
+      <n>The identification of a structure component.</n>
+    </desc>
+    <child name="7512" seq="010">
+      <n>Structure component identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7405" seq="020">
+      <n>Object identification code qualifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C811</code><title>QUESTION DETAILS</title>
+    <desc>
+      <n>To specify a question.</n>
+    </desc>
+    <child name="4057" seq="010">
+      <n>Question description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4056" seq="040">
+      <n>Question description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C812</code><title>RESPONSE DETAILS</title>
+    <desc>
+      <n>To specify a response to a question, in code or</n>
+      <n>text.</n>
+    </desc>
+    <child name="4345" seq="010">
+      <n>Response description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4344" seq="040">
+      <n>Response description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C814</code><title>SAFETY SECTION</title>
+    <desc>
+      <n>To identify the safety section to which information</n>
+      <n>relates.</n>
+    </desc>
+    <child name="4046" seq="010">
+      <n>Safety section number</n>
+      <min>1</min>
+      <type>n</type><length>2</length>
+    </child>
+    <child name="4044" seq="020">
+      <n>Safety section name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C815</code><title>ADDITIONAL SAFETY INFORMATION</title>
+    <desc>
+      <n>To identify additional safety information.</n>
+    </desc>
+    <child name="4039" seq="010">
+      <n>Additional safety information description</n>
+      <n>code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4038" seq="040">
+      <n>Additional safety information description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C816</code><title>NAME COMPONENT DETAILS</title>
+    <desc>
+      <n>To specify a name component.</n>
+    </desc>
+    <child name="3405" seq="010">
+      <n>Name component type code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3398" seq="020">
+      <n>Name component description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+    <child name="3401" seq="030">
+      <n>Name component usage code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3295" seq="040">
+      <n>Name original alphabet code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C817</code><title>ADDRESS USAGE</title>
+    <desc>
+      <n>To describe the usage of an address.</n>
+    </desc>
+    <child name="3299" seq="010">
+      <n>Address purpose code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3131" seq="020">
+      <n>Address type code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3475" seq="030">
+      <n>Address status code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C818</code><title>PERSON INHERITED CHARACTERISTIC DETAILS</title>
+    <desc>
+      <n>To specify an inherited characteristic of a person.</n>
+    </desc>
+    <child name="3311" seq="010">
+      <n>Inherited characteristic description code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3310" seq="040">
+      <n>Inherited characteristic description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C819</code><title>COUNTRY SUBDIVISION DETAILS</title>
+    <desc>
+      <n>To specify a country subdivision, such as state,</n>
+      <n>canton, county, prefecture.</n>
+    </desc>
+    <child name="3229" seq="010">
+      <n>Country subdivision identifier</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3228" seq="040">
+      <n>Country subdivision name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C820</code><title>PREMIUM CALCULATION COMPONENT</title>
+    <desc>
+      <n>To identify the component affecting premium</n>
+      <n>calculation.</n>
+    </desc>
+    <child name="4521" seq="010">
+      <n>Premium calculation component identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C821</code><title>TYPE OF DAMAGE</title>
+    <desc>
+      <n>To specify the type of damage to an object.</n>
+    </desc>
+    <child name="7501" seq="010">
+      <n>Damage type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7500" seq="040">
+      <n>Damage type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C822</code><title>DAMAGE AREA</title>
+    <desc>
+      <n>To specify where the damage is on an object.</n>
+    </desc>
+    <child name="7503" seq="010">
+      <n>Damage area description code</n>
+      <min>0</min>
+      <type>an</type><length>4</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7502" seq="040">
+      <n>Damage area description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C823</code><title>TYPE OF UNIT</title>
+    <desc>
+      <n>To identify the type of unit/component of an object</n>
+      <n>(e.g. lock, door, tyre).</n>
+    </desc>
+    <child name="7505" seq="010">
+      <n>Unit or component type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7504" seq="040">
+      <n>Unit or component type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C824</code><title>COMPONENT MATERIAL</title>
+    <desc>
+      <n>To identify the material of which a component is</n>
+      <n>composed (e.g. steel, plastics).</n>
+    </desc>
+    <child name="7507" seq="010">
+      <n>Component material description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7506" seq="040">
+      <n>Component material description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C825</code><title>DAMAGE SEVERITY</title>
+    <desc>
+      <n>To specify the severity of damage to an object.</n>
+    </desc>
+    <child name="7509" seq="010">
+      <n>Damage severity description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7508" seq="040">
+      <n>Damage severity description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C826</code><title>ACTION</title>
+    <desc>
+      <n>To indicate an action which has been taken or is to</n>
+      <n>be taken (e.g. in relation to a certain object).</n>
+    </desc>
+    <child name="1229" seq="010">
+      <n>Action code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1228" seq="040">
+      <n>Action description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C827</code><title>TYPE OF MARKING</title>
+    <desc>
+      <n>Specification of the type of marking that reflects</n>
+      <n>the method that was used and the conventions adhered</n>
+      <n>to for marking (e.g. of packages).</n>
+    </desc>
+    <child name="7511" seq="010">
+      <n>Marking type code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C828</code><title>CLINICAL INTERVENTION DETAILS</title>
+    <desc>
+      <n>To specify a clinical intervention.</n>
+    </desc>
+    <child name="9437" seq="010">
+      <n>Clinical intervention description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9436" seq="040">
+      <n>Clinical intervention description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C829</code><title>SUB</title>
+    <desc>
+      <n>To provide an indication that a segment or segment</n>
+      <n>group is used to contain sub-line or sub-line item</n>
+      <n>information and to optionally enable the sub-line to</n>
+      <n>be identified.</n>
+    </desc>
+    <child name="5495" seq="010">
+      <n>Sub-line indicator code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1082" seq="020">
+      <n>Line item identifier</n>
+      <min>0</min>
+      <type>an</type><length>6</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C830</code><title>PROCESS IDENTIFICATION DETAILS</title>
+    <desc>
+      <n>To identify the details of a specific process.</n>
+    </desc>
+    <child name="7191" seq="010">
+      <n>Process description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7190" seq="040">
+      <n>Process description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C831</code><title>RESULT DETAILS</title>
+    <desc>
+      <n>To specify a value.</n>
+    </desc>
+    <child name="6314" seq="010">
+      <n>Measure</n>
+      <min>0</min>
+      <type>an</type><length>18</length>
+    </child>
+    <child name="6321" seq="020">
+      <n>Measurement significance code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6155" seq="030">
+      <n>Non-discrete measurement name code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="040">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="050">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6154" seq="060">
+      <n>Non-discrete measurement name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C836</code><title>CLINICAL INFORMATION DETAILS</title>
+    <desc>
+      <n>To specify an item of clinical information.</n>
+    </desc>
+    <child name="6413" seq="010">
+      <n>Clinical information description</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6412" seq="040">
+      <n>Clinical information description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C837</code><title>CERTAINTY DETAILS</title>
+    <desc>
+      <n>To specify the certainty.</n>
+    </desc>
+    <child name="4049" seq="010">
+      <n>Certainty description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4048" seq="040">
+      <n>Certainty description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C838</code><title>DOSAGE DETAILS</title>
+    <desc>
+      <n>To specify a dosage.</n>
+    </desc>
+    <child name="6083" seq="010">
+      <n>Dosage description identifier</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6082" seq="040">
+      <n>Dosage description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C839</code><title>ATTENDEE CATEGORY</title>
+    <desc>
+      <n>To specify the category of the attendee.</n>
+    </desc>
+    <child name="7459" seq="010">
+      <n>Attendee category description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7458" seq="040">
+      <n>Attendee category description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C840</code><title>ATTENDANCE ADMISSION DETAILS</title>
+    <desc>
+      <n>To specify type of admission.</n>
+    </desc>
+    <child name="9445" seq="010">
+      <n>Admission type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9444" seq="040">
+      <n>Admission type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C841</code><title>ATTENDANCE DISCHARGE DETAILS</title>
+    <desc>
+      <n>To specify type of discharge.</n>
+    </desc>
+    <child name="9447" seq="010">
+      <n>Discharge type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9446" seq="040">
+      <n>Discharge type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C844</code><title>ORGANISATION CLASSIFICATION DETAIL</title>
+    <desc>
+      <n>To specify details regarding the class of an</n>
+      <n>organisation.</n>
+    </desc>
+    <child name="3083" seq="010">
+      <n>Organisational class name code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3082" seq="040">
+      <n>Organisational class name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C848</code><title>MEASUREMENT UNIT DETAILS</title>
+    <desc>
+      <n>To specify a measurement unit.</n>
+    </desc>
+    <child name="6411" seq="010">
+      <n>Measurement unit code</n>
+      <min>0</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="6410" seq="040">
+      <n>Measurement unit name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C849</code><title>PARTIES TO INSTRUCTION</title>
+    <desc>
+      <n>Identify the sending and receiving parties of the</n>
+      <n>instruction.</n>
+    </desc>
+    <child name="3301" seq="010">
+      <n>Enacting party identifier</n>
+      <min>1</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="3285" seq="020">
+      <n>Instruction receiving party identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C850</code><title>STATUS OF INSTRUCTION</title>
+    <desc>
+      <n>Provides information regarding the status of an</n>
+      <n>instruction.</n>
+    </desc>
+    <child name="4405" seq="010">
+      <n>Status description code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3036" seq="020">
+      <n>Party name</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C851</code><title>RISK OBJECT TYPE</title>
+    <desc>
+      <n>Specification of a type of risk object.</n>
+    </desc>
+    <child name="7179" seq="010">
+      <n>Risk object type identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C852</code><title>RISK OBJECT SUB</title>
+    <desc>
+      <n>To provide identification details for a risk object</n>
+      <n>sub-type.</n>
+    </desc>
+    <child name="7177" seq="010">
+      <n>Risk object sub-type description</n>
+      <n>identifier</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7176" seq="040">
+      <n>Risk object sub-type description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C853</code><title>ERROR SEGMENT POINT DETAILS</title>
+    <desc>
+      <n>To indicate the exact segment location of an</n>
+      <n>application error within a message.</n>
+    </desc>
+    <child name="9166" seq="010">
+      <n>Segment tag identifier</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1050" seq="020">
+      <n>Sequence position identifier</n>
+      <min>0</min>
+      <type>an</type><length>10</length>
+    </child>
+    <child name="1159" seq="030">
+      <n>Sequence identifier source code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C878</code><title>CHARGE</title>
+    <desc>
+      <n>Identification of the account for charge or</n>
+      <n>allowance.</n>
+    </desc>
+    <child name="3434" seq="010">
+      <n>Institution branch identifier</n>
+      <min>1</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="3194" seq="040">
+      <n>Account holder identifier</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="6345" seq="050">
+      <n>Currency identification code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C889</code><title>CHARACTERISTIC VALUE</title>
+    <desc>
+      <n>To provide the value of a characteristic.</n>
+    </desc>
+    <child name="7111" seq="010">
+      <n>Characteristic value description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7110" seq="040">
+      <n>Characteristic value description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="7110" seq="050">
+      <n>Characteristic value description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C901</code><title>APPLICATION ERROR DETAIL</title>
+    <desc>
+      <n>Code assigned by the recipient of a message to</n>
+      <n>indicate a data validation error condition.</n>
+    </desc>
+    <child name="9321" seq="010">
+      <n>Application error code</n>
+      <min>1</min>
+      <type>an</type><length>8</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C941</code><title>RELATIONSHIP</title>
+    <desc>
+      <n>Identification and/or description of a relationship.</n>
+    </desc>
+    <child name="9143" seq="010">
+      <n>Relationship description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9142" seq="040">
+      <n>Relationship description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C942</code><title>MEMBERSHIP CATEGORY</title>
+    <desc>
+      <n>Identification and/or description of a membership</n>
+      <n>category for a member of a scheme or group.</n>
+    </desc>
+    <child name="7451" seq="010">
+      <n>Membership category description code</n>
+      <min>1</min>
+      <type>an</type><length>4</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7450" seq="040">
+      <n>Membership category description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C944</code><title>MEMBERSHIP STATUS</title>
+    <desc>
+      <n>Code and/or description of membership status.</n>
+    </desc>
+    <child name="7453" seq="010">
+      <n>Membership status description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7452" seq="040">
+      <n>Membership status description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C945</code><title>MEMBERSHIP LEVEL</title>
+    <desc>
+      <n>Identification of a membership level.</n>
+    </desc>
+    <child name="7455" seq="010">
+      <n>Membership level code qualifier</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7457" seq="020">
+      <n>Membership level description code</n>
+      <min>0</min>
+      <type>an</type><length>9</length>
+    </child>
+    <child name="1131" seq="030">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="040">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="7456" seq="050">
+      <n>Membership level description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C948</code><title>EMPLOYMENT CATEGORY</title>
+    <desc>
+      <n>Code and/or description of an employment category.</n>
+    </desc>
+    <child name="9005" seq="010">
+      <n>Employment category description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9004" seq="040">
+      <n>Employment category description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C950</code><title>QUALIFICATION CLASSIFICATION</title>
+    <desc>
+      <n>Qualification classification description and/or</n>
+      <n>code. This specifies the trade, skill, professional</n>
+      <n>or similar qualification category.</n>
+    </desc>
+    <child name="9007" seq="010">
+      <n>Qualification classification description</n>
+      <n>code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9006" seq="040">
+      <n>Qualification classification description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="9006" seq="050">
+      <n>Qualification classification description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C951</code><title>OCCUPATION</title>
+    <desc>
+      <n>Description of an occupation.</n>
+    </desc>
+    <child name="9009" seq="010">
+      <n>Occupation description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9008" seq="040">
+      <n>Occupation description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+    <child name="9008" seq="050">
+      <n>Occupation description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C953</code><title>CONTRIBUTION TYPE</title>
+    <desc>
+      <n>Identification of the type of a contribution to a</n>
+      <n>scheme or group.</n>
+    </desc>
+    <child name="5049" seq="010">
+      <n>Contribution type description code</n>
+      <min>1</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="5048" seq="040">
+      <n>Contribution type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C955</code><title>ATTRIBUTE TYPE</title>
+    <desc>
+      <n>Identification of the type of attribute.</n>
+    </desc>
+    <child name="9021" seq="010">
+      <n>Attribute type description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9020" seq="040">
+      <n>Attribute type description</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C956</code><title>ATTRIBUTE DETAIL</title>
+    <desc>
+      <n>Identification of the attribute related to an</n>
+      <n>entity.</n>
+    </desc>
+    <child name="9019" seq="010">
+      <n>Attribute description code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9018" seq="040">
+      <n>Attribute description</n>
+      <min>0</min>
+      <type>an</type><length>256</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C960</code><title>REASON FOR CHANGE</title>
+    <desc>
+      <n>Code and/or description of the reason for a change.</n>
+    </desc>
+    <child name="4295" seq="010">
+      <n>Change reason description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4294" seq="040">
+      <n>Change reason description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C961</code><title>FORMULA COMPLEXITY</title>
+    <desc>
+      <n>Identification of the complexity of a formula.</n>
+    </desc>
+    <child name="9505" seq="010">
+      <n>Formula complexity code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C970</code><title>CLAUSE NAME</title>
+    <desc>
+      <n>Identification of a clause in coded or clear form.</n>
+    </desc>
+    <child name="4069" seq="010">
+      <n>Clause name code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4068" seq="040">
+      <n>Clause name</n>
+      <min>0</min>
+      <type>an</type><length>70</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C971</code><title>PROVISO TYPE</title>
+    <desc>
+      <n>Specification of the proviso type in coded or clear</n>
+      <n>form.</n>
+    </desc>
+    <child name="4073" seq="010">
+      <n>Proviso type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4072" seq="040">
+      <n>Proviso type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C972</code><title>PROVISO CALCULATION</title>
+    <desc>
+      <n>Specification of the proviso calculation in coded or</n>
+      <n>clear form.</n>
+    </desc>
+    <child name="4075" seq="010">
+      <n>Proviso calculation description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="4074" seq="040">
+      <n>Proviso calculation description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C973</code><title>APPLICABILITY TYPE</title>
+    <desc>
+      <n>Specification of the applicability type in coded or</n>
+      <n>clear form.</n>
+    </desc>
+    <child name="9049" seq="010">
+      <n>Applicability type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9048" seq="040">
+      <n>Applicability type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C974</code><title>BASIS TYPE</title>
+    <desc>
+      <n>Specification of the basis in coded or clear form.</n>
+    </desc>
+    <child name="9047" seq="010">
+      <n>Basis type description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="9046" seq="040">
+      <n>Basis type description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+  <entry>
+    <code>C977</code><title>PERIOD DETAIL</title>
+    <desc>
+      <n>Specification of the period detail in coded or clear</n>
+      <n>form.</n>
+    </desc>
+    <child name="2119" seq="010">
+      <n>Period detail description code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="1131" seq="020">
+      <n>Code list identification code</n>
+      <min>0</min>
+      <type>an</type><length>17</length>
+    </child>
+    <child name="3055" seq="030">
+      <n>Code list responsible agency code</n>
+      <min>0</min>
+      <type>an</type><length>3</length>
+    </child>
+    <child name="2118" seq="040">
+      <n>Period detail description</n>
+      <min>0</min>
+      <type>an</type><length>35</length>
+    </child>
+  </entry>
+</root>

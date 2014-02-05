@@ -1,0 +1,162 @@
+	private static FINAL char  BS   = '\u0016';  // Backspace 
+	private static FINAL char  CRE  = '\u0015';  // Carrier (sic!) Return 
+	private static FINAL char  CSP  = '\u002b';  // Control Sequence Prefix (for multibyte controls) 
+	private static FINAL char  EO   = '\u00ff';  // Eight Ones 
+	private static FINAL char  HT   = '\u0005';  // Horizontal Tab 
+	private static FINAL char  IT   = '\u0039';  // Index Tab 
+	private static FINAL char  INX  = '\u0025';  // Index 
+	private static FINAL char  IRT  = '\u0033';  // Index Return (= CRE) 
+	private static FINAL char  NUL  = '\u0000';  // Null (ignored) 
+	private static FINAL char  NBS  = '\u0036';  // Numeric Backspace 
+	private static FINAL char  NSP  = '\u00e1';  // Numeric Space 
+	private static FINAL char  PE   = '\u000c';  // Page End 
+	private static FINAL char  RCR  = '\u0006';  // Required Carrier Return 
+	private static FINAL char  HYP  = '\u0060';  // Required Hyphen 
+	private static FINAL char  RPE  = '\u003a';  // Required Page End 
+	private static FINAL char  RSP  = '\u0041';  // Required Space 
+	private static FINAL char  SP   = '\u0040';  // Space 
+	private static FINAL char  SBS  = '\u0038';  // Subscript 
+	private static FINAL char  SHY  = '\u00ca';  // Syllable Hyphen 
+	private static FINAL char  SPS  = '\u0009';  // Superscript 
+	private static FINAL char  SUB  = '\u003f';  // Substitute 
+	private static FINAL char  STP  = '\u002f';  // Stop 
+	private static FINAL char  UBS  = '\u001a';  // Unit Backspace 
+	private static FINAL char  WUS  = '\u0023';  // Word Underscore 
+	private static FINAL char  ZICR = '\u000d';  // Zero Index Carrier Return 
+
+	// class + type of structured fields (format always 0x00) 
+	private static FINAL int   FUP  =  0xe103;   // Format Unit Prefix 
+	private static FINAL int   TUP  =  0xe104;   // Text   Unit Prefix 
+	private static FINAL int   EUP  =  0xe106;   // End    Unit Prefix 
+                                 
+	private static FINAL int   PMF  =  0xe201;   // Primary   Master Format 
+	private static FINAL int   AMF  =  0xe202;   // Alternate Master Format 
+	private static FINAL int   TUFC =  0xe204;   // Text Unit Format Change 
+	private static FINAL int   DP   =  0xe205;   // Document Parameters 
+                                 
+	private static FINAL int   EPM  =  0xe301;   // Establish Primary   Master Format 
+	private static FINAL int   EAM  =  0xe302;   // Establish Alternate Master Format 
+	private static FINAL int   RTMF =  0xe303;   // Return To           Master Format 
+                                 
+	private static FINAL int   PM   =  0xe402;   // Print Medium 
+	private static FINAL int   OM   =  0xe402;   // Operator Message 
+                                 
+	private static FINAL int   MPT  =  0xe501;   // Margin Text Parameters Top 
+	private static FINAL int   MPB  =  0xe504;   // Margin Text Parameters Bottom 
+	private static FINAL int   PIP  =  0xe507;   // Page Image Parameters 
+	private static FINAL int   PIN  =  0xe508;   // Page Image Numbering  
+                                 
+	private static FINAL int   LP   =  0xe601;   // Line Parameters 
+	private static FINAL int   TP   =  0xe602;   // Tab Parameters 
+	private static FINAL int   LN   =  0xe603;   // Line Numbering 
+	private static FINAL int   TPR  =  0xe604;   // Tab  Parameters Right-to-Left 
+                                 
+	private static FINAL int   MTTA =  0xe801;   // Margin Text, top, all.   
+	private static FINAL int   MTTO =  0xe802;   // Margin Text, top, odd    
+	private static FINAL int   MTTE =  0xe803;   // Margin Text, top, even   
+	private static FINAL int   MTBA =  0xe804;   // Margin Text, bottom, all.   
+	private static FINAL int   MTBO =  0xe805;   // Margin Text, bottom, odd  
+	private static FINAL int   MTBE =  0xe806;   // Margin Text, bottom, even   
+	private static FINAL int   BT   =  0xe807;   // Body Text   
+                                 
+	private static FINAL int   PFA  =  0xe901;   // Punctuation Format, arithmetic parms 
+	private static FINAL int   PFC  =  0xe902;   // Punctuation Format, character  parms 
+	private static FINAL int   NFP  =  0xe903;   // Not Format Parameters 
+	private static FINAL int   AOP  =  0xe904;   // Auto-Outline Parameters 
+	private static FINAL int   PFP  =  0xe905;   // Page Formatting Parameters 
+	private static FINAL int   CRT  =  0xe906;   // Character Replacement Table 
+                                    
+	// class + type of multibyte con=  trols ;   
+	private static FINAL int   BES  =  0xd18a;   // Begin Emphasis 
+	private static FINAL int   EES  =  0xd18e;   // End   Emphasis 
+	private static FINAL int   BK   =  0xd462;   // Begin Keep 
+	private static FINAL int   EK   =  0xd466;   // End   Keep 
+	private static FINAL int   BLFC =  0xd402;   // Begin Line Format Change 
+	private static FINAL int   ELFC =  0xd406;   // End   Line Format Change 
+	private static FINAL int   BOS  =  0xd472;   // Begin Overstrike 
+	private static FINAL int   EOS  =  0xd476;   // End   Overstrike 
+	private static FINAL int   BUS  =  0xd40a;   // Begin Underscore 
+	private static FINAL int   EUS  =  0xd40e;   // End   Underscore 
+	private static FINAL int   DPS  =  0xd490;   // Display Prompt and Stop 
+	private static FINAL int   SCG  =  0xd101;   // Set CGCSGID 
+	private static FINAL int   SFG  =  0xd105;   // Set FID thru GFID   
+	private static FINAL int   SLP  =  0xd405;   // Set Line Parameters 
+	private static FINAL int   STAB =  0xd201;   // Set Tabs (horizontal) 
+	private static FINAL int   SKIP =  0xd897;   // Skip Lines 
+
+	PUBLIC  [] char EBC_ASC[] = new char[]
+    //   1     2     3     4     5     6     7
+     8     9     a     b     c     d     e     f  
+			{'\u0000', '\u0001', '\u0002', '\u0003', '\u0020', '\u0009', '\u0020', '\u007f' // 00 
+			, '\u0020', '\u0020', '\u0020', '\u000b', '\u000c', '\u000d', '\u000e', '\u000f'
+			, '\u0010', '\u0011', '\u0012', '\u0013', '\u0020', '\u0020', '\u0008', '\u0020' // 10 
+			, '\u0018', '\u0019', '\u0020', '\u0020', '\u001c', '\u001d', '\u001e', '\u001f'
+			, '\u0020', '\u0020', '\u0020', '\u0020', '\u0020', '\u000a', '\u0017', '\u001b' // 20 
+			, '\u0020', '\u0020', '\u0020', '\u0020', '\u0020', '\u0005', '\u0006', '\u0007'
+			, '\u0020', '\u0020', '\u0016', '\u0020', '\u0020', '\u0020', '\u0020', '\u0004' // 30 
+			, '\u0020', '\u0020', '\u0020', '\u0020', '\u0020', '\u0015', '\u0020', '\u001a'
+			, '\u0020', '\u0020', '\u0083', '\u0084', '\u0085', '\u00a0', '\u00c6', '\u0086' // 40 
+			, '\u0087', '\u00a4', '\u005b', '\u002e', '\u003c', '\u0028', '\u002b', '\u0021'
+			, '\u0026', '\u0082', '\u0088', '\u0089', '\u008a', '\u00a1', '\u008c', '\u008b' // 50 
+			, '\u008d', '\u00e1', '\u005d', '\u0024', '\u002a', '\u0029', '\u003b', '\u005e' // 59 -> 'á' 
+			, '\u002d', '\u002f', '\u00b6', '\u008e', '\u00b7', '\u00b5', '\u00c7', '\u008f' // 60 
+			, '\u0080', '\u00a5', '\u007c', '\u002c', '\u0025', '\u005f', '\u003e', '\u003f' // '\u006a' -> '|' 
+			, '\u00ed', '\u0090', '\u00d2', '\u00d3', '\u00d4', '\u00d6', '\u00d7', '\u00d8' // 70 
+			, '\u00de', '\u0060', '\u003a', '\u0023', '\u0040', '\u0027', '\u003d', '\u0022'
+			, '\u00ed', '\u0061', '\u0062', '\u0063', '\u0064', '\u0065', '\u0066', '\u0067' // 80 
+			, '\u0068', '\u0069', '\u00ae', '\u00af', '\u00d0', '\u00ec', '\u00e7', '\u00f1'
+			, '\u00f8', '\u006a', '\u006b', '\u006c', '\u006d', '\u006e', '\u006f', '\u0070' // 90 
+			, '\u0071', '\u0072', '\u00a6', '\u00a7', '\u0091', '\u0020', '\u0092', '\u0024'
+			, '\u00e6', '\u007e', '\u0073', '\u0074', '\u0075', '\u0076', '\u0077', '\u0078' // a0 
+			, '\u0079', '\u007a', '\u00ad', '\u00a8', '\u00d2', '\u00ed', '\u00e8', '\u00a9'
+			, '\u009b', '\u009c', '\u009d', '\u009e', '\u009f', '\u0015', '\u0014', '\u00ac' // b0 
+			, '\u00ab', '\u00f3', '\u00aa', '\u007c', '\u0099', '\u00f9', '\u0027', '\u0020' // Oe 
+			, '\u007b', '\u0041', '\u0042', '\u0043', '\u0044', '\u0045', '\u0046', '\u0047' // c0 
+			, '\u0048', '\u0049', '\u002d', '\u0093', '\u0094', '\u0095', '\u00a2', '\u00e4'
+			, '\u007d', '\u004a', '\u004b', '\u004c', '\u004d', '\u004e', '\u004f', '\u0050'
+			, '\u0051', '\u0052', '\u00a1', '\u0096', '\u0081', '\u0097', '\u00a3', '\u0098' // dotless i 
+			, '\u005c', '\u0020', '\u0053', '\u0054', '\u0055', '\u0056', '\u0057', '\u0058' // e0 
+			, '\u0059', '\u005a', '\u00fd', '\u00e2', '\u0099', '\u00e3', '\u00e0', '\u00e5'
+			, '\u0030', '\u0031', '\u0032', '\u0033', '\u0034', '\u0035', '\u0036', '\u0037' // f0 
+			, '\u0038', '\u0039', '\u00fc', '\u0084', '\u009a', '\u0081', '\u00e9', '\u00fe' // ae Ue ue   ss 
+			};
+#endif
+;
+
+// index ASCII,  output: EBCDIC for (DCA 
+PUBLIC  char asc_ebc[256]
+#ifdef ALLOCATE
+  = 
+			{ '\u0000', '\u0001', '\u0002', '\u0003', '\u0037', '\u002d', '\u002e', '\u002f' // 00 
+			, '\u0016', '\u0005', '\u001a', '\u000b', '\u000c', '\u000d', '\u000e', '\u000f'
+			, '\u0025', '\u0011', '\u0012', '\u0013', '\u003c', '\u00b5', '\u0032', '\u0026'
+			, '\u0018', '\u0019', '\u003f', '\u0027', '\u001c', '\u001d', '\u001e', '\u001f'
+			, '\u0040', '\u004f', '\u007f', '\u007b', '\u005b', '\u006c', '\u0050', '\u007d' // 20 
+			, '\u004d', '\u005d', '\u005c', '\u004e', '\u006b', '\u0060', '\u004b', '\u0061'
+			, '\u00f0', '\u00f1', '\u00f2', '\u00f3', '\u00f4', '\u00f5', '\u00f6', '\u00f7'
+			, '\u00f8', '\u00f9', '\u007a', '\u005e', '\u004c', '\u007e', '\u006e', '\u006f'
+			, '\u007c', '\u00c1', '\u00c2', '\u00c3', '\u00c4', '\u00c5', '\u00c6', '\u00c7' // 40 
+			, '\u00c8', '\u00c9', '\u00d1', '\u00d2', '\u00d3', '\u00d4', '\u00d5', '\u00d6'
+			, '\u00d7', '\u00d8', '\u00d9', '\u00e2', '\u00e3', '\u00e4', '\u00e5', '\u00e6'
+			, '\u00e7', '\u00e8', '\u00e9', '\u004a', '\u00e0', '\u005a', '\u00be', '\u006d'
+			, '\u0079', '\u0081', '\u0082', '\u0083', '\u0084', '\u0085', '\u0086', '\u0087' // 60 
+			, '\u0088', '\u0089', '\u0091', '\u0092', '\u0093', '\u0094', '\u0095', '\u0096'
+			, '\u0097', '\u0098', '\u0099', '\u00a2', '\u00a3', '\u00a4', '\u00a5', '\u00a6'
+			, '\u00a7', '\u00a8', '\u00a9', '\u00c0', '\u006a', '\u00d0', '\u00a1', '\u004e'
+			, '\u0068', '\u00dc', '\u0051', '\u0042', '\u0043', '\u0044', '\u0047', '\u0048' // 80 
+			, '\u0052', '\u0053', '\u0054', '\u0057', '\u0056', '\u0058', '\u0063', '\u0067'
+			, '\u0071', '\u009c', '\u009e', '\u00cb', '\u00cc', '\u00cd', '\u00db', '\u00dd'
+			, '\u00df', '\u00ec', '\u00fc', '\u00b0', '\u00b1', '\u00b2', '\u00b3', '\u00b4'
+			, '\u0045', '\u0055', '\u00ce', '\u00de', '\u0049', '\u0069', '\u009a', '\u009b'
+			, '\u00ab', '\u00a9', '\u00ba', '\u00b8', '\u00b7', '\u00aa', '\u008a', '\u008b'
+			, '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9'
+			, '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9'
+			, '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9'
+			, '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9'
+			, '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9'
+			, '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9', '\u00a9'
+			, '\u0070', '\u0059', '\u0070', '\u0070', '\u0070', '\u0070', '\u00a0', '\u0070' // e0 
+			, '\u0070', '\u0070', '\u0070', '\u0070', '\u0070', '\u0070', '\u0070', '\u0070'
+			, '\u0070', '\u008f', '\u0070', '\u0070', '\u0070', '\u0070', '\u00a1', '\u0070' // f0 
+			, '\u0090', '\u0070', '\u0041', '\u0070', '\u00fa', '\u00ea', '\u0070', '\u0000' 
+			};

@@ -1,0 +1,4810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<!-- 
+	Edifact codelist derived from UN/Edifact tabular documentation 
+	with doc2xml.pl: @(#) $Id: eded.xml 9 2008-09-05 05:21:15Z gfis $
+	automatically generated at 2008-07-16T21:48:38, do not edit here!
+-->
+  <base>EDED</base><issue>07A</issue>
+  <title>Data element specifications</title>
+  <entry>
+    <code>1000</code><title>Document name</title>
+    <desc>
+      <n>Name of a document.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1001</code><title>Document name code</title>
+    <desc>
+      <n>Code specifying the document name.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1003</code><title>Message type code</title>
+    <desc>
+      <n>Code specifying a type of message.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>1004</code><title>Document identifier</title>
+    <desc>
+      <n>To identify a document.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1049</code><title>Message section code</title>
+    <desc>
+      <n>Code specifying a section of a message.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1050</code><title>Sequence position identifier</title>
+    <desc>
+      <n>To identify a position in a sequence.</n>
+    </desc>
+    <type>an</type><length>10</length>
+  </entry>
+  <entry>
+    <code>1052</code><title>Message item identifier</title>
+    <desc>
+      <n>To identify an item within a message.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1054</code><title>Message sub-item identifier</title>
+    <desc>
+      <n>To identify a sub-item within a message.</n>
+    </desc>
+    <type>n</type><length>6</length>
+  </entry>
+  <entry>
+    <code>1056</code><title>Version identifier</title>
+    <desc>
+      <n>To identify a version.</n>
+    </desc>
+    <type>an</type><length>9</length>
+  </entry>
+  <entry>
+    <code>1058</code><title>Release identifier</title>
+    <desc>
+      <n>To identify a release.</n>
+    </desc>
+    <type>an</type><length>9</length>
+  </entry>
+  <entry>
+    <code>1060</code><title>Revision identifier</title>
+    <desc>
+      <n>To identify a revision.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>1073</code><title>Document line action code</title>
+    <desc>
+      <n>Code indicating an action associated with a line of a</n>
+      <n>document.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1082</code><title>Line item identifier</title>
+    <desc>
+      <n>To identify a line item.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>1131</code><title>Code list identification code</title>
+    <desc>
+      <n>Code identifying a user or association maintained code</n>
+      <n>list.</n>
+    </desc>
+    <type>an</type><length>17</length>
+    <note>
+      <n></n>
+      <n>1 The codes for this data element are provided by the</n>
+      <n>code list responsible agency defined in data element</n>
+      <n>3055.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>1145</code><title>Traveller reference identifier</title>
+    <desc>
+      <n>To identify a reference to a traveller.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1146</code><title>Account name</title>
+    <desc>
+      <n>Name of an account.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1147</code><title>Account identifier</title>
+    <desc>
+      <n>To identify an account.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1148</code><title>Account abbreviated name</title>
+    <desc>
+      <n>Abbreviated name of an account.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>1153</code><title>Reference code qualifier</title>
+    <desc>
+      <n>Code qualifying a reference.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1154</code><title>Reference identifier</title>
+    <desc>
+      <n>Identifies a reference.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>1156</code><title>Document line identifier</title>
+    <desc>
+      <n>To identify a line of a document.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>1159</code><title>Sequence identifier source code</title>
+    <desc>
+      <n>Code specifying the source of a sequence identifier.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1170</code><title>Accounting journal name</title>
+    <desc>
+      <n>Name of an accounting journal.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1171</code><title>Accounting journal identifier</title>
+    <desc>
+      <n>To identify an accounting journal.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>1218</code><title>Document originals required quantity</title>
+    <desc>
+      <n>Quantity of document originals required.</n>
+    </desc>
+    <type>n</type><length>2</length>
+  </entry>
+  <entry>
+    <code>1220</code><title>Document copies required quantity</title>
+    <desc>
+      <n>Quantity of document copies required.</n>
+    </desc>
+    <type>n</type><length>2</length>
+  </entry>
+  <entry>
+    <code>1222</code><title>Configuration level number</title>
+    <desc>
+      <n>To specify a level within a configuration.</n>
+    </desc>
+    <type>n</type><length>2</length>
+  </entry>
+  <entry>
+    <code>1225</code><title>Message function code</title>
+    <desc>
+      <n>Code indicating the function of the message.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1227</code><title>Calculation sequence code</title>
+    <desc>
+      <n>Code specifying a calculation sequence.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1228</code><title>Action description</title>
+    <desc>
+      <n>Free form description of the action to be taken or</n>
+      <n>already taken.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1229</code><title>Action code</title>
+    <desc>
+      <n>Code specifying the action to be taken or already</n>
+      <n>taken.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1230</code><title>Allowance or charge identifier</title>
+    <desc>
+      <n>To identify an allowance or charge.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1312</code><title>Consignment load sequence identifier</title>
+    <desc>
+      <n>To identify the loading sequence of a consignment or</n>
+      <n>consignments.</n>
+    </desc>
+    <type>n</type><length>4</length>
+  </entry>
+  <entry>
+    <code>1366</code><title>Document source description</title>
+    <desc>
+      <n>Free form description of the source of a document.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>1373</code><title>Document status code</title>
+    <desc>
+      <n>Code specifying the status of a document.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1476</code><title>Controlling agency identifier</title>
+    <desc>
+      <n>To identify a controlling agency.</n>
+    </desc>
+    <type>an</type><length>2</length>
+  </entry>
+  <entry>
+    <code>1490</code><title>Consolidation item number</title>
+    <desc>
+      <n>To specify a consignment within a consolidation.</n>
+    </desc>
+    <type>n</type><length>5</length>
+  </entry>
+  <entry>
+    <code>1496</code><title>Goods item number</title>
+    <desc>
+      <n>To specify a goods item within a consignment.</n>
+    </desc>
+    <type>n</type><length>5</length>
+  </entry>
+  <entry>
+    <code>1501</code><title>Computer environment details code qualifier</title>
+    <desc>
+      <n>Code qualifying computer environment details.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1502</code><title>Data format description</title>
+    <desc>
+      <n>Free form description of the data format.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1503</code><title>Data format description code</title>
+    <desc>
+      <n>Code specifying the data format.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1505</code><title>Value list type code</title>
+    <desc>
+      <n>Code specifying a type of value list.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1507</code><title>Designated class code</title>
+    <desc>
+      <n>Code specifying a designated class.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1508</code><title>File name</title>
+    <desc>
+      <n>Name of a file.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1510</code><title>Computer environment name</title>
+    <desc>
+      <n>Name of a computer environment.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1511</code><title>Computer environment name code</title>
+    <desc>
+      <n>Code specifying a computer environment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>1514</code><title>Value list name</title>
+    <desc>
+      <n>Name of a coded or non-coded list of values.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>1516</code><title>File format name</title>
+    <desc>
+      <n>Name of a file format.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>1518</code><title>Value list identifier</title>
+    <desc>
+      <n>To identify a coded or non-coded list of values.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1520</code><title>Data set identifier</title>
+    <desc>
+      <n>To identify a data set.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>1523</code><title>Message implementation identification code</title>
+    <desc>
+      <n>Code identifying an implementation of a message.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>2000</code><title>Date</title>
+    <desc>
+      <n>To specify a date.</n>
+    </desc>
+    <type>an</type><length>14</length>
+  </entry>
+  <entry>
+    <code>2002</code><title>Time</title>
+    <desc>
+      <n>To specify a time.</n>
+    </desc>
+    <type>n4</type><length></length>
+  </entry>
+  <entry>
+    <code>2005</code><title>Date or time or period function code qualifier</title>
+    <desc>
+      <n>Code qualifying the function of a date, time or</n>
+      <n>period.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2009</code><title>Terms time relation code</title>
+    <desc>
+      <n>Code relating terms to a reference date, time or</n>
+      <n>period.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2013</code><title>Frequency code</title>
+    <desc>
+      <n>Code specifying the rate of recurrence.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2015</code><title>Despatch pattern code</title>
+    <desc>
+      <n>Code specifying a despatch pattern.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2017</code><title>Despatch pattern timing code</title>
+    <desc>
+      <n>Code specifying a set of dates/times within a despatch</n>
+      <n>pattern.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2018</code><title>Age</title>
+    <desc>
+      <n>To specify the length of time that a person or thing</n>
+      <n>has existed.</n>
+    </desc>
+    <type>n</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2023</code><title>Period type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of the period.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2029</code><title>Time zone identifier</title>
+    <desc>
+      <n>To identify a time zone.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2031</code><title>Time variation quantity</title>
+    <desc>
+      <n>To specify a time variation.</n>
+    </desc>
+    <type>n</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2116</code><title>Time zone difference quantity</title>
+    <desc>
+      <n>The difference between two defined time zones.</n>
+    </desc>
+    <type>n</type><length>4</length>
+  </entry>
+  <entry>
+    <code>2118</code><title>Period detail description</title>
+    <desc>
+      <n>Free form description of the period detail.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>2119</code><title>Period detail description code</title>
+    <desc>
+      <n>Code specifying the period detail.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2148</code><title>Date variation number</title>
+    <desc>
+      <n>A number to indicate the difference between two dates.</n>
+    </desc>
+    <type>n</type><length>5</length>
+  </entry>
+  <entry>
+    <code>2151</code><title>Period type code</title>
+    <desc>
+      <n>Code specifying the type of period.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2152</code><title>Period count quantity</title>
+    <desc>
+      <n>Count of the number of periods.</n>
+    </desc>
+    <type>n</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2155</code><title>Charge period type code</title>
+    <desc>
+      <n>Code specifying a type of a charge period.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2156</code><title>Check-in time</title>
+    <desc>
+      <n>To specifiy a check-in date and time.</n>
+    </desc>
+    <type>an</type><length>10</length>
+  </entry>
+  <entry>
+    <code>2160</code><title>Days of week set identifier</title>
+    <desc>
+      <n>String data representation of days of the week (Monday</n>
+      <n>= 1).</n>
+    </desc>
+    <type>an</type><length>7</length>
+  </entry>
+  <entry>
+    <code>2162</code><title>Journey leg duration quantity</title>
+    <desc>
+      <n>To specify the elapsed time between departure and</n>
+      <n>arrival for a leg of a journey.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>2164</code><title>Millisecond time</title>
+    <desc>
+      <n>To specify a time including milliseconds.</n>
+    </desc>
+    <type>n9</type><length></length>
+  </entry>
+  <entry>
+    <code>2379</code><title>Date or time or period format code</title>
+    <desc>
+      <n>Code specifying the representation of a date, time or</n>
+      <n>period.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>2380</code><title>Date or time or period text</title>
+    <desc>
+      <n>The value of a date, a date and time, a time or of a</n>
+      <n>period in a specified representation.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>2475</code><title>Event time reference code</title>
+    <desc>
+      <n>Code specifying a time that references an event that</n>
+      <n>will or has occurred.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3005</code><title>Maintenance operation operator code</title>
+    <desc>
+      <n>A code identifying the type of party being responsible</n>
+      <n>for a maintenance operation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use code list for data element 3035.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3009</code><title>Maintenance operation payer code</title>
+    <desc>
+      <n>A code identifying  the type of party paying for a</n>
+      <n>maintenance operation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use code list for data element 3035.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3035</code><title>Party function code qualifier</title>
+    <desc>
+      <n>Code giving specific meaning to a party.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3036</code><title>Party name</title>
+    <desc>
+      <n>Name of a party.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3039</code><title>Party identifier</title>
+    <desc>
+      <n>Code specifying the identity of a party.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3042</code><title>Street and number or post office box identifier</title>
+    <desc>
+      <n>To identify a street and number and/or Post Office box</n>
+      <n>number.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3045</code><title>Party name format code</title>
+    <desc>
+      <n>Code specifying the representation of a party name.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3055</code><title>Code list responsible agency code</title>
+    <desc>
+      <n>Code specifying the agency responsible for a code</n>
+      <n>list.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3077</code><title>Test medium code</title>
+    <desc>
+      <n>Code specifying the medium on which a test was or is</n>
+      <n>to be applied.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3079</code><title>Organisation classification code</title>
+    <desc>
+      <n>Code specifying the classification of an organisation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3082</code><title>Organisational class name</title>
+    <desc>
+      <n>Name of a class of organisation.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3083</code><title>Organisational class name code</title>
+    <desc>
+      <n>Code specifying a class of organisation.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>3124</code><title>Name and address description</title>
+    <desc>
+      <n>Free form description of a name and address line.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3126</code><title>Carrier name</title>
+    <desc>
+      <n>Name of a carrier.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3127</code><title>Carrier identifier</title>
+    <desc>
+      <n>To identify a carrier.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>3128</code><title>Carrier name</title>
+    <desc>
+      <n>Name of a carrier.</n>
+    </desc>
+    <type>an</type><length>35</length>
+    <note>
+      <n></n>
+      <n>1 This data element will be removed effective with</n>
+      <n>directory D.09A.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3131</code><title>Address type code</title>
+    <desc>
+      <n>Code specifying the type of an address.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3139</code><title>Contact function code</title>
+    <desc>
+      <n>Code specifying the function of a contact (e.g.</n>
+      <n>department or person).</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3148</code><title>Communication address identifier</title>
+    <desc>
+      <n>To identify a communication address.</n>
+    </desc>
+    <type>an</type><length>512</length>
+  </entry>
+  <entry>
+    <code>3153</code><title>Communication medium type code</title>
+    <desc>
+      <n>Code specifying the type of communication medium.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3155</code><title>Communication means type code</title>
+    <desc>
+      <n>Code specifying the type of communication address.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3164</code><title>City name</title>
+    <desc>
+      <n>Name of a city.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3192</code><title>Account holder name</title>
+    <desc>
+      <n>Name of the holder of an account.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3194</code><title>Account holder identifier</title>
+    <desc>
+      <n>To identify the holder of an account.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3197</code><title>Agent identifier</title>
+    <desc>
+      <n>To identify an agent.</n>
+    </desc>
+    <type>an</type><length>9</length>
+  </entry>
+  <entry>
+    <code>3207</code><title>Country identifier</title>
+    <desc>
+      <n>Identification of the name of the country or other</n>
+      <n>geographical entity as defined in ISO 3166-1 and</n>
+      <n>UN/ECE Recommendation 3.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use ISO 3166-1 two alpha country code.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3222</code><title>First related location name</title>
+    <desc>
+      <n>Name of first related location.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3223</code><title>First related location identifier</title>
+    <desc>
+      <n>To identify a first related location.</n>
+    </desc>
+    <type>an</type><length>35</length>
+    <note>
+      <n></n>
+      <n>1 Recommend use UN/ECE Recommendation No. 16:</n>
+      <n>UN/LOCODE. If not applicable, use appropriate code set</n>
+      <n>in combination with 1131/3055.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3224</code><title>Location name</title>
+    <desc>
+      <n>Name of the location.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>3225</code><title>Location identifier</title>
+    <desc>
+      <n>To identify a location.</n>
+    </desc>
+    <type>an</type><length>35</length>
+    <note>
+      <n></n>
+      <n>1 Recommend use UN/ECE Recommendation No. 16:</n>
+      <n>UN/LOCODE. If not applicable, use appropriate code set</n>
+      <n>in combination with 1131/3055.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3227</code><title>Location function code qualifier</title>
+    <desc>
+      <n>Code identifying the function of a location.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3228</code><title>Country subdivision name</title>
+    <desc>
+      <n>Name of a country subdivision, such as state, canton,</n>
+      <n>county, prefecture.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3229</code><title>Country subdivision identifier</title>
+    <desc>
+      <n>To identify a country subdivision, such as state,</n>
+      <n>canton, county, prefecture.</n>
+    </desc>
+    <type>an</type><length>9</length>
+    <note>
+      <n></n>
+      <n>1 Recommended use ISO 3166-2. If not applicable, use</n>
+      <n>appropriate code set defined by appropriate national</n>
+      <n>authority.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3232</code><title>Second related location name</title>
+    <desc>
+      <n>Name of the second related location.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3233</code><title>Second related location identifier</title>
+    <desc>
+      <n>To identify a second related location.</n>
+    </desc>
+    <type>an</type><length>35</length>
+    <note>
+      <n></n>
+      <n>1 Recommend use UN/ECE Recommendation No. 16:</n>
+      <n>UN/LOCODE. If not applicable, use appropriate code set</n>
+      <n>in combination with 1131/3055.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3236</code><title>Sample location description</title>
+    <desc>
+      <n>Free form description of the sample location.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3237</code><title>Sample location description code</title>
+    <desc>
+      <n>Code specifying the sample location.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3239</code><title>Country of origin identifier</title>
+    <desc>
+      <n>To identify the country in which the goods have been</n>
+      <n>produced or manufactured, according to criteria laid</n>
+      <n>down for the application of the Customs tariff or</n>
+      <n>quantitative restrictions, or any measure related to</n>
+      <n>trade.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use ISO 3166-1 two alpha country code.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3251</code><title>Postal identification code</title>
+    <desc>
+      <n>Code specifying the postal zone or address.</n>
+    </desc>
+    <type>an</type><length>17</length>
+    <note>
+      <n></n>
+      <n>1 Use code defined by appropriate national authority.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3279</code><title>Geographic area code</title>
+    <desc>
+      <n>Code specifying a geographical area.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3285</code><title>Instruction receiving party identifier</title>
+    <desc>
+      <n>Code specifying the party to receive an instruction.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3286</code><title>Address component description</title>
+    <desc>
+      <n>Free form description of the component of an address.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3289</code><title>Person characteristic code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of characteristic of a person.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3292</code><title>Nationality name</title>
+    <desc>
+      <n>Name of a nationality.</n>
+    </desc>
+    <type>a</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3293</code><title>Nationality name code</title>
+    <desc>
+      <n>Code specifying the name of a nationality.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3295</code><title>Name original alphabet code</title>
+    <desc>
+      <n>Code specifying the alphabet originally used to</n>
+      <n>represent a name.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3299</code><title>Address purpose code</title>
+    <desc>
+      <n>Code specifying the purpose of an address.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3301</code><title>Enacting party identifier</title>
+    <desc>
+      <n>To identify the party enacting an instruction.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3310</code><title>Inherited characteristic description</title>
+    <desc>
+      <n>Free form description of an inherited characteristic.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3311</code><title>Inherited characteristic description code</title>
+    <desc>
+      <n>Code specifying an inherited characteristic.</n>
+    </desc>
+    <type>an</type><length>8</length>
+  </entry>
+  <entry>
+    <code>3397</code><title>Name status code</title>
+    <desc>
+      <n>Code specifying the status of a name.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3398</code><title>Name component description</title>
+    <desc>
+      <n>Free form description of a name component.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>3401</code><title>Name component usage code</title>
+    <desc>
+      <n>Code specifying the usage of a name component.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3403</code><title>Name type code</title>
+    <desc>
+      <n>Code specifying the type of name.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3405</code><title>Name component type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of a name component.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3412</code><title>Contact name</title>
+    <desc>
+      <n>Name of a contact, such as a department or employee.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>3413</code><title>Contact identifier</title>
+    <desc>
+      <n>To identify a contact, such as a department or</n>
+      <n>employee.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>3432</code><title>Institution name</title>
+    <desc>
+      <n>Name of an institution.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3433</code><title>Institution name code</title>
+    <desc>
+      <n>Code specifying the name of an institution.</n>
+    </desc>
+    <type>an</type><length>11</length>
+  </entry>
+  <entry>
+    <code>3434</code><title>Institution branch identifier</title>
+    <desc>
+      <n>To identify a branch of an institution.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>3436</code><title>Institution branch location name</title>
+    <desc>
+      <n>Name of the location of a branch of an institution.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3446</code><title>Party tax identifier</title>
+    <desc>
+      <n>To identify a number assigned to a party by a tax</n>
+      <n>authority.</n>
+    </desc>
+    <type>an</type><length>20</length>
+  </entry>
+  <entry>
+    <code>3449</code><title>Bank identifier</title>
+    <desc>
+      <n>To identify a bank.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>3452</code><title>Language name</title>
+    <desc>
+      <n>Name of language.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3453</code><title>Language name code</title>
+    <desc>
+      <n>Code specifying the language name.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use ISO 639-1.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3455</code><title>Language code qualifier</title>
+    <desc>
+      <n>Code qualifying a language.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3457</code><title>Originator type code</title>
+    <desc>
+      <n>Code specifying the type of originator.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3459</code><title>Frequent traveller identifier</title>
+    <desc>
+      <n>To identify a frequent traveller.</n>
+    </desc>
+    <type>an</type><length>25</length>
+  </entry>
+  <entry>
+    <code>3460</code><title>Given name</title>
+    <desc>
+      <n>An individual's given name.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3463</code><title>Gate identifier</title>
+    <desc>
+      <n>To identify a gate.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>3465</code><title>In-house identifier</title>
+    <desc>
+      <n>A unique locally assigned identification.</n>
+    </desc>
+    <type>an</type><length>9</length>
+  </entry>
+  <entry>
+    <code>3475</code><title>Address status code</title>
+    <desc>
+      <n>Code specifying the status of an address.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3477</code><title>Address format code</title>
+    <desc>
+      <n>Code specifying the format of an address.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3478</code><title>Marital status description</title>
+    <desc>
+      <n>Free form description of the marital status of a</n>
+      <n>person.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3479</code><title>Marital status description code</title>
+    <desc>
+      <n>Code specifying the marital status of a person.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3480</code><title>Person job title</title>
+    <desc>
+      <n>Name of a job title such as rank or rating of crew</n>
+      <n>member.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3482</code><title>Religion name</title>
+    <desc>
+      <n>Name of a religion.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>3483</code><title>Religion name code</title>
+    <desc>
+      <n>Code specifying the name of a religion.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3493</code><title>Nationality code qualifier</title>
+    <desc>
+      <n>Code qualifying a nationality.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>3494</code><title>Job title description</title>
+    <desc>
+      <n>Free form description of a job title.</n>
+    </desc>
+    <type>an</type><length>35</length>
+    <note>
+      <n></n>
+      <n>1 This data element will be removed effective with</n>
+      <n>directory D.09A.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3496</code><title>Sales channel identifier</title>
+    <desc>
+      <n>To identify a sales channel.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>3499</code><title>Gender code</title>
+    <desc>
+      <n>Code giving the gender of a person, animal or plant.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use ISO 5218 Representation of human sexes</n>
+    </note>
+  </entry>
+  <entry>
+    <code>3500</code><title>Family name</title>
+    <desc>
+      <n>Family name (synonym surname).</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>3503</code><title>Access authorisation identifier</title>
+    <desc>
+      <n>To identify an authorisation to access.</n>
+    </desc>
+    <type>an</type><length>9</length>
+  </entry>
+  <entry>
+    <code>3504</code><title>Given name title description</title>
+    <desc>
+      <n>Free form description of a title.</n>
+    </desc>
+    <type>an</type><length>9</length>
+  </entry>
+  <entry>
+    <code>3507</code><title>Benefit coverage constituents code</title>
+    <desc>
+      <n>Code used to identify who is included in the benefit</n>
+      <n>coverage.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4000</code><title>Reference version identifier</title>
+    <desc>
+      <n>To identify the version of a reference.</n>
+    </desc>
+    <type>an</type><length>35</length>
+    <note>
+      <n></n>
+      <n>1 This data element will be removed effective with</n>
+      <n>directory D.09A.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>4009</code><title>Option code</title>
+    <desc>
+      <n>Code specifying an option.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4017</code><title>Delivery plan commitment level code</title>
+    <desc>
+      <n>Code specifying the level of commitment to a delivery</n>
+      <n>plan.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4018</code><title>Related information description</title>
+    <desc>
+      <n>Free form description of the related information.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4022</code><title>Business description</title>
+    <desc>
+      <n>Free form description of a business.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>4025</code><title>Business function code</title>
+    <desc>
+      <n>Code describing the specific business function.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4027</code><title>Business function type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of business function.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4035</code><title>Priority type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of priority.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4036</code><title>Priority description</title>
+    <desc>
+      <n>Free form description of a priority.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4037</code><title>Priority description code</title>
+    <desc>
+      <n>Code specifying a priority.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4038</code><title>Additional safety information description</title>
+    <desc>
+      <n>Free form description of information relating to</n>
+      <n>additional safety.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4039</code><title>Additional safety information description code</title>
+    <desc>
+      <n>Code specifying information relating to additional</n>
+      <n>safety.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4043</code><title>Trade class code</title>
+    <desc>
+      <n>Code identifying the class of trade.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4044</code><title>Safety section name</title>
+    <desc>
+      <n>Name of a safety section.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>4046</code><title>Safety section number</title>
+    <desc>
+      <n>To specify a safety section by number.</n>
+    </desc>
+    <type>n</type><length>2</length>
+  </entry>
+  <entry>
+    <code>4048</code><title>Certainty description</title>
+    <desc>
+      <n>Free form description of a certainty.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4049</code><title>Certainty description code</title>
+    <desc>
+      <n>Code specifying a certainty.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4051</code><title>Characteristic relevance code</title>
+    <desc>
+      <n>Code specifying the relevance of a characteristic.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4052</code><title>Delivery or transport terms description</title>
+    <desc>
+      <n>Free form description of delivery or transport terms.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>4053</code><title>Delivery or transport terms description code</title>
+    <desc>
+      <n>Code specifying the delivery or transport terms.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Recommend use UN/ECE Recommendation No. 5. Use</n>
+      <n>appropriate code set in combination with 1131/3055.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>4055</code><title>Delivery or transport terms function code</title>
+    <desc>
+      <n>Code specifying the function of delivery or transport</n>
+      <n>terms.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4056</code><title>Question description</title>
+    <desc>
+      <n>Free form description of a question.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>4057</code><title>Question description code</title>
+    <desc>
+      <n>Code specifying a question.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4059</code><title>Clause code qualifier</title>
+    <desc>
+      <n>Code qualifying the nature of the clause.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4065</code><title>Contract and carriage condition code</title>
+    <desc>
+      <n>Code to identify the conditions of contract and</n>
+      <n>carriage.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4068</code><title>Clause name</title>
+    <desc>
+      <n>Name of the clause.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>4069</code><title>Clause name code</title>
+    <desc>
+      <n>Code identification of the clause.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>4071</code><title>Proviso code qualifier</title>
+    <desc>
+      <n>Code qualifying the proviso.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4072</code><title>Proviso type description</title>
+    <desc>
+      <n>Free form description of the type of proviso.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4073</code><title>Proviso type description code</title>
+    <desc>
+      <n>Code specifying the type of proviso.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4074</code><title>Proviso calculation description</title>
+    <desc>
+      <n>Free form description of the proviso calculation.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4075</code><title>Proviso calculation description code</title>
+    <desc>
+      <n>Code specifying the proviso calculation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4078</code><title>Handling instruction description</title>
+    <desc>
+      <n>Free form description of a handling instruction.</n>
+    </desc>
+    <type>an</type><length>512</length>
+  </entry>
+  <entry>
+    <code>4079</code><title>Handling instruction description code</title>
+    <desc>
+      <n>Code specifying a handling instruction.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4183</code><title>Special condition code</title>
+    <desc>
+      <n>Code specifying a special condition.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4184</code><title>Special requirement description</title>
+    <desc>
+      <n>Free form description of a special requirement.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>4187</code><title>Special requirement type code</title>
+    <desc>
+      <n>Code specifying a type of special requirement.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>4215</code><title>Transport charges payment method code</title>
+    <desc>
+      <n>Code specifying the payment method for transport</n>
+      <n>charges.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4219</code><title>Transport service priority code</title>
+    <desc>
+      <n>Code specifying the priority of a transport service.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4221</code><title>Discrepancy nature identification code</title>
+    <desc>
+      <n>Code specifying the identification used to define the</n>
+      <n>nature of a discrepancy.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4233</code><title>Marking instructions code</title>
+    <desc>
+      <n>Code specifying instructions for marking.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4237</code><title>Payment arrangement code</title>
+    <desc>
+      <n>Code specifying the arrangements for a payment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4276</code><title>Payment terms description</title>
+    <desc>
+      <n>Free form description of the conditions of payment</n>
+      <n>between the parties to a transaction.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4277</code><title>Payment terms description identifier</title>
+    <desc>
+      <n>Identification of the terms of payment between the</n>
+      <n>parties to a transaction (generic term).</n>
+    </desc>
+    <type>an</type><length>17</length>
+    <note>
+      <n></n>
+      <n>1 Recommend use UN/ECE Recommendation No. 17 Payterms.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>4279</code><title>Payment terms type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of payment terms.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4294</code><title>Change reason description</title>
+    <desc>
+      <n>Free form description of the reason for change.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4295</code><title>Change reason description code</title>
+    <desc>
+      <n>Code specifying the reason for a change.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4343</code><title>Response type code</title>
+    <desc>
+      <n>Code specifying the type of acknowledgment required or</n>
+      <n>transmitted.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4344</code><title>Response description</title>
+    <desc>
+      <n>Free form description of a response.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>4345</code><title>Response description code</title>
+    <desc>
+      <n>Code specifying a response.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4347</code><title>Product identifier code qualifier</title>
+    <desc>
+      <n>Code qualifying the product identifier.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4383</code><title>Bank operation code</title>
+    <desc>
+      <n>Code specifying a bank operation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4400</code><title>Instruction description</title>
+    <desc>
+      <n>Free form description of an instruction.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4401</code><title>Instruction description code</title>
+    <desc>
+      <n>Code specifying an instruction.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4403</code><title>Instruction type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of instruction.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4404</code><title>Status description</title>
+    <desc>
+      <n>Free form description of a status.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4405</code><title>Status description code</title>
+    <desc>
+      <n>Code specifying a status.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 For transport status, use UN/ECE Recommendation 24.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>4407</code><title>Sample process step code</title>
+    <desc>
+      <n>Code specifying the step in the sample process.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4415</code><title>Test method identifier</title>
+    <desc>
+      <n>To identify a method of testing.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>4416</code><title>Test description</title>
+    <desc>
+      <n>Free form description of the test.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>4419</code><title>Test administration method code</title>
+    <desc>
+      <n>Code specifying the method of the administration of a</n>
+      <n>test.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4424</code><title>Test reason name</title>
+    <desc>
+      <n>Name of the reason for performing a test.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4425</code><title>Test reason name code</title>
+    <desc>
+      <n>Code specifying the name of the reason for performing</n>
+      <n>a test.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>4431</code><title>Payment guarantee means code</title>
+    <desc>
+      <n>Code specifying the means of payment guarantee.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4435</code><title>Payment channel code</title>
+    <desc>
+      <n>Code specifying the payment channel.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4437</code><title>Account type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of account.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4439</code><title>Payment conditions code</title>
+    <desc>
+      <n>Code specifying the payment conditions.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4440</code><title>Free text</title>
+    <desc>
+      <n>Free form text.</n>
+    </desc>
+    <type>an</type><length>512</length>
+  </entry>
+  <entry>
+    <code>4441</code><title>Free text description code</title>
+    <desc>
+      <n>Code specifying free form text.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>4447</code><title>Free text format code</title>
+    <desc>
+      <n>Code specifying the format of free text.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4451</code><title>Text subject code qualifier</title>
+    <desc>
+      <n>Code qualifying the subject of the text.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4453</code><title>Free text function code</title>
+    <desc>
+      <n>Code specifying the function of free text.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4455</code><title>Back order arrangement type code</title>
+    <desc>
+      <n>Code specifying a type of back order arrangement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4457</code><title>Substitution condition code</title>
+    <desc>
+      <n>Code specifying the conditions under which</n>
+      <n>substitution may take place.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4461</code><title>Payment means code</title>
+    <desc>
+      <n>Code identifying a means of payment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4463</code><title>Intra-company payment indicator code</title>
+    <desc>
+      <n>Code indicating an intra-company payment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4465</code><title>Adjustment reason description code</title>
+    <desc>
+      <n>Code specifying the adjustment reason.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4467</code><title>Payment method code</title>
+    <desc>
+      <n>Code specifying a method of payment.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>4469</code><title>Payment purpose code</title>
+    <desc>
+      <n>Code identifying the purpose of a payment.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>4471</code><title>Settlement means code</title>
+    <desc>
+      <n>Code specifying the means of settlement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4472</code><title>Information type</title>
+    <desc>
+      <n>Text representation of a type of information.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4473</code><title>Information type code</title>
+    <desc>
+      <n>Code specifying a type of information.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>4474</code><title>Accounting entry type name</title>
+    <desc>
+      <n>Name of a type of accounting entry.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4475</code><title>Accounting entry type name code</title>
+    <desc>
+      <n>Code specifying a type of accounting entry.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>4487</code><title>Financial transaction type code</title>
+    <desc>
+      <n>Code specifying a type of financial transaction.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4493</code><title>Delivery instruction code</title>
+    <desc>
+      <n>Code specifying a delivery instruction.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4494</code><title>Insurance cover description</title>
+    <desc>
+      <n>Free form description of the insurance cover.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4495</code><title>Insurance cover description code</title>
+    <desc>
+      <n>Code specifying the insurance cover.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>4497</code><title>Insurance cover type code</title>
+    <desc>
+      <n>Code specifying the meaning of the insurance cover.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4499</code><title>Inventory movement reason code</title>
+    <desc>
+      <n>Code specifying the reason for an inventory movement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4501</code><title>Inventory movement direction code</title>
+    <desc>
+      <n>Code specifying the direction of an inventory</n>
+      <n>movement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4503</code><title>Inventory balance method code</title>
+    <desc>
+      <n>Code specifying the method used to establish an</n>
+      <n>inventory balance.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4505</code><title>Credit cover request type code</title>
+    <desc>
+      <n>Code specifying the type of request for credit cover.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4507</code><title>Credit cover response type code</title>
+    <desc>
+      <n>Code specifying the type of response to a request for</n>
+      <n>credit cover.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4509</code><title>Credit cover response reason code</title>
+    <desc>
+      <n>Code specifying the reason for a response to a request</n>
+      <n>for credit cover.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4510</code><title>Requested information description</title>
+    <desc>
+      <n>Free form description of the response information</n>
+      <n>requested.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4511</code><title>Requested information description code</title>
+    <desc>
+      <n>Code specifying the response information requested.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4513</code><title>Maintenance operation code</title>
+    <desc>
+      <n>Code specifying a maintenance operation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4517</code><title>Seal condition code</title>
+    <desc>
+      <n>Code specifying the condition of a seal.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>4519</code><title>Definition identifier</title>
+    <desc>
+      <n>To identify a definition.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4521</code><title>Premium calculation component identifier</title>
+    <desc>
+      <n>To identify a component affecting premium calculation.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>4522</code><title>Premium calculation component value category identifier</title>
+    <desc>
+      <n>To identify the value category of a premium</n>
+      <n>calculation component.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>4525</code><title>Seal type code</title>
+    <desc>
+      <n>To specify a type of seal.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5004</code><title>Monetary amount</title>
+    <desc>
+      <n>To specify a monetary amount.</n>
+    </desc>
+    <type>n</type><length>35</length>
+  </entry>
+  <entry>
+    <code>5006</code><title>Monetary amount function description</title>
+    <desc>
+      <n>Free form description of the monetary amount function.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>5007</code><title>Monetary amount function description code</title>
+    <desc>
+      <n>Code specifying the monetary amount function.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5013</code><title>Index code qualifier</title>
+    <desc>
+      <n>Code qualifying an index.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5025</code><title>Monetary amount type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of monetary amount.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5027</code><title>Index type identifier</title>
+    <desc>
+      <n>To identify a type of index.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>5030</code><title>Index text</title>
+    <desc>
+      <n>To specify the value of an index.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>5039</code><title>Index representation code</title>
+    <desc>
+      <n>Code specifying the representation of an index value.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5047</code><title>Contribution code qualifier</title>
+    <desc>
+      <n>Code qualifying a contribution.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5048</code><title>Contribution type description</title>
+    <desc>
+      <n>Free form description of a type of contribution</n>
+      <n>scheme.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>5049</code><title>Contribution type description code</title>
+    <desc>
+      <n>Code specifying a type of contribution scheme.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5104</code><title>Monetary amount function detail description</title>
+    <desc>
+      <n>Free form description of the detail of a monetary</n>
+      <n>amount function.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>5105</code><title>Monetary amount function detail description code</title>
+    <desc>
+      <n>Code specifying the detail of a monetary amount</n>
+      <n>function.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>5118</code><title>Price amount</title>
+    <desc>
+      <n>To specify a price.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>5125</code><title>Price code qualifier</title>
+    <desc>
+      <n>Code qualifying a price.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5152</code><title>Duty or tax or fee type name</title>
+    <desc>
+      <n>Name of a type of duty, tax or fee.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>5153</code><title>Duty or tax or fee type name code</title>
+    <desc>
+      <n>Code specifying a type of duty, tax or fee.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5160</code><title>Total monetary amount</title>
+    <desc>
+      <n>To specify a total monetary amount.</n>
+    </desc>
+    <type>n</type><length>20</length>
+  </entry>
+  <entry>
+    <code>5189</code><title>Allowance or charge identification code</title>
+    <desc>
+      <n>Code specifying the identification of an allowance or</n>
+      <n>charge.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5213</code><title>Sub-line item price change operation code</title>
+    <desc>
+      <n>Code specifying the price change operation for a sub-</n>
+      <n>line item.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5237</code><title>Charge category code</title>
+    <desc>
+      <n>Code specifying the category of charges.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5242</code><title>Rate or tariff class description</title>
+    <desc>
+      <n>Free form description of an applicable rate or tariff</n>
+      <n>class.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>5243</code><title>Rate or tariff class description code</title>
+    <desc>
+      <n>Code specifying an applicable rate or tariff class.</n>
+    </desc>
+    <type>an</type><length>9</length>
+  </entry>
+  <entry>
+    <code>5245</code><title>Percentage type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of percentage.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5249</code><title>Percentage basis identification code</title>
+    <desc>
+      <n>Code specifying the basis on which a percentage is</n>
+      <n>calculated.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5261</code><title>Charge unit code</title>
+    <desc>
+      <n>Code specifying a charge unit.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5263</code><title>Rate type identifier</title>
+    <desc>
+      <n>To identify a type of rate.</n>
+    </desc>
+    <type>an</type><length>20</length>
+  </entry>
+  <entry>
+    <code>5267</code><title>Service type code</title>
+    <desc>
+      <n>Code specifying the type of service.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5273</code><title>Duty or tax or fee rate basis code</title>
+    <desc>
+      <n>Code specifying the basis for a duty or tax or fee</n>
+      <n>rate.</n>
+    </desc>
+    <type>an</type><length>12</length>
+  </entry>
+  <entry>
+    <code>5275</code><title>Supplementary rate or tariff code</title>
+    <desc>
+      <n>Code specifying a supplementary rate or tariff.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>5278</code><title>Duty or tax or fee rate</title>
+    <desc>
+      <n>Rate of a duty or tax or fee.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>5279</code><title>Duty or tax or fee rate code</title>
+    <desc>
+      <n>Code specifying a rate of a duty or tax or fee.</n>
+    </desc>
+    <type>an</type><length>7</length>
+  </entry>
+  <entry>
+    <code>5283</code><title>Duty or tax or fee function code qualifier</title>
+    <desc>
+      <n>Code qualifying the function of a duty or tax or fee.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5284</code><title>Unit price basis quantity</title>
+    <desc>
+      <n>To specify the basis for a unit price.</n>
+    </desc>
+    <type>n</type><length>9</length>
+  </entry>
+  <entry>
+    <code>5286</code><title>Duty or tax or fee assessment basis quantity</title>
+    <desc>
+      <n>To specify the basis on which a duty or tax or fee</n>
+      <n>will be assessed.</n>
+    </desc>
+    <type>an</type><length>15</length>
+  </entry>
+  <entry>
+    <code>5289</code><title>Duty or tax or fee account code</title>
+    <desc>
+      <n>Code specifying a duty or tax or fee account.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>5305</code><title>Duty or tax or fee category code</title>
+    <desc>
+      <n>Code specifying a duty or tax or fee category.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5307</code><title>Tax or duty or fee payment due date code</title>
+    <desc>
+      <n>A code indicating when the duty, tax, or fee payment</n>
+      <n>will be due.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5314</code><title>Remuneration type name</title>
+    <desc>
+      <n>Name of a type of remuneration.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>5315</code><title>Remuneration type name code</title>
+    <desc>
+      <n>Code specifying the name of a type of remuneration.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5375</code><title>Price type code</title>
+    <desc>
+      <n>Code specifying the type of price.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5377</code><title>Price change type code</title>
+    <desc>
+      <n>Code specifying the type of price change.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5379</code><title>Product group type code</title>
+    <desc>
+      <n>Code specifying the type of product group.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5387</code><title>Price specification code</title>
+    <desc>
+      <n>Code identifying pricing specification.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5388</code><title>Product group name</title>
+    <desc>
+      <n>Name of a product code.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>5389</code><title>Product group name code</title>
+    <desc>
+      <n>Code specifying the name of a product group.</n>
+    </desc>
+    <type>an</type><length>25</length>
+  </entry>
+  <entry>
+    <code>5393</code><title>Price multiplier type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of price multiplier.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5394</code><title>Price multiplier rate</title>
+    <desc>
+      <n>To specify the rate of a price multiplier.</n>
+    </desc>
+    <type>n</type><length>12</length>
+  </entry>
+  <entry>
+    <code>5402</code><title>Currency exchange rate</title>
+    <desc>
+      <n>To specify the rate at which one specified currency is</n>
+      <n>expressed in another specified currency.</n>
+    </desc>
+    <type>n</type><length>12</length>
+  </entry>
+  <entry>
+    <code>5419</code><title>Rate type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of rate.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5420</code><title>Unit price basis rate</title>
+    <desc>
+      <n>To specify the rate per unit specified in the unit</n>
+      <n>price basis.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>5463</code><title>Allowance or charge code qualifier</title>
+    <desc>
+      <n>Code qualifying an allowance or charge.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5479</code><title>Relation code</title>
+    <desc>
+      <n>Code specifying a relation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5482</code><title>Percentage</title>
+    <desc>
+      <n>To specify a percentage.</n>
+    </desc>
+    <type>n</type><length>10</length>
+  </entry>
+  <entry>
+    <code>5495</code><title>Sub-line indicator code</title>
+    <desc>
+      <n>Code indicating a sub-line item.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>5501</code><title>Rate plan code</title>
+    <desc>
+      <n>Code specifying a rate plan.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6000</code><title>Latitude degree</title>
+    <desc>
+      <n>To specify  the angular distance, measured in degrees,</n>
+      <n>minutes, and seconds, north or south from the equator.</n>
+    </desc>
+    <type>an</type><length>10</length>
+  </entry>
+  <entry>
+    <code>6002</code><title>Longitude degree</title>
+    <desc>
+      <n>To specify the value of longitude i.e. the angular</n>
+      <n>distance east or west on the earth's surface, measured</n>
+      <n>by the angle and expressed in degrees, minutes, and</n>
+      <n>seconds, which the meridian passing through a</n>
+      <n>particular place makes with a standard or prime</n>
+      <n>meridian.</n>
+    </desc>
+    <type>an</type><length>11</length>
+  </entry>
+  <entry>
+    <code>6008</code><title>Height measure</title>
+    <desc>
+      <n>To specify the value of a height dimension.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>6029</code><title>Geographical position code qualifier</title>
+    <desc>
+      <n>Code identifying the type of a geographical position.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6060</code><title>Quantity</title>
+    <desc>
+      <n>Alphanumeric representation of a quantity.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>6063</code><title>Quantity type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of quantity.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6064</code><title>Variance quantity</title>
+    <desc>
+      <n>To specify the value of a quantity variance.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>6066</code><title>Control total quantity</title>
+    <desc>
+      <n>To specify the value of a control quantity.</n>
+    </desc>
+    <type>n</type><length>18</length>
+  </entry>
+  <entry>
+    <code>6069</code><title>Control total type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of control of hash total.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6071</code><title>Frequency code qualifier</title>
+    <desc>
+      <n>Code qualifying the frequency.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6072</code><title>Frequency rate</title>
+    <desc>
+      <n>The number of repetitions in a given time.</n>
+    </desc>
+    <type>n</type><length>9</length>
+  </entry>
+  <entry>
+    <code>6074</code><title>Confidence percent</title>
+    <desc>
+      <n>To specify the confidence that a true value falls</n>
+      <n>within a certain confidence interval expressed as a</n>
+      <n>percentage.</n>
+    </desc>
+    <type>n</type><length>6</length>
+  </entry>
+  <entry>
+    <code>6077</code><title>Result representation code</title>
+    <desc>
+      <n>Code specifying the representation of a result.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6079</code><title>Result normalcy code</title>
+    <desc>
+      <n>Code specifying the degree of conformance to a</n>
+      <n>standard.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6082</code><title>Dosage description</title>
+    <desc>
+      <n>Free form description of a dosage.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>6083</code><title>Dosage description identifier</title>
+    <desc>
+      <n>Code identifying a dosage.</n>
+    </desc>
+    <type>an</type><length>8</length>
+  </entry>
+  <entry>
+    <code>6085</code><title>Dosage administration code qualifier</title>
+    <desc>
+      <n>Code qualifying the administration of a dosage.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6087</code><title>Result value type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of a result value.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6096</code><title>Altitude</title>
+    <desc>
+      <n>The height of an object above sea level.</n>
+    </desc>
+    <type>n</type><length>18</length>
+  </entry>
+  <entry>
+    <code>6140</code><title>Width measure</title>
+    <desc>
+      <n>To specify the value of a width dimension.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>6145</code><title>Dimension type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of the dimension.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6152</code><title>Range maximum quantity</title>
+    <desc>
+      <n>To specify the maximum value of a range.</n>
+    </desc>
+    <type>n</type><length>18</length>
+  </entry>
+  <entry>
+    <code>6154</code><title>Non-discrete measurement name</title>
+    <desc>
+      <n>Name of a non-discrete measurement.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>6155</code><title>Non-discrete measurement name code</title>
+    <desc>
+      <n>Code specifying the name of a non-discrete</n>
+      <n>measurement.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>6162</code><title>Range minimum quantity</title>
+    <desc>
+      <n>To specify the minimum value of a range.</n>
+    </desc>
+    <type>n</type><length>18</length>
+  </entry>
+  <entry>
+    <code>6167</code><title>Range type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of range.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6168</code><title>Length measure</title>
+    <desc>
+      <n>To specify the value of a length dimension.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>6173</code><title>Size type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of size.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6174</code><title>Size measure</title>
+    <desc>
+      <n>To specify a magnitude.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>6176</code><title>Occurrences maximum number</title>
+    <desc>
+      <n>To specify the maximum number of occurrences.</n>
+    </desc>
+    <type>n</type><length>7</length>
+  </entry>
+  <entry>
+    <code>6178</code><title>Edit field length measure</title>
+    <desc>
+      <n>To specify the length of a field for editing.</n>
+    </desc>
+    <type>n</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6245</code><title>Temperature type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of a temperature.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6246</code><title>Temperature degree</title>
+    <desc>
+      <n>To specify the value of a temperature.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>6311</code><title>Measurement purpose code qualifier</title>
+    <desc>
+      <n>Code qualifying the purpose of the measurement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6313</code><title>Measured attribute code</title>
+    <desc>
+      <n>Code specifying the attribute measured.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6314</code><title>Measure</title>
+    <desc>
+      <n>To specify the value of a measurement.</n>
+    </desc>
+    <type>an</type><length>18</length>
+  </entry>
+  <entry>
+    <code>6321</code><title>Measurement significance code</title>
+    <desc>
+      <n>Code specifying the significance of a measurement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6331</code><title>Statistic type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of a statistic.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6341</code><title>Exchange rate currency market identifier</title>
+    <desc>
+      <n>To identify an exchange rate currency market.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6343</code><title>Currency type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of currency.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6345</code><title>Currency identification code</title>
+    <desc>
+      <n>Code specifying a monetary unit.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use ISO 4217 three alpha code.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>6347</code><title>Currency usage code qualifier</title>
+    <desc>
+      <n>Code qualifying the usage of a currency.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6348</code><title>Currency rate</title>
+    <desc>
+      <n>To specify the value of the multiplication factor used</n>
+      <n>in expressing currency units.</n>
+    </desc>
+    <type>n</type><length>4</length>
+  </entry>
+  <entry>
+    <code>6350</code><title>Units quantity</title>
+    <desc>
+      <n>To specify the number of units.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>6353</code><title>Unit type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of unit.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6410</code><title>Measurement unit name</title>
+    <desc>
+      <n>Name of a measurement unit.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>6411</code><title>Measurement unit code</title>
+    <desc>
+      <n>Code specifying the unit of measurement.</n>
+    </desc>
+    <type>an</type><length>8</length>
+    <note>
+      <n></n>
+      <n>1 Recommend use UN/ECE Recommendation 20, Common code.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>6412</code><title>Clinical information description</title>
+    <desc>
+      <n>Free form description of an item of clinical</n>
+      <n>information.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>6413</code><title>Clinical information description identifier</title>
+    <desc>
+      <n>Code identifying an item of clinical information.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>6415</code><title>Clinical information type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of clinical information.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>6426</code><title>Process stages quantity</title>
+    <desc>
+      <n>Count of the number of process stages.</n>
+    </desc>
+    <type>n</type><length>2</length>
+  </entry>
+  <entry>
+    <code>6428</code><title>Process stages actual quantity</title>
+    <desc>
+      <n>Count of  the actual number of process stages.</n>
+    </desc>
+    <type>n</type><length>2</length>
+  </entry>
+  <entry>
+    <code>6432</code><title>Significant digits quantity</title>
+    <desc>
+      <n>Count of the number of significant digits.</n>
+    </desc>
+    <type>n</type><length>2</length>
+  </entry>
+  <entry>
+    <code>6434</code><title>Statistical concept identifier</title>
+    <desc>
+      <n>Free form identification of a statistical concept.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7001</code><title>Physical or logical state type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of physical or logical state.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7006</code><title>Physical or logical state description</title>
+    <desc>
+      <n>Free form description of a physical or logical state.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>7007</code><title>Physical or logical state description code</title>
+    <desc>
+      <n>Code specifying a physical or logical state.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7008</code><title>Item description</title>
+    <desc>
+      <n>Free form description of an item.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>7009</code><title>Item description code</title>
+    <desc>
+      <n>Code specifying an item.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7011</code><title>Item availability code</title>
+    <desc>
+      <n>Code specifying the availability of an item.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7036</code><title>Characteristic description</title>
+    <desc>
+      <n>Free form description of a characteristic.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7037</code><title>Characteristic description code</title>
+    <desc>
+      <n>A code specifying a characteristic.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7039</code><title>Sample selection method code</title>
+    <desc>
+      <n>Code specifying the selection method for a sample.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7045</code><title>Sample state code</title>
+    <desc>
+      <n>Code specifying the state of a sample.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7047</code><title>Sample direction code</title>
+    <desc>
+      <n>Code specifying the direction in which a sample was</n>
+      <n>taken.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7059</code><title>Class type code</title>
+    <desc>
+      <n>Code specifying the type of class.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7064</code><title>Type of packages</title>
+    <desc>
+      <n>Description of the form in which goods are presented.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7065</code><title>Package type description code</title>
+    <desc>
+      <n>Code specifying the type of package.</n>
+    </desc>
+    <type>an</type><length>17</length>
+    <note>
+      <n></n>
+      <n>1 Recommend use of UN/ECE Recommendation 21, Annex V,</n>
+      <n>alphabetic code</n>
+    </note>
+  </entry>
+  <entry>
+    <code>7073</code><title>Packaging terms and conditions code</title>
+    <desc>
+      <n>Code specifying the packaging terms and conditions.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7075</code><title>Packaging level code</title>
+    <desc>
+      <n>Code specifying a level of packaging.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7077</code><title>Description format code</title>
+    <desc>
+      <n>Code specifying the format of a description.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7081</code><title>Item characteristic code</title>
+    <desc>
+      <n>Code specifying the characteristic of an item.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7083</code><title>Configuration operation code</title>
+    <desc>
+      <n>Code specifying the configuration operation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7085</code><title>Cargo type classification code</title>
+    <desc>
+      <n>Code specifying the classification of a type of cargo.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7088</code><title>Dangerous goods flashpoint description</title>
+    <desc>
+      <n>To describe the flahspoint of dangerous goods.</n>
+    </desc>
+    <type>an</type><length>8</length>
+  </entry>
+  <entry>
+    <code>7102</code><title>Shipping marks description</title>
+    <desc>
+      <n>Free form description of the shipping marks.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7106</code><title>Shipment flashpoint degree</title>
+    <desc>
+      <n>To specify the value of the flashpoint of a shipment.</n>
+    </desc>
+    <type>n3</type><length></length>
+  </entry>
+  <entry>
+    <code>7110</code><title>Characteristic value description</title>
+    <desc>
+      <n>Free form description of the value of a</n>
+      <n>characteristic.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7111</code><title>Characteristic value description code</title>
+    <desc>
+      <n>Code specifying the value of a characteristic.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7124</code><title>United Nations Dangerous Goods (UNDG) identifier</title>
+    <desc>
+      <n>The unique serial number assigned within the United</n>
+      <n>Nations to substances and articles contained in a list</n>
+      <n>of the dangerous goods most commonly carried.</n>
+    </desc>
+    <type>n4</type><length></length>
+  </entry>
+  <entry>
+    <code>7130</code><title>Customer shipment authorisation identifier</title>
+    <desc>
+      <n>To identify the authorisation to ship issued by the</n>
+      <n>customer.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7133</code><title>Product details type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of product details.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7135</code><title>Product identifier</title>
+    <desc>
+      <n>To identify a product.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7139</code><title>Product characteristic identification code</title>
+    <desc>
+      <n>Code specifying the identification of a product</n>
+      <n>characteristic.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7140</code><title>Item identifier</title>
+    <desc>
+      <n>To identify an item.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7143</code><title>Item type identification code</title>
+    <desc>
+      <n>Coded identification of an item type.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7160</code><title>Special service description</title>
+    <desc>
+      <n>Free form description of a special service.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7161</code><title>Special service description code</title>
+    <desc>
+      <n>Code specifying a special service.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7164</code><title>Hierarchical structure level identifier</title>
+    <desc>
+      <n>To identify a level within a hierarchical structure.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7166</code><title>Hierarchical structure parent identifier</title>
+    <desc>
+      <n>To identify the next higher level in a hierarchical</n>
+      <n>structure.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7168</code><title>Level number</title>
+    <desc>
+      <n>Number identifying a level.</n>
+    </desc>
+    <type>n</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7171</code><title>Hierarchical structure relationship code</title>
+    <desc>
+      <n>Code specifying the relationship between the</n>
+      <n>hierarchical object and an identified object.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7173</code><title>Hierarchy object code qualifier</title>
+    <desc>
+      <n>Code qualifying an object in a hierarchy.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7175</code><title>Rule part identifier</title>
+    <desc>
+      <n>To identify a part of a rule.</n>
+    </desc>
+    <type>an</type><length>7</length>
+  </entry>
+  <entry>
+    <code>7176</code><title>Risk object sub-type description</title>
+    <desc>
+      <n>Free form description of the object sub-type of a</n>
+      <n>risk.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>7177</code><title>Risk object sub-type description identifier</title>
+    <desc>
+      <n>Code identifying the object sub-type of a risk.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7179</code><title>Risk object type identifier</title>
+    <desc>
+      <n>Code identifying a type of risk object.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7186</code><title>Process type description</title>
+    <desc>
+      <n>Free form description of a type of process.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7187</code><title>Process type description code</title>
+    <desc>
+      <n>Code specifying a type of process.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7188</code><title>Test method revision identifier</title>
+    <desc>
+      <n>To identify the revision of a test method.</n>
+    </desc>
+    <type>an</type><length>30</length>
+  </entry>
+  <entry>
+    <code>7190</code><title>Process description</title>
+    <desc>
+      <n>Free form description of a process.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>7191</code><title>Process description code</title>
+    <desc>
+      <n>Code specifying a process.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7224</code><title>Package quantity</title>
+    <desc>
+      <n>To specify the number of packages.</n>
+    </desc>
+    <type>n</type><length>8</length>
+  </entry>
+  <entry>
+    <code>7233</code><title>Packaging related description code</title>
+    <desc>
+      <n>Code specifying information related to packaging.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7240</code><title>Item total quantity</title>
+    <desc>
+      <n>Count of the total number of items.</n>
+    </desc>
+    <type>n</type><length>15</length>
+  </entry>
+  <entry>
+    <code>7273</code><title>Service requirement code</title>
+    <desc>
+      <n>Code specifying a service requirement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7293</code><title>Sector area identification code qualifier</title>
+    <desc>
+      <n>Code qualifying identification of a subject area.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7294</code><title>Requirement or condition description</title>
+    <desc>
+      <n>Free form description of a requirement or condition.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7295</code><title>Requirement or condition description identifier</title>
+    <desc>
+      <n>Code specifying a requirement or condition.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7297</code><title>Set type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of set.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7299</code><title>Requirement designator code</title>
+    <desc>
+      <n>Code specifying the requirement designator.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7357</code><title>Commodity identification code</title>
+    <desc>
+      <n>Code identifying a commodity for Customs, transport or</n>
+      <n>statistical purposes (generic term).</n>
+    </desc>
+    <type>an</type><length>18</length>
+  </entry>
+  <entry>
+    <code>7361</code><title>Customs goods identifier</title>
+    <desc>
+      <n>Code identifying the goods for customs.</n>
+    </desc>
+    <type>an</type><length>18</length>
+  </entry>
+  <entry>
+    <code>7364</code><title>Processing indicator description</title>
+    <desc>
+      <n>Free form description of a processing indicator.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7365</code><title>Processing indicator description code</title>
+    <desc>
+      <n>Code specifying a processing indicator.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7383</code><title>Surface or layer code</title>
+    <desc>
+      <n>Code specifying the surface or layer of an object.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7402</code><title>Object identifier</title>
+    <desc>
+      <n>Code specifying the unique identity of an object.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7405</code><title>Object identification code qualifier</title>
+    <desc>
+      <n>Code qualifying the identification of an object.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7418</code><title>Hazardous material category name</title>
+    <desc>
+      <n>Name of a kind of hazard for a material.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7419</code><title>Hazardous material category name code</title>
+    <desc>
+      <n>Code specifying a kind of hazard for a material.</n>
+    </desc>
+    <type>an</type><length>7</length>
+  </entry>
+  <entry>
+    <code>7429</code><title>Indexing structure code qualifier</title>
+    <desc>
+      <n>Code qualifying an indexing structure.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7431</code><title>Agreement type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of agreement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7433</code><title>Agreement type description code</title>
+    <desc>
+      <n>Code specifying the type of agreement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7434</code><title>Agreement type description</title>
+    <desc>
+      <n>Free form description of the type of agreement.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>7436</code><title>Level one identifier</title>
+    <desc>
+      <n>To identify the first facet of a sequencing mechanism</n>
+      <n>used to position an item within an indexing structure.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7438</code><title>Level two identifier</title>
+    <desc>
+      <n>To identify the second facet of a sequencing mechanism</n>
+      <n>used to position an item within an indexing structure.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7440</code><title>Level three identifier</title>
+    <desc>
+      <n>To identify the third facet of a sequencing mechanism</n>
+      <n>used to position an item within an indexing structure.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7442</code><title>Level four identifier</title>
+    <desc>
+      <n>To identify the fourth facet of a sequencing mechanism</n>
+      <n>used to position an item within an indexing structure.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7444</code><title>Level five identifier</title>
+    <desc>
+      <n>To identify the fifth facet of a sequencing mechanism</n>
+      <n>used to position an item within an indexing structure.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7446</code><title>Level six identifier</title>
+    <desc>
+      <n>To identify the sixth facet of a sequencing mechanism</n>
+      <n>used to position an item within an indexing structure.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>7449</code><title>Membership type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of membership.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7450</code><title>Membership category description</title>
+    <desc>
+      <n>Free form description of a membership category.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7451</code><title>Membership category description code</title>
+    <desc>
+      <n>Code specifying a membership category.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>7452</code><title>Membership status description</title>
+    <desc>
+      <n>Free form description of a membership status.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7453</code><title>Membership status description code</title>
+    <desc>
+      <n>Code specifying a membership status.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7455</code><title>Membership level code qualifier</title>
+    <desc>
+      <n>Code qualifying the level of membership.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7456</code><title>Membership level description</title>
+    <desc>
+      <n>Free form description of a level of membership.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7457</code><title>Membership level description code</title>
+    <desc>
+      <n>Code specifying a level of membership.</n>
+    </desc>
+    <type>an</type><length>9</length>
+  </entry>
+  <entry>
+    <code>7458</code><title>Attendee category description</title>
+    <desc>
+      <n>Free form description of a category attendee.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7459</code><title>Attendee category description code</title>
+    <desc>
+      <n>Code specifying a category of attendee.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7491</code><title>Inventory type code</title>
+    <desc>
+      <n>Code specifying a type of inventory.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7493</code><title>Damage details code qualifier</title>
+    <desc>
+      <n>Code qualifying the damage details.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7495</code><title>Object type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of object.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7497</code><title>Structure component function code qualifier</title>
+    <desc>
+      <n>Code qualifying the function of a structure component.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7500</code><title>Damage type description</title>
+    <desc>
+      <n>Free form description of the type of damage to an</n>
+      <n>object.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7501</code><title>Damage type description code</title>
+    <desc>
+      <n>Code specifying the type of damage to an object.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7502</code><title>Damage area description</title>
+    <desc>
+      <n>Free form description of where the damage is on an</n>
+      <n>object.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7503</code><title>Damage area description code</title>
+    <desc>
+      <n>Code specifying where the damage is on an object.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>7504</code><title>Unit or component type description</title>
+    <desc>
+      <n>Free form description of a type of unit or component.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7505</code><title>Unit or component type description code</title>
+    <desc>
+      <n>Code specifying a type of unit or component.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7506</code><title>Component material description</title>
+    <desc>
+      <n>Free form description of a component material.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7507</code><title>Component material description code</title>
+    <desc>
+      <n>Code specifying a component material.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7508</code><title>Damage severity description</title>
+    <desc>
+      <n>Free form description of the severity of damage.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7509</code><title>Damage severity description code</title>
+    <desc>
+      <n>Code specifying the severity of damage.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7511</code><title>Marking type code</title>
+    <desc>
+      <n>Code specifying the type of marking.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7512</code><title>Structure component identifier</title>
+    <desc>
+      <n>To identify a component of a structure.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>7515</code><title>Structure type code</title>
+    <desc>
+      <n>Code specifying a type of structure.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>7517</code><title>Benefit and coverage code</title>
+    <desc>
+      <n>Code used to identify the benefit and coverage.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8015</code><title>Traffic restriction code</title>
+    <desc>
+      <n>Code specifying a traffic restriction.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8017</code><title>Traffic restriction application code</title>
+    <desc>
+      <n>Code specifying the application of a restriction to</n>
+      <n>traffic.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8022</code><title>Freight and other charges description</title>
+    <desc>
+      <n>Free form description of freight and other charges.</n>
+    </desc>
+    <type>an</type><length>26</length>
+  </entry>
+  <entry>
+    <code>8023</code><title>Freight and other charges description identifier</title>
+    <desc>
+      <n>Code identifying freight and other charges.</n>
+    </desc>
+    <type>an</type><length>17</length>
+    <note>
+      <n></n>
+      <n>1 Use UN/ECE Recommendation No. 23: Freight costs and</n>
+      <n>charges. If not applicable, use appropriate code in</n>
+      <n>combination with 1131/3055.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>8024</code><title>Conveyance call purpose description</title>
+    <desc>
+      <n>Free form description of the purpose of the conveyance</n>
+      <n>call.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>8025</code><title>Conveyance call purpose description code</title>
+    <desc>
+      <n>Code specifying the purpose of the conveyance call.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8028</code><title>Means of transport journey identifier</title>
+    <desc>
+      <n>To identify a journey of a means of transport.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>8035</code><title>Traffic restriction type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of traffic restriction.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8051</code><title>Transport stage code qualifier</title>
+    <desc>
+      <n>Code qualifying a specific stage of transport.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8053</code><title>Equipment type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of equipment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8066</code><title>Transport mode name</title>
+    <desc>
+      <n>Name of a mode of transport.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>8067</code><title>Transport mode name code</title>
+    <desc>
+      <n>Code specifying the name of a mode of transport.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use UN/ECE Recommendation No 19.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>8077</code><title>Equipment supplier code</title>
+    <desc>
+      <n>Code specifying the party that is the supplier of the</n>
+      <n>equipment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8078</code><title>Additional hazard classification identifier</title>
+    <desc>
+      <n>To identify an additional hazard classification.</n>
+    </desc>
+    <type>an</type><length>7</length>
+  </entry>
+  <entry>
+    <code>8092</code><title>Hazard code version identifier</title>
+    <desc>
+      <n>To identify the version number of a hazard code.</n>
+    </desc>
+    <type>an</type><length>10</length>
+  </entry>
+  <entry>
+    <code>8101</code><title>Transit direction indicator code</title>
+    <desc>
+      <n>Code specifying the direction of transport.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8126</code><title>Transport emergency card identifier</title>
+    <desc>
+      <n>To identify a transport emergency (TREM) card.</n>
+    </desc>
+    <type>an</type><length>10</length>
+  </entry>
+  <entry>
+    <code>8154</code><title>Equipment size and type description</title>
+    <desc>
+      <n>Free form description of the size and type of</n>
+      <n>equipment.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>8155</code><title>Equipment size and type description code</title>
+    <desc>
+      <n>Code specifying the size and type of equipment.</n>
+    </desc>
+    <type>an</type><length>10</length>
+    <note>
+      <n></n>
+      <n>1 May use codes specified in ISO 6346 for seagoing</n>
+      <n>containers.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>8158</code><title>Orange hazard placard upper part identifier</title>
+    <desc>
+      <n>To specify the identity number for the upper part of</n>
+      <n>the orange hazard placard required on the means of</n>
+      <n>transport.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>8169</code><title>Full or empty indicator code</title>
+    <desc>
+      <n>Code indicating whether an object is full or empty.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8178</code><title>Transport means description</title>
+    <desc>
+      <n>Free form description of the means of transport.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>8179</code><title>Transport means description code</title>
+    <desc>
+      <n>Code specifying the means of transport.</n>
+    </desc>
+    <type>an</type><length>8</length>
+    <note>
+      <n></n>
+      <n>1 Use UN/ECE recommendation 28.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>8186</code><title>Orange hazard placard lower part identifier</title>
+    <desc>
+      <n>To specify the identity number for the lower part of</n>
+      <n>the orange hazard placard required on the means of</n>
+      <n>transport.</n>
+    </desc>
+    <type>an4</type><length></length>
+  </entry>
+  <entry>
+    <code>8211</code><title>Hazardous cargo transport authorisation code</title>
+    <desc>
+      <n>Code specifying the authorisation for the</n>
+      <n>transportation of hazardous cargo.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8212</code><title>Transport means identification name</title>
+    <desc>
+      <n>Name identifying a means of transport.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>8213</code><title>Transport means identification name identifier</title>
+    <desc>
+      <n>Identifies the name of the transport means.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>8215</code><title>Transport means change indicator code</title>
+    <desc>
+      <n>Code indicating a change of means of transport.</n>
+    </desc>
+    <type>an1</type><length></length>
+  </entry>
+  <entry>
+    <code>8216</code><title>Journey stops quantity</title>
+    <desc>
+      <n>To specify the number of stops in a journey.</n>
+    </desc>
+    <type>n</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8219</code><title>Traveller accompanied by infant indicator code</title>
+    <desc>
+      <n>Code indicating whether a traveller is accompanied by</n>
+      <n>an infant.</n>
+    </desc>
+    <type>an1</type><length></length>
+  </entry>
+  <entry>
+    <code>8246</code><title>Dangerous goods marking identifier</title>
+    <desc>
+      <n>To identify the marking of dangerous goods.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>8249</code><title>Equipment status code</title>
+    <desc>
+      <n>Code specifying the status of equipment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8255</code><title>Packing instruction type code</title>
+    <desc>
+      <n>Code specifying a type of packing instruction.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8260</code><title>Equipment identifier</title>
+    <desc>
+      <n>To identify equipment.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>8273</code><title>Dangerous goods regulations code</title>
+    <desc>
+      <n>Code specifying a dangerous goods regulation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8275</code><title>Container or package contents indicator code</title>
+    <desc>
+      <n>Code indicating the contents of container or package.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8281</code><title>Transport means ownership indicator code</title>
+    <desc>
+      <n>Code indicating the ownership of a means of transport.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8323</code><title>Transport movement code</title>
+    <desc>
+      <n>Code specifying the transport movement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8325</code><title>Hazardous means of transport category code</title>
+    <desc>
+      <n>Code specifying the category of means of transport for</n>
+      <n>carrying hazardous goods.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 This data element will be removed effective with</n>
+      <n>directory D.09A.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>8332</code><title>Equipment plan description</title>
+    <desc>
+      <n>Free form description of the equipment plan.</n>
+    </desc>
+    <type>an</type><length>26</length>
+  </entry>
+  <entry>
+    <code>8334</code><title>Movement type description</title>
+    <desc>
+      <n>Free form description of a type of movement.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>8335</code><title>Movement type description code</title>
+    <desc>
+      <n>Code specifying a type of movement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8339</code><title>Packaging danger level code</title>
+    <desc>
+      <n>Code specifying the level of danger for which the</n>
+      <n>packaging must cater.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8341</code><title>Haulage arrangements code</title>
+    <desc>
+      <n>Code specifying the arrangement for the haulage of</n>
+      <n>goods.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8351</code><title>Hazard identification code</title>
+    <desc>
+      <n>Code identifying a hazard.</n>
+    </desc>
+    <type>an</type><length>7</length>
+  </entry>
+  <entry>
+    <code>8364</code><title>Emergency procedure for ships identifier</title>
+    <desc>
+      <n>To identify the emergency procedure number for ships</n>
+      <n>transporting dangerous goods. Synonym: EMS Number.</n>
+    </desc>
+    <type>an</type><length>6</length>
+  </entry>
+  <entry>
+    <code>8393</code><title>Returnable package load contents code</title>
+    <desc>
+      <n>Code specifying the load contents for a returnable</n>
+      <n>package.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8395</code><title>Returnable package freight payment responsibility code</title>
+    <desc>
+      <n>Code specifying the responsibility for the freight</n>
+      <n>payment for a returnable package.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8410</code><title>Hazard medical first aid guide identifier</title>
+    <desc>
+      <n>To identify a Medical First Aid Guide (MFAG) for</n>
+      <n>hazardous goods.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>8453</code><title>Transport means nationality code</title>
+    <desc>
+      <n>Code specifying the nationality of a means of</n>
+      <n>transport.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 Use ISO 3166-1 two alpha country code.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>8457</code><title>Excess transportation reason code</title>
+    <desc>
+      <n>Code specifying the reason for excess transportation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>8459</code><title>Excess transportation responsibility code</title>
+    <desc>
+      <n>Code specifying the responsibility for excess</n>
+      <n>transportation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9003</code><title>Employment details code qualifier</title>
+    <desc>
+      <n>Code qualifying the employment details.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9004</code><title>Employment category description</title>
+    <desc>
+      <n>Free form description of the employment category.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9005</code><title>Employment category description code</title>
+    <desc>
+      <n>Code specifying the employment category.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9006</code><title>Qualification classification description</title>
+    <desc>
+      <n>Free form description of a qualification</n>
+      <n>classification.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9007</code><title>Qualification classification description code</title>
+    <desc>
+      <n>Code specifying a qualification classification.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9008</code><title>Occupation description</title>
+    <desc>
+      <n>Free form description of an occupation.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9009</code><title>Occupation description code</title>
+    <desc>
+      <n>Code specifying an occupation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9012</code><title>Status reason description</title>
+    <desc>
+      <n>Free form description of the status reason.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>9013</code><title>Status reason description code</title>
+    <desc>
+      <n>Code specifying the reason for a status.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9015</code><title>Status category code</title>
+    <desc>
+      <n>Code specifying the category of a status.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9017</code><title>Attribute function code qualifier</title>
+    <desc>
+      <n>Code qualifying an attribute function.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9018</code><title>Attribute description</title>
+    <desc>
+      <n>Free form description of an attribute.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>9019</code><title>Attribute description code</title>
+    <desc>
+      <n>Code specifying an attribute.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>9020</code><title>Attribute type description</title>
+    <desc>
+      <n>Free form description of an attribute type.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>9021</code><title>Attribute type description code</title>
+    <desc>
+      <n>Coded specifying an attribute type.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>9023</code><title>Definition function code</title>
+    <desc>
+      <n>Code specifying the function of a definition.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9025</code><title>Definition extent code</title>
+    <desc>
+      <n>Code specifying the extent of a definition.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9026</code><title>Edit mask format identifier</title>
+    <desc>
+      <n>To identify the format of an edit mask.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9029</code><title>Value definition code qualifier</title>
+    <desc>
+      <n>Code qualifying a value definition.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9031</code><title>Edit mask representation code</title>
+    <desc>
+      <n>Code specifying the representation of the edit mask.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9035</code><title>Qualification application area code</title>
+    <desc>
+      <n>Code specifying the application area of a</n>
+      <n>qualification.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9037</code><title>Qualification type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of qualification.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9038</code><title>Facility type description</title>
+    <desc>
+      <n>Free form description of the facility type.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>9039</code><title>Facility type description code</title>
+    <desc>
+      <n>Code specifying the facility type.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9040</code><title>Reservation identifier</title>
+    <desc>
+      <n>To identify a reservation.</n>
+    </desc>
+    <type>an</type><length>20</length>
+  </entry>
+  <entry>
+    <code>9043</code><title>Reservation identifier code qualifier</title>
+    <desc>
+      <n>Code qualifying the reservation identifier.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9045</code><title>Basis code qualifier</title>
+    <desc>
+      <n>Code qualifying the basis.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9046</code><title>Basis type description</title>
+    <desc>
+      <n>Free form description of the basis type.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9047</code><title>Basis type description code</title>
+    <desc>
+      <n>Code specifying the type of basis.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9048</code><title>Applicability type description</title>
+    <desc>
+      <n>Free form description of the type of applicability.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9049</code><title>Applicability type description code</title>
+    <desc>
+      <n>Code specifying the type of applicability.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9051</code><title>Applicability code qualifier</title>
+    <desc>
+      <n>Code qualifying the applicability.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9141</code><title>Relationship type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of relationship.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9142</code><title>Relationship description</title>
+    <desc>
+      <n>Free form description of a relationship.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9143</code><title>Relationship description code</title>
+    <desc>
+      <n>Code specifying a relationship.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9146</code><title>Composite data element tag identifier</title>
+    <desc>
+      <n>To identify the tag of a composite data element.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>9148</code><title>Directory status identifier</title>
+    <desc>
+      <n>To identify the status of a directory set.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9150</code><title>Simple data element tag identifier</title>
+    <desc>
+      <n>To identify the tag of a simple data element.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>9153</code><title>Simple data element character representation code</title>
+    <desc>
+      <n>Code specifying the character representation of a</n>
+      <n>simple data element.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9155</code><title>Length type code</title>
+    <desc>
+      <n>Code specifying the type of length.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9156</code><title>Simple data element maximum length measure</title>
+    <desc>
+      <n>To specify the value of the maximum length of a simple</n>
+      <n>data element.</n>
+    </desc>
+    <type>n</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9158</code><title>Simple data element minimum length measure</title>
+    <desc>
+      <n>To specify the value of the minimum length of a simple</n>
+      <n>data element.</n>
+    </desc>
+    <type>n</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9161</code><title>Code set indicator code</title>
+    <desc>
+      <n>Code indicating whether a data element has an</n>
+      <n>associated code set.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9162</code><title>Data element tag identifier</title>
+    <desc>
+      <n>To identify the tag of a data element.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>9164</code><title>Group identifier</title>
+    <desc>
+      <n>To identify a group.</n>
+    </desc>
+    <type>an</type><length>4</length>
+  </entry>
+  <entry>
+    <code>9166</code><title>Segment tag identifier</title>
+    <desc>
+      <n>To identify the tag of a segment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9169</code><title>Data representation type code</title>
+    <desc>
+      <n>Code specifying a type of data representation.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9170</code><title>Event type description</title>
+    <desc>
+      <n>Free form description of the event type.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>9171</code><title>Event type description code</title>
+    <desc>
+      <n>Code specifying an event type.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9172</code><title>Event</title>
+    <desc>
+      <n>Free form description of the event.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>9173</code><title>Event description code</title>
+    <desc>
+      <n>Code specifying an event.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9175</code><title>Data element usage type code</title>
+    <desc>
+      <n>Code specifying the usage type of a data element.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9213</code><title>Duty regime type code</title>
+    <desc>
+      <n>Code specifying a type of duty regime.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9280</code><title>Validation result text</title>
+    <desc>
+      <n>To specify the value of a validation result.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9282</code><title>Validation key identifier</title>
+    <desc>
+      <n>To identify the cryptographic key used for the</n>
+      <n>calculation of the validation.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9285</code><title>Validation criteria code</title>
+    <desc>
+      <n>Code specifying the validation criteria to be applied.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9302</code><title>Sealing party name</title>
+    <desc>
+      <n>Name of the sealing party.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9303</code><title>Sealing party name code</title>
+    <desc>
+      <n>Code specifying the name of the sealing party.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9308</code><title>Transport unit seal identifier</title>
+    <desc>
+      <n>The identification number of a seal affixed to a </n>
+      <n>transport unit.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9321</code><title>Application error code</title>
+    <desc>
+      <n>Code specifying an application error.</n>
+    </desc>
+    <type>an</type><length>8</length>
+  </entry>
+  <entry>
+    <code>9353</code><title>Government procedure code</title>
+    <desc>
+      <n>Code specifying a government procedure.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9411</code><title>Government involvement code</title>
+    <desc>
+      <n>Code indicating the requirement and status of</n>
+      <n>governmental involvement.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9415</code><title>Government agency identification code</title>
+    <desc>
+      <n>Code identifying a government agency.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9417</code><title>Government action code</title>
+    <desc>
+      <n>Code specifying a type of government action such as</n>
+      <n>inspection, detention, fumigation, security.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9419</code><title>Service layer code</title>
+    <desc>
+      <n>Code specifying a service layer.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9421</code><title>Process stage code qualifier</title>
+    <desc>
+      <n>Code qualifying a stage in a process.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9422</code><title>Value text</title>
+    <desc>
+      <n>To specify a value.</n>
+    </desc>
+    <type>an</type><length>512</length>
+  </entry>
+  <entry>
+    <code>9424</code><title>Array cell data description</title>
+    <desc>
+      <n>Free form description of the content of an array cell.</n>
+    </desc>
+    <type>an</type><length>512</length>
+  </entry>
+  <entry>
+    <code>9426</code><title>Code value text</title>
+    <desc>
+      <n>To specify a code value.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9428</code><title>Array cell structure identifier</title>
+    <desc>
+      <n>To identify an array cell structure.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9430</code><title>Footnote set identifier</title>
+    <desc>
+      <n>To identify a footnote set.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9432</code><title>Footnote identifier</title>
+    <desc>
+      <n>To identify a footnote.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9434</code><title>Code name</title>
+    <desc>
+      <n>Name of a code.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>9436</code><title>Clinical intervention description</title>
+    <desc>
+      <n>Free form description of a clinical intervention.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>9437</code><title>Clinical intervention description code</title>
+    <desc>
+      <n>Code specifying a clinical intervention.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>9441</code><title>Clinical intervention type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of clinical intervention.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9443</code><title>Attendance type code qualifier</title>
+    <desc>
+      <n>Code qualifying a type of attendance.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9444</code><title>Admission type description</title>
+    <desc>
+      <n>Free form of the type of admission.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9445</code><title>Admission type description code</title>
+    <desc>
+      <n>Code specifying the type of admission.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9446</code><title>Discharge type description</title>
+    <desc>
+      <n>Free form description of the type of discharge.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9447</code><title>Discharge type description code</title>
+    <desc>
+      <n>Code specifying the type of discharge.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9448</code><title>File generation command name</title>
+    <desc>
+      <n>Name of a file generation command.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9450</code><title>File compression technique name</title>
+    <desc>
+      <n>Name of a file compression technique.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9453</code><title>Code value source code</title>
+    <desc>
+      <n>Code specifying the source of a code value.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9501</code><title>Formula type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of formula.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9502</code><title>Formula name</title>
+    <desc>
+      <n>Name identifying a formula.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9505</code><title>Formula complexity code</title>
+    <desc>
+      <n>Code specifying the complexity of a formula.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9507</code><title>Formula sequence code qualifier</title>
+    <desc>
+      <n>Code giving specific meaning to a formula sequence.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9509</code><title>Formula sequence operand code</title>
+    <desc>
+      <n>Code specifying a specific type of operand within a</n>
+      <n>formula sequence.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>9510</code><title>Formula sequence name</title>
+    <desc>
+      <n>Name identifying a formula sequence.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9601</code><title>Information category code</title>
+    <desc>
+      <n>Code specifying the category of the information.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9605</code><title>Data code qualifier</title>
+    <desc>
+      <n>Code qualifying the data.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9607</code><title>Yes or no indicator code</title>
+    <desc>
+      <n>Code specifying either a yes or no.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9608</code><title>Product name</title>
+    <desc>
+      <n>Name identifying a product.</n>
+    </desc>
+    <type>an</type><length>35</length>
+  </entry>
+  <entry>
+    <code>9612</code><title>Information type description</title>
+    <desc>
+      <n>Free form description of the type of information.</n>
+    </desc>
+    <type>an</type><length>70</length>
+    <note>
+      <n></n>
+      <n>1 This data element will be removed effective with</n>
+      <n>directory D.09A.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>9613</code><title>Information type description code</title>
+    <desc>
+      <n>Code specifying the information type.</n>
+    </desc>
+    <type>an</type><length>3</length>
+    <note>
+      <n></n>
+      <n>1 This data element will be removed effective with</n>
+      <n>directory D.09A.</n>
+    </note>
+  </entry>
+  <entry>
+    <code>9614</code><title>Information category description</title>
+    <desc>
+      <n>Free form description of the category of information.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>9615</code><title>Information category description code</title>
+    <desc>
+      <n>Code specifying the information category.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9616</code><title>Information detail description</title>
+    <desc>
+      <n>Free form description of the information detail.</n>
+    </desc>
+    <type>an</type><length>256</length>
+  </entry>
+  <entry>
+    <code>9617</code><title>Information detail description code</title>
+    <desc>
+      <n>Code specifying the information detail.</n>
+    </desc>
+    <type>an</type><length>17</length>
+  </entry>
+  <entry>
+    <code>9619</code><title>Adjustment category code</title>
+    <desc>
+      <n>Code specifying the general category of adjustment.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9620</code><title>Policy limitation identifier</title>
+    <desc>
+      <n>Code specifying a policy limitation.</n>
+    </desc>
+    <type>an</type><length>10</length>
+  </entry>
+  <entry>
+    <code>9623</code><title>Diagnosis type code</title>
+    <desc>
+      <n>Code specifying the type of diagnosis.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9625</code><title>Related cause code</title>
+    <desc>
+      <n>Code specifying a related cause.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9627</code><title>Admission source code</title>
+    <desc>
+      <n>Code specifying the source of admission.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9629</code><title>Procedure modification code</title>
+    <desc>
+      <n>Code specifying the procedure modification.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9631</code><title>Invoice type code</title>
+    <desc>
+      <n>Code specifying the type of invoice.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9633</code><title>Information details code qualifier</title>
+    <desc>
+      <n>Code qualifying the information details.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9635</code><title>Event details code qualifier</title>
+    <desc>
+      <n>Code qualifying the event details.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9636</code><title>Event category description</title>
+    <desc>
+      <n>Free form description of the event category.</n>
+    </desc>
+    <type>an</type><length>70</length>
+  </entry>
+  <entry>
+    <code>9637</code><title>Event category description code</title>
+    <desc>
+      <n>Code specifying the event category.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9639</code><title>Diagnosis category code</title>
+    <desc>
+      <n>Code specifying a diagnosis category.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9641</code><title>Service basis code qualifier</title>
+    <desc>
+      <n>Code qualifying the basis on which a service is</n>
+      <n>performed.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9643</code><title>Supporting evidence type code qualifier</title>
+    <desc>
+      <n>Code qualifying the type of supporting evidence.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9645</code><title>Payer responsibility level code</title>
+    <desc>
+      <n>Code specifying the level of responsibility of a</n>
+      <n>payer.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9647</code><title>Cavity zone code</title>
+    <desc>
+      <n>Code specifying the zone of the cavity.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+  <entry>
+    <code>9649</code><title>Processing information code qualifier</title>
+    <desc>
+      <n>Code qualifying the processing information.</n>
+    </desc>
+    <type>an</type><length>3</length>
+  </entry>
+</root>

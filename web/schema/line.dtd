@@ -1,0 +1,18 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT table (tr)+>
+<!ATTLIST table
+  xmlns CDATA #FIXED ''
+  columns  #REQUIRED>
+
+<!ELEMENT tr (n|td)+>
+<!ATTLIST tr
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT n EMPTY>
+<!ATTLIST n
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT td (#PCDATA)>
+<!ATTLIST td
+  xmlns CDATA #FIXED ''>

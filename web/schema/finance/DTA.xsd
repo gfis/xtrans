@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.teherba.org/2006/xtrans/Record" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rec="http://www.teherba.org/2006/xtrans/Record" xmlns="http://www.teherba.org/2006/xtrans/Record">
+<xs:element name="records" type="RecordsType"/>
+<xs:complexType name="RecordsType">
+<xs:sequence>
+<xs:element minOccurs="1" maxOccurs="unbounded" name="DTA">
+<xs:annotation>
+<xs:documentation>DTA MCV German Payments Exchange File</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:choice>
+<xs:element name="A">
+<xs:annotation>
+<xs:documentation>header</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence/>
+<xs:attribute name="A3">
+<xs:annotation>
+<xs:documentation>Kennzeichen</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="2"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A4">
+<xs:annotation>
+<xs:documentation>BLZ Empfaenger</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="12"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A5">
+<xs:annotation>
+<xs:documentation>BLZ Absender</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="12"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A6">
+<xs:annotation>
+<xs:documentation>Name</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="27"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A7">
+<xs:annotation>
+<xs:documentation>Dateierstellungsdatum TTMMJJ</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="10"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A8">
+<xs:annotation>
+<xs:documentation>Intern 1</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="8"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A9">
+<xs:annotation>
+<xs:documentation>Kontonr</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="14"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A10">
+<xs:annotation>
+<xs:documentation>Referenz</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A11a">
+<xs:annotation>
+<xs:documentation>Reserve 1</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="15"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A11b">
+<xs:annotation>
+<xs:documentation>Ausfuehrungsdatum TTMMJJJJ</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="8"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A11c">
+<xs:annotation>
+<xs:documentation>Reserve 2</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="58"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="A12">
+<xs:annotation>
+<xs:documentation>Waehrung EUR=1</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
+<xs:element name="C">
+<xs:annotation>
+<xs:documentation>transaction</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CE" maxOccurs="15">
+<xs:complexType>
+<xs:attribute name="CE01">
+<xs:annotation>
+<xs:documentation>Erweiterungskennzeichen</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="2"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="CE02">
+<xs:annotation>
+<xs:documentation>Erweiterungstext</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="27"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="index">
+<xs:annotation>
+<xs:documentation>array index in [0..14]</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:unsignedInt">
+<xs:maxExclusive value="15"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="C3">
+<xs:annotation>
+<xs:documentation>BLZ Erstbezogener</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="12"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C4">
+<xs:annotation>
+<xs:documentation>BLZ Endbeguenstigter</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="12"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C5">
+<xs:annotation>
+<xs:documentation>Kontonr</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="14"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C6a">
+<xs:annotation>
+<xs:documentation>Interne Kundennummer</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="12"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C6b">
+<xs:annotation>
+<xs:documentation>Intern 2</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="16"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C7a">
+<xs:annotation>
+<xs:documentation>Textschluessel</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="2"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C7b">
+<xs:annotation>
+<xs:documentation>Textschluessel-Ergaenzung</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="6"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C8">
+<xs:annotation>
+<xs:documentation>Intern 3</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C9">
+<xs:annotation>
+<xs:documentation>Reserve 3</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="14"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C10">
+<xs:annotation>
+<xs:documentation>BLZ Erstbezogener</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="12"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C11">
+<xs:annotation>
+<xs:documentation>Kontonr</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="14"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C12">
+<xs:annotation>
+<xs:documentation>Betrag EUR</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="14"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C13">
+<xs:annotation>
+<xs:documentation>Intern 4</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="3"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C14">
+<xs:annotation>
+<xs:documentation>Name Empfaenger</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="27"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C15">
+<xs:annotation>
+<xs:documentation>Name Auftraggeber</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="27"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C16">
+<xs:annotation>
+<xs:documentation>Verwendungszweck</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="27"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C17a">
+<xs:annotation>
+<xs:documentation>Waehrung EUR=1</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C17b">
+<xs:annotation>
+<xs:documentation>Reserve 4</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="2"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="C18">
+<xs:annotation>
+<xs:documentation>Anzahl Erweiterungsteile</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="6"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
+<xs:element name="E">
+<xs:annotation>
+<xs:documentation>trailer, control sums</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence/>
+<xs:attribute name="E3">
+<xs:annotation>
+<xs:documentation>Reserve 5</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="5"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="E4">
+<xs:annotation>
+<xs:documentation>Anzahl C-Saetze</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="10"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="E5">
+<xs:annotation>
+<xs:documentation>Reserve 6</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="16"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="E6">
+<xs:annotation>
+<xs:documentation>SummeKontonummern</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="20"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="E7">
+<xs:annotation>
+<xs:documentation>SummeBankleitzahlen</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="20"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="E8">
+<xs:annotation>
+<xs:documentation>SummeBetraege</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="16"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="E9">
+<xs:annotation>
+<xs:documentation>Reserve 7</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="104"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:sequence>
+<xs:attribute name="rlen">
+<xs:annotation>
+<xs:documentation>length of record</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="6"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="l0">
+<xs:annotation>
+<xs:documentation>2 zero bytes</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="6"/>
+<xs:pattern value="[0-9]*"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="rtyp">
+<xs:annotation>
+<xs:documentation>A(header), C(tx) or E(sums)</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:minLength value="0"/>
+<xs:maxLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:attribute>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

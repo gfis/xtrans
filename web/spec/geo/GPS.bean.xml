@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<!--
+    2007-08-28, Dr. Georg Fischer 
+    @(#)$Id: GPS.bean.xml 9 2008-09-05 05:21:15Z gfis $
+-->
+<record xmlns="http://www.teherba.org/2006/xtrans/Record"
+		name="GPS" package="org.teherba.xtrans.geo" type="Bean" 
+		remark="GPS tracking point data" sql="false" >
+    <field name="longitude"    rem="eastern meridian, in degrees from Greenwich"   type="double"   />
+    <field name="lattitude"    rem="northern circle , in degrees from equator"     type="double"   />
+    <field name="dateTime"     rem="ISO date and time of measurement"              type="timestamp" />
+    <field name="altitude"     rem="in m"                                          type="float"   />
+    <field name="speed"        rem="relative to previous point, in km/h"           type="float"   />
+    <field name="course"       rem="clockwise degrees: 0=N, 90=E, 180=S"           type="String"   />
+</record>

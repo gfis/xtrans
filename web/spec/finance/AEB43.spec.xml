@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Format AEB43 for Account Statements in Spain
+    @(#)$Id: AEB43.spec.xml 9 2008-09-05 05:21:15Z gfis $
+    2007-02-09: org.teherba, and fill all rem attributes for @return comment
+    2007-01-19, Dr. Georg Fischer 
+-->
+<!--
+ * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<record name="AEB43" version="1.0"
+        xmlns="http://www.teherba.org/2006/xtrans/Record"
+        package="org.teherba.xtrans.finance" type="Char" order="LSB" code="ASCII" length="80" 
+        remark="AEB43 Spanish Payments Exchange File">
+    <field  name="recordCode"               len="2"     type="char" rem="id for the record"/>
+<choice>
+<variant name="ca" pos="2" test="recordCode" value="11" rem="customer account record" >
+    <field  name="caKeyOfBank"              len="4"     type="char" rem="bank code" />
+    <field  name="caKeyOfOffice"            len="4"     type="char" rem="branch code" />
+    <field  name="caAccountNo"              len="10"    type="char" rem="first 10" />
+    <field  name="caInitialDate"            len="6"     type="char" rem="YYMMDD" />
+    <field  name="caFinalDate"              len="6"     type="char" rem="YYMMDD" />
+    <field  name="caKeyOwesOrToHave"        len="1"     type="char" rem="sign: 1=Debit, 2=Credit" />
+    <field  name="caOpeningBalance"         len="14"    type="num"  rem="amount (2 decimal places)" />
+    <field  name="caCurrencyCode"           len="3"     type="char" rem="numeric currency, EUR=978" />
+    <field  name="caModalityOfInformation"  len="1"     type="char" rem="blanks, or from customer database" />
+    <field  name="caShortName"              len="26"    type="char" rem="name of customer" />
+    <field  name="caFiller"                 len="3"     type="char" rem="blank blank I" />
+</variant>
+<variant name="pm" pos="2" test="recordCode" value="22" rem="principal record of movement (mandatory)" >
+    <field  name="pmFiller"                 len="4"     type="char" rem="empty" />
+    <field  name="pmKeyOfOfficeOrigin"      len="4"     type="char" rem="branch of origin" />
+    <field  name="pmDateOperation"          len="6"     type="char" rem="YYMMDD booking date" />
+    <field  name="pmDateValue"              len="6"     type="char" rem="YYMMDD value date" />
+    <field  name="pmCommonDetail"           len="2"     type="char" rem="from GVC or Reason Code" />
+    <field  name="pmOwnDetail"              len="3"     type="char" rem="from GVC or Reason Code" />
+    <field  name="pmKeyOwesOrToHave"        len="1"     type="char" rem="sign: 1=Debit, 2=Credit" />
+    <field  name="pmValue"                  len="14"    type="num"  rem="amount (2 decimal places)" />
+    <field  name="pmReference1"             len="10"    type="char" rem="numeric ref. with check digit" />
+    <field  name="pmReference2"             len="16"    type="char" rem="alphanumeric ref." />
+    <field  name="pmNofOfDocument"          len="12"    type="char" rem="spaces" />
+</variant>
+<variant name="cd" pos="2" test="recordCode" value="23" rem="complementary records of detail (up to 5)" > 
+    <field  name="cdDataCode"               len="2"     type="num"  rem="01, 02, 03, 04, 05" />
+    <field  name="cdDetail1"                len="75"    type="char" rem="statement text" />
+    <field  name="cdDetail2"                len="37"    type="char" rem="unused" />
+<!--
+    <field  name="cdDetail" pos="2"         len="76"    type="char" mt940="86"  rem="both subfields in one" />
+-->
+</variant>
+<variant name="fa" pos="2" test="recordCode" value="33" rem="final account record" >
+    <field  name="faKeyOfBank"              len="4"     type="char" rem="bank code" />
+    <field  name="faKeyOfOffice"            len="4"     type="char" rem="branch code" />
+    <field  name="faAccountNo"              len="10"    type="char" rem="account of customer" />
+    <field  name="faNoOfDebitMovements"     len="5"     type="num"  rem="calculate sum" />
+    <field  name="faTotalOfDebitAmounts"    len="14"    type="num"  rem="calculate sum" />
+    <field  name="faNoOfCreditMovements"    len="5"     type="num"  rem="calculate sum" />
+    <field  name="faTotalOfCreditAmounts"   len="14"    type="num"  rem="calculate sum" />
+    <field  name="faSymbolClosingBalance"   len="1"     type="char" rem="sign, 1=Debit, 2=Credit" />
+    <field  name="faClosingBalance"         len="14"    type="num"  rem="amount (2 decimal places)" />
+    <field  name="faCurrencyCode"           len="3"     type="char" rem="numeric currency, EUR=978" />
+    <field  name="faFiller"                 len="4"     type="char" rem="blank blank F" />
+</variant>
+<variant name="ff" pos="2" test="recordCode" value="88" rem="final file record" >
+    <field  name="ffNines"                  len="18"    type="char" rem="9999...9" />
+    <field  name="ffNoOfRecords"            len="6"     type="num"  rem="calculate sum" />
+    <field  name="ffFiller"                 len="54"    type="char" rem="9999...9" />
+</variant>
+</choice>
+</record>

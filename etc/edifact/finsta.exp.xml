@@ -1,0 +1,1808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message name="FINSTA" issue="07A">
+  <title>Financial statement of an account message</title>
+  <segm name="UNH" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>1</min>
+    <max>1</max>
+    <seq>0010</seq>
+    <n>Message header</n>
+    <code>UNH</code>
+    <title>HEADER</title>
+    <function>
+      <n>header.</n>
+    </function>
+    <element>
+      <child name="3164" seq="030">
+        <n>CITY NAME</n>
+        <min>0</min>
+        <max>1</max>
+        <type>an</type>
+        <length>35</length>
+      </child>
+    </element>
+  </segm>
+  <segm name="BGM" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>1</min>
+    <max>1</max>
+    <seq>0020</seq>
+    <n>Beginning of message</n>
+    <code>BGM</code>
+    <title>BEGINNING OF MESSAGE</title>
+    <function>
+      <n>To indicate the type and function of a message</n>
+      <n>and to transmit the identifying number.</n>
+    </function>
+    <composite>
+      <data name="C002" seq="010">
+        <n>DOCUMENT/MESSAGE NAME</n>
+        <min>0</min>
+        <max>1</max>
+        <type/>
+        <length/>
+      </data>
+      <child name="1001" seq="">
+        <n>Document name code</n>
+        <min>0</min>
+        <type>an</type>
+        <length>3</length>
+      </child>
+      <child name="1131" seq="">
+        <n>Code list identification code</n>
+        <min>0</min>
+        <type>an</type>
+        <length>17</length>
+      </child>
+      <child name="3055" seq="">
+        <n>Code list responsible agency code</n>
+        <min>0</min>
+        <type>an</type>
+        <length>3</length>
+      </child>
+      <child name="1000" seq="">
+        <n>Document name</n>
+        <min>0</min>
+        <type>an</type>
+        <length>35</length>
+      </child>
+    </composite>
+    <composite>
+      <data name="C106" seq="020">
+        <n>DOCUMENT/MESSAGE IDENTIFICATION</n>
+        <min>0</min>
+        <max>1</max>
+        <type/>
+        <length/>
+      </data>
+      <child name="1004" seq="">
+        <n>Document identifier</n>
+        <min>0</min>
+        <type>an</type>
+        <length>35</length>
+      </child>
+      <child name="1056" seq="">
+        <n>Version identifier</n>
+        <min>0</min>
+        <type>an</type>
+        <length>9</length>
+      </child>
+      <child name="1060" seq="">
+        <n>Revision identifier</n>
+        <min>0</min>
+        <type>an</type>
+        <length>6</length>
+      </child>
+    </composite>
+    <element>
+      <child name="1225" seq="030">
+        <n>MESSAGE FUNCTION CODE</n>
+        <min>0</min>
+        <max>1</max>
+        <type>an</type>
+        <length>3</length>
+      </child>
+    </element>
+    <element>
+      <child name="4343" seq="040">
+        <n>RESPONSE TYPE CODE</n>
+        <min>0</min>
+        <max>1</max>
+        <type>an</type>
+        <length>3</length>
+      </child>
+    </element>
+  </segm>
+  <segm name="DTM" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>1</min>
+    <max>1</max>
+    <seq>0030</seq>
+    <n>Date/time/period</n>
+    <code>DTM</code>
+    <title>DATE</title>
+    <function>
+      <n>To specify date, and/or time, or period.</n>
+    </function>
+    <composite>
+      <data name="C507" seq="010">
+        <n>DATE/TIME/PERIOD</n>
+        <min>1</min>
+        <max>1</max>
+        <type/>
+        <length/>
+      </data>
+      <child name="2005" seq="">
+        <n>Date or time or period function code</n>
+      </child>
+      <child name="" seq="">
+        <n>qualifier</n>
+        <min>1</min>
+        <type>an</type>
+        <length>3</length>
+      </child>
+      <child name="2380" seq="">
+        <n>Date or time or period text</n>
+        <min>0</min>
+        <type>an</type>
+        <length>35</length>
+      </child>
+      <child name="2379" seq="">
+        <n>Date or time or period format code</n>
+        <min>0</min>
+        <type>an</type>
+        <length>3</length>
+      </child>
+    </composite>
+  </segm>
+  <group name="1" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>0</min>
+    <max>1</max>
+    <seq>0040</seq>
+    <segm name="RFF">
+      <min>1</min>
+      <max>1</max>
+      <seq>0050</seq>
+      <n>Reference</n>
+      <code>RFF</code>
+      <title>REFERENCE</title>
+      <function>
+        <n>To specify a reference.</n>
+      </function>
+      <composite>
+        <data name="C506" seq="010">
+          <n>REFERENCE</n>
+          <min>1</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="1153" seq="">
+          <n>Reference code qualifier</n>
+          <min>1</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="1154" seq="">
+          <n>Reference identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>70</length>
+        </child>
+        <child name="1156" seq="">
+          <n>Document line identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>6</length>
+        </child>
+        <child name="1056" seq="">
+          <n>Version identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>9</length>
+        </child>
+        <child name="1060" seq="">
+          <n>Revision identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>6</length>
+        </child>
+      </composite>
+    </segm>
+    <segm name="DTM">
+      <min>0</min>
+      <max>1</max>
+      <seq>0060</seq>
+      <n>Date/time/period</n>
+      <code>DTM</code>
+      <title>DATE</title>
+      <function>
+        <n>To specify date, and/or time, or period.</n>
+      </function>
+      <composite>
+        <data name="C507" seq="010">
+          <n>DATE/TIME/PERIOD</n>
+          <min>1</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="2005" seq="">
+          <n>Date or time or period function code</n>
+        </child>
+        <child name="" seq="">
+          <n>qualifier</n>
+          <min>1</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="2380" seq="">
+          <n>Date or time or period text</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="2379" seq="">
+          <n>Date or time or period format code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+    </segm>
+  </group>
+  <group name="2" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>0</min>
+    <max>5</max>
+    <seq>0070</seq>
+    <segm name="FII">
+      <min>1</min>
+      <max>1</max>
+      <seq>0080</seq>
+      <n>Financial institution information</n>
+      <code>FII</code>
+      <title>FINANCIAL INSTITUTION INFORMATION</title>
+      <function>
+        <n>To identify an account and a related financial</n>
+        <n>institution.</n>
+      </function>
+      <element>
+        <child name="3035" seq="010">
+          <n>PARTY FUNCTION CODE QUALIFIER</n>
+          <min>1</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <composite>
+        <data name="C078" seq="020">
+          <n>ACCOUNT HOLDER IDENTIFICATION</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3194" seq="">
+          <n>Account holder identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3192" seq="">
+          <n>Account holder name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3192" seq="">
+          <n>Account holder name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="6345" seq="">
+          <n>Currency identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+      <composite>
+        <data name="C088" seq="030">
+          <n>INSTITUTION IDENTIFICATION</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3433" seq="">
+          <n>Institution name code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>11</length>
+        </child>
+        <child name="1131" seq="">
+          <n>Code list identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3055" seq="">
+          <n>Code list responsible agency code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="3434" seq="">
+          <n>Institution branch identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="1131" seq="">
+          <n>Code list identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3055" seq="">
+          <n>Code list responsible agency code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="3432" seq="">
+          <n>Institution name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>70</length>
+        </child>
+        <child name="3436" seq="">
+          <n>Institution branch location name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>70</length>
+        </child>
+      </composite>
+      <element>
+        <child name="3207" seq="040">
+          <n>COUNTRY IDENTIFIER</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+    </segm>
+    <segm name="CTA">
+      <min>0</min>
+      <max>1</max>
+      <seq>0090</seq>
+      <n>Contact information</n>
+      <code>CTA</code>
+      <title>CONTACT INFORMATION</title>
+      <function>
+        <n>To identify a person or a department to whom</n>
+        <n>communication should be directed.</n>
+      </function>
+      <element>
+        <child name="3139" seq="010">
+          <n>CONTACT FUNCTION CODE</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <composite>
+        <data name="C056" seq="020">
+          <n>CONTACT DETAILS</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3413" seq="">
+          <n>Contact identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3412" seq="">
+          <n>Contact name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>256</length>
+        </child>
+      </composite>
+    </segm>
+    <segm name="COM">
+      <min>0</min>
+      <max>5</max>
+      <seq>0100</seq>
+      <n>Communication contact</n>
+      <code>COM</code>
+      <title>COMMUNICATION CONTACT</title>
+      <function>
+        <n>To identify a communication number of a</n>
+        <n>department or a person to whom communication</n>
+        <n>should be directed.</n>
+      </function>
+      <composite>
+        <data name="C076" seq="010">
+          <n>COMMUNICATION CONTACT</n>
+          <min>1</min>
+          <max>3</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3148" seq="">
+          <n>Communication address identifier</n>
+          <min>1</min>
+          <type>an</type>
+          <length>512</length>
+        </child>
+        <child name="3155" seq="">
+          <n>Communication means type code</n>
+          <min>1</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+    </segm>
+  </group>
+  <group name="3" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>0</min>
+    <max>3</max>
+    <seq>0110</seq>
+    <segm name="NAD">
+      <min>1</min>
+      <max>1</max>
+      <seq>0120</seq>
+      <n>Name and address</n>
+      <code>NAD</code>
+      <title>NAME AND ADDRESS</title>
+      <function>
+        <n>To specify the name/address and their related</n>
+        <n>function, either by C082 only and/or</n>
+        <n>unstructured by C058 or structured by C080 thru</n>
+        <n>3207.</n>
+      </function>
+      <element>
+        <child name="3035" seq="010">
+          <n>PARTY FUNCTION CODE QUALIFIER</n>
+          <min>1</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <composite>
+        <data name="C082" seq="020">
+          <n>PARTY IDENTIFICATION DETAILS</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3039" seq="">
+          <n>Party identifier</n>
+          <min>1</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="1131" seq="">
+          <n>Code list identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3055" seq="">
+          <n>Code list responsible agency code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+      <composite>
+        <data name="C058" seq="030">
+          <n>NAME AND ADDRESS</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3124" seq="">
+          <n>Name and address description</n>
+          <min>1</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3124" seq="">
+          <n>Name and address description</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3124" seq="">
+          <n>Name and address description</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3124" seq="">
+          <n>Name and address description</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3124" seq="">
+          <n>Name and address description</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+      </composite>
+      <composite>
+        <data name="C080" seq="040">
+          <n>PARTY NAME</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3036" seq="">
+          <n>Party name</n>
+          <min>1</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3036" seq="">
+          <n>Party name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3036" seq="">
+          <n>Party name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3036" seq="">
+          <n>Party name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3036" seq="">
+          <n>Party name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3045" seq="">
+          <n>Party name format code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+      <composite>
+        <data name="C059" seq="050">
+          <n>STREET</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3042" seq="">
+          <n>Street and number or post office box</n>
+        </child>
+        <child name="" seq="">
+          <n>identifier</n>
+          <min>1</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3042" seq="">
+          <n>Street and number or post office box</n>
+        </child>
+        <child name="" seq="">
+          <n>identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3042" seq="">
+          <n>Street and number or post office box</n>
+        </child>
+        <child name="" seq="">
+          <n>identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3042" seq="">
+          <n>Street and number or post office box</n>
+        </child>
+        <child name="" seq="">
+          <n>identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+      </composite>
+      <element>
+        <child name="3164" seq="060">
+          <n>CITY NAME</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>35</length>
+        </child>
+      </element>
+      <composite>
+        <data name="C819" seq="070">
+          <n>COUNTRY SUBDIVISION DETAILS</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3229" seq="">
+          <n>Country subdivision identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>9</length>
+        </child>
+        <child name="1131" seq="">
+          <n>Code list identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3055" seq="">
+          <n>Code list responsible agency code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="3228" seq="">
+          <n>Country subdivision name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>70</length>
+        </child>
+      </composite>
+      <element>
+        <child name="3251" seq="080">
+          <n>POSTAL IDENTIFICATION CODE</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>17</length>
+        </child>
+      </element>
+      <element>
+        <child name="3207" seq="090">
+          <n>COUNTRY IDENTIFIER</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+    </segm>
+    <segm name="CTA">
+      <min>0</min>
+      <max>1</max>
+      <seq>0130</seq>
+      <n>Contact information</n>
+      <code>CTA</code>
+      <title>CONTACT INFORMATION</title>
+      <function>
+        <n>To identify a person or a department to whom</n>
+        <n>communication should be directed.</n>
+      </function>
+      <element>
+        <child name="3139" seq="010">
+          <n>CONTACT FUNCTION CODE</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <composite>
+        <data name="C056" seq="020">
+          <n>CONTACT DETAILS</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3413" seq="">
+          <n>Contact identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3412" seq="">
+          <n>Contact name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>256</length>
+        </child>
+      </composite>
+    </segm>
+    <segm name="COM">
+      <min>0</min>
+      <max>5</max>
+      <seq>0140</seq>
+      <n>Communication contact</n>
+      <code>COM</code>
+      <title>COMMUNICATION CONTACT</title>
+      <function>
+        <n>To identify a communication number of a</n>
+        <n>department or a person to whom communication</n>
+        <n>should be directed.</n>
+      </function>
+      <composite>
+        <data name="C076" seq="010">
+          <n>COMMUNICATION CONTACT</n>
+          <min>1</min>
+          <max>3</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3148" seq="">
+          <n>Communication address identifier</n>
+          <min>1</min>
+          <type>an</type>
+          <length>512</length>
+        </child>
+        <child name="3155" seq="">
+          <n>Communication means type code</n>
+          <min>1</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+    </segm>
+  </group>
+  <group name="4" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>1</min>
+    <max>9999</max>
+    <seq>0150</seq>
+    <segm name="LIN">
+      <min>1</min>
+      <max>1</max>
+      <seq>0160</seq>
+      <n>Line item</n>
+      <code>LIN</code>
+      <title>LINE ITEM</title>
+      <function>
+        <n>To identify a line item and configuration.</n>
+      </function>
+      <element>
+        <child name="1082" seq="010">
+          <n>LINE ITEM IDENTIFIER</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>6</length>
+        </child>
+      </element>
+      <element>
+        <child name="1229" seq="020">
+          <n>ACTION CODE</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <composite>
+        <data name="C212" seq="030">
+          <n>ITEM NUMBER IDENTIFICATION</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="7140" seq="">
+          <n>Item identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="7143" seq="">
+          <n>Item type identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="1131" seq="">
+          <n>Code list identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3055" seq="">
+          <n>Code list responsible agency code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+      <composite>
+        <data name="C829" seq="040">
+          <n>SUB-LINE INFORMATION</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="5495" seq="">
+          <n>Sub-line indicator code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="1082" seq="">
+          <n>Line item identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>6</length>
+        </child>
+      </composite>
+      <element>
+        <child name="1222" seq="050">
+          <n>CONFIGURATION LEVEL NUMBER</n>
+          <min>0</min>
+          <max>1</max>
+          <type>n</type>
+          <length>2</length>
+        </child>
+      </element>
+      <element>
+        <child name="7083" seq="060">
+          <n>CONFIGURATION OPERATION CODE</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+    </segm>
+    <segm name="FII">
+      <min>1</min>
+      <max>1</max>
+      <seq>0170</seq>
+      <n>Financial institution information</n>
+      <code>FII</code>
+      <title>FINANCIAL INSTITUTION INFORMATION</title>
+      <function>
+        <n>To identify an account and a related financial</n>
+        <n>institution.</n>
+      </function>
+      <element>
+        <child name="3035" seq="010">
+          <n>PARTY FUNCTION CODE QUALIFIER</n>
+          <min>1</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <composite>
+        <data name="C078" seq="020">
+          <n>ACCOUNT HOLDER IDENTIFICATION</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3194" seq="">
+          <n>Account holder identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3192" seq="">
+          <n>Account holder name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="3192" seq="">
+          <n>Account holder name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="6345" seq="">
+          <n>Currency identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+      <composite>
+        <data name="C088" seq="030">
+          <n>INSTITUTION IDENTIFICATION</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="3433" seq="">
+          <n>Institution name code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>11</length>
+        </child>
+        <child name="1131" seq="">
+          <n>Code list identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3055" seq="">
+          <n>Code list responsible agency code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="3434" seq="">
+          <n>Institution branch identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="1131" seq="">
+          <n>Code list identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3055" seq="">
+          <n>Code list responsible agency code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="3432" seq="">
+          <n>Institution name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>70</length>
+        </child>
+        <child name="3436" seq="">
+          <n>Institution branch location name</n>
+          <min>0</min>
+          <type>an</type>
+          <length>70</length>
+        </child>
+      </composite>
+      <element>
+        <child name="3207" seq="040">
+          <n>COUNTRY IDENTIFIER</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+    </segm>
+    <segm name="RFF">
+      <min>1</min>
+      <max>1</max>
+      <seq>0180</seq>
+      <n>Reference</n>
+      <code>RFF</code>
+      <title>REFERENCE</title>
+      <function>
+        <n>To specify a reference.</n>
+      </function>
+      <composite>
+        <data name="C506" seq="010">
+          <n>REFERENCE</n>
+          <min>1</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="1153" seq="">
+          <n>Reference code qualifier</n>
+          <min>1</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="1154" seq="">
+          <n>Reference identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>70</length>
+        </child>
+        <child name="1156" seq="">
+          <n>Document line identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>6</length>
+        </child>
+        <child name="1056" seq="">
+          <n>Version identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>9</length>
+        </child>
+        <child name="1060" seq="">
+          <n>Revision identifier</n>
+          <min>0</min>
+          <type>an</type>
+          <length>6</length>
+        </child>
+      </composite>
+    </segm>
+    <segm name="FTX">
+      <min>0</min>
+      <max>1</max>
+      <seq>0190</seq>
+      <n>Free text</n>
+      <code>FTX</code>
+      <title>FREE TEXT</title>
+      <function>
+        <n>To provide free form or coded text information.</n>
+      </function>
+      <element>
+        <child name="4451" seq="010">
+          <n>TEXT SUBJECT CODE QUALIFIER</n>
+          <min>1</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <element>
+        <child name="4453" seq="020">
+          <n>FREE TEXT FUNCTION CODE</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <composite>
+        <data name="C107" seq="030">
+          <n>TEXT REFERENCE</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="4441" seq="">
+          <n>Free text description code</n>
+          <min>1</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="1131" seq="">
+          <n>Code list identification code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>17</length>
+        </child>
+        <child name="3055" seq="">
+          <n>Code list responsible agency code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+      <composite>
+        <data name="C108" seq="040">
+          <n>TEXT LITERAL</n>
+          <min>0</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="4440" seq="">
+          <n>Free text</n>
+          <min>1</min>
+          <type>an</type>
+          <length>512</length>
+        </child>
+        <child name="4440" seq="">
+          <n>Free text</n>
+          <min>0</min>
+          <type>an</type>
+          <length>512</length>
+        </child>
+        <child name="4440" seq="">
+          <n>Free text</n>
+          <min>0</min>
+          <type>an</type>
+          <length>512</length>
+        </child>
+        <child name="4440" seq="">
+          <n>Free text</n>
+          <min>0</min>
+          <type>an</type>
+          <length>512</length>
+        </child>
+        <child name="4440" seq="">
+          <n>Free text</n>
+          <min>0</min>
+          <type>an</type>
+          <length>512</length>
+        </child>
+      </composite>
+      <element>
+        <child name="3453" seq="050">
+          <n>LANGUAGE NAME CODE</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+      <element>
+        <child name="4447" seq="060">
+          <n>FREE TEXT FORMAT CODE</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </element>
+    </segm>
+    <group name="5">
+      <min>1</min>
+      <max>99</max>
+      <seq>0200</seq>
+      <segm name="MOA">
+        <min>1</min>
+        <max>1</max>
+        <seq>0210</seq>
+        <n>Monetary amount</n>
+        <code>MOA</code>
+        <title>MONETARY AMOUNT</title>
+        <function>
+          <n>To specify a monetary amount.</n>
+        </function>
+        <composite>
+          <data name="C516" seq="010">
+            <n>MONETARY AMOUNT</n>
+            <min>1</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="5025" seq="">
+            <n>Monetary amount type code qualifier</n>
+            <min>1</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="5004" seq="">
+            <n>Monetary amount</n>
+            <min>0</min>
+            <type>n</type>
+            <length>35</length>
+          </child>
+          <child name="6345" seq="">
+            <n>Currency identification code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="6343" seq="">
+            <n>Currency type code qualifier</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="4405" seq="">
+            <n>Status description code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </composite>
+      </segm>
+      <segm name="DTM">
+        <min>0</min>
+        <max>1</max>
+        <seq>0220</seq>
+        <n>Date/time/period</n>
+        <code>DTM</code>
+        <title>DATE</title>
+        <function>
+          <n>To specify date, and/or time, or period.</n>
+        </function>
+        <composite>
+          <data name="C507" seq="010">
+            <n>DATE/TIME/PERIOD</n>
+            <min>1</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="2005" seq="">
+            <n>Date or time or period function code</n>
+          </child>
+          <child name="" seq="">
+            <n>qualifier</n>
+            <min>1</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="2380" seq="">
+            <n>Date or time or period text</n>
+            <min>0</min>
+            <type>an</type>
+            <length>35</length>
+          </child>
+          <child name="2379" seq="">
+            <n>Date or time or period format code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </composite>
+      </segm>
+    </group>
+    <group name="6">
+      <min>0</min>
+      <max>9999</max>
+      <seq>0230</seq>
+      <segm name="SEQ">
+        <min>1</min>
+        <max>1</max>
+        <seq>0240</seq>
+        <n>Sequence details</n>
+        <code>SEQ</code>
+        <title>SEQUENCE DETAILS</title>
+        <function>
+          <n>To provide details relating to the sequence.</n>
+        </function>
+        <element>
+          <child name="1229" seq="010">
+            <n>ACTION CODE</n>
+            <min>0</min>
+            <max>1</max>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </element>
+        <composite>
+          <data name="C286" seq="020">
+            <n>SEQUENCE INFORMATION</n>
+            <min>0</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="1050" seq="">
+            <n>Sequence position identifier</n>
+            <min>1</min>
+            <type>an</type>
+            <length>10</length>
+          </child>
+          <child name="1159" seq="">
+            <n>Sequence identifier source code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="1131" seq="">
+            <n>Code list identification code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>17</length>
+          </child>
+          <child name="3055" seq="">
+            <n>Code list responsible agency code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </composite>
+      </segm>
+      <segm name="RFF">
+        <min>1</min>
+        <max>5</max>
+        <seq>0250</seq>
+        <n>Reference</n>
+        <code>RFF</code>
+        <title>REFERENCE</title>
+        <function>
+          <n>To specify a reference.</n>
+        </function>
+        <composite>
+          <data name="C506" seq="010">
+            <n>REFERENCE</n>
+            <min>1</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="1153" seq="">
+            <n>Reference code qualifier</n>
+            <min>1</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="1154" seq="">
+            <n>Reference identifier</n>
+            <min>0</min>
+            <type>an</type>
+            <length>70</length>
+          </child>
+          <child name="1156" seq="">
+            <n>Document line identifier</n>
+            <min>0</min>
+            <type>an</type>
+            <length>6</length>
+          </child>
+          <child name="1056" seq="">
+            <n>Version identifier</n>
+            <min>0</min>
+            <type>an</type>
+            <length>9</length>
+          </child>
+          <child name="1060" seq="">
+            <n>Revision identifier</n>
+            <min>0</min>
+            <type>an</type>
+            <length>6</length>
+          </child>
+        </composite>
+      </segm>
+      <segm name="DTM">
+        <min>1</min>
+        <max>2</max>
+        <seq>0260</seq>
+        <n>Date/time/period</n>
+        <code>DTM</code>
+        <title>DATE</title>
+        <function>
+          <n>To specify date, and/or time, or period.</n>
+        </function>
+        <composite>
+          <data name="C507" seq="010">
+            <n>DATE/TIME/PERIOD</n>
+            <min>1</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="2005" seq="">
+            <n>Date or time or period function code</n>
+          </child>
+          <child name="" seq="">
+            <n>qualifier</n>
+            <min>1</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="2380" seq="">
+            <n>Date or time or period text</n>
+            <min>0</min>
+            <type>an</type>
+            <length>35</length>
+          </child>
+          <child name="2379" seq="">
+            <n>Date or time or period format code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </composite>
+      </segm>
+      <segm name="BUS">
+        <min>1</min>
+        <max>1</max>
+        <seq>0270</seq>
+        <n>Business function</n>
+        <code>BUS</code>
+        <title>BUSINESS FUNCTION</title>
+        <function>
+          <n>To provide information related to the processing</n>
+          <n>and purpose of a financial message.</n>
+        </function>
+        <composite>
+          <data name="C521" seq="010">
+            <n>BUSINESS FUNCTION</n>
+            <min>0</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="4027" seq="">
+            <n>Business function type code qualifier</n>
+            <min>1</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="4025" seq="">
+            <n>Business function code</n>
+            <min>1</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="1131" seq="">
+            <n>Code list identification code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>17</length>
+          </child>
+          <child name="3055" seq="">
+            <n>Code list responsible agency code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="4022" seq="">
+            <n>Business description</n>
+            <min>0</min>
+            <type>an</type>
+            <length>70</length>
+          </child>
+        </composite>
+        <element>
+          <child name="3279" seq="020">
+            <n>GEOGRAPHIC AREA CODE</n>
+            <min>0</min>
+            <max>1</max>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </element>
+        <element>
+          <child name="4487" seq="030">
+            <n>FINANCIAL TRANSACTION TYPE CODE</n>
+            <min>0</min>
+            <max>1</max>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </element>
+        <composite>
+          <data name="C551" seq="040">
+            <n>BANK OPERATION</n>
+            <min>0</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="4383" seq="">
+            <n>Bank operation code</n>
+            <min>1</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="1131" seq="">
+            <n>Code list identification code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>17</length>
+          </child>
+          <child name="3055" seq="">
+            <n>Code list responsible agency code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </composite>
+        <element>
+          <child name="4463" seq="050">
+            <n>INTRA-COMPANY PAYMENT INDICATOR CODE</n>
+            <min>0</min>
+            <max>1</max>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </element>
+      </segm>
+      <segm name="MOA">
+        <min>1</min>
+        <max>1</max>
+        <seq>0280</seq>
+        <n>Monetary amount</n>
+        <code>MOA</code>
+        <title>MONETARY AMOUNT</title>
+        <function>
+          <n>To specify a monetary amount.</n>
+        </function>
+        <composite>
+          <data name="C516" seq="010">
+            <n>MONETARY AMOUNT</n>
+            <min>1</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="5025" seq="">
+            <n>Monetary amount type code qualifier</n>
+            <min>1</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="5004" seq="">
+            <n>Monetary amount</n>
+            <min>0</min>
+            <type>n</type>
+            <length>35</length>
+          </child>
+          <child name="6345" seq="">
+            <n>Currency identification code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="6343" seq="">
+            <n>Currency type code qualifier</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+          <child name="4405" seq="">
+            <n>Status description code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </composite>
+      </segm>
+      <segm name="FTX">
+        <min>0</min>
+        <max>1</max>
+        <seq>0290</seq>
+        <n>Free text</n>
+        <code>FTX</code>
+        <title>FREE TEXT</title>
+        <function>
+          <n>To provide free form or coded text information.</n>
+        </function>
+        <element>
+          <child name="4451" seq="010">
+            <n>TEXT SUBJECT CODE QUALIFIER</n>
+            <min>1</min>
+            <max>1</max>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </element>
+        <element>
+          <child name="4453" seq="020">
+            <n>FREE TEXT FUNCTION CODE</n>
+            <min>0</min>
+            <max>1</max>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </element>
+        <composite>
+          <data name="C107" seq="030">
+            <n>TEXT REFERENCE</n>
+            <min>0</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="4441" seq="">
+            <n>Free text description code</n>
+            <min>1</min>
+            <type>an</type>
+            <length>17</length>
+          </child>
+          <child name="1131" seq="">
+            <n>Code list identification code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>17</length>
+          </child>
+          <child name="3055" seq="">
+            <n>Code list responsible agency code</n>
+            <min>0</min>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </composite>
+        <composite>
+          <data name="C108" seq="040">
+            <n>TEXT LITERAL</n>
+            <min>0</min>
+            <max>1</max>
+            <type/>
+            <length/>
+          </data>
+          <child name="4440" seq="">
+            <n>Free text</n>
+            <min>1</min>
+            <type>an</type>
+            <length>512</length>
+          </child>
+          <child name="4440" seq="">
+            <n>Free text</n>
+            <min>0</min>
+            <type>an</type>
+            <length>512</length>
+          </child>
+          <child name="4440" seq="">
+            <n>Free text</n>
+            <min>0</min>
+            <type>an</type>
+            <length>512</length>
+          </child>
+          <child name="4440" seq="">
+            <n>Free text</n>
+            <min>0</min>
+            <type>an</type>
+            <length>512</length>
+          </child>
+          <child name="4440" seq="">
+            <n>Free text</n>
+            <min>0</min>
+            <type>an</type>
+            <length>512</length>
+          </child>
+        </composite>
+        <element>
+          <child name="3453" seq="050">
+            <n>LANGUAGE NAME CODE</n>
+            <min>0</min>
+            <max>1</max>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </element>
+        <element>
+          <child name="4447" seq="060">
+            <n>FREE TEXT FORMAT CODE</n>
+            <min>0</min>
+            <max>1</max>
+            <type>an</type>
+            <length>3</length>
+          </child>
+        </element>
+      </segm>
+    </group>
+  </group>
+  <segm name="CNT" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>0</min>
+    <max>5</max>
+    <seq>0300</seq>
+    <n>Control total</n>
+    <code>CNT</code>
+    <title>CONTROL TOTAL</title>
+    <function>
+      <n>To provide control total.</n>
+    </function>
+    <composite>
+      <data name="C270" seq="010">
+        <n>CONTROL</n>
+        <min>1</min>
+        <max>1</max>
+        <type/>
+        <length/>
+      </data>
+      <child name="6069" seq="">
+        <n>Control total type code qualifier</n>
+        <min>1</min>
+        <type>an</type>
+        <length>3</length>
+      </child>
+      <child name="6066" seq="">
+        <n>Control total quantity</n>
+        <min>1</min>
+        <type>n</type>
+        <length>18</length>
+      </child>
+      <child name="6411" seq="">
+        <n>Measurement unit code</n>
+        <min>0</min>
+        <type>an</type>
+        <length>8</length>
+      </child>
+    </composite>
+  </segm>
+  <group name="7" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>0</min>
+    <max>5</max>
+    <seq>0310</seq>
+    <segm name="AUT">
+      <min>1</min>
+      <max>1</max>
+      <seq>0320</seq>
+      <n>Authentication result</n>
+      <code>AUT</code>
+      <title>AUTHENTICATION RESULT</title>
+      <function>
+        <n>To specify results of the application of an</n>
+        <n>authentication procedure.</n>
+      </function>
+      <element>
+        <child name="9280" seq="010">
+          <n>VALIDATION RESULT TEXT</n>
+          <min>1</min>
+          <max>1</max>
+          <type>an</type>
+          <length>35</length>
+        </child>
+      </element>
+      <element>
+        <child name="9282" seq="020">
+          <n>VALIDATION KEY IDENTIFIER</n>
+          <min>0</min>
+          <max>1</max>
+          <type>an</type>
+          <length>35</length>
+        </child>
+      </element>
+    </segm>
+    <segm name="DTM">
+      <min>0</min>
+      <max>1</max>
+      <seq>0330</seq>
+      <n>Date/time/period</n>
+      <code>DTM</code>
+      <title>DATE</title>
+      <function>
+        <n>To specify date, and/or time, or period.</n>
+      </function>
+      <composite>
+        <data name="C507" seq="010">
+          <n>DATE/TIME/PERIOD</n>
+          <min>1</min>
+          <max>1</max>
+          <type/>
+          <length/>
+        </data>
+        <child name="2005" seq="">
+          <n>Date or time or period function code</n>
+        </child>
+        <child name="" seq="">
+          <n>qualifier</n>
+          <min>1</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+        <child name="2380" seq="">
+          <n>Date or time or period text</n>
+          <min>0</min>
+          <type>an</type>
+          <length>35</length>
+        </child>
+        <child name="2379" seq="">
+          <n>Date or time or period format code</n>
+          <min>0</min>
+          <type>an</type>
+          <length>3</length>
+        </child>
+      </composite>
+    </segm>
+  </group>
+  <segm name="UNT" xmlns:xalan="http://xml.apache.org/xalan">
+    <min>1</min>
+    <max>1</max>
+    <seq>0340</seq>
+    <n>Message trailer</n>
+    <code>UNT</code>
+    <title>HEADER</title>
+    <function>
+      <n>header.</n>
+    </function>
+    <element>
+      <child name="3164" seq="030">
+        <n>CITY NAME</n>
+        <min>0</min>
+        <max>1</max>
+        <type>an</type>
+        <length>35</length>
+      </child>
+    </element>
+  </segm>
+</message>

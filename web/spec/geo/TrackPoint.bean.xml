@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<!--
+    2006-09-27, Dr. Georg Fischer 
+    @(#)$Id: TrackPoint.bean.xml 9 2008-09-05 05:21:15Z gfis $
+-->
+<record name="TrackPoint" package="org.teherba.xtrans.geo" type="Bean" order="LSB" code="ASCII"  
+        remark="GPS track point data" sql="false" >
+    <field name="longitude"    rem="eastern meridian, degree from Greenwhich"  len="10"     type="ascii"   />
+    <field name="lattitude"    rem="northern eleveation, degree from equator"  len="10"     type="ascii"   />
+    <field name="date"         rem="ISO date of measurement"                   len="10"     type="date"    />
+    <field name="time"         rem="ISO time of measurement with seconds"      len= "8"     type="time"    />
+    <field name="altitude"     rem="in m"                                      len= "8"     type="ascii"   />
+    <field name="speed"        rem="relative to previous point, in km/h"       len= "8"     type="ascii"   />
+    <field name="course"       rem="clockwise degrees: 0=N, 90=E, 180=S"       len= "8"     type="ascii"   />
+</record>
