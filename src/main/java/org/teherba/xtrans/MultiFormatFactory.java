@@ -1,11 +1,11 @@
 /*  Selects the applicable transformer - all implemented formats
     @(#) $Id: MultiFormatFactory.java 967 2012-08-29 18:22:10Z gfis $
     2012-08-29: ExifGenerator
-	2011-10-04: TeX
+    2011-10-04: TeX
     2011-04-05, Georg Fischer: derived from XtransFactory
-    
+
     Usage:
-        java -cp dist/xtrans.jar org.teherba.xtrans.MultiFormatFactory 
+        java -cp dist/xtrans.jar org.teherba.xtrans.MultiFormatFactory
     Output files:
         src/main/java/org/teherba/xtrans/.../package.html
 */
@@ -99,27 +99,27 @@ import  java.util.Iterator;
 import  org.apache.log4j.Logger;
 
 /** Selects a specific transformer, and iterates over the descriptions
- *  of all transformers and their codes. 
+ *  of all transformers and their codes.
  *  <p>
  *  The {@link #main} method of this
  *  class generates package description files in all subdirectories
  *  for the Javadoc API documentation.
  *  @author Dr. Georg Fischer
  */
-public class MultiFormatFactory extends XtransFactory{ 
+public class MultiFormatFactory extends XtransFactory{
     public final static String CVSID = "@(#) $Id: MultiFormatFactory.java 967 2012-08-29 18:22:10Z gfis $";
 
     /** log4j logger (category) */
     private Logger log;
-    
+
     public MultiFormatFactory() {
-    	super();
+        super();
         log = Logger.getLogger(MultiFormatFactory.class.getName());
         allTransformers = new BaseTransformer[] { null // since this allows for "," on next source line
                 // the order here defines the order in documentation.jsp,
                 // should be: "... group by package order by package, name"
                 , new XMLTransformer            () // serializer for XML
-                // -------      
+                // -------
                 // general
                 , new Col1Transformer           () // tags in column 1 of text lines
                 , new ColumnTransformer         () // fields with fixed columns
@@ -128,7 +128,7 @@ public class MultiFormatFactory extends XtransFactory{
                 , new LineTransformer           () // character file consisting of lines
                 , new PYXTransformer            () // line oriented representation of XML
                 // , new SiXMLTransformer          () // Simplified XML representation
-                , new SeparatedTransformer      () // fields separated or delimited by character strings                                        
+                , new SeparatedTransformer      () // fields separated or delimited by character strings
                 // config
                 , new IniTransformer            () // Windows .ini files
                 , new MakefileTransformer       () // Unix 'make' utility input files
@@ -140,10 +140,10 @@ public class MultiFormatFactory extends XtransFactory{
                 , new EdifactTransformer        () // UN/Edifact trade interchange messages
                 , new X12Transformer            () // ANSI ASC X12 trade interchange messages
                 // finance
-                , new AEB43Transformer          () // AEB43 (Spanish payments exchange file)    
-                , new DATEVTransformer          () // DATEV accounting files 
-                , new DTATransformer            () // DTA (German payments exchange file)   
-                , new DTA2Transformer           () // DTA2 (German payments exchange file)   
+                , new AEB43Transformer          () // AEB43 (Spanish payments exchange file)
+                , new DATEVTransformer          () // DATEV accounting files
+                , new DTATransformer            () // DTA (German payments exchange file)
+                , new DTA2Transformer           () // DTA2 (German payments exchange file)
                 , new MT103Transformer          () // SWIFT MT103 messages
                 , new MT940Transformer          () // SWIFT MT940 messages
                 , new SWIFTTransformer          () // SWIFT FIN messages
@@ -153,14 +153,14 @@ public class MultiFormatFactory extends XtransFactory{
                 , new ExtraTransformer          () // EXTRA = Extensible Translator System (Georg Fischer 1980)
                 , new YACCTransformer           () // YACC = Yet Another Compiler Compiler, or GNU Bison
                 // image.raster
-                , new ExifGenerator             () // Exif metadata          
+                , new ExifGenerator             () // Exif metadata
                 // image.vector
                 , new WMFTransformer            () // Windows Meta Format
                 // misc
                 , new GEDCOMTransformer         () // Genealogical Data Communication
                 , new MorseCodeTransformer      () // Morse Code of a text
                 // net
-                , new Base64Transformer         () // Base64 encoding of a binary file 
+                , new Base64Transformer         () // Base64 encoding of a binary file
                 , new LDIFTransformer           () // LDIF addressbooks as exported from Mozilla Thunderbird
                 , new QuotedPrintableTransformer() // Quoted Printable encoding
                 , new URITransformer            () // lines with single URIs
@@ -170,12 +170,12 @@ public class MultiFormatFactory extends XtransFactory{
                 // office.text
                 , new HitTransformer            () // Interface/Siemens Hit V3.1, V4.0
                 , new RichTextTransformer       () // RTF - Microsoft's Rich Text Format
-                , new TeXTransformer       		() // TeX and LaTeX typesetting 	
+                , new TeXTransformer            () // TeX and LaTeX typesetting
                 // organizer
                 , new ICalendarTransformer      () // iCalendar calendars and schedules
                 , new VCardTransformer          () // VCard address/phone book entries
-				// parser
-                , new ParseFilter               () // parse a SAX stream of events and insert/delete/rearrange production elements 
+                // parser
+                , new ParseFilter               () // parse a SAX stream of events and insert/delete/rearrange production elements
                 // programming languages
                 , new CTransformer              () // C source programs
                 , new CobolTransformer          () // Cobol source programs
@@ -203,36 +203,36 @@ public class MultiFormatFactory extends XtransFactory{
                 , new SequenceGenerator         () // generates a sequence
                 , new SystemGenerator           () // show system information
                 // --------
-                }; 
+                };
     } // Constructor
 
-	/** Maps subpackage names to their descriptions */
-	private static HashMap/*<1.5*/<String, String>/*1.5>*/ descMap;
-	
+    /** Maps subpackage names to their descriptions */
+    private static HashMap/*<1.5*/<String, String>/*1.5>*/ descMap;
+
     /** Stores the descriptions of all subpackages.
      */
     private static void storeSubPackages() {
-    	descMap = new HashMap/*<1.5*/<String, String>/*1.5>*/();
-    	descMap.put("config"		, "configuration file formats");
-    	descMap.put("edi"			, "electronic data interchange (business) formats");
-    	descMap.put("finance"		, "financial data formats (SWIFT et al.)");
-    	descMap.put("general"		, "general purpose file formats");
-    	descMap.put("geo"			, "geopositioning data formats");
-    	descMap.put("grammar"		, "grammar/syntax description languages");
-    	descMap.put("image"			, "graphics and image file formats");
-    	descMap.put("image.raster"	, "raster image file formats");
-    	descMap.put("image.vector"	, "vector image file formats");
-    	descMap.put("misc"			, "miscellaneous file formats");
-    	descMap.put("net"			, "Internet standard (RFC) file formats");
-    	descMap.put("office"		, "file formats for office applications");
-    	descMap.put("office.data"	, "office table and spreadsheet applications");
-    	descMap.put("office.text"	, "office text processing applications");
-    	descMap.put("organizer"		, "organizer (PIM) file formats");
-    	descMap.put("parse"    		, "transforming parser");
-    	descMap.put("proglang"		, "programming languages");
-    	descMap.put("pseudo"		, "pseudo files and filters");
+        descMap = new HashMap/*<1.5*/<String, String>/*1.5>*/();
+        descMap.put("config"        , "configuration file formats");
+        descMap.put("edi"           , "electronic data interchange (business) formats");
+        descMap.put("finance"       , "financial data formats (SWIFT et al.)");
+        descMap.put("general"       , "general purpose file formats");
+        descMap.put("geo"           , "geopositioning data formats");
+        descMap.put("grammar"       , "grammar/syntax description languages");
+        descMap.put("image"         , "graphics and image file formats");
+        descMap.put("image.raster"  , "raster image file formats");
+        descMap.put("image.vector"  , "vector image file formats");
+        descMap.put("misc"          , "miscellaneous file formats");
+        descMap.put("net"           , "Internet standard (RFC) file formats");
+        descMap.put("office"        , "file formats for office applications");
+        descMap.put("office.data"   , "office table and spreadsheet applications");
+        descMap.put("office.text"   , "office text processing applications");
+        descMap.put("organizer"     , "organizer (PIM) file formats");
+        descMap.put("parse"         , "transforming parser");
+        descMap.put("proglang"      , "programming languages");
+        descMap.put("pseudo"        , "pseudo files and filters");
     } // storeSubPackages
-    
+
     /** Main program, writes package descriptions for all subpackages.
      *  The code is taken from web/documentation.jsp.
      *  @param args commandline arguments (none)
@@ -244,11 +244,11 @@ public class MultiFormatFactory extends XtransFactory{
         String oldPackage = "";
         String packageName = "";
         try {
-        	storeSubPackages();
+            storeSubPackages();
             PrintWriter out = null;
             iter.next(); // skip over element [0] which is null
             while (iter.hasNext()) {
-                BaseTransformer trans = (BaseTransformer) iter.next();  
+                BaseTransformer trans = (BaseTransformer) iter.next();
                 String name = trans.getClass().getName();
                 int pos = name.indexOf(appName + ".");
                 name = name.substring(pos + appName.length() + 1);
@@ -264,15 +264,15 @@ public class MultiFormatFactory extends XtransFactory{
                         out.println("</html>");
                         out.close();
                     }
-                    out = new PrintWriter(new File("src/main/java/org/teherba/" 
-                            + appName + "/" 
+                    out = new PrintWriter(new File("src/main/java/org/teherba/"
+                            + appName + "/"
                             + packageName.replaceAll("\\.", "/")
                             + "/package.html"));
                     oldPackage = packageName;
-					String desc = descMap.get(packageName);
-					if (desc == null) {
-						desc = "different " + packageName + " file formats";
-					}
+                    String desc = descMap.get(packageName);
+                    if (desc == null) {
+                        desc = "different " + packageName + " file formats";
+                    }
                     out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
                     out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"");
                     out.println("  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
@@ -291,7 +291,7 @@ public class MultiFormatFactory extends XtransFactory{
                 out.close();
             }
         } catch (Exception exc) {
-        	System.err.println("package name " + packageName);
+            System.err.println("package name " + packageName);
             System.err.println(exc.getMessage());
             exc.printStackTrace();
         } // try

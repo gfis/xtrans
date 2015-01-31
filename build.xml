@@ -2,13 +2,15 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: build.xml 967 2012-08-29 18:22:10Z gfis $
-	2011-10-04: TeX
-	2011-04-05: test.count -> all.css.xml
+    2014-11-16: tomcat.base|home extracted from build-import.xml
+    2014-02-10: was -Djaxp.debug=1
+    2011-10-04: TeX
+    2011-04-05: test.count -> all.css.xml
     2008-03-21: image.vector.WMF
     2007-02-14: use ant file build-import.xml
     2006-10-17: use loadproperties
     2006-05-27: copied from numword
-    
+
     Still not ok:
     -c    like -java
     -java backslash character escapes
@@ -33,18 +35,23 @@
 -->
 
 <project name="xtrans" default="all" basedir=".">
-    <property name="app.version"    value="1.7"/>
+    <!-- the 5 needed for build-import.xml -->
+    <property name="app.name"           value="xtrans" />
+    <property name="app.version"        value="2.0" />
     <property name="app.main-class" value="org.teherba.xtrans.MainTransformer"/>
-    <property name="pipeClass"      value="org.teherba.xtrans.MainTransformer"/>
+    <property name="tomcat.base"        value="/var/lib/tomcat" />
+    <property name="tomcat.home"        value="/usr/share/tomcat" />
     <import file="build-import.xml" />
+
+    <property name="pipeClass"      value="org.teherba.xtrans.MainTransformer"/>
 
     <!-- ============= Source Code Generation =============================
     -->
     <target name="generate" depends="gen.pack,gen.record,gen.dta,gen.aeb43,gen.cfonb,gen.coda">
-	<!--
-		<delete failonerror="false" quiet="true" verbose="true">
-			<fileset dir="${build.classes}/META-INF" includes="SUN_MICR.*" />
-		</delete>
+    <!--
+        <delete failonerror="false" quiet="true" verbose="true">
+            <fileset dir="${build.classes}/META-INF" includes="SUN_MICR.*" />
+        </delete>
         <copy todir="${src.home}/org/teherba/dbat">
             <fileset dir="../dbat/src/main/java/org/teherba/dbat">
                 <include name="*.java"/>
@@ -55,19 +62,19 @@
                 <include name="*.java"/>
             </fileset>
         </copy>
-	-->
+    -->
     </target>
 
-    <!-- 
+    <!--
         generate package descriptions
     -->
     <target name="gen.pack" depends="">
-        <java classname="org.teherba.xtrans.MultiFormatFactory" 
+        <java classname="org.teherba.xtrans.MultiFormatFactory"
                 classpathref="compile.classpath" fork="true" >
         </java>
     </target>
 
-    <!-- 
+    <!--
         generate base record classes
     -->
     <target name="gen.record" depends="check.gen.record" unless="no.gen.record">
@@ -94,14 +101,14 @@
         </java>
     </target>
     <target name="check.gen.record">
-        <uptodate property="no.gen.record" 
+        <uptodate property="no.gen.record"
                 srcfile   ="${src.home}/org/teherba/xtrans/Records.txt"
                 targetfile="${src.home}/org/teherba/xtrans/BeanRecord.java"/> <!-- depend on the last one generated -->
     </target>
-    
+
     <target name="gen.aeb43" depends="check.gen.aeb43" unless="no.gen.aeb43">
-        <xslt in="${web.home}/spec/finance/AEB43.spec.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/finance/AEB43RecordBase.java" 
+        <xslt in="${web.home}/spec/finance/AEB43.spec.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/finance/AEB43RecordBase.java"
         />
     </target>
     <target name="check.gen.aeb43">
@@ -114,8 +121,8 @@
     </target>
 
     <target name="gen.cfonb" depends="check.gen.cfonb" unless="no.gen.cfonb">
-        <xslt in="${web.home}/spec/finance/CFONB.spec.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/finance/CFONBRecordBase.java" 
+        <xslt in="${web.home}/spec/finance/CFONB.spec.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/finance/CFONBRecordBase.java"
         />
     </target>
     <target name="check.gen.cfonb">
@@ -128,8 +135,8 @@
     </target>
 
     <target name="gen.coda" depends="check.gen.coda" unless="no.gen.coda">
-        <xslt in="${web.home}/spec/finance/CODA.spec.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/finance/CODARecordBase.java" 
+        <xslt in="${web.home}/spec/finance/CODA.spec.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/finance/CODARecordBase.java"
         />
     </target>
     <target name="check.gen.coda">
@@ -142,8 +149,8 @@
     </target>
 
     <target name="gen.dta" depends="check.gen.dta,gen.dta.sql" unless="no.gen.dta">
-        <xslt in="${web.home}/spec/finance/DTA.spec.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/finance/DTARecordBase.java" 
+        <xslt in="${web.home}/spec/finance/DTA.spec.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/finance/DTARecordBase.java"
         />
     </target>
     <target name="check.gen.dta">
@@ -156,8 +163,8 @@
     </target>
 
     <target name="gen.dta2" depends="check.gen.dta2" unless="no.gen.dta2">
-        <xslt in="${web.home}/spec/finance/DTA2.spec.xml" style="${web.home}/xslt/gen2Record.xsl" 
-                out="${src.home}/org/teherba/xtrans/finance/DTA2RecordBase.java" 
+        <xslt in="${web.home}/spec/finance/DTA2.spec.xml" style="${web.home}/xslt/gen2Record.xsl"
+                out="${src.home}/org/teherba/xtrans/finance/DTA2RecordBase.java"
         />
     </target>
     <target name="check.gen.dta2">
@@ -170,14 +177,14 @@
     </target>
 <!--
     <target name="gen.dta.bean">
-        <xslt in="${web.home}/spec/finance/DTA.bean.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/finance/DTARecordBean.java" 
+        <xslt in="${web.home}/spec/finance/DTA.bean.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/finance/DTARecordBean.java"
         />
     </target>
 -->
     <target name="gen.gps.bean" depends="check.gen.gps.bean" unless="no.gen.gps.bean">
-        <xslt in="${web.home}/spec/geo/GPS.bean.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/geo/GPSBeanBase.java" 
+        <xslt in="${web.home}/spec/geo/GPS.bean.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/geo/GPSBeanBase.java"
         />
     </target>
     <target name="check.gen.gps.bean">
@@ -190,8 +197,8 @@
     </target>
 
     <target name="gen.dta.sql" depends="check.gen.dta.sql" unless="no.gen.dta.sql">
-        <xslt in="${web.home}/spec/finance/DTA.bean.xml" style="${web.home}/xslt/genCreateSQL.xsl" 
-                out="${etc.home}/sql/finance/dta_create.sql" 
+        <xslt in="${web.home}/spec/finance/DTA.bean.xml" style="${web.home}/xslt/genCreateSQL.xsl"
+                out="${etc.home}/sql/finance/dta_create.sql"
         />
     </target>
     <target name="check.gen.dta.sql">
@@ -204,8 +211,8 @@
     </target>
 
     <target name="gen.uri.bean" depends="check.gen.uri.bean" unless="no.gen.uri.bean">
-        <xslt in="${web.home}/spec/net/URI.bean.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/net/URISchemeRecordBean.java" 
+        <xslt in="${web.home}/spec/net/URI.bean.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/net/URISchemeRecordBean.java"
         />
     </target>
     <target name="check.gen.uri.bean">
@@ -219,17 +226,17 @@
 
 <!--
     <target name="gen.oeis.bean">
-        <xslt in="${web.home}/spec/misc/linkoeis.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/misc/LinkOEISBean.java" 
+        <xslt in="${web.home}/spec/misc/linkoeis.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/misc/LinkOEISBean.java"
         />
-		but checking???
+        but checking???
     </target>
 
     <target name="gen.orga.bean">
-        <xslt in="${web.home}/spec/misc/organuk.xml" style="${web.home}/xslt/genRecord.xsl" 
-                out="${src.home}/org/teherba/xtrans/misc/OrganukBeanBase.java" 
+        <xslt in="${web.home}/spec/misc/organuk.xml" style="${web.home}/xslt/genRecord.xsl"
+                out="${src.home}/org/teherba/xtrans/misc/OrganukBeanBase.java"
         />
-		but checking???
+        but checking???
     </target>
 -->
     <target name="dta.repair">
@@ -253,8 +260,8 @@
     </target>
 
     <target name="dta.repair.3">
-        <xslt in="${test.home}/finance/dta/zuer5.dta.xml" style="${web.home}/xslt/finance/DTA.repair.xsl" 
-                out="${test.home}/finance/dta/zuer5.repair.xml" 
+        <xslt in="${test.home}/finance/dta/zuer5.dta.xml" style="${web.home}/xslt/finance/DTA.repair.xsl"
+                out="${test.home}/finance/dta/zuer5.repair.xml"
         />
         <exec executable="xmllint">
             <arg line="--noout --schema ${web.home}/schema/finance/DTA.xsd ${test.home}/finance/dta/zuer5.repair.xml" />
@@ -262,8 +269,8 @@
     </target>
 
     <target name="gen.schema">
-         <xslt in="${web.home}/spec/finance/DTA.spec.xml" style="${web.home}/xslt/genW3CSchema.xsl" 
-                out="${web.home}/schema/finance/DTA.xsd" 
+         <xslt in="${web.home}/spec/finance/DTA.spec.xml" style="${web.home}/xslt/genW3CSchema.xsl"
+                out="${web.home}/schema/finance/DTA.xsd"
         />
     <!--
         <exec executable="xalan"
@@ -271,9 +278,9 @@
             <arg line="-i 2 -e UTF-8 ${web.home}/spec/finance/DTA.spec.xml ${web.home}/xslt/genW3CSchema.xsl" />
         </exec>
         <schemavalidate file="${web.home}/schema/finance/DTA.xsd">
-       		<schema namespace="http://www.w3.org/2001/XMLSchema"
-          			file="${web.home}/schema/XMLSchema.xsd" 
-          	/>
+            <schema namespace="http://www.w3.org/2001/XMLSchema"
+                    file="${web.home}/schema/XMLSchema.xsd"
+            />
         </schemavalidate>
     -->
         <exec executable="xmllint">
@@ -286,18 +293,18 @@
 
     <target name="test.camt" depends="test.camt.1,test.camt.2" />
     <target name="test.camt.1">
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-mt940" />
             <arg value="-xml" />
             <arg value="${test.home}/finance/swift/940.4.txt" />
             <arg value="${test.home}/finance/swift/940.4.txt.xml" />
             <arg line="-iso true" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
     </target>
     <target name="test.camt.2">
-        <xslt in="${test.home}/finance/swift/940.4.txt.xml" style="${web.home}/xslt/mt940-camt.052.xsl" 
+        <xslt in="${test.home}/finance/swift/940.4.txt.xml" style="${web.home}/xslt/mt940-camt.052.xsl"
                 out="${test.home}/finance/swift/camt.052.4.xml"
         />
     </target>
@@ -319,24 +326,24 @@
             <arg value="${test.home}/c.tmp" />
         </java>
     </target>
-    
+
     <!-- Morsecode ************************************ -->
     <target name="gen.morse">
-        <xslt in="${web.home}/spec/misc/morse.xml" style="${web.home}/xslt/morsecode.xsl" 
-                out="${src.home}/org/teherba/xtrans/misc/morsecode.txt" 
+        <xslt in="${web.home}/spec/misc/morse.xml" style="${web.home}/xslt/morsecode.xsl"
+                out="${src.home}/org/teherba/xtrans/misc/morsecode.txt"
         />
     </target>
-    
+
     <!-- ============= xslt ==========================================
         switch between SWIFT variations
     -->
     <target name="xslt.unify">
-        <xslt in="${test.home}/finance/swift/swift.103.xml" style="${web.home}/xslt/unify-fields.xsl" 
+        <xslt in="${test.home}/finance/swift/swift.103.xml" style="${web.home}/xslt/unify-fields.xsl"
                 out="${test.home}/finance/swift/103.xml" />
     </target>
 
     <target name="xslt.diversify">
-        <xslt in="${test.home}/finance/swift/103.xml" style="${web.home}/xslt/diversify-fields.xsl" 
+        <xslt in="${test.home}/finance/swift/103.xml" style="${web.home}/xslt/diversify-fields.xsl"
                 out="${test.home}/finance/swift/f103.xml" />
     </target>
 
@@ -346,13 +353,7 @@
             <arg line="-dump http://localhost/xtrans/" />
         </exec>
     </target>
-    <target name="run.service"><!-- call the webservice -->
-        <antcall target="run">
-            <param name="class" value="org.teherba.xtrans.XtransClient"  />
-            <param name="args"  value="function parm1 parm2"              />
-        </antcall>
-    </target>
-    <!--==== test =========================-->  
+    <!--==== test =========================-->
     <target name="test"          depends="test.1,test.2,test.3" />
     <target name="test.1"          depends="test.config,test.edi,test.finance,test.general,test.geo,test.grammar" />
     <target name="test.2"          depends="test.image,test.misc,test.net,test.office,test.organizer,test.proglang" />
@@ -376,10 +377,10 @@
     <target name="test.proglang1"      depends="test.c,test.cpp,test.css,test.fortran,test.java,test.javascript,test.jcl" />
     <target name="test.proglang2"      depends="test.pascal,test.pl1,test.ps,test.rexx,test.sql,test.vba" />
     <target name="test.pseudo"       depends="test.count,test.dir,test.level,test.mail,test.system" />
-    
+
     <!-- piping/chaining ************************************ -->
     <target name="test.pipe" depends="">
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
             <arg value="${test.home}/finance/dta/zuer5.dta.xml" />
             <arg value="-xsl" /><arg value="${web.home}/xslt/identity.xsl" />
@@ -387,7 +388,7 @@
     </target>
 
     <target name="test.pipe0" depends="">
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
             <arg value="-filter" /><arg value="level" />
             <arg value="-xml" /><arg value="${test.home}/finance/dta/zuer5.dta.xml" />
@@ -397,7 +398,7 @@
     </target>
 
     <target name="test.pipe3" depends="">
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
             <arg value="-xml" /><arg value="${test.home}/finance/dta/zuer5.dta.xml" />
             <arg value="-xsl" /><arg value="${web.home}/xslt/identity.xsl" />
@@ -406,7 +407,7 @@
             <arg value="-xml" /><arg value="${test.home}/finance/dta/zuer5.dta.tmp" />
         </java>
         <exec dir="${basedir}" executable="diff">
-        	<!--
+            <!--
             <arg value="-w" />
             ignore all whitespace -->
             <arg value="${test.home}/finance/dta/zuer5.dta.xml" />
@@ -415,17 +416,17 @@
     </target>
 
     <target name="test.pipe4" depends="">
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
             <arg value="-xml" /><arg value="build.xml" />
             <arg value="-filter" /><arg value="level" />
             <arg value="-xslt" /><arg value="${web.home}/xslt/identity.xsl" />
             <arg value="-filter" /><arg value="level" />
             <arg value="-xslt" /><arg value="${web.home}/xslt/identity.xsl" />
-			<arg value="build.tmp" />
+            <arg value="build.tmp" />
         </java>
         <exec dir="${basedir}" executable="diff">
-        	<!--
+            <!--
             <arg value="-w" />
             ignore all whitespace -->
             <arg value="build.xml" />
@@ -434,7 +435,7 @@
     </target>
 
     <target name="test.pipe.camt" depends="">
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
             <arg value="-mt940" /><arg value="${test.home}/finance/swift/940.4.txt" />
             <arg value="-xsl" /><arg value="${web.home}/xslt/finance/mt940-camt.052.xsl" />
@@ -443,7 +444,7 @@
     </target>
 
     <target name="test.pipe.level" depends="">
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
             <arg value="-mt940" /><arg value="${test.home}/finance/swift/940.4.txt" />
             <arg value="-xsl" /><arg value="${web.home}/xslt/finance/mt940-camt.052.xsl" />
@@ -453,7 +454,7 @@
     </target>
 
     <target name="test.dta.dta" depends="">
-        <java classname="org.teherba.xtrans.MainTransformer" 
+        <java classname="org.teherba.xtrans.MainTransformer"
                 classpathref="compile.classpath" fork="true" >
             <arg value="-dta" />
             <arg value="-dta" />
@@ -464,7 +465,7 @@
     </target>
 
     <target name="test.dta.xml" depends="">
-        <java classname="org.teherba.xtrans.MainTransformer" 
+        <java classname="org.teherba.xtrans.MainTransformer"
                 classpathref="compile.classpath" fork="true" >
             <arg value="-dta" />
             <arg value="-xml" />
@@ -475,7 +476,7 @@
     </target>
 
     <target name="test.xml.dta" depends="">
-        <java classname="org.teherba.xtrans.MainTransformer" 
+        <java classname="org.teherba.xtrans.MainTransformer"
                 classpathref="compile.classpath" fork="true" >
             <arg value="-xml" />
             <arg value="-dta" />
@@ -487,77 +488,77 @@
 
     <!-- edi     ************************************ -->
     <target name="test.edifact">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="edifact"    /><param name="file" value="edi/edifact/teleord.edi"/>
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
         </antcall>
     </target>
     <target name="test.edifact.2">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="edifact"    /><param name="file" value="edi/edifact/finsta.edi"/>
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
         </antcall>
     </target>
     <target name="test.x12">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="x12"        /><param name="file" value="edi/x12/837.x12"/>
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
         </antcall>
     </target>
     <!-- general ************************************ -->
     <target name="test.queue" depends="">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="queue"  /><param name="file" value="queue.html" />
             <param name="opt1"   value="-enc1 ISO-8859-1 -enc2 ISO-8859-1" /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.col1">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="col1"       /><param name="file" value="general/rez2.tml" />
             <param name="opt1"   value="-enc1 ISO-8859-1 -enc2 ISO-8859-1" /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.column">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="column"     /><param name="file" value="general/column.txt" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.hexdump">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="hexdump"    /><param name="file" value="general/hexdump.bin"/>
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.json">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="json"       /><param name="file" value="general/json1.txt"/>
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.json.html">
-        <xslt in="${test.home}/general/json1.txt.xml" style="${web.home}/xslt/general/json-html.xsl" 
-                out="${test.home}/general/json1.html" 
+        <xslt in="${test.home}/general/json1.txt.xml" style="${web.home}/xslt/general/json-html.xsl"
+                out="${test.home}/general/json1.html"
         />
         <exec dir="${test.home}/general" executable="cmd">
             <arg value="/c" /><!-- ignore all whitespace -->
             <arg value="json1.html" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.line">
-        <copy file="${src.home}/org/teherba/xtrans/general/LineTransformer.java" 
+        <copy file="${src.home}/org/teherba/xtrans/general/LineTransformer.java"
                 todir="${test.home}/general" overwrite="yes" />
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="line"       /><param name="file" value="general/LineTransformer.java"   />
             <param name="opt1"   value="-group"     /><param name="opt2" value="5" />
         </antcall>
-    </target>                       
+    </target>
     <target name="test.pyx">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="pyx"        /><param name="file" value="general/small.pyx"   />
             <param name="opt1"   value="-group"     /><param name="opt2" value="5" />
         </antcall>
-    </target>                       
+    </target>
     <target name="test.separated">
         <antcall target="sub.inout">
             <param name="format" value="separated"  /><param name="file" value="general/delimited.txt" />
@@ -565,101 +566,101 @@
         <!--
             <param name="opt1"   value="-separator" /><param name="opt2" value="| -surround both -labels true" />
         -->
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.xml">
-        <copy file="${web.home}/xslt/genRecord.xsl" 
+        <copy file="${web.home}/xslt/genRecord.xsl"
                 todir="${test.home}/general" overwrite="yes" />
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="xml"        /><param name="file" value="general/genRecord.xsl"   />
             <param name="opt1"   value=""           /><param name="opt2" value="5" />
         </antcall>
-    </target>                       
+    </target>
     <!-- config ************************************ -->
     <target name="test.ini">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="ini"        /><param name="file" value="config/php.ini" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.ini2">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="ini"        /><param name="file" value="config/mini.ini" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.make">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="make"       /><param name="file" value="config/makefile" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.manifest">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="manifest"   /><param name="file" value="config/MANIFEST.MF" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.props">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="props"      /><param name="file" value="config/Charsets.properties" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <!-- finance ************************************ -->
     <target name="test.aeb43">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="aeb43"      />
             <param name="file" value="../../../gforge/xtrans/test/finance/aeb43/CUAD940.DAT" />
             <param name="opt1" value="-enc1 ISO-8859-1"/><param name="opt2" value="-enc2 ISO-8859-1"    />
-        </antcall>         
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.cfonb">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="cfonb"      />
             <param name="file" value="../../../gforge/xtrans/test/finance/cfonb/CUAD940.DAT" />
             <param name="opt1" value="-enc1 ISO-8859-1"/><param name="opt2" value="-enc2 ISO-8859-1"    />
-        </antcall>         
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.coda">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="coda"      />
             <param name="file" value="../../../gforge/xtrans/test/finance/coda/CUAD940.DAT" />
             <param name="opt1" value="-enc1 ISO-8859-1"/><param name="opt2" value="-enc2 ISO-8859-1"    />
-        </antcall>         
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.datev">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="datev"      /><param name="file" value="finance/datev/DE001" />
             <param name="opt1"   value="-enc1 ISO-8859-1"/><param name="opt2" value="-enc2 ISO-8859-1" />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.dta" >
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="dta"        /><param name="file" value="finance/dta/zuer5.dta"   />
             <param name="opt1"   value="-nsp"       /><param name="opt2" value="doc" />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.dta2" >
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="dta2"       /><param name="file" value="finance/dta/zuer5.dta"   />
             <param name="opt1"   value="-nsp"       /><param name="opt2" value="doc" />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.swift">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="swift"      /><param name="file" value="finance/swift/103.1.txt"/>
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
         </antcall>
     </target>
     <target name="test.mt103">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="mt103"      /><param name="file" value="finance/swift/103.1.txt"/>
             <param name="opt1"   value=""           /><param name="opt2" value="true"    />
         </antcall>
     </target>
     <target name="test.mt940">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="mt940"      /><param name="file" value="finance/swift/940.4.txt"/>
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
         </antcall>
@@ -669,424 +670,424 @@
         <antcall target="sub.inout">
             <param name="format" value="nmea"       /><param name="file" value="geo/nmea.txt" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
-    </target>                       
+        </antcall>
+    </target>
     <!-- grammar ************************************ -->
     <target name="test.meta">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="extra"      /><param name="file" value="grammar/meta.grm" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.yacc">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="yacc"       /><param name="file" value="grammar/rpcalc.y" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
-    
+        </antcall>
+    </target>
+
     <target name="test.notLALR">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="extra"      /><param name="file" value="grammar/notLALR.grm" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.pager">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="extra"      /><param name="file" value="grammar/pager_g2.grm" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.sasb">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="extra"      /><param name="file" value="grammar/sasb.grm" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <!-- image ************************************ -->
     <target name="test.wmf">
         <antcall target="sub.inout">
             <param name="format" value="wmf"        /><param name="file" value="image/vector/e10.wmf" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
-    </target>                       
+        </antcall>
+    </target>
     <!-- misc ************************************ -->
     <target name="test.gedcom">
         <antcall target="sub.inout">
             <param name="format" value="gedcom"     /><param name="file" value="misc/fischer1.ged" />
             <param name="opt1"   value="-enc1 ISO-8859-1" /><param name="opt2" value="-enc2 ISO-8859-1"    />
-        </antcall>       
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.ged17">
         <antcall target="sub.inout">
             <param name="format" value="gedcom"     /><param name="file" value="misc/fischer1.ged" />
             <param name="opt1"   value="-enc1 ISO-8859-1" /><param name="opt2" value=" "    />
-        </antcall>       
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.morse">
         <antcall target="sub.inout">
             <param name="format" value="morse"      /><param name="file" value="misc/morse.txt" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
-    </target>                       
+        </antcall>
+    </target>
     <!-- net  ************************************ -->
     <target name="test.base64">
         <antcall target="sub.inout">
             <param name="format" value="base64"     /><param name="file" value="net/base64.bin" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.ldif">
         <antcall target="sub.inout">
             <param name="format" value="ldif"       /><param name="file" value="net/ldif/rfc2849.ex6.ldif" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.ldif2">
         <antcall target="sub.inout">
             <param name="format" value="ldif"       /><param name="file" value="net/ldif/person.ldif" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
+        </antcall>
         <antcall target="sub.inout">
             <param name="format" value="ldif"       /><param name="file" value="net/ldif/rfc2849.ex3.ldif" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
+        </antcall>
         <antcall target="sub.inout">
             <param name="format" value="ldif"       /><param name="file" value="net/ldif/rfc2849.ex4.ldif" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
+        </antcall>
         <antcall target="sub.inout">
             <param name="format" value="ldif"       /><param name="file" value="net/ldif/rfc2849.ex5.ldif" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>       
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.qp">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="qp"         /><param name="file" value="net/qp/russian.qp" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.qp2">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="qp"         /><param name="file" value="net/qp/german.qp.bin" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-        <antcall target="sub.inout">                
+        </antcall>
+        <antcall target="sub.inout">
             <param name="format" value="qp"         /><param name="file" value="net/qp/russian.qp.bin" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.uri">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="uri"        /><param name="file" value="net/uri.txt" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <!-- office    ************************************ -->
     <!--   data    ************************************ -->
     <target name="test.dbase">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="dbase"       /><param name="file" value="office/data/master.dbf" />
             <param name="opt1"   value="-enc1 IBM437"/><param name="opt2" value="-enc2 IBM437" />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.dbase2">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="dbase"       /><param name="file" value="../../../../pt/data/temp/stamm.dbf" />
             <param name="opt1"   value="-enc1 IBM437"/><param name="opt2" value="-enc2 IBM437" />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.dbase3">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="dbase"       /><param name="file" value="../../../../pt/data/temp/stamm.dbf" />
             <param name="opt1"   value="-enc1 ISO-8859-1"/><param name="opt2" value="-enc2 ISO-8859-1" />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.dif">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="dif"        /><param name="file" value="office/data/test1.dif" />
             <param name="opt1"   value="-enc1 IBM437"/><param name="opt2" value="-enc2 IBM437" />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <!--   text    ************************************ -->
     <target name="test.dcarft">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="dcarft"     /><param name="file" value="office/text/gourmet.dca" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.hit">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="hit"        /><param name="file" value="office/text/gourmet.hit" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.hit.2">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="hit"        /><param name="file" value="office/text/test-markup.hit" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.rtf">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="rtf"        /><param name="file" value="office/text/zeichen.rtf" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.tex">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="tex"        /><param name="file" value="office/text/dipla.tex" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <!-- organizer ************************************ -->
     <target name="test.ical">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="ical"       /><param name="file" value="organizer/vcalendar.txt" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                       
+        </antcall>
+    </target>
     <target name="test.vcard">
-        <antcall target="sub.inout">                
+        <antcall target="sub.inout">
             <param name="format" value="vcard"      /><param name="file" value="organizer/vcard.2.txt" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
-    </target>                      
-     
+        </antcall>
+    </target>
+
     <!-- program / proglang ************************************ -->
     <target name="test.c">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="c"          /><param name="file" value="proglang/dump.c" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/dump.c" />
             <arg value="${test.home}/proglang/dump.c.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.cobol">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="cobol"      /><param name="file" value="proglang/CUQUP1C1.CBL" />
             <param name="opt1"   value=""           /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/CUQUP1C1.CBL" />
             <arg value="${test.home}/proglang/CUQUP1C1.CBL.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.cpp">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="cpp"        /><param name="file" value="proglang/PSVIWriterHandlers.cpp" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/PSVIWriterHandlers.cpp" />
             <arg value="${test.home}/proglang/PSVIWriterHandlers.cpp.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.css">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="css"        /><param name="file" value="proglang/all.css" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/all.css" />
             <arg value="${test.home}/proglang/all.css.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.fortran">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="fortran"    /><param name="file" value="proglang/scanr.ftn" />
             <param name="opt1"   value="-enc1 ISO-8859-1"/><param name="opt2" value="-enc2 ISO-8859-1" />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/scanr.ftn" />
             <arg value="${test.home}/proglang/scanr.ftn.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.java">
         <concat destfile="${test.home}/proglang/test.java" force="no">
-            <fileset dir="${src.home}/org/teherba/xtrans/proglang" 
+            <fileset dir="${src.home}/org/teherba/xtrans/proglang"
                     includes="JavaTransformer.java,ProgLangTransformer.java" />
         </concat>
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="java"       /><param name="file" value="proglang/test.java" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- compare again, but ignore all whitespace -->
             <arg value="${test.home}/proglang/test.java" />
             <arg value="${test.home}/proglang/test.java.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.javascript">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="javascript" /><param name="file" value="proglang/poker.js" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/poker.js" />
             <arg value="${test.home}/proglang/poker.js.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.jcl">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="jcl"        /><param name="file" value="proglang/jcl/mini1.jcl" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/jcl/mini1.jcl" />
             <arg value="${test.home}/proglang/jcl/mini1.jcl.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.pascal">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="pascal"     /><param name="file" value="proglang/pthp9k.pas" />
             <param name="opt1"   value="-enc1 ISO-8859-1"/><param name="opt2" value="-enc2 ISO-8859-1" />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/pthp9k.pas" />
             <arg value="${test.home}/proglang/pthp9k.pas.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.pl1">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="pl1"        /><param name="file" value="proglang/parse.pli" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/parse.pli" />
             <arg value="${test.home}/proglang/parse.pli.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.ps">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="ps"         /><param name="file" value="proglang/barcode2.ps" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/barcode2.ps" />
             <arg value="${test.home}/proglang/barcode2.ps.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.rexx">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="rexx"       /><param name="file" value="proglang/stats.rexx" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/stats.rexx" />
             <arg value="${test.home}/proglang/stats.rexx.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.ruby">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="ruby"       /><param name="file" value="proglang/parse_rb.rb" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/parse_rb.rb" />
             <arg value="${test.home}/proglang/parse_rb.rb.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.ruby2">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="java"       /><param name="file" value="proglang/parse_rb.rb" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/parse_rb.rb" />
             <arg value="${test.home}/proglang/parse_rb.rb.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.sql">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="sql"        /><param name="file" value="proglang/sqltest.sql" />
             <param name="opt1"   value=" "          /><param name="opt2" value=" "    />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/sqltest.sql" />
             <arg value="${test.home}/proglang/sqltest.sql.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.sqlpretty" depends="">
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
-            <arg value="-sql" 		/><arg value="${test.home}/proglang/test3.sql" />
-            <arg value="-filter" 	/><arg value="sqlpretty" />
-            <arg value="-xml" 		/><arg value="${test.home}/proglang/test3.pretty.xml" />
+            <arg value="-sql"       /><arg value="${test.home}/proglang/test3.sql" />
+            <arg value="-filter"    /><arg value="sqlpretty" />
+            <arg value="-xml"       /><arg value="${test.home}/proglang/test3.pretty.xml" />
         </java>
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
-            <arg value="-sql" 		/><arg value="${test.home}/proglang/test3.sql" />
-            <arg value="-token" 	/><arg value="${test.home}/proglang/test3.tsv" />
+            <arg value="-sql"       /><arg value="${test.home}/proglang/test3.sql" />
+            <arg value="-token"     /><arg value="${test.home}/proglang/test3.tsv" />
         </java>
     <!--
-	-->
-        <java classname="${pipeClass}" 
+    -->
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
-            <arg value="-sql" 		/><arg value="${test.home}/proglang/test3.sql" />
-            <arg value="-filter" 	/><arg value="sqlpretty" />
-            <arg value="-sql" 		/><arg value="${test.home}/proglang/test3.pretty.sql" />
+            <arg value="-sql"       /><arg value="${test.home}/proglang/test3.sql" />
+            <arg value="-filter"    /><arg value="sqlpretty" />
+            <arg value="-sql"       /><arg value="${test.home}/proglang/test3.pretty.sql" />
         </java>
-        <java classname="${pipeClass}" 
+        <java classname="${pipeClass}"
                 classpathref="compile.classpath" fork="true" >
-            <arg value="-sql" 		/><arg value="${test.home}/proglang/test3.sql" />
-            <arg value="-filter" 	/><arg value="sqlpretty" />
-            <arg value="-sql" 		/>
+            <arg value="-sql"       /><arg value="${test.home}/proglang/test3.sql" />
+            <arg value="-filter"    /><arg value="sqlpretty" />
+            <arg value="-sql"       />
         </java>
     </target>
 
     <target name="test.token">
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg line="-name test" />
             <arg value="-java" />
             <arg value="-token" />
             <arg value="${test.home}/proglang/test.java" />
             <arg value="${test.home}/proglang/test.java.tsv" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg line="-name test" />
             <arg value="-token" />
             <arg value="-java" />
             <arg value="${test.home}/proglang/test.java.tsv" />
             <arg value="${test.home}/proglang/test.java.tmp" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/test.java" />
             <arg value="${test.home}/proglang/test.java.tmp" />
         </exec>
-    </target>                       
+    </target>
     <target name="test.vba">
-        <antcall target="sub.inout2">                
+        <antcall target="sub.inout2">
             <param name="format" value="vba"        /><param name="file" value="proglang/kalproc.vba" />
             <param name="opt1"   value="-enc1 ISO-8859-1"/><param name="opt2" value="-enc2 ISO-8859-1" />
-        </antcall>                              
+        </antcall>
         <exec dir="${basedir}" executable="diff">
             <arg value="-w" /><!-- ignore all whitespace -->
             <arg value="${test.home}/proglang/kalproc.vba" />
             <arg value="${test.home}/proglang/kalproc.vba.tmp" />
         </exec>
-    </target>                       
+    </target>
     <!-- pseudo *************************************** -->
     <target name="test.count" >
         <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" fork="true">
@@ -1094,48 +1095,48 @@
             <arg value="${test.home}/proglang/all.css.xml" />
             <arg value="${test.home}/proglang/all.css.tmp" />
         </java>
-    </target>                       
+    </target>
     <target name="test.dir" >
         <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" fork="true">
             <arg value="-dir" /><arg value="-xml" />
             <arg value="." />
         </java>
-    </target>                       
+    </target>
     <target name="test.level" >
-        <copy file="${web.home}/xslt/genRecord.xsl" 
+        <copy file="${web.home}/xslt/genRecord.xsl"
                 tofile="${test.home}/pseudo/level.xsl" overwrite="yes" />
         <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" fork="true">
             <arg value="-xml" /><arg value="-level" />
             <arg value="${test.home}/pseudo/level.xsl" />
             <arg value="${test.home}/pseudo/level.xsl.xml" />
         </java>
-    </target>                       
+    </target>
     <target name="test.mail" >
         <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" fork="true">
             <arg value="-xml" /><arg value="-mail" />
             <arg value="${test.home}/pseudo/mail.xml" />
         </java>
-    </target>                       
+    </target>
     <target name="test.progser">
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-cobol" />
             <arg value="-xml" />
             <arg value="${test.home}/proglang/CUQUP1C1.CBL" />
             <arg value="${test.home}/proglang/CUQUP1C1.xml" />
             <arg line="-uc true" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-xml" />
             <arg value="-progser" />
             <arg value="${test.home}/proglang/CUQUP1C1.xml" />
             <arg value="${test.home}/proglang/CUQUP1C1.CBL.tsv" />
             <arg line="-name CUQUP1C1" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
-    </target>                       
+    </target>
     <target name="test.system" >
         <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" fork="true">
             <arg value="-system" /><arg value="-xml" />
@@ -1145,28 +1146,28 @@
             <arg value="build.xml" />
             <arg value="${test.home}/pseudo/system.xml" />
         </java>
-    </target>                       
+    </target>
 
     <!-- sub.inout ************************************ -->
     <target name="sub.inout">
         <echo message="Transformer -${format} -xml ${opt1} ${opt2} ${test.home}/${file}" />
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-${format}" />
             <arg value="-xml" />
             <arg value="${test.home}/${file}" />
             <arg value="${test.home}/${file}.xml" />
             <arg line="${opt1} ${opt2}" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-xml" />
             <arg value="-${format}" />
             <arg value="${test.home}/${file}.xml" />
             <arg value="${test.home}/${file}.tmp" />
             <arg line="${opt1} ${opt2}" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
         <condition property="sub.bad.xml" >
             <not>
@@ -1178,28 +1179,28 @@
             <param name="file"   value="${test.home}/${file}" />
         </antcall>
 
-    </target>   
+    </target>
 
     <!-- sub.inout2 ************************************ -->
     <target name="sub.inout2">
         <echo message="Transformer -${format} -xml ${opt1} ${opt2} ${test.home}/${file}" />
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-${format}" />
             <arg value="-xml" />
             <arg value="${test.home}/${file}" />
             <arg value="${test.home}/${file}.xml" />
             <arg line="${opt1} ${opt2}" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-xml" />
             <arg value="-${format}" />
             <arg value="${test.home}/${file}.xml" />
             <arg value="${test.home}/${file}.tmp" />
             <arg line="${opt1} ${opt2}" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
         <condition property="sub.bad.xml" >
             <not>
@@ -1212,23 +1213,23 @@
         </antcall>
 
         <echo message="Transformer -${format} -token ${opt1} ${opt2} ${test.home}/${file}" />
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-${format}" />
             <arg value="-token" />
             <arg value="${test.home}/${file}" />
             <arg value="${test.home}/${file}.tsv" />
             <arg line="${opt1} ${opt2}" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
-        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath" 
+        <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"
                 fork="true">
             <arg value="-token" />
             <arg value="-${format}" />
             <arg value="${test.home}/${file}.tsv" />
             <arg value="${test.home}/${file}.tok" />
             <arg line="${opt1} ${opt2}" />
-            <jvmarg value="-Djaxp.debug=1"/>
+            <jvmarg value="-Djaxp.debug=false"/>
         </java>
         <condition property="sub.bad.tok" >
             <not>
@@ -1239,7 +1240,7 @@
             <param name="format" value="${format}" />
             <param name="file"   value="${test.home}/${file}" />
         </antcall>
-    </target>   
+    </target>
 
     <!-- sub.message.* ************************************ -->
     <target name="sub.message.xml" if="sub.bad.xml">

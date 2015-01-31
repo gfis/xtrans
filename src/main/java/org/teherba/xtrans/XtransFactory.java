@@ -1,5 +1,6 @@
-/*  Selects the applicable transformer
+/*  Selects the applicable transformer, and creates transformation pipelines
     @(#) $Id: XtransFactory.java 966 2012-08-29 07:06:07Z gfis $
+    2014-11-07: private TransformerHandlers -> public
     2010-12-07: -sqlpretty
     2010-07-28: config
     2010-06-14: -parse; -token
@@ -19,9 +20,9 @@
     2007-01-03: CountingSerializer
     2006-12-28: DIFTransformer
     2006-10-13: copied from Transformer
-    
+
     Usage:
-        java -cp dist/xtrans.jar org.teherba.xtrans.XtransFactory 
+        java -cp dist/xtrans.jar org.teherba.xtrans.XtransFactory
     Output files:
         src/main/java/org/teherba/xtrans//package.html
 */
@@ -44,6 +45,7 @@ package org.teherba.xtrans;
 import  org.teherba.xtrans.BaseTransformer;
 import  org.teherba.xtrans.XMLTransformer;
 import  java.io.IOException; // thrown in createPipeline
+import  java.util.ArrayList;
 import  java.util.Arrays; // asList
 import  java.util.Iterator;
 import  java.util.Properties;
@@ -59,17 +61,16 @@ import  org.xml.sax.XMLReader;
 import  org.apache.log4j.Logger;
 
 /** Selects a specific transformer, and iterates over the descriptions
- *  of all transformers and their codes. The <em>main</em> method of this
- *  class generates package description files in all subdirectories
- *  for the javadoc API documentation.
+ *  of all transformers and their codes.
+ *  Furthermore, it can create a transformation pipeline.
  *  @author Dr. Georg Fischer
  */
-public class XtransFactory { 
+public class XtransFactory {
     public final static String CVSID = "@(#) $Id: XtransFactory.java 966 2012-08-29 07:06:07Z gfis $";
 
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** Names of input and output file, or null for STDIN/STDOUT. */
     private String[] fileNames;
     /** Input reader, generates SAX events */
@@ -84,9 +85,9 @@ public class XtransFactory {
     /** Set of transformers for different file formats
      */
     protected BaseTransformer[] allTransformers;
-    
+
     /** No-args Constructor. Used for generation and serialization.
-     *  Constructs all known transformers. Their constructors should
+     *  Constructs all enabled transformers. Their constructors should
      *  not contain any heavy-weight initialization code, since they are
      *  all instantiated here, even if only two of them are really used.
      */
@@ -97,9 +98,25 @@ public class XtransFactory {
                 // the order here defines the order in documentation.jsp,
                 // should be: "... group by package order by package, name"
                 , new XMLTransformer            () // serializer for XML
-                }; 
+                };
         realPath = "";
     } // Constructor
+
+    /** Array of transformers for different formats */
+    private ArrayList<BaseTransformer> transformers;
+
+    /** Attempts to instantiate the transformer for some format
+     *  @param transformerName name of the class for the transformer,
+     *  without the domain name
+     */
+    private void addTransformer(String transformerName) {
+        try {
+            BaseTransformer transformer = (BaseTransformer) Class.forName("org.teherba.xtrans." + transformerName).newInstance();
+            transformers.add(transformer);
+        } catch (Exception exc) {
+            // ignore any error silently - this format will not be known
+        }
+    } // addTransformer
 
     /** Gets a SAX transformer factory
      *  @return properly configured SAXTransformerFactory
@@ -108,20 +125,19 @@ public class XtransFactory {
         Properties props = System.getProperties();
         props.put("javax.xml.transform.TransformerFactory"
             //  , "org.apache.xalan.xsltc.trax.TransformerFactoryImpl");
-            //  , "org.apache.xalan.xsltc.trax.SmartTransformerImpl");
                 , "com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl");
         // System.setProperties(props);
         TransformerFactory tempFactory = TransformerFactory.newInstance();
         // TransformerFactory must support SAXSource and SAXResult
-        return (tempFactory.getFeature(SAXSource.FEATURE) && tempFactory.getFeature(SAXResult.FEATURE)) 
+        return (tempFactory.getFeature(SAXSource.FEATURE) && tempFactory.getFeature(SAXResult.FEATURE))
                 ? ((SAXTransformerFactory) tempFactory)
                 : null;
     } // getSAXFactory
-    
+
     /** maximum number of files / formats / encodings */
     private static final int MAX_FILE = 2;
 
-    /** Sets the real path to the context of the web application 
+    /** Sets the real path to the context of the web application
      *  @param path path to be set
      */
     public void setRealPath(String path) {
@@ -130,26 +146,25 @@ public class XtransFactory {
             realPath += "/";
         }
     } // setRealPath
-    
+
     /** Gets a handler for a filtering transformer.
      *  @param format name of the filter
      *  @return the filtering transformer for that format,
      *  or null if a handler could not be created
      *  @throws some exeption
      */
-    private TransformerHandler getFilterHandler(String format) throws Exception {
+    public TransformerHandler getFilterHandler(String format) throws Exception {
         TransformerHandler handler = null;
         try {
-            log.debug("filter-name=" + format);
-        //  handler = (new MultiFormatFactory()).getTransformer(format); // an XtransFactory instance always returns the same object
+            // log.debug("filter-name=" + format);
             handler = (new BasicFactory      ()).getTransformer(format); // an XtransFactory instance always returns the same object
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
             throw exc;
-        }   
+        }
         return handler;
     } // getFilterHandler
-    
+
     /** Gets a handler from a translet (precompiled stylesheet).
      *  @param transletClassName name of the translet class
      *  @param saxFactory the SAXTransformerFactory to be used
@@ -157,29 +172,29 @@ public class XtransFactory {
      *  or null if a handler could not be created
      *  @throws some exeption
      */
-    private TransformerHandler getTransletHandler(String transletClassName, SAXTransformerFactory saxFactory) throws Exception {
+    public TransformerHandler getTransletHandler(String transletClassName, SAXTransformerFactory saxFactory) throws Exception {
         TransformerHandler handler = null;
         try {
             saxFactory.setAttribute("use-classpath", "true");
             String transletName = "org.teherba.xtrans.translets." + transletClassName;
-            log.debug("translet-name=" + transletName);
+            // log.debug("translet-name=" + transletName);
             saxFactory.setAttribute("translet-name", transletName);
             Templates translet = saxFactory.newTemplates(new StreamSource());
             handler = saxFactory.newTransformerHandler(translet);
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
             throw exc;
-        }   
+        }
         return handler;
     } // getTransletHandler
-    
+
     /** Gets a handler from a stylesheet source file.
      *  @param fileName path and name of the stylesheet file
      *  @return a transformer handler which performs the XSLT,
      *  or null if a handler could not be created
      *  @throws some exeption
      */
-    private TransformerHandler getXSLHandler(String fileName) throws Exception {
+    public TransformerHandler getXSLHandler(String fileName) throws Exception {
         TransformerHandler handler = null;
         try {
             // log.warn("xsl-name = " + fileName);
@@ -187,10 +202,10 @@ public class XtransFactory {
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
             throw exc;
-        }   
+        }
         return handler;
     } // getXSLHandler
-    
+
     /** Configures a SAX event generator, a series of XSLT transformations
      *  (either with a stylesheet or a translet) or filters, and a SAX event serializer.
      *  @param args commandline arguments:
@@ -212,7 +227,7 @@ public class XtransFactory {
             generator   = null;
             serializer  = null;
             int MAX_BASE = 2;
-            BaseTransformer[] bases = new BaseTransformer[MAX_BASE]; 
+            BaseTransformer[] bases = new BaseTransformer[MAX_BASE];
             int ibase = 0; // number of xtrans transformers created so far
             fileNames = new String[MAX_BASE];
             int ifile = 0; // number of in/output filenames encountered so far
@@ -220,7 +235,7 @@ public class XtransFactory {
                     = new TransformerHandler[args.length]; // way too many
             int ihand = 0; // number of transformations requested so far (-xsl and -trans options)
             String options = ""; // all options and their values separated by spaces
-                        
+
             int iarg = 0;
             while (iarg < args.length) { // evaluate all commandline arguments
                 String arg = args[iarg ++];
@@ -264,7 +279,7 @@ public class XtransFactory {
                     if (ibase > MAX_BASE) {
                         log.error("more than " + MAX_BASE + " format codes: " + arg);
                         return;
-                    } 
+                    }
                 } else { // filename
                     if (ifile >= MAX_BASE) {
                         log.error("more than " + MAX_BASE + " filenames: " + arg);
@@ -273,7 +288,7 @@ public class XtransFactory {
                     fileNames[ifile ++] = arg; // STDIN or STDOUT
                 } // which type of argument
             } // while arguments
-            
+
             // set the default formats
             while (ibase < MAX_BASE) {
                 bases[ibase ++] = this.getTransformer("xml");
@@ -287,24 +302,21 @@ public class XtransFactory {
             ifile = 0;
             while (ifile < MAX_BASE) {
                 bases[ifile].parseOptionString(options); // options apply to input and output format
-                // bases[ifile].openFile(ifile, fileNames[ifile]); 
+                // bases[ifile].openFile(ifile, fileNames[ifile]);
                 ifile ++;
             } // while configure
             generator  = bases[0];
             serializer = bases[1];
             generator.setContentHandler(serializer);
             generator.setLexicalHandler(serializer);
-            // SAXResult tempResult = new SAXResult(serializer.getContentHandler());
 
             // insert the stylesheet or filter transformation handler(s) into the double linked chain
             int nhand = ihand; // number of XSLT transformation handlers
             if (nhand > 0) {
-                // bases[0].setResult(new SAXResult(handlers[0]));
                 bases[0].setContentHandler(handlers[0]); // feed the generator's SAX events into the first handler
             //  bases[0].setLexicalHandler(handlers[0]); // feed the generator's SAX events into the first handler
                 bases[0].setProperty("http://xml.org/sax/properties/lexical-handler", handlers[0]);
                 handlers[nhand - 1].setResult(new SAXResult(bases[1])); // feed result of last handler into serializer
-            //  handlers[nhand - 1] = bases[1].getContentHandler(); // feed result of last handler into serializer
             }
             ihand = nhand - 1;
             while (ihand > 0) {
@@ -314,20 +326,20 @@ public class XtransFactory {
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
             throw exc;
-        }   
+        }
     } // createPipeLine
 
     /** Gets the generator for further configuration,
-     *  for example in {@link XtransServlet} for the redirection of the input reader to an uploaded file 
-     *  @return producer of XML 
+     *  for example in XtransServlet for the redirection of the input reader to an uploaded file
+     *  @return producer of XML
      */
     public BaseTransformer getGenerator() {
         return generator;
     } // getGenerator
 
     /** Gets the serializer for further configuration,
-     *  for example in {@link XtransServlet} for the redirection of the output reader to the servlet's response
-     *  @return consumer of XML 
+     *  for example in XtransServlet for the redirection of the output reader to the servlet's response
+     *  @return consumer of XML
      */
     public BaseTransformer getSerializer() {
         return serializer;
@@ -355,7 +367,7 @@ public class XtransFactory {
      */
     public void process() {
         openFiles();
-        generator .generate(); // call all piped processors              
+        generator .generate(); // call all piped processors
         closeFiles();
     } // process
 
@@ -367,15 +379,15 @@ public class XtransFactory {
         result.next(); // skip initial null element
         return result;
     } // getIterator
-    
+
     /** Gets the number of available transformers
      *  @return number of formats which can be spelled
      */
     public int getCount() {
         return allTransformers.length - 1; // minus [0] (== null)
     } // getCount
-    
-    /** Determines whether the format code denotes this 
+
+    /** Determines whether the format code denotes this
      *  transformer class.
      *  @param transformer the transformer to be tested
      *  @param format code for the desired format
@@ -383,7 +395,7 @@ public class XtransFactory {
     private boolean isApplicable(BaseTransformer transformer, String format) {
         boolean result = false;
         // log.debug("tokenizer:" + transformer.getFormatCodes());
-        StringTokenizer tokenizer = new StringTokenizer(transformer.getFormatCodes(), ",");              
+        StringTokenizer tokenizer = new StringTokenizer(transformer.getFormatCodes(), ",");
         while (! result && tokenizer.hasMoreTokens()) {
             // try all tokens
             if (format.equals(tokenizer.nextToken())) {
@@ -395,13 +407,13 @@ public class XtransFactory {
 
     /** Gets the applicable transformer for a specified format code.
      *  @param format abbreviation for the format according to ISO 639
-     *  @return the transformer for that format, or <em>null</em> if the 
+     *  @return the transformer for that format, or <em>null</em> if the
      *  format was not found
      */
     public BaseTransformer getTransformer(String format) {
         BaseTransformer transformer = null;
         // determine the applicable transformer for 'format'
-        int itrans = 1; 
+        int itrans = 1;
         while (itrans < allTransformers.length) {
             if (isApplicable(allTransformers[itrans], format)) { // found
                 transformer = allTransformers[itrans];
