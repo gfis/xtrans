@@ -1,6 +1,8 @@
 /*  Extracts metadata from raster image files
     @(#) $Id: ExifGenerator.java 967 2012-08-29 18:22:10Z gfis $
     2012-08-29, Georg Fischer: copied from pseudo.FileTreeGenerator
+    
+    not yet implemented
 */
 /*
  * Copyright 2012 Dr. Georg Fischer <punctum at punctum dot kom>
@@ -32,9 +34,9 @@ import  com.drew.metadata.Tag;
 */
 /** Extracts metadata from raster image files.
  *  This class uses the library <em>libmetadata-extractor-java</em>
- *	which may be installed under Ubuntu, or directly from
- *	{@link http://code.google.com/p/metadata-extractor/}.
- *	The author of that library is Drew Noakes.
+ *  which may be installed under Ubuntu, or directly from
+ *  <a href="http://code.google.com/p/metadata-extractor/">http://code.google.com/p/metadata-extractor/</a>
+ *  The author of that library is Drew Noakes.
  *  @author Dr. Georg Fischer
  */
 public class ExifGenerator extends ByteTransformer {
@@ -50,23 +52,23 @@ public class ExifGenerator extends ByteTransformer {
     /** Tag element tag */
     private static final String TAG_TAG    = "tag";
 
-    /**	No-args Constructor
+    /** No-args Constructor
      */
     public ExifGenerator() {
         super();
-        setFormatCodes	("exif");
-        setDescription	("Exif Metadata");
-        setMimeType		("image/jpeg");
+        setFormatCodes  ("exif");
+        setDescription  ("Exif Metadata");
+        setMimeType     ("image/jpeg");
     } // Constructor
 
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = Logger.getLogger(ExifGenerator.class.getName());
-	} // initialize
+    } // initialize
 
     /*===========================*/
     /* Generator for SAX events  */
@@ -79,27 +81,27 @@ public class ExifGenerator extends ByteTransformer {
         boolean result = true;
         String indent = "    "; // 4 spaces
         try {
-	        fireStartDocument();
+            fireStartDocument();
             fireStartRoot(ROOT_TAG);
             fireLineBreak();
-		/*
-	        Metadata metadata = ImageMetadataReader.readMetadata((BufferedInputStream) getByteReader(), false);
+        /*
+            Metadata metadata = ImageMetadataReader.readMetadata((BufferedInputStream) getByteReader(), false);
             for (Directory directory : metadata.getDirectories()) {
-            	String dirName = directory.getName().replaceAll("\\W+", "-").replaceAll("\\-+\\Z", "");
-            	fireStartElement(dirName);
-            	fireLineBreak();
-	            for (Tag tag : directory.getTags()) {
-	            	String tagName = tag.getTagName().replaceAll("\\W+", "-").replaceAll("\\-+\\Z", "");
-    	        	fireCharacters(indent);
-    	        	fireStartElement(tagName);
-			        fireCharacters(tag.getDescription());
-			        fireEndElement(tagName);
-		            fireLineBreak();
-    			} // for tag
-				fireEndElement(dirName);
-	            fireLineBreak();
-			} // for directory
-		*/
+                String dirName = directory.getName().replaceAll("\\W+", "-").replaceAll("\\-+\\Z", "");
+                fireStartElement(dirName);
+                fireLineBreak();
+                for (Tag tag : directory.getTags()) {
+                    String tagName = tag.getTagName().replaceAll("\\W+", "-").replaceAll("\\-+\\Z", "");
+                    fireCharacters(indent);
+                    fireStartElement(tagName);
+                    fireCharacters(tag.getDescription());
+                    fireEndElement(tagName);
+                    fireLineBreak();
+                } // for tag
+                fireEndElement(dirName);
+                fireLineBreak();
+            } // for directory
+        */
             fireEndElement(ROOT_TAG);
             fireLineBreak();
             fireEndDocument();
@@ -111,15 +113,15 @@ public class ExifGenerator extends ByteTransformer {
 
     /*==================================*/
     /* SAX handler for XML input        */
-	/* The input is repeated unchanged. */
+    /* The input is repeated unchanged. */
     /*==================================*/
 
     /** Receive notification of the beginning of the document.
      */
     public void startDocument() {
         try {
-			super.startDocument();
-			filterHandler.startDocument();
+            super.startDocument();
+            filterHandler.startDocument();
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
         }
@@ -130,7 +132,7 @@ public class ExifGenerator extends ByteTransformer {
      */
     public void endDocument() {
         try {
-			filterHandler.endDocument();
+            filterHandler.endDocument();
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
         }
@@ -148,7 +150,7 @@ public class ExifGenerator extends ByteTransformer {
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
         try {
-			filterHandler.startElement(uri, localName, qName, attrs);
+            filterHandler.startElement(uri, localName, qName, attrs);
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
         }
@@ -164,7 +166,7 @@ public class ExifGenerator extends ByteTransformer {
      */
     public void endElement(String uri, String localName, String qName) {
         try {
-			filterHandler.endElement(uri, localName, qName);
+            filterHandler.endElement(uri, localName, qName);
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
         }
@@ -177,7 +179,7 @@ public class ExifGenerator extends ByteTransformer {
      */
     public void characters(char[] ch, int start, int length) {
         try {
-			filterHandler.characters(ch, start, length);
+            filterHandler.characters(ch, start, length);
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
         }
