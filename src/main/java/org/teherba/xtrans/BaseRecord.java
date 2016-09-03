@@ -1,5 +1,5 @@
 /* BaseRecord.java - common methods for record access
- * @(#) $Id: Records.txt 81 2009-02-12 19:18:51Z gfis $
+ * @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
  * 2008-08-04: get|set1, setPadChar
  * 2008-06-23: get|setRecordTag, getRecordURI
  * 2007-01-19: padForSet in char.setString
@@ -37,7 +37,7 @@ import  org.apache.log4j.Logger;
  */
 
 public abstract class BaseRecord {
-   public final static String CVSID = "@(#) $Id: Records.txt 81 2009-02-12 19:18:51Z gfis $";
+   public final static String CVSID = "@(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $";
 
    /** Readable format for dates */
    protected static final SimpleDateFormat ISO_DATE_FORMAT      = new SimpleDateFormat("yyyy-MM-dd");

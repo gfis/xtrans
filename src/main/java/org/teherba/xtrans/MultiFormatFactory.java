@@ -89,7 +89,7 @@ import  org.teherba.xtrans.proglang.VisualBasicTransformer;
 import  org.teherba.xtrans.pseudo.CountingSerializer;
 import  org.teherba.xtrans.pseudo.FileTreeGenerator;
 import  org.teherba.xtrans.pseudo.LevelFilter;
-import  org.teherba.xtrans.pseudo.MailSerializer;
+// import  org.teherba.xtrans.pseudo.MailSerializer;
 import  org.teherba.xtrans.pseudo.SequenceGenerator;
 import  org.teherba.xtrans.pseudo.SystemGenerator;
 import  java.io.File;
@@ -199,7 +199,7 @@ public class MultiFormatFactory extends XtransFactory{
                 , new CountingSerializer        () // counts XML elements and length of direct character content
                 , new FileTreeGenerator         () // recursively walks a file/directory tree
                 , new LevelFilter               () // add a level attribute to all start element tags
-                , new MailSerializer            () // get address, subject and filenames from XMl and send a mail
+     //           , new MailSerializer            () // get address, subject and filenames from XMl and send a mail
                 , new SequenceGenerator         () // generates a sequence
                 , new SystemGenerator           () // show system information
                 // --------

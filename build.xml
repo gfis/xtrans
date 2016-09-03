@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: build.xml 967 2012-08-29 18:22:10Z gfis $
+    2016-09-02: properties ${tomcat.*}, core.jar
     2014-11-16: tomcat.base|home extracted from build-import.xml
     2014-02-10: was -Djaxp.debug=1
     2011-10-04: TeX
@@ -38,12 +39,46 @@
     <!-- the 5 needed for build-import.xml -->
     <property name="app.name"           value="xtrans" />
     <property name="app.version"        value="2.0" />
-    <property name="app.main-class" value="org.teherba.xtrans.MainTransformer"/>
+    <property name="app.main-class"     value="org.teherba.xtrans.MainTransformer"/>
     <property name="tomcat.base"        value="/var/lib/tomcat" />
     <property name="tomcat.home"        value="/usr/share/tomcat" />
     <import file="build-import.xml" />
 
     <property name="pipeClass"      value="org.teherba.xtrans.MainTransformer"/>
+
+    <target name="core.jar">
+        <!-- without libraries, without web files
+        -->
+        <jar jarfile="${dist.home}/${ant.project.name}-core.jar"
+                basedir="${build.classes}"
+                manifest="${build.classes}/META-INF/MANIFEST.MF"
+                >
+                <include name="**/*.class"/>
+                <exclude name="**/web/*.class"/>
+                <exclude name="**/*Servlet.class"/>
+                <exclude name="**/config/*.class"/>
+                <exclude name="**/database/*.class"/>
+                <exclude name="**/edi/*.class"/>
+                <exclude name="**/finance/*.class"/>
+            <!--
+                <exclude name="**/general/*.class"/>
+            -->
+                <exclude name="**/geo/*.class"/>
+                <exclude name="**/grammar/YACCTransformer.class"/>
+                <exclude name="**/image/*.class"/>
+                <exclude name="**/image/raster/*.class"/>
+                <exclude name="**/image/vector/*.class"/>
+                <exclude name="**/misc/*.class"/>
+                <exclude name="**/net/*.class"/>
+                <exclude name="**/office/*.class"/>
+                <exclude name="**/office/data/*.class"/>
+                <exclude name="**/office/text/*.class"/>
+                <exclude name="**/organizer/*.class"/>
+                <exclude name="**/parse/*.class"/>
+                <exclude name="**/proglang/*.class"/>
+                <exclude name="**/pseudo/*.class"/>
+        </jar>
+    </target>
 
     <!-- ============= Source Code Generation =============================
     -->

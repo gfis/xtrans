@@ -1,5 +1,5 @@
 /* ByteRecord.java - access methods for byte fields and EBCDIC conversion
- * @(#) $Id: ByteRecord.java 524 2010-07-28 18:23:40Z gfis $
+ * @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
  * 2008-08-04: get|set1, setPadChar
  * 2008-06-23: get|setRecordTag, getRecordURI
  * 2007-01-19: padForSet in char.setString
@@ -39,7 +39,7 @@ import  org.apache.log4j.Logger;
  */
 
 public class ByteRecord extends BaseRecord {
-   public final static String CVSID = "@(#) $Id: ByteRecord.java 524 2010-07-28 18:23:40Z gfis $";
+   public final static String CVSID = "@(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $";
 
    /** log4j logger (category) */
    private Logger log;
