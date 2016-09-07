@@ -374,8 +374,8 @@ public class XtransFactory {
     /** Gets an iterator over all implemented transformers.
      *  @return list iterator over <em>allTransformers</em>
      */
-    public Iterator getIterator() {
-        Iterator result = (Arrays.asList(allTransformers)).iterator();
+    public Iterator<BaseTransformer> getIterator() {
+        Iterator<BaseTransformer> result = Arrays.asList(allTransformers).iterator();
         result.next(); // skip initial null element
         return result;
     } // getIterator

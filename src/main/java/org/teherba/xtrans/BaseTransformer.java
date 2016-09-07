@@ -1,5 +1,6 @@
 /*  (Pseudo-abstract) class for file format transformers
     @(#) $Id: BaseTransformer.java 855 2012-01-11 06:59:36Z gfis $
+    2016-09-07: public setMimeType, getOption, getIntOption
     2012-01-10: instantiate Logger in Constructor
     2010-06-01: do not close System.out if processing commands from -f, close at the end only
     2008-06-27: openStream
@@ -347,7 +348,7 @@ public class BaseTransformer
     /** Sets the MIME type
      *  @param mime MIME type in the form "major/minor"
      */
-    protected void setMimeType(String mime) {
+    public void setMimeType(String mime) {
         this.mimeType = mime;
     } // setMimeType
     //--------------------------------------------------
@@ -785,7 +786,7 @@ public class BaseTransformer
      *  @param name name of the option
      *  @param def default value if option is not set
      */
-    protected String getOption(String name, String def) {
+    public String getOption(String name, String def) {
         String result = options.getProperty(name);
         return result != null ? result : def;
     } // getOption
@@ -795,7 +796,7 @@ public class BaseTransformer
      *  @param name name of the option
      *  @param def default value if option is not set or invalid
      */
-    protected int getIntOption(String name, int def) {
+    public int getIntOption(String name, int def) {
         int result = def;
         String temp = options.getProperty(name);
         if (temp != null && temp.length() > 0) {
