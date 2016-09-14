@@ -25,7 +25,6 @@ package org.teherba.xtrans.web;
 import  org.teherba.xtrans.XtransFactory;
 import  org.teherba.common.web.BasePage;
 import  org.teherba.xtrans.BaseTransformer;
-import  org.teherba.xtrans.MultiFormatFactory;
 import  org.teherba.xtrans.XtransFactory;
 import  java.io.PrintWriter;
 import  java.io.Serializable;
@@ -75,7 +74,7 @@ public class IndexPage implements Serializable {
             out.write("<title>" + basePage.getAppName() + " Main Page</title>\n");
             out.write("</head>\n<body>\n");
 
-            XtransFactory factory = new MultiFormatFactory();
+            XtransFactory factory = new XtransFactory();
             String border = "0";
             int index = 0;
             out.write("<!-- dir=\"" + dir + "\", format=\"" + format + "\", target=\""+  target
@@ -87,7 +86,7 @@ public class IndexPage implements Serializable {
 
             out.write("        <tr valign=\"top\">\n");
             out.write("            <td rowspan=\"2\"><strong>Format</strong><br />\n");
-            out.write("                <select name=\"format\" size=\"" + factory.getCount() + "\">\n");
+            out.write("                <select name=\"format\" size=\"" + factory.size() + "\">\n");
                                        Iterator iter = factory.getIterator();
                                        index = 0;
                                        while (iter.hasNext()) {

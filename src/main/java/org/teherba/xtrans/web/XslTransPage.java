@@ -19,7 +19,6 @@
  */
 package org.teherba.xtrans.web;
 import  org.teherba.xtrans.BaseTransformer;
-import  org.teherba.xtrans.MultiFormatFactory;
 import  org.teherba.xtrans.XtransFactory;
 import  org.teherba.common.web.BasePage;
 import  java.lang.Class;

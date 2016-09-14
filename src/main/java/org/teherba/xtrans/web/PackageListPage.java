@@ -1,5 +1,6 @@
 /*  PackageListPage.java - main web page for Xtrans
  *  @(#) $Id: 57d01d0860aef0c2f2783647be70c3c381710c86 $
+ *  2016-09-14: MultiFormatFactory back to dynamic XtransFactory
  *  2016-09-06: without session
  *  2016-08-28: Dr. Georg Fischer: copied from Dbat
  *  2011-04-06: MultiFormatFactory
@@ -25,7 +26,6 @@
  */
 package org.teherba.xtrans.web;
 import  org.teherba.xtrans.BaseTransformer;
-import  org.teherba.xtrans.MultiFormatFactory;
 import  org.teherba.xtrans.XtransFactory;
 import  org.teherba.common.web.BasePage;
 import  java.lang.Class;
@@ -84,10 +84,10 @@ public class PackageListPage implements Serializable {
             out.write("  </tr>\n");
       
             String appName = basePage.getAppName().toLowerCase();
-            XtransFactory factory = new MultiFormatFactory();
+            XtransFactory factory = new XtransFactory();
             Iterator<BaseTransformer> iter = factory.getIterator();
             String oldPackage = "";
-            iter.next(); // skip over element [0] which is null
+            // iter.next(); // skip over element [0] which is null
             while (iter.hasNext()) {
                 BaseTransformer trans = iter.next();  
                 String name = trans.getClass().getName(); 

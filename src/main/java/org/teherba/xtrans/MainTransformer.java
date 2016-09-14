@@ -1,12 +1,13 @@
 /*  Commandline tool which transforms various file formats to and from XML.
-    @(#) $Id: MainTransformer.java 966 2012-08-29 07:06:07Z gfis $
-    2011-04-06: configure, process methods moved to XtransFactory
-    2010-07-09: XtransPipe incorporated
-    2010-06-01: do not close System.out if processing commands from -f, close at the end only
-    2007-11-05: also with LexicalHandler
-    2007-04-04: renamed from 'Transformer'
-    2006-10-12: copied from gramword
-*/
+ *  @(#) $Id: MainTransformer.java 966 2012-08-29 07:06:07Z gfis $
+ *  2016-09-14: MultiFormatFactory back to dynamic XtransFactory
+ *  2011-04-06: configure, process methods moved to XtransFactory
+ *  2010-07-09: XtransPipe incorporated
+ *  2010-06-01: do not close System.out if processing commands from -f, close at the end only
+ *  2007-11-05: also with LexicalHandler
+ *  2007-04-04: renamed from 'Transformer'
+ *  2006-10-12: copied from gramword
+ */
 /*
  * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
  *
@@ -24,7 +25,6 @@
  */
 package org.teherba.xtrans;
 import  org.teherba.xtrans.BaseTransformer;
-import  org.teherba.xtrans.MultiFormatFactory;
 import  org.teherba.xtrans.XtransFactory;
 import  java.io.BufferedReader;
 import  java.io.FileReader;
@@ -69,7 +69,8 @@ public class MainTransformer {
      */
     public MainTransformer() {
         log = Logger.getLogger(MainTransformer.class.getName());
-        factory     = new MultiFormatFactory();
+        factory = new XtransFactory();
+        // System.out.println(factory.toString());
     } // Constructor 0
 
     /** Close all remaining open files, especially STDOUT
@@ -86,7 +87,7 @@ public class MainTransformer {
     } // setRealPath
     
     /** Gets the generator for further configuration,
-     *  for example in {@link XtransServlet} for the redirection of the input reader to an uploaded file 
+     *  for the redirection of the input reader to an uploaded file 
      *  @return producer of XML 
      */
     public BaseTransformer getGenerator() {
@@ -94,7 +95,7 @@ public class MainTransformer {
     } // getGenerator
 
     /** Gets the serializer for further configuration,
-     *  for example in {@link XtransServlet} for the redirection of the output reader to the servlet's response
+     *  for the redirection of the output reader to the servlet's response
      *  @return consumer of XML 
      */
     public BaseTransformer getSerializer() {
@@ -128,7 +129,7 @@ public class MainTransformer {
     } // processArgs 
 
     /** Main program, processes the commandline arguments
-     *  @param args arguments; see {@link #createPipeLine} for a description
+     *  @param args arguments; see {@link XtransFactory#createPipeLine} for a description
      *  of a sequence of arguments. For the special case "-f filename",
      *  the arguments are read and processed line by line from the specified file.
      */

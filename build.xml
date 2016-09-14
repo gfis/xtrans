@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: build.xml 967 2012-08-29 18:22:10Z gfis $
+    2016-09-11: fill.lib
     2016-09-02: properties ${tomcat.*}, core.jar
     2014-11-16: tomcat.base|home extracted from build-import.xml
     2014-02-10: was -Djaxp.debug=1
@@ -80,6 +81,21 @@
         </jar>
     </target>
 
+    <target name="fill.lib">
+        <copy todir="${lib.home}">
+            <fileset dir="${tomcat.base}/openlib">
+                <include name="activation.jar" />
+                <include name="common-core.jar" />
+                <include name="commons-logging-1.2.jar" />
+                <include name="commons-fileupload-1.2.2.jar" />
+                <include name="commons-io-2.1.jar" />
+                <include name="dbat-core.jar" />
+                <include name="log4j-1.2.17.jar" />
+                <include name="serializer.jar" />
+            </fileset>
+        </copy>
+    </target>
+
     <!-- ============= Source Code Generation =============================
     -->
     <target name="generate" depends="gen.pack,gen.record,gen.dta,gen.aeb43,gen.cfonb,gen.coda">
@@ -104,7 +120,7 @@
         generate package descriptions
     -->
     <target name="gen.pack" depends="">
-        <java classname="org.teherba.xtrans.MultiFormatFactory"
+        <java classname="org.teherba.xtrans.XtransFactory"
                 classpathref="compile.classpath" fork="true" >
         </java>
     </target>

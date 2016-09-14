@@ -1,5 +1,6 @@
 /*  Servlet which transforms various file formats to and from XML.
     @(#) $Id: XtransServlet.java 796 2011-09-10 13:58:28Z gfis $
+ *  2016-09-14: MultiFormatFactory back to dynamic XtransFactory
     2016-09-06: package xtrans.web; uses BasePage; completely revised
     2011-04-06: XtransFactory -> MultiFormatFactory
     2010-12-13: sqlPretty
@@ -34,7 +35,6 @@ import  org.teherba.xtrans.web.Messages;
 import  org.teherba.xtrans.web.PackageListPage;
 import  org.teherba.xtrans.BaseTransformer;
 import  org.teherba.xtrans.MainTransformer; // for Javadoc only
-import  org.teherba.xtrans.MultiFormatFactory;
 import  org.teherba.xtrans.XMLTransformer;
 import  org.teherba.xtrans.XtransFactory;
 import  org.teherba.common.web.BasePage;
@@ -81,7 +81,7 @@ public class XtransServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         log = Logger.getLogger(XtransServlet.class.getName());
-        factory = new MultiFormatFactory();
+        factory = new XtransFactory();
         basePage = new BasePage(APP_NAME);
         Messages.addMessageTexts(basePage);
     } // init
@@ -274,7 +274,7 @@ public class XtransServlet extends HttpServlet {
      *  @param generator parser for the input format
      *  @param serializer generates the output format
      *  @param fileItem handle for an uploaded file
-     *  @param intext input String from a form field, overtakes {@link #fileItem} if non-empty
+     *  @param intext input String from a form field, overtakes <em>fileItem</em> if non-empty
      *  @param response wher to write the output
      */
     private void doTransform(BaseTransformer generator
