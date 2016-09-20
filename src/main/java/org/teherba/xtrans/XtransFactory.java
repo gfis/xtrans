@@ -1,6 +1,6 @@
 /*  Selects the applicable transformer, and creates transformation pipelines
     @(#) $Id: XtransFactory.java 966 2012-08-29 07:06:07Z gfis $
-    2016-09-14: dynamic ArrayList of transformers; MutiFormatFactory removed
+    2016-09-17: dynamic ArrayList of transformers; MutiFormatFactory removed
     2014-11-07: private TransformerHandlers -> public
     2010-12-07: -sqlpretty
     2010-07-28: config
@@ -220,7 +220,7 @@ public class XtransFactory {
             if (isApplicable(transformer, format)) { // found this format
                 transformer.initialize();
                 busy = false; // break loop
-                log.info("getTransformer(\"" + format + "\") = " + transformer);
+                // log.info("getTransformer(\"" + format + "\") = " + transformer);
                 // found this format
             } else {
                 transformer = null;
@@ -514,12 +514,12 @@ public class XtransFactory {
     } // toString
     
     /** Maps subpackage names to their descriptions */
-    private static HashMap/*<1.5*/<String, String>/*1.5>*/ descMap;
+    private static HashMap<String, String> descMap;
 
     /** Stores the descriptions of all subpackages.
      */
     private static void storeSubPackages() {
-        descMap = new HashMap/*<1.5*/<String, String>/*1.5>*/();
+        descMap = new HashMap<String, String>();
         descMap.put("config"        , "configuration file formats");
         descMap.put("edi"           , "electronic data interchange (business) formats");
         descMap.put("finance"       , "financial data formats (SWIFT et al.)");

@@ -113,7 +113,7 @@ public class IndexPage implements Serializable {
         }
     } // dialog
 
-    /** Write the common part of the form with thr input fields.
+    /** Write the common part of the form with theirr input fields.
      *  <ul>
      *  <li>options</li>
      *  <li>namespace</li>
