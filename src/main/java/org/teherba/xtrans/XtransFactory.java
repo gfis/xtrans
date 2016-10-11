@@ -180,6 +180,7 @@ public class XtransFactory {
             this.addClass("proglang.VisualBasicTransformer");
             this.addClass("pseudo.CountingSerializer");
             this.addClass("pseudo.FileTreeGenerator");
+            this.addClass("pseudo.JavaImportChecker");
             this.addClass("pseudo.LevelFilter");
         //  this.addClass("pseudo.MailSerializer");
             this.addClass("pseudo.SequenceGenerator");

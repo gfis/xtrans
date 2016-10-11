@@ -1,5 +1,6 @@
 /*  Properties of a single transformation operation for a production of the grammar.
     @(#) $Id: Transformation.java 524 2010-07-28 18:23:40Z gfis $
+    2016-10-11: typo SetInfo
     2010-07-21: copied from Production.java
 */
 /*
@@ -20,6 +21,8 @@
 package org.teherba.xtrans.parse;
 import  java.sql.ResultSet;
 import  java.text.SimpleDateFormat;
+import  java.util.Date;
+
 
 /** Bean which stores all properties of a single transformation operation.
  *  All actions are stored in a linear array, and the grammar's productions
@@ -142,7 +145,7 @@ public class Transformation {
     /** Sets the additional information for the operation
      *  @param info nonterminal symbol, relative stack number etc.
      */
-    public void SetInfo(String info) {
+    public void setInfo(String info) {
         this.info = info;
     } // setInfo
 
