@@ -2,6 +2,7 @@
 <!--
     @(#) $Id: web.xml 9 2008-09-05 05:21:15Z gfis $
     Copyright (c) 2006 Dr. Georg Fischer <punctum@punctum.com>
+    2016-10-12: Servlet 3.0; ErrorServlet
     2016-09-06: Servlet moved to package xtrans.web
     2006-10-13: minimal version
 -->

@@ -1,6 +1,6 @@
 /*  PackageListPage.java - main web page for Xtrans
  *  @(#) $Id: 57d01d0860aef0c2f2783647be70c3c381710c86 $
- *  2016-10-13: less imports
+ *  2016-10-13: less imports; skip over [0] = XMLTransformer
  *  2016-09-14: MultiFormatFactory back to dynamic XtransFactory
  *  2016-09-06: without session
  *  2016-08-28: Dr. Georg Fischer: copied from Dbat
@@ -8,7 +8,6 @@
  *  2008-07-30: svn tests
  *  2008-05-31: with field 'view'
  *  2006-10-13: copied from numword
- *  caution, must be UTF-8 encoded: dv|DV\_ 
  */
 /*
  * Copyright 2016 Dr. Georg Fischer <punctum at punctum dot kom>
@@ -83,28 +82,28 @@ public class PackageListPage implements Serializable {
             out.write("    <td valign=\"top\"><strong>Class Name</strong></td>\n");
             out.write("    <td valign=\"top\"><strong>Description</strong></td>\n");
             out.write("  </tr>\n");
-      
+
             String appName = basePage.getAppName().toLowerCase();
             XtransFactory factory = new XtransFactory();
             Iterator<BaseTransformer> iter = factory.getIterator();
             String oldPackage = "";
-            // iter.next(); // skip over element [0] which is null
+            iter.next(); // skip over element [0] which is XMLTransformer (outside any package)
             while (iter.hasNext()) {
-                BaseTransformer trans = iter.next();  
-                String name = trans.getClass().getName(); 
+                BaseTransformer trans = iter.next();
+                String name = trans.getClass().getName();
                 // construct http://localhost:8080/xtrans/docs/api/org/teherba/xtrans/proglang/CSSTransformer.html
                 //           http://localhost:8080/xtrans/api/org/teherba/Xtrans/herba.xtrans.proglang/CSSTransformer.html#skip-navbar_top
                 int pos = name.indexOf(appName + ".");
                 name = name.substring(pos + appName.length() + 1);
-                pos = name.lastIndexOf(".");
+                pos  = name.lastIndexOf(".");
                 String packageName = name.substring(0, pos);
                 name = name.substring(pos + 1);
                 out.write("  <tr>\n");
                 out.write("    <td valign=\"top\">" + (packageName.equals(oldPackage) ? "&nbsp;" : packageName ) + "</td>\n"); // package
                 out.write("    <td valign=\"top\"><strong>" + trans.getFirstFormatCode() + "</strong></td>\n"); // format code
                 out.write("    <td valign=\"top\">" + (trans.isBinaryFormat() ? "byte" : "char")  + "</td>\n"); // type
-                out.write("    <td valign=\"top\">" + "<a href=\"" + "docs/api/org/teherba/" 
-                                  + appName + "/" + packageName + "/" 
+                out.write("    <td valign=\"top\">" + "<a href=\"" + "docs/api/org/teherba/"
+                                  + appName + "/" + packageName + "/"
                                   + name + ".html#skip-navbar_top\">" + name + "</a>"  + "</td>\n"); // class name
                 out.write("    <td valign=\"top\">" + trans.getDescription() + "</td>\n"); // description
                 out.write("  </tr>\n");

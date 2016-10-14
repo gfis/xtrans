@@ -1,5 +1,6 @@
 /* BaseRecord.java - common methods for record access
  * @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
+ * 2016-10-14: Date, Timestamp, Attributes and SAXException only for "a"
  * 2008-08-04: get|set1, setPadChar
  * 2008-06-23: get|setRecordTag, getRecordURI
  * 2007-01-19: padForSet in char.setString

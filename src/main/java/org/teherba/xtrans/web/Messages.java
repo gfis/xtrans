@@ -1,5 +1,6 @@
 /*  Messages.java - Static help texts and other language specific messages for Xtrans
  *  @(#) $Id: 57d01d0860aef0c2f2783647be70c3c381710c86 $
+ *  2016-10-14: views alll lowercase
  *  2016-09-07: Dr. Georg Fischer: copied from Xtool
  */
 /*
@@ -58,11 +59,11 @@ public class Messages implements Serializable {
         basePage.add("en", smess, "{parm}Xtrans</a> Main Page");
         basePage.add("de", smess, "{parm}Xtrans</a>-Startseite");
         smess = String.format("%03d", imess ++);
-        basePage.add(laux, smess, "<a title=\"xsltrans\"    href=\"servlet?view=xslTrans\">");
+        basePage.add(laux, smess, "<a title=\"xsltrans\"    href=\"servlet?view=xsltrans\">");
         basePage.add("en", smess, "{parm}XSL</a> Transformation Pipeline");
         basePage.add("de", smess, "{parm}Xtrans</a>-Transformationskette");
         smess = String.format("%03d", imess ++);
-        basePage.add(laux, smess, "<a title=\"packlist\"    href=\"servlet?view=packList\">");
+        basePage.add(laux, smess, "<a title=\"packlist\"    href=\"servlet?view=packlist\">");
         basePage.add("en", smess, "{parm}List of Transformers</a>");
         basePage.add("de", smess, "{parm}Liste der Transformer</a>");
         smess = String.format("%03d", imess ++);

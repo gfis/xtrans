@@ -27,6 +27,7 @@ import  java.io.PrintWriter;
 import  java.io.Serializable;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
+import  org.apache.commons.fileupload.FileItem;
 import  org.apache.log4j.Logger;
 
 /** RaMath main dialog page
@@ -49,48 +50,53 @@ public class XslTransPage implements Serializable {
      *  @param request request with header fields
      *  @param response response with writer
      *  @param basePage refrence to common methods and error messages
-     *  @param language 2-letter code en, de etc.
      */
     public void dialog(HttpServletRequest request, HttpServletResponse response
             , BasePage basePage
-            , String language
-            , String pipeLine
-            , String options
-            , String namespace
-            , String enc1
-            , String enc2
-            , String infile
-            , String intext
             ) throws IOException {
         if (true) { // try {
+            String language   = basePage.getFormField("lang"    );
+            String namespace  = basePage.getFormField("nsp"     );
+            String options    = basePage.getFormField("opt"     );
+            String pipeline   = basePage.getFormField("pipeline");
+            String enc1       = basePage.getFormField("enc1"    );
+            String enc2       = basePage.getFormField("enc1"    );
+            String intext     = basePage.getFormField("intext"  );
+            FileItem fileItem = basePage.getFormFile(0);
+            String infile     = "(specify)";
+            if (fileItem != null) {
+                infile        = fileItem.getName();
+            }
             PrintWriter out = basePage.writeHeader(request, response, language);
             out.write("<title>" + basePage.getAppName() + " Main Page</title>\n");
             out.write("</head>\n<body>\n");
-            String[] optPipeLine = new String [] // keep in sync with following String array
+            String[] optPipeline = new String [] // keep in sync with following String array
                     { "" // this is skipped below
                     , "- -mt940 -xsl finance/mt940-camt.052.xsl -xml -"
+                    , "- -java -jimp -"
                     } ;
-            String[] enPipeLine = new String []
+            String[] enPipeline = new String []
                     { "" // this is skipped below
                     , "MT940 -> camt.052"
+                    , "Java import check"
                     } ;
             String border = "0";
             int index = 0;
-            out.write("<!-- pipeLine=\"" + pipeLine + "\", namespace=\"" + namespace + "\", options=\"" + options +" -->\n");
-            out.write("<h2>xtrans XSLT Pipeline Applications</h2>\n");
+            out.write("<!-- pipeline=\"" + pipeline + "\", namespace=\"" + namespace + "\", options=\"" + options +" -->\n");
+            out.write("<h2>xtrans XSLT pipeline Applications</h2>\n");
             out.write("<form action=\"servlet\" method=\"post\" enctype=\"multipart/form-data\">\n");
-            out.write("    <input type = \"hidden\" name=\"view\" value=\"xslTrans2\" />\n");
+            out.write("    <input type = \"hidden\" name=\"view\" value=\"xsltrans2\" />\n");
             out.write("    <table cellpadding=\"8\" border=\"" + border + "\">\n");
             out.write("        <tr valign=\"top\">\n");
-            out.write("            <td rowspan=\"2\"><strong>Pipeline Application</strong><br />\n");
-            out.write("                <select name=\"pipeLine\" size=\"" + optPipeLine.length + "\">\n");
+            out.write("            <td rowspan=\"2\"><strong>pipeline Application</strong><br />\n");
+            out.write("                <select name=\"pipeline\" size=\"" + optPipeline.length + "\">\n");
                                        index = 1; // skip dummy entry [0]
-                                       while (index < optPipeLine.length) {
+                                       while (index < optPipeline.length) {
                                            out.write("<option value=\""
-                                                   + optPipeLine[index] + "\""
-                                                   + (optPipeLine[index].equals(pipeLine) ? " selected" : "")
+                                                   + optPipeline[index] + "\""
+                                                   + (optPipeline[index].equals(pipeline) ? " selected" : "")
                                                    + ">"
-                                                   + enPipeLine[index] + "</option>\n");
+                                                   + enPipeline[index] + "</option>\n");
                                            index ++;
                                        } // while index
             out.write("                </select>\n");
@@ -112,17 +118,5 @@ public class XslTransPage implements Serializable {
     */
         }
     } // dialog
-
-    //================
-    // Main method
-    //================
-
-    /** Test driver
-     *  @param args language code: "en", "de"
-     */
-    public static void main(String[] args) {
-        XslTransPage help = new XslTransPage();
-        System.out.println("no messages");
-    } // main
 
 } // XslTransPage

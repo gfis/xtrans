@@ -26,12 +26,13 @@ import  org.teherba.xtrans.XtransFactory;
 import  org.teherba.common.web.BasePage;
 import  org.teherba.xtrans.BaseTransformer;
 import  org.teherba.xtrans.XtransFactory;
+import  java.io.IOException;
 import  java.io.PrintWriter;
 import  java.io.Serializable;
 import  java.util.Iterator;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
-import  javax.servlet.http.HttpSession;
+import  org.apache.commons.fileupload.FileItem;
 import  org.apache.log4j.Logger;
 
 /** Xtrans main dialog page
@@ -54,21 +55,25 @@ public class IndexPage implements Serializable {
      *  @param request request with header fields
      *  @param response response with writer
      *  @param basePage refrence to common methods and error messages
-     *  @param language 2-letter code en, de etc.
      */
     public void dialog(HttpServletRequest request, HttpServletResponse response
             , BasePage basePage
-            , String language
-            , String format
-            , String dir
-            , String options
-            , String namespace
-            , String enc1
-            , String enc2
-            , String infile
-            , String intext
-            ) {
-        try {
+            ) throws IOException {
+        if (true) { // try {
+            String language   = basePage.getFormField("lang"    );
+            String dir        = basePage.getFormField("tool"    );
+            String namespace  = basePage.getFormField("nsp"     );
+            String options    = basePage.getFormField("opt"     );
+            String format     = basePage.getFormField("format"  );
+            String enc1       = basePage.getFormField("enc1"    );
+            String enc2       = basePage.getFormField("enc1"    );
+            String intext     = basePage.getFormField("intext"  );
+            FileItem fileItem = basePage.getFormFile(0);
+            String infile     = "(specify)";
+            if (fileItem != null) {
+                infile        = fileItem.getName();
+            }
+
             String target = "xml";
             PrintWriter out = basePage.writeHeader(request, response, language);
             out.write("<title>" + basePage.getAppName() + " Main Page</title>\n");
@@ -108,8 +113,10 @@ public class IndexPage implements Serializable {
             out.write("</form>\n");
 
             basePage.writeTrailer(language, "quest");
+    /*
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
+    */
         }
     } // dialog
 
@@ -123,7 +130,6 @@ public class IndexPage implements Serializable {
      *  <li>input field</li>
      *  </ul>
      *  @param out PrintWriter for response
-     *
      */
     public static void writeFormOptions(BasePage basePage, PrintWriter out
             , String language
@@ -262,17 +268,5 @@ public class IndexPage implements Serializable {
         out.write("                    </tr>\n");
         out.write("                </table>\n");
     } // writeFormOptions
-
-    //================
-    // Main method
-    //================
-
-    /** Test driver
-     *  @param args language code: "en", "de"
-     */
-    public static void main(String[] args) {
-        IndexPage help = new IndexPage();
-        System.out.println("no messages");
-    } // main
 
 } // IndexPage

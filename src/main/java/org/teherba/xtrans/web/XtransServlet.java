@@ -42,8 +42,6 @@ import  org.teherba.common.web.BasePage;
 import  org.teherba.common.web.MetaInfPage;
 import  java.io.IOException;
 import  java.io.StringReader;
-import  java.util.Iterator;
-import  java.util.List;
 import  javax.servlet.ServletConfig;
 import  javax.servlet.ServletException;
 import  javax.servlet.http.HttpServlet;
@@ -51,9 +49,6 @@ import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
 import  org.apache.log4j.Logger;
 import  org.apache.commons.fileupload.FileItem;
-import  org.apache.commons.fileupload.FileItemFactory;
-import  org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import  org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /** Servlet which transforms various file formats to and from XML.
  *  This class is the servlet interface to <em>BaseTransformer</em>,
@@ -114,83 +109,46 @@ public class XtransServlet extends HttpServlet {
             throws IOException {
         BaseTransformer generator   = null;
         BaseTransformer serializer  = null;
-        String view     = BasePage.getInputField(request, "view"  , "index");
-        FileItem fileItem = null; // not seen so far
         if (true) { // try {
-            String newPage       = ""; // no error so far
-            String format        = "line";
+            String view = basePage.getFilesAndFields(request, new String[]
+                    { "view"    , "index"
+                    , "lang"    , "en"
+                    , "tool"    , "to"
+                    , "nsp"     , ""
+                    , "opt"     , ""
+                    , "pipeline", "- -mt940 -xsl finance/mt940-camt.052.xsl -xml -"
+                    , "format"  , "line"
+                    , "enc1"    , "UTF-8"
+                    , "enc1"    , "UTF-8"
+                    , "intext"  , ""
+                    } );
+            String language   = basePage.getFormField("lang"    );
+            String dir        = basePage.getFormField("tool"    );
+            String namespace  = basePage.getFormField("nsp"     );
+            String options    = basePage.getFormField("opt"     );
+            String pipeline   = basePage.getFormField("pipeline");
+            String format     = basePage.getFormField("format"  );
+            String enc1       = basePage.getFormField("enc1"    );
+            String enc2       = basePage.getFormField("enc1"    );
+            String intext     = basePage.getFormField("intext"  );
+            FileItem fileItem = basePage.getFormFile(0);
+            String infile     = "(specify)";
+            if (fileItem != null) {
+                infile        = fileItem.getName();
+            }
+
+            //-------------------------------------
+            // first check any parameters
+        /*
+            if (false) {
+            } else if (",ISO-8859-1,UTF-8,"     .indexOf(("," + encoding.toUpperCase() + ",")) < 0) {
+                basePage.writeMessage(request, response, language, new String[]
+                        { "401", "enc"      , encoding  } );
+       */
+            //-------------------------------------
             String resultFormat  = "xml"; // remains fixed
-            String dir           = "";
-            String options       = "";
-            String namespace     = "";
-            String pipeLine      = "";
-            String infile        = "";
-            String intext        = "";
-            String enc1          = "UTF-8";
-            String enc2          = "UTF-8";
-            String style         = "genRecord";
-            String language      = "en";
 
-            // Check that we have a file upload request
-            boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-            if (! isMultipart) {
-                dir          = basePage.getInputField(request, "tool"    , "to");
-                namespace    = basePage.getInputField(request, "nsp"     , "");
-                options      = basePage.getInputField(request, "opt"     , "");
-                pipeLine     = basePage.getInputField(request, "pipeLine", "");
-                format       = basePage.getInputField(request, "format"  , "line");
-                enc1         = basePage.getInputField(request, "enc1"    , "UTF-8");
-                enc2         = basePage.getInputField(request, "enc1"    , "UTF-8");
-                intext       = basePage.getInputField(request, "intext"  , "");
-
-            } else { // multipart
-                FileItemFactory fuFactory = new DiskFileItemFactory(); // Create a factory for disk-based file items
-                ServletFileUpload upload  = new ServletFileUpload(fuFactory); // Create a new file upload handler
-                List<FileItem> items = null;
-                try {
-                    items = upload.parseRequest(request); // Parse the request
-                } catch (Exception exc) {
-                    log.error(exc.getMessage(), exc);
-                }
-                Iterator iter = items.iterator();
-                while (iter.hasNext()) { // Process the uploaded items
-                    FileItem item = (FileItem) iter.next();
-                    if (item.isFormField()) {
-                        String name  = item.getFieldName();
-                        String value = item.getString();
-                        if (false) {
-                        } else if (name.equals("view"   )) {
-                            view         = value;
-                        } else if (name.equals("format" )) {
-                            format = value;
-                        } else if (name.equals("pipeLine" )) {
-                            pipeLine = value;
-                        } else if (name.equals("dir"    )) {
-                            dir = value;
-                        } else if (name.equals("enc1"   )) {
-                            if (value.length() > 0) {
-                                options += "-enc1 " + value + " ";
-                            }
-                        } else if (name.equals("enc2"   )) {
-                            if (value.length() > 0) {
-                                options += "-enc2 " + value + " ";
-                            }
-                        } else if (name.equals("nsp"    )) {
-                            if (value.length() > 0) {
-                                options += "-nsp " + value + " ";
-                            }
-                        } else if (name.equals("opt"    )) {
-                            options += value + " ";
-                        } else if (name.equals("intext" )) {
-                            intext = value;
-                        } else { // unknown field name
-                        }
-                    } else { // no formField - uploaded fileItem
-                        fileItem = item;
-                    }
-                } // while uploaded items
-            } // multipart
-
+            // then switch for the different views
             if (fileItem != null &&
                     (  ! fileItem.getString().matches("\\s*") && ! intext.equals("")
                     ||   fileItem.getString().matches("\\s*") &&   intext.equals("")
@@ -198,7 +156,7 @@ public class XtransServlet extends HttpServlet {
                 basePage.writeMessage(request, response, language, new String[] { "407" } );
 
             } else if (view.equals("index" )) { // show main dialog
-                (new IndexPage()).dialog(request, response, basePage, language, format, dir, options, namespace, enc1, enc2, infile, intext);
+                (new IndexPage()).dialog(request, response, basePage);
 
             } else if (view.equals("index2")) { // do the main transform
                 generator  = factory.getTransformer(format); // try whether the format is valid
@@ -225,12 +183,12 @@ public class XtransServlet extends HttpServlet {
                     this.doTransform(generator, serializer, fileItem, intext, response);
                 } // index page: foreign -> XML or vice versa
 
-            } else if (view.equals("xslTrans" )) { // XSLT to text (Java or SQL)
-                (new XslTransPage()).dialog(request, response, basePage, language, pipeLine, options, namespace, enc1, enc2, infile, intext);
+            } else if (view.equals("xsltrans" )) { // XSLT to text (Java or SQL)
+                (new XslTransPage()).dialog(request, response, basePage);
 
-            } else if (view.equals("xslTrans2")) { // XSLT to text (Java or SQL)
+            } else if (view.equals("xsltrans2")) { // XSLT to text (Java or SQL)
                 factory.setRealPath(getServletContext().getRealPath("/xslt"));
-                factory.createPipeLine(pipeLine.split("\\s+"));
+                factory.createPipeLine(pipeline.split("\\s+"));
                 generator    = factory.getGenerator ();
                 serializer   = factory.getSerializer();
                 // generator .setContentHandler(serializer);
@@ -240,16 +198,16 @@ public class XtransServlet extends HttpServlet {
                 this.doTransform(generator, serializer, fileItem, intext, response);
                 // xslTrans: XML pipe
 
-            } else if (view.equals("packList" )) { // List of available transformers
+            } else if (view.toLowerCase().equals("packlist" )) { // List of available transformers
                 (new PackageListPage()).showList(request, response, basePage, language);
 
-            } else if (view.equals("sqlPretty")) { // SQL pretty printer
+            } else if (view.equals("sqlpretty")) { // SQL pretty printer
 
-            } else if (view.equals("sqlPretty2")) { // SQL pretty printer
+            } else if (view.equals("sqlpretty2")) { // SQL pretty printer
                 // MainTransformer pipe = new MainTransformer(); // was XtransPipe
-                log.debug("pipeLine = " + pipeLine);
+                log.debug("pipeline = " + pipeline);
                 factory.setRealPath(getServletContext().getRealPath("/"));
-                factory.createPipeLine(pipeLine.split("\\s+"));
+                factory.createPipeLine(pipeline.split("\\s+"));
                 generator    = factory.getGenerator ();
                 serializer   = factory.getSerializer();
                 response.setCharacterEncoding(serializer.getResultEncoding());

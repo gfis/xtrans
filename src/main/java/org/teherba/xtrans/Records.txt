@@ -3,6 +3,7 @@ b/* ByteRecord.java - access methods for byte fields and EBCDIC conversion
 c/* CharRecord.java - access methods for character fields
 n/* BeanRecord.java - access methods for properties of a bean
 = * @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
+  * 2016-10-14: Date, Timestamp, Attributes and SAXException only for "a"
   * 2008-08-04: get|set1, setPadChar
   * 2008-06-23: get|setRecordTag, getRecordURI
   * 2007-01-19: padForSet in char.setString
@@ -33,12 +34,12 @@ bimport  java.io.InputStream;
  import  java.io.OutputStream;
 cimport  java.io.BufferedReader;
  import  java.io.PrintWriter;
-=import  java.sql.Date;
+aimport  java.sql.Date;
  import  java.sql.Timestamp;
 aimport  java.text.SimpleDateFormat;
-=import  org.xml.sax.Attributes;
+ import  org.xml.sax.Attributes;
  import  org.xml.sax.SAXException;
- import  org.apache.log4j.Logger;
+=import  org.apache.log4j.Logger;
 
  /**
 a * Abstract

@@ -1,5 +1,6 @@
 /* BeanRecord.java - access methods for properties of a bean
  * @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
+ * 2016-10-14: Date, Timestamp, Attributes and SAXException only for "a"
  * 2008-08-04: get|set1, setPadChar
  * 2008-06-23: get|setRecordTag, getRecordURI
  * 2007-01-19: padForSet in char.setString
@@ -15,10 +16,6 @@
 package org.teherba.xtrans;
 import  org.teherba.xtrans.BaseRecord;
 import  org.teherba.xtrans.Field;
-import  java.sql.Date;
-import  java.sql.Timestamp;
-import  org.xml.sax.Attributes;
-import  org.xml.sax.SAXException;
 import  org.apache.log4j.Logger;
 
 /**
