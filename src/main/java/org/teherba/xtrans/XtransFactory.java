@@ -1,5 +1,6 @@
 /*  Selects the applicable transformer, and creates transformation pipelines
     @(#) $Id: XtransFactory.java 966 2012-08-29 07:06:07Z gfis $
+    2016-10-13: less imports
     2016-09-17: dynamic ArrayList of transformers; MutiFormatFactory removed
     2014-11-07: private TransformerHandlers -> public
     2010-12-07: -sqlpretty
@@ -59,7 +60,6 @@ import  javax.xml.transform.sax.SAXSource;
 import  javax.xml.transform.sax.SAXTransformerFactory;
 import  javax.xml.transform.sax.TransformerHandler;
 import  javax.xml.transform.stream.StreamSource;
-import  org.xml.sax.XMLReader;
 import  org.apache.log4j.Logger;
 
 /** Selects a specific transformer, and iterates over the descriptions
@@ -263,17 +263,15 @@ public class XtransFactory {
      *  @param format name of the filter
      *  @return the filtering transformer for that format,
      *  or null if a handler could not be created
-     *  @throws some exeption
      */
-    public TransformerHandler getFilterHandler(String format) throws Exception {
+    public TransformerHandler getFilterHandler(String format) {
         TransformerHandler handler = null;
         try {
             // log.debug("filter-name=" + format);
-            handler = (new XtransFactory      ()).getTransformer(format); 
+            handler = (new XtransFactory      ()).getTransformer(format);
                  // an XtransFactory instance always returns the same object
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
-            throw exc;
         }
         return handler;
     } // getFilterHandler
@@ -283,9 +281,8 @@ public class XtransFactory {
      *  @param saxFactory the SAXTransformerFactory to be used
      *  @return a transformer handler which performs the XSLT,
      *  or null if a handler could not be created
-     *  @throws some exeption
      */
-    public TransformerHandler getTransletHandler(String transletClassName, SAXTransformerFactory saxFactory) throws Exception {
+    public TransformerHandler getTransletHandler(String transletClassName, SAXTransformerFactory saxFactory) {
         TransformerHandler handler = null;
         try {
             saxFactory.setAttribute("use-classpath", "true");
@@ -296,7 +293,6 @@ public class XtransFactory {
             handler = saxFactory.newTransformerHandler(translet);
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
-            throw exc;
         }
         return handler;
     } // getTransletHandler
@@ -305,16 +301,14 @@ public class XtransFactory {
      *  @param fileName path and name of the stylesheet file
      *  @return a transformer handler which performs the XSLT,
      *  or null if a handler could not be created
-     *  @throws some exeption
      */
-    public TransformerHandler getXSLHandler(String fileName) throws Exception {
+    public TransformerHandler getXSLHandler(String fileName) {
         TransformerHandler handler = null;
         try {
             // log.warn("xsl-name = " + fileName);
             handler = saxFactory.newTransformerHandler(new StreamSource(fileName));
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
-            throw exc;
         }
         return handler;
     } // getXSLHandler
@@ -335,8 +329,8 @@ public class XtransFactory {
      *  The default format is "-xml" for input and output.
      *  @throws some exeption, for example if the stylesheet could not be compiled
      */
-    public void createPipeLine(String[] args) throws Exception {
-        try {
+    public void createPipeLine(String[] args) {
+        if (true) { // try {
             generator   = null;
             serializer  = null;
             int MAX_BASE = 2;
@@ -428,17 +422,23 @@ public class XtransFactory {
             if (nhand > 0) {
                 bases[0].setContentHandler(handlers[0]); // feed the generator's SAX events into the first handler
             //  bases[0].setLexicalHandler(handlers[0]); // feed the generator's SAX events into the first handler
-                bases[0].setProperty("http://xml.org/sax/properties/lexical-handler", handlers[0]);
+                try {
+                    bases[0].setProperty("http://xml.org/sax/properties/lexical-handler", handlers[0]);
+                } catch (Exception exc) {
+                    // log.error(exc.getMessage(), exc);
+                }
                 handlers[nhand - 1].setResult(new SAXResult(bases[1])); // feed result of last handler into serializer
-            }
+            } // nhand > 0
             ihand = nhand - 1;
             while (ihand > 0) {
                 handlers[ihand - 1].setResult(new SAXResult(handlers[ihand])); // feed one handler's SAX events into the next handler
                 ihand --;
             } // while ihand
+    /*
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
             throw exc;
+    */
         }
     } // createPipeLine
 
@@ -504,8 +504,8 @@ public class XtransFactory {
         StringBuffer result = new StringBuffer(1024);
         Iterator<BaseTransformer> iter = this.getIterator();
         while (iter.hasNext()) {
-            BaseTransformer trans = iter.next();  
-            String name = trans.getClass().getName(); 
+            BaseTransformer trans = iter.next();
+            String name = trans.getClass().getName();
             result.append(name);
             result.append(' ');
             result.append(trans.getFormatCodes());
@@ -513,7 +513,7 @@ public class XtransFactory {
         } // while hasNext
         return result.toString();
     } // toString
-    
+
     /** Maps subpackage names to their descriptions */
     private static HashMap<String, String> descMap;
 

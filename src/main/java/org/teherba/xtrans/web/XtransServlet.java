@@ -1,6 +1,7 @@
 /*  Servlet which transforms various file formats to and from XML.
     @(#) $Id: XtransServlet.java 796 2011-09-10 13:58:28Z gfis $
- *  2016-09-14: MultiFormatFactory back to dynamic XtransFactory
+    2016-10-14: less imports
+    2016-09-14: MultiFormatFactory back to dynamic XtransFactory
     2016-09-06: package xtrans.web; uses BasePage; completely revised
     2011-04-06: XtransFactory -> MultiFormatFactory
     2010-12-13: sqlPretty
@@ -33,8 +34,8 @@ package org.teherba.xtrans.web;
 import  org.teherba.xtrans.web.IndexPage;
 import  org.teherba.xtrans.web.Messages;
 import  org.teherba.xtrans.web.PackageListPage;
+import  org.teherba.xtrans.web.XslTransPage;
 import  org.teherba.xtrans.BaseTransformer;
-import  org.teherba.xtrans.MainTransformer; // for Javadoc only
 import  org.teherba.xtrans.XMLTransformer;
 import  org.teherba.xtrans.XtransFactory;
 import  org.teherba.common.web.BasePage;
@@ -99,7 +100,7 @@ public class XtransServlet extends HttpServlet {
      *  @param request fields from the client input form
      *  @param response data to be sent back the user's browser
      *  @throws IOException
-     */    
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         generateResponse(request, response);
     } // doPost
@@ -109,12 +110,13 @@ public class XtransServlet extends HttpServlet {
      *  @param response data to be sent back the user's browser
      *  @throws IOException
      */
-    public void generateResponse(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void generateResponse(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
         BaseTransformer generator   = null;
         BaseTransformer serializer  = null;
         String view     = BasePage.getInputField(request, "view"  , "index");
         FileItem fileItem = null; // not seen so far
-        try {
+        if (true) { // try {
             String newPage       = ""; // no error so far
             String format        = "line";
             String resultFormat  = "xml"; // remains fixed
@@ -140,11 +142,16 @@ public class XtransServlet extends HttpServlet {
                 enc1         = basePage.getInputField(request, "enc1"    , "UTF-8");
                 enc2         = basePage.getInputField(request, "enc1"    , "UTF-8");
                 intext       = basePage.getInputField(request, "intext"  , "");
-                
+
             } else { // multipart
                 FileItemFactory fuFactory = new DiskFileItemFactory(); // Create a factory for disk-based file items
                 ServletFileUpload upload  = new ServletFileUpload(fuFactory); // Create a new file upload handler
-                List /* FileItem */ items = upload.parseRequest(request); // Parse the request
+                List<FileItem> items = null;
+                try {
+                    items = upload.parseRequest(request); // Parse the request
+                } catch (Exception exc) {
+                    log.error(exc.getMessage(), exc);
+                }
                 Iterator iter = items.iterator();
                 while (iter.hasNext()) { // Process the uploaded items
                     FileItem item = (FileItem) iter.next();
@@ -156,10 +163,6 @@ public class XtransServlet extends HttpServlet {
                             view         = value;
                         } else if (name.equals("format" )) {
                             format = value;
-                    /*
-                        } else if (name.equals("target" )) {
-                            resultFormat = value;
-                    */
                         } else if (name.equals("pipeLine" )) {
                             pipeLine = value;
                         } else if (name.equals("dir"    )) {
@@ -187,16 +190,16 @@ public class XtransServlet extends HttpServlet {
                     }
                 } // while uploaded items
             } // multipart
-            
-            if (fileItem != null && 
+
+            if (fileItem != null &&
                     (  ! fileItem.getString().matches("\\s*") && ! intext.equals("")
                     ||   fileItem.getString().matches("\\s*") &&   intext.equals("")
                     )) { // either file or intext must be specified
                 basePage.writeMessage(request, response, language, new String[] { "407" } );
 
             } else if (view.equals("index" )) { // show main dialog
-                (new IndexPage()).dialog(request, response, basePage, language, format, dir, options, namespace, enc1, enc2, infile, intext); 
-                    
+                (new IndexPage()).dialog(request, response, basePage, language, format, dir, options, namespace, enc1, enc2, infile, intext);
+
             } else if (view.equals("index2")) { // do the main transform
                 generator  = factory.getTransformer(format); // try whether the format is valid
                 if (generator == null) {
@@ -221,14 +224,11 @@ public class XtransServlet extends HttpServlet {
 
                     this.doTransform(generator, serializer, fileItem, intext, response);
                 } // index page: foreign -> XML or vice versa
-                
+
             } else if (view.equals("xslTrans" )) { // XSLT to text (Java or SQL)
-                (new XslTransPage()).dialog(request, response, basePage, language, pipeLine, options, namespace, enc1, enc2, infile, intext); 
+                (new XslTransPage()).dialog(request, response, basePage, language, pipeLine, options, namespace, enc1, enc2, infile, intext);
 
             } else if (view.equals("xslTrans2")) { // XSLT to text (Java or SQL)
-                // log.debug("getRealPath(\"/docs\")=" + getServletContext().getRealPath("/docs") + ", dir=" + dir);
-                // MainTransformer pipe = new MainTransformer(); // was XtransPipe
-                // log.debug("pipeLine = " + pipeLine);
                 factory.setRealPath(getServletContext().getRealPath("/xslt"));
                 factory.createPipeLine(pipeLine.split("\\s+"));
                 generator    = factory.getGenerator ();
@@ -236,10 +236,10 @@ public class XtransServlet extends HttpServlet {
                 // generator .setContentHandler(serializer);
                 // generator .setLexicalHandler(serializer);
                 response.setCharacterEncoding(serializer.getResultEncoding());
-                
+
                 this.doTransform(generator, serializer, fileItem, intext, response);
                 // xslTrans: XML pipe
-               
+
             } else if (view.equals("packList" )) { // List of available transformers
                 (new PackageListPage()).showList(request, response, basePage, language);
 
@@ -265,8 +265,10 @@ public class XtransServlet extends HttpServlet {
             } else {
                 basePage.writeMessage(request, response, language, new String[] { "401", "view", view });
             }
+    /*
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
+    */
         }
     } // generateResponse
 
@@ -282,8 +284,8 @@ public class XtransServlet extends HttpServlet {
             , FileItem fileItem
             , String intext
             , HttpServletResponse response
-            ) {
-        try {
+            ) throws IOException {
+        if (true) { // try {
             if (serializer instanceof XMLTransformer) {
                 generator.setMimeType("text/xml"); // is needed sometimes because of "&amp;" multiplication
                 response.setHeader("Content-Disposition", "inline; filename=\"" + fileItem.getName() + ".xml\"");
@@ -295,7 +297,7 @@ public class XtransServlet extends HttpServlet {
                         : name + "." + generator.getFileExtension(); // append default extension
                 response.setHeader("Content-Disposition", "attachment; filename=\"" + name + "\"");
             } // from XML
-            
+
             response.setContentType(generator.getMimeType());
             if (generator.isBinaryFormat()) {
                 generator.setByteReader(fileItem.getInputStream ());
@@ -314,9 +316,11 @@ public class XtransServlet extends HttpServlet {
             generator.generate();
             generator .closeAll();
             serializer.closeAll();
+    /*
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
+    */
         }
     } // doTransform
-    
+
 } // XtransServlet

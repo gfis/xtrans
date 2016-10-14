@@ -1,5 +1,6 @@
 /*  Maps pairs of (state, token) to parser actions
     @(#) $Id: ParseTable.java 798 2011-09-10 15:30:05Z gfis $
+    2016-10-13: less imports
     2010-06-04: copied from churchcal/ParseTable.java
 */
 /*
@@ -23,16 +24,13 @@ import  org.teherba.xtrans.parse.Item;
 import  org.teherba.xtrans.parse.Production;
 import  org.teherba.xtrans.parse.Token;
 import  org.teherba.xtrans.parse.Transformation;
-import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  org.teherba.dbat.Dbat; // load grammar from DB table
 import  org.teherba.dbat.Configuration; // load grammar from DB table
 import  java.sql.Connection;
 import  java.sql.PreparedStatement;
 import  java.sql.ResultSet;
-import  java.sql.Statement;
 import  java.util.ArrayList; // prodNo -> production
 import  java.util.HashMap; // (state, item) -> (parserAction, nextInfo)
-import  java.util.Iterator;
 import  java.util.Stack;
 import  org.apache.log4j.Logger;
 

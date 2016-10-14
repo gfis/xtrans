@@ -1,5 +1,6 @@
 /*  (Pseudo-abstract) class for file format transformers
     @(#) $Id: BaseTransformer.java 855 2012-01-11 06:59:36Z gfis $
+    2016-10-13: less imports
     2016-09-07: public setMimeType, getOption, getIntOption
     2012-01-10: instantiate Logger in Constructor
     2010-06-01: do not close System.out if processing commands from -f, close at the end only
@@ -59,14 +60,9 @@ import  java.util.Properties;
 import  java.util.prefs.Preferences;
 import  java.util.Stack;
 import  javax.xml.transform.Result;
-import  javax.xml.transform.Templates;
 import  javax.xml.transform.Transformer;
-import  javax.xml.transform.TransformerFactory;
 import  javax.xml.transform.sax.SAXResult;
-import  javax.xml.transform.sax.SAXSource;
-import  javax.xml.transform.sax.SAXTransformerFactory;
 import  javax.xml.transform.sax.TransformerHandler;
-import  javax.xml.transform.stream.StreamSource;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.ContentHandler;
 import  org.xml.sax.DTDHandler;

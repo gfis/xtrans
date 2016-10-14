@@ -88,7 +88,7 @@ public class JavaImportChecker extends ProgLangTransformer {
             };
     /** current phase of the checker */
     private Phase phase;
-    
+
     /** Name of the class to be checked */
     private String subjectClass;
 
@@ -102,19 +102,23 @@ public class JavaImportChecker extends ProgLangTransformer {
 
     /** List of usual classes in package java.lang */
     private static final String JAVA_LANG =
-        ",Boolean,Character,Class,ClassLoader,Double,Exception,IllegalArgumentException,Integer,Long"
-        + ",NumberFormatException,Object,Package,String,StringBuffer,System,Throwable,";
+        ",Boolean,Character,Class,ClassLoader,Cloneable,Double,Exception,Float,IllegalArgumentException,Integer,Long"
+        + ",NumberFormatException,Object,Package,Short,String,StringBuffer,System,Throwable,";
 
     /** Receive notification of the end of the document.
      */
     public void endDocument() {
-    	charWriter.println(subjectClass);
+        boolean first = true;
         Iterator<String> iter = occurs.keySet().iterator();
         while (iter.hasNext()) {
             String key   = iter.next();
             if (JAVA_LANG.indexOf("," + key + ",") < 0) { // not in java.lang
                 String value = occurs.get(key);
                 if (! value.equals("both")) {
+                    if (first) { // print header
+                        first = false;
+                        charWriter.println(subjectClass);
+                    }
                     charWriter.println("  " + value +  " only:\t" +  key);
                 }
             } // not in java.lang
@@ -126,7 +130,7 @@ public class JavaImportChecker extends ProgLangTransformer {
      *  @return whether the name contains a mixture of uppercase and lowercase letters
      */
     private boolean checkCamel(String name) {
-        return name.matches("[A-Z]+[a-z].*");
+        return name.matches("[A-Z]+[0-9\\_]*[A-Z]*[a-z].*");
     } // checkCamel
 
     /** Receive notification of the start of an element.
@@ -156,13 +160,16 @@ public class JavaImportChecker extends ProgLangTransformer {
                         } // camel
                         break;
                     case PHASE_CLASS: // identifier is class name
-                        subjectClass = value;
-                        occurs.put(value, "both"); // will not be shown
+                        if (checkCamel(value)) {
+                            subjectClass = value;
+                            occurs.put(value, "both"); // will not be shown
+                        } // camel
                         phase = Phase.PHASE_USE;
                         break;
                     case PHASE_ENUM: // identifier is enum name
-                        subjectClass = value;
-                        occurs.put(value, "both"); // will not be shown
+                        if (checkCamel(value)) {
+                            occurs.put(value, "both"); // will not be shown
+                        } // camel
                         phase = Phase.PHASE_USE;
                         break;
                     default:
@@ -189,6 +196,11 @@ public class JavaImportChecker extends ProgLangTransformer {
                         } else if (value.equals("class")) {
                             phase = Phase.PHASE_CLASS;
                         } else if (value.equals("enum")) {
+                            phase = Phase.PHASE_ENUM;
+                        }
+                        break;
+                    case PHASE_USE:
+                        if (value.equals("enum")) {
                             phase = Phase.PHASE_ENUM;
                         }
                         break;
@@ -222,43 +234,43 @@ public class JavaImportChecker extends ProgLangTransformer {
      */
     public void characters(char[] ch, int start, int length) {
     } // characters
-    
+
 /* found in xtrans/src on 2016-10-11:
 ByteRecord
-  import only:	Attributes
-  import only:	Date
-  use only:	Long
-  use only:	NumberFormatException
-  import only:	SAXException
-  import only:	Timestamp
+  import only:  Attributes
+  import only:  Date
+  use only: Long
+  use only: NumberFormatException
+  import only:  SAXException
+  import only:  Timestamp
 BaseTransformer
-  use only:	Boolean
-  use only:	IllegalArgumentException
-  use only:	Long
-  import only:	SAXSource
-  import only:	SAXTransformerFactory
-  import only:	StreamSource
-  import only:	Templates
-  import only:	TransformerFactory
+  use only: Boolean
+  use only: IllegalArgumentException
+  use only: Long
+  import only:  SAXSource
+  import only:  SAXTransformerFactory
+  import only:  StreamSource
+  import only:  Templates
+  import only:  TransformerFactory
 ICalendarTransformer
 VCardTransformer
 OrganizerTransformer
 ParseTable
-  import only:	Iterator
-  import only:	ProgLangTransformer
-  import only:	Statement
+  import only:  Iterator
+  import only:  ProgLangTransformer
+  import only:  Statement
 Production
-  use only:	Date
+  use only: Date
 ParseFilter
-  import only:	Item
-  import only:	Iterator
-  import only:	Production
-  import only:	Transformation
+  import only:  Item
+  import only:  Iterator
+  import only:  Production
+  import only:  Transformation
 Token
-  import only:	CharTransformer
-  use only:	Cloneable
-  use only:	Date
-  import only:	PrintWriter
+  import only:  CharTransformer
+  use only: Cloneable
+  use only: Date
+  import only:  PrintWriter
 XMLTransformer
 URIWrapper
 Base64Transformer
@@ -267,14 +279,14 @@ LDIFTransformer
 URITransformer
 QuotedPrintableTransformer
 BeanRecord
-  import only:	Attributes
-  import only:	Date
-  use only:	Long
-  use only:	NumberFormatException
-  import only:	SAXException
-  import only:	Timestamp
+  import only:  Attributes
+  import only:  Date
+  use only: Long
+  use only: NumberFormatException
+  import only:  SAXException
+  import only:  Timestamp
 DBaseTransformer
-  use only:	Long
+  use only: Long
 DIFTransformer
 HitTransformer
 RichTextTransformer
@@ -286,31 +298,31 @@ LineTransformer
 ColumnTransformer
 PYXTransformer
 HexDumpTransformer
-  use only:	NumberFormatException
+  use only: NumberFormatException
 SeparatedTransformer
 LineSplitter
 MainTransformer
 FileTreeGenerator
-  use only:	Date
-  use only:	Long
+  use only: Date
+  use only: Long
 SystemGenerator
-  use only:	Date
+  use only: Date
 CountingSerializer
 SequenceGenerator
 LevelFilter
 JavaImportChecker
-  use only:	Phase
+  use only: Phase
 BaseRecord
-  use only:	Long
-  use only:	NumberFormatException
+  use only: Long
+  use only: NumberFormatException
 TokenTransformer
-  import only:	BaseTransformer
-  import only:	Iterator
-  import only:	XtransFactory
+  import only:  BaseTransformer
+  import only:  Iterator
+  import only:  XtransFactory
 CTransformer
 ProgramSerializer
-  import only:	Iterator
-  import only:	XtransFactory
+  import only:  Iterator
+  import only:  XtransFactory
 CppTransformer
 JavaTransformer
 JavaScriptTransformer
@@ -323,11 +335,11 @@ ProgLangTransformer
 VisualBasicTransformer
 SQLTransformer
 CobolTransformer
-  import only:	HashSet
+  import only:  HashSet
 SQLPrettyFilter
-  import only:	Attributes
-  import only:	AttributesImpl
-  use only:	State
+  import only:  Attributes
+  import only:  AttributesImpl
+  use only: State
 REXXTransformer
 JCLTransformer
 FortranTransformer
@@ -337,80 +349,80 @@ GEDCOMTransformer
 MorseCodeTransformer
 NMEATransformer
 GPSBeanBase
-  import only:	Date
-  use only:	Double
-  use only:	Float
+  import only:  Date
+  use only: Double
+  use only: Float
 XtransFactory
-  import only:	XMLReader
+  import only:  XMLReader
 IndexPage
-  import only:	HttpSession
+  import only:  HttpSession
 XtransServlet
-  import only:	MainTransformer
-  use only:	XslTransPage
+  import only:  MainTransformer
+  use only: XslTransPage
 PackageListPage
-  import only:	HttpSession
+  import only:  HttpSession
 Messages
 XslTransPage
-  import only:	BaseTransformer
-  import only:	HttpSession
-  use only:	IndexPage
-  import only:	Iterator
-  import only:	XtransFactory
+  import only:  BaseTransformer
+  import only:  HttpSession
+  use only: IndexPage
+  import only:  Iterator
+  import only:  XtransFactory
 Field
 DTARecordBase
-  import only:	Date
-  use only:	Long
-  import only:	Timestamp
+  import only:  Date
+  use only: Long
+  import only:  Timestamp
 AEB43Transformer
 SWIFTTransformer
 DATEVTransformer
-  use only:	DATEVField
-  use only:	Long
+  use only: DATEVField
+  use only: Long
 DTA2Transformer
-  use only:	Long
+  use only: Long
 CODARecordBase
-  import only:	Date
-  use only:	Long
-  import only:	Timestamp
+  import only:  Date
+  use only: Long
+  import only:  Timestamp
 MT940Transformer
 AEB43RecordBase
-  import only:	Date
-  use only:	Long
-  import only:	Timestamp
+  import only:  Date
+  use only: Long
+  import only:  Timestamp
 DTA2RecordBase
-  import only:	AttributesImpl
-  import only:	Date
-  use only:	Long
-  import only:	Timestamp
+  import only:  AttributesImpl
+  import only:  Date
+  use only: Long
+  import only:  Timestamp
 CFONBRecordBase
-  import only:	Date
-  use only:	Long
-  import only:	Timestamp
+  import only:  Date
+  use only: Long
+  import only:  Timestamp
 DTATransformer
-  use only:	Long
+  use only: Long
 MT103Transformer
 CharTransformer
 ExifGenerator
-  import only:	BufferedInputStream
-  import only:	SAXException
+  import only:  BufferedInputStream
+  import only:  SAXException
 WMFTransformer
 DatabaseTransformer
-  import only:	Charset
+  import only:  Charset
 IniTransformer
 ConfigTransformer
-  import only:	ArrayList
+  import only:  ArrayList
 PropertiesTransformer
-  import only:	Pattern
+  import only:  Pattern
 MakefileTransformer
-  import only:	Pattern
+  import only:  Pattern
 ManifestTransformer
 CharRecord
-  import only:	Attributes
-  import only:	Date
-  use only:	Long
-  use only:	NumberFormatException
-  import only:	SAXException
-  import only:	Timestamp
+  import only:  Attributes
+  import only:  Date
+  use only: Long
+  use only: NumberFormatException
+  import only:  SAXException
+  import only:  Timestamp
 ByteTransformer
 NestedLineReader
 YACCTransformer

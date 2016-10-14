@@ -1,6 +1,7 @@
 /*  Pseudo transformer which generates elements
     for system properties, the environment, the current time etc.
     @(#) $Id: SystemGenerator.java 566 2010-10-19 16:32:04Z gfis $
+    2016-10-13: less imports
     2008-02-13: Java 1.5 types
     2008-02-02: character sets
     2007-12-18, Georg Fischer: copied from CountingSerializer
@@ -26,11 +27,7 @@ import  org.teherba.xtrans.CharTransformer;
 import  java.net.InetAddress;
 import  java.net.NetworkInterface;
 import  java.nio.charset.Charset;
-/*
-import  java.sql.Driver;
-import  java.sql.DriverManager;
-import  java.sql.DriverPropertyInfo;
-*/
+import  java.util.Date;
 import  java.util.Enumeration;
 import  java.util.Iterator;
 import  java.util.Locale;
@@ -45,7 +42,7 @@ import  org.apache.log4j.Logger;
  *  for the system properties, the environment,
  *  different pathes, the current date and time, etc.
  *  By default, only the time related elements are output.
- *  Each type of information is encoded by a specific bit 
+ *  Each type of information is encoded by a specific bit
  *  in the integer option <em>mask<em> as follows:
  *  <table>
  *  <tr><td align="right">  1</td><td>system properties in the JVM</td></tr>
@@ -57,7 +54,7 @@ import  org.apache.log4j.Logger;
  *  </table>
  *  </table>
  *  <p>
- *  There is no round-trip identity. 
+ *  There is no round-trip identity.
  *  As a convenience, the serializer writes the XML elements like properties.
  *  @author Dr. Georg Fischer
  */
@@ -256,7 +253,7 @@ public class SystemGenerator extends CharTransformer {
             bit *= 2;
             if ((bitMask & bit) != 0) { // JDBC drivers
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
-                Enumeration drivers = DriverManager.getDrivers();      
+                Enumeration drivers = DriverManager.getDrivers();
                 pushXML("JDBCdrivers", toAttribute("mask", String.valueOf(bit)));
                 fireLineBreak();
                 while (drivers.hasMoreElements()) {
@@ -268,17 +265,17 @@ public class SystemGenerator extends CharTransformer {
                             } ));
                     fireLineBreak();
                     // DriverPropertyInfo[] infos = driver.getPropertyInfo("", null);
-                    
+
                     popXML(); // JDBCdrivers
                     fireLineBreak();
                 } // while drivers
                 popXML(); // JDBCdrivers
                 fireLineBreak();
             } // JDBC drivers
-        */            
+        */
             bit *= 2;
-            if ((bitMask & bit) != 0) { // network 
-                Enumeration/*<1.5*/<NetworkInterface>/*1.5>*/ interfaces = NetworkInterface.getNetworkInterfaces();                 
+            if ((bitMask & bit) != 0) { // network
+                Enumeration/*<1.5*/<NetworkInterface>/*1.5>*/ interfaces = NetworkInterface.getNetworkInterfaces();
                 pushXML("network-interfaces", toAttribute("mask", String.valueOf(bit)));
                 fireLineBreak();
                 while (interfaces.hasMoreElements()) {
@@ -289,7 +286,7 @@ public class SystemGenerator extends CharTransformer {
                             , "toString"    , iface.toString        ()
                             } ));
                     fireLineBreak();
-                    Enumeration/*<1.5*/<InetAddress>/*1.5>*/ addrs = iface.getInetAddresses();                 
+                    Enumeration/*<1.5*/<InetAddress>/*1.5>*/ addrs = iface.getInetAddresses();
                     while (addrs.hasMoreElements()) {
                         InetAddress addr = (InetAddress) addrs.nextElement();
                         fireSimpleElement("addr", addr.toString());
@@ -298,7 +295,7 @@ public class SystemGenerator extends CharTransformer {
                     popXML();
                     fireLineBreak();
                 } // while interfaces
-                popXML(); 
+                popXML();
                 fireLineBreak();
             } // network
 
@@ -377,5 +374,5 @@ public class SystemGenerator extends CharTransformer {
             charWriter.print(text);
         }
     } // characters
-    
+
 } // SystemGenerator

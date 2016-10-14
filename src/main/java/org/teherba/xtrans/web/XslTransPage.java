@@ -1,5 +1,6 @@
 /*  XslTransPage.java - main web page for Xtrans
  *  @(#) $Id: 57d01d0860aef0c2f2783647be70c3c381710c86 $
+ *  2016-10-13: less imports
  *  2016-09-07, Dr. Georg Fischer: adopted from xslTrans.jsp
  */
 /*
@@ -18,16 +19,14 @@
  * limitations under the License.
  */
 package org.teherba.xtrans.web;
-import  org.teherba.xtrans.BaseTransformer;
-import  org.teherba.xtrans.XtransFactory;
+import  org.teherba.xtrans.web.IndexPage;
 import  org.teherba.common.web.BasePage;
 import  java.lang.Class;
+import  java.io.IOException;
 import  java.io.PrintWriter;
 import  java.io.Serializable;
-import  java.util.Iterator;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
-import  javax.servlet.http.HttpSession;
 import  org.apache.log4j.Logger;
 
 /** RaMath main dialog page
@@ -39,7 +38,7 @@ public class XslTransPage implements Serializable {
 
     /** log4j logger (category) */
     private Logger log;
-
+ 
     /** No-args Constructor
      */
     public XslTransPage() {
@@ -62,8 +61,8 @@ public class XslTransPage implements Serializable {
             , String enc2
             , String infile
             , String intext
-            ) {
-        try {
+            ) throws IOException {
+        if (true) { // try {
             PrintWriter out = basePage.writeHeader(request, response, language);
             out.write("<title>" + basePage.getAppName() + " Main Page</title>\n");
             out.write("</head>\n<body>\n");
@@ -107,8 +106,10 @@ public class XslTransPage implements Serializable {
 
             basePage.writeAuxiliaryLinks(language, "xsltrans");
             basePage.writeTrailer(language, "quest");
+    /*
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
+    */
         }
     } // dialog
 

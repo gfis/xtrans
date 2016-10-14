@@ -1,5 +1,6 @@
 /*  Filter which reformats ("pretty prints") SQL statements
     @(#) $Id: SQLPrettyFilter.java 616 2010-12-20 16:51:18Z gfis $
+    2016-10-13: less imports
     2010-12-06: Dr. Georg Fischer: copied from 'LevelFilter'
 */
 /*
@@ -23,8 +24,6 @@ import  org.teherba.xtrans.parse.Token;
 import  org.teherba.xtrans.BaseTransformer;
 import  org.teherba.xtrans.proglang.TokenTransformer;
 import  java.util.HashMap;
-import  org.xml.sax.Attributes;
-import  org.xml.sax.helpers.AttributesImpl;
 import  org.apache.log4j.Logger;
 
 /** Pseudo transformer which accepts a SAX stream of events,

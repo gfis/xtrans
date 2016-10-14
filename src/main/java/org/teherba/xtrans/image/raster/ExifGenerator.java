@@ -1,7 +1,7 @@
 /*  Extracts metadata from raster image files
     @(#) $Id: ExifGenerator.java 967 2012-08-29 18:22:10Z gfis $
     2012-08-29, Georg Fischer: copied from pseudo.FileTreeGenerator
-    
+
     not yet implemented
 */
 /*
@@ -22,9 +22,7 @@
 
 package org.teherba.xtrans.image.raster;
 import  org.teherba.xtrans.ByteTransformer;
-import  java.io.BufferedInputStream;
 import  org.xml.sax.Attributes;
-import  org.xml.sax.SAXException;
 import  org.apache.log4j.Logger;
 /*
 import  com.drew.imaging.ImageMetadataReader;
@@ -41,10 +39,10 @@ import  com.drew.metadata.Tag;
  */
 public class ExifGenerator extends ByteTransformer {
     public final static String CVSID = "@(#) $Id: ExifGenerator.java 967 2012-08-29 18:22:10Z gfis $";
-    
+
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** Root element tag */
     private static final String ROOT_TAG   = "metadata";
     /** Directory element tag */
@@ -73,7 +71,7 @@ public class ExifGenerator extends ByteTransformer {
     /*===========================*/
     /* Generator for SAX events  */
     /*===========================*/
-    
+
     /** Transforms from the specified format to XML
      *  @return whether the transformation was successful
      */
@@ -137,15 +135,15 @@ public class ExifGenerator extends ByteTransformer {
             log.error(exc.getMessage(), exc);
         }
     } // endDocument
-    
+
     /** Receive notification of the start of an element.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
@@ -155,13 +153,13 @@ public class ExifGenerator extends ByteTransformer {
             log.error(exc.getMessage(), exc);
         }
     } // startElement
-    
+
     /** Receive notification of the end of an element.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
@@ -171,11 +169,11 @@ public class ExifGenerator extends ByteTransformer {
             log.error(exc.getMessage(), exc);
         }
     } // endElement
-    
+
     /** Receive notification of character data inside an element.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param length the number of characters to use from the character array. 
+     *  @param length the number of characters to use from the character array.
      */
     public void characters(char[] ch, int start, int length) {
         try {

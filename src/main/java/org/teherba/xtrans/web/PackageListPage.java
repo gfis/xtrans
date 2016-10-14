@@ -1,5 +1,6 @@
 /*  PackageListPage.java - main web page for Xtrans
  *  @(#) $Id: 57d01d0860aef0c2f2783647be70c3c381710c86 $
+ *  2016-10-13: less imports
  *  2016-09-14: MultiFormatFactory back to dynamic XtransFactory
  *  2016-09-06: without session
  *  2016-08-28: Dr. Georg Fischer: copied from Dbat
@@ -29,12 +30,12 @@ import  org.teherba.xtrans.BaseTransformer;
 import  org.teherba.xtrans.XtransFactory;
 import  org.teherba.common.web.BasePage;
 import  java.lang.Class;
+import  java.io.IOException;
 import  java.io.PrintWriter;
 import  java.io.Serializable;
 import  java.util.Iterator;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
-import  javax.servlet.http.HttpSession;
 import  org.apache.log4j.Logger;
 
 /** RaMath main dialog page
@@ -62,8 +63,8 @@ public class PackageListPage implements Serializable {
     public void showList(HttpServletRequest request, HttpServletResponse response
             , BasePage basePage
             , String language
-            ) {
-        try {
+            ) throws IOException {
+        if (true) { // try {
             PrintWriter out = basePage.writeHeader(request, response, language);
             out.write("<title>" + basePage.getAppName() + " Main Page</title>\n");
             out.write("</head>\n<body>\n");
@@ -112,8 +113,10 @@ public class PackageListPage implements Serializable {
             out.write("</table>\n");
             basePage.writeAuxiliaryLinks(language, "packlist");
             basePage.writeTrailer(language, "quest");
+    /*
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
+    */
         }
     } // showList
 

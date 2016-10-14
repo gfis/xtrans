@@ -22,7 +22,6 @@ package org.teherba.xtrans.database;
 import  org.teherba.xtrans.CharTransformer;
 import  org.teherba.dbat.Configuration;
 import  org.teherba.dbat.Dbat;
-import  java.nio.charset.Charset;
 import  org.xml.sax.Attributes;
 import  org.apache.log4j.Logger;
 
