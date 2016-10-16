@@ -1,5 +1,6 @@
 /*  Transforms text lines to/from XML
     @(#) $Id: LineTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2016-10-14: tabs, Unix LF; serializes all content, newline at 1st end tag
     2006-10-04: multiple line grouping
     2006-09-20, Dr. Georg Fischer
 */
@@ -26,18 +27,18 @@ import  org.xml.sax.Attributes;
 import  org.apache.log4j.Logger;
 
 /** Simple transformer for lines in a character file.
- *  Creates an XML table with rows and cells. 
+ *  Creates an XML table with rows and cells.
  *  Each line in the input file goes into one cell,
- *  where <em>n</em> cells fill one row. 
+ *  where <em>n</em> cells fill one row.
  *  The number of lines in a cell is a configurable parameter (default 1).
  *  @author Dr. Georg Fischer
  */
-public class LineTransformer extends CharTransformer { 
+public class LineTransformer extends CharTransformer {
     public final static String CVSID = "@(#) $Id: LineTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** Constructor.
      */
     public LineTransformer() {
@@ -46,16 +47,16 @@ public class LineTransformer extends CharTransformer {
         setDescription("character file consisting of lines");
         setFileExtensions("txt");
     } // Constructor
-    
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = Logger.getLogger(LineTransformer.class.getName());
         putEntityReplacements();
-	} // initialize
+    } // initialize
 
     /** Data element tag */
     private static final String DATA_TAG    = "td";
@@ -74,7 +75,7 @@ public class LineTransformer extends CharTransformer {
     public boolean generate() {
         boolean result = true;
         try {
-        	putEntityReplacements();
+            putEntityReplacements();
             int group = getIntOption("group", 1); // so many lines = cells in one table row
             fireStartDocument();
             fireStartRoot(ROOT_TAG);
@@ -119,63 +120,67 @@ public class LineTransformer extends CharTransformer {
     /* SAX handler for XML input */
     /*===========================*/
 
-    /** state of parsing, 0 = uninteresting, 1 = in interesting element */
+    /** state of parsing:
+     *  <ul>
+     *  <li>0 = uninteresting</li>
+     *  <li>1 = in interesting element</li>
+     *  </ul>
+     */
     private int state;
-    
+
     /** Receive notification of the beginning of the document.
      */
     public void startDocument() {
-        state = 0; // uninteresting
-    }
-    
+        state = 0; // after start tag
+    } // startDocument
+
     /** Receive notification of the start of an element.
      *  Looks for the element which contains raw lines.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
         if (namespace.length() > 0 && qName.startsWith(namespace)) {
             qName = qName.substring(namespace.length());
         }
-        if (qName.equals(DATA_TAG)) {
-            state = 1; // in interesting element
-        }
+        state = 0; // after start tag
     } // startElement
-    
+
     /** Receive notification of the end of an element.
-     *  Looks for the element which contains raw lines.
-     *  Terminates the line.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  The first end tag triggers a newline.
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
         if (namespace.length() > 0 && qName.startsWith(namespace)) {
             qName = qName.substring(namespace.length());
         }
-        if (qName.equals(DATA_TAG)) {
+        state ++;
+        if (state == 1) { // after the first end tag
             charWriter.println();
-            state = 0; // in interesting element
         }
     } // endElement
-    
+
     /** Receive notification of character data inside an element.
+     *  Print the String if it is non-empty.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param length the number of characters to use from the character array. 
+     *  @param length the number of characters to use from the character array.
      */
     public void characters(char[] ch, int start, int length) {
-        if (state == 1) { // interesting
-            charWriter.print(replaceInResult(new String(ch, start, length)));
+        String target = replaceInResult(new String(ch, start, length));
+        if (! target.matches("\\s*")) { // non-empty
+            charWriter.print(target);
         }
     } // characters
 

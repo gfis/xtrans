@@ -1253,7 +1253,9 @@
 
     </target>
 
-    <!-- sub.inout2 ************************************ -->
+    <!-- sub.inout2 ************************************
+         similiar to sub.inout, but with additional pipe through token file
+   -->
     <target name="sub.inout2">
         <echo message="Transformer -${format} -xml ${opt1} ${opt2} ${test.home}/${file}" />
         <java classname="org.teherba.xtrans.MainTransformer" classpathref="compile.classpath"

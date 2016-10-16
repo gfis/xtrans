@@ -2,6 +2,7 @@
     Morse code (sequences of "." and "-") wrapped into an XML table
     caution, must be stored in UTF-8: ÄÖÜß
     @(#) $Id: MorseCodeTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2016-10-16: Aring was the same as Agrave
     2006-11-22, Dr. Georg Fischer
 */
 /*
@@ -110,7 +111,7 @@ public class MorseCodeTransformer extends CharTransformer {
     /*
     */
         putReplacementMap("À", ".--.-"     );
-        putReplacementMap("Å", ".--.-"     );
+    //  putReplacementMap("Å", ".--.-"     );
         putReplacementMap("Ä", ".-.-"      );
         putReplacementMap("È", ".-..-"     );
         putReplacementMap("É", "..-.."     );

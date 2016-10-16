@@ -1,6 +1,6 @@
 /*  Selects the applicable transformer, and creates transformation pipelines
     @(#) $Id: XtransFactory.java 966 2012-08-29 07:06:07Z gfis $
-    2016-10-13: less imports
+    2016-10-16: less imports; TeeFilter
     2016-09-17: dynamic ArrayList of transformers; MutiFormatFactory removed
     2014-11-07: private TransformerHandlers -> public
     2010-12-07: -sqlpretty
@@ -45,6 +45,8 @@
  */
 package org.teherba.xtrans;
 import  org.teherba.xtrans.BaseTransformer;
+import  org.teherba.xtrans.DummyEntityResolver;
+import  org.teherba.xtrans.TeeFilter;
 import  org.teherba.xtrans.XMLTransformer;
 import  java.io.File;
 import  java.io.PrintWriter;
@@ -275,6 +277,20 @@ public class XtransFactory {
         }
         return handler;
     } // getFilterHandler
+    
+    /** Gets the "tee" (duplicating) transformer.
+     *  @param duplName name of the "T" output file 
+     *  @return the duplicating transformer writing to that output file
+     */
+    public TransformerHandler getTeeFilterHandler(String duplName) {
+        TransformerHandler handler = null;
+        try {
+            handler = new TeeFilter(duplName);
+        } catch (Exception exc) {
+            log.error(exc.getMessage(), exc);
+        }
+        return handler;
+    } // getTeeFilterHandler
 
     /** Gets a handler from a translet (precompiled stylesheet).
      *  @param transletClassName name of the translet class
@@ -354,6 +370,12 @@ public class XtransFactory {
                         return;
                     }
                     handlers[ihand ++] = getFilterHandler(args[iarg ++]);
+                } else if (arg.startsWith("-tee" ))  { // -tee
+                    if (iarg >= args.length) {
+                        log.error(arg + " must be followed by an output filename");
+                        return;
+                    }
+                    handlers[ihand ++] = getTeeFilterHandler(realPath + args[iarg ++]);
                 } else if (arg.startsWith("-trans")) { // -translet
                     if (iarg >= args.length) {
                         log.error(arg + " must be followed by a translet name");
@@ -416,16 +438,17 @@ public class XtransFactory {
             serializer = bases[1];
             generator.setContentHandler(serializer);
             generator.setLexicalHandler(serializer);
+            generator.setEntityResolver(new DummyEntityResolver());
 
             // insert the stylesheet or filter transformation handler(s) into the double linked chain
             int nhand = ihand; // number of XSLT transformation handlers
             if (nhand > 0) {
                 bases[0].setContentHandler(handlers[0]); // feed the generator's SAX events into the first handler
-            //  bases[0].setLexicalHandler(handlers[0]); // feed the generator's SAX events into the first handler
                 try {
                     bases[0].setProperty("http://xml.org/sax/properties/lexical-handler", handlers[0]);
+                    bases[0].setFeature("http://xml.org/sax/features/external-general-entities", false);
                 } catch (Exception exc) {
-                    // log.error(exc.getMessage(), exc);
+                    // ignore
                 }
                 handlers[nhand - 1].setResult(new SAXResult(bases[1])); // feed result of last handler into serializer
             } // nhand > 0

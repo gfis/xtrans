@@ -1,0 +1,6 @@
+#Sun, 16 Oct 2016 11:42:08 +0200
+
+build.name=xtrans
+build.number=106
+build.date=2016-10-16 11.42.08
+build.jdk=for JDK 1.6
