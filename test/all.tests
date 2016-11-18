@@ -1,0 +1,156 @@
+# Collection of Testcases for Xtrans; UTF-8: Ã¤Ã¶Ã¼ÃÃÃÃ
+# @(#) $Id$
+# 2016-09-16, Dr. Georg Fischer
+#-----------------------------------
+# Caution:
+# (1) Adjust the following line: URL where Xtrans was deployed
+URL=http://localhost:8080/xtrans/servlet
+# (2) Adjust the following line: default commandline arguments
+ARGS=
+# DIFF=diff -Z -s
+PACKAGE=org.teherba.xtrans
+#======================================================================
+#---------------------------------
+# general
+
+TEST line1
+DATA 
+ build.name=xtrans
+ build.number=106
+ build.jdk=for JDK 1.6
+CALL MainTransformer -line     $(DATA) -tee test/$(CASE).xml.tmp -line     $(DATA).tmp
+CALL MainTransformer -xml                   test/$(CASE).xml.tmp
+DIFF $(DATA) $(DATA).tmp                    
+
+TEST hexdump1
+CALL MainTransformer -hexdump  target/WEB-INF/classes/org/teherba/xtrans/finance/DATEVField.class \
+     -tee test/$(CASE).xml.tmp -hexdump test/$(CASE).tmp.tmp
+CALL MainTransformer           -hexdump test/$(CASE).tmp.tmp -tee test/$(CASE).xml.2.tmp -xml
+DIFF                                         test/$(CASE).xml.tmp test/$(CASE).xml.2.tmp
+#---------------------------------
+# edi
+
+TEST edifact1
+# from http://edi-wissen.de/edi/datenformate-nachritenstandards/unedifact/
+DATA
+ UNA:+.? '
+ UNB+UNOC:3+ILNAbsender+ILNEmpfänger+130230:1025+98765'
+ UNH+1+ORDERS:D:96A:UN'
+ BGM+220+9'
+ DTM+4:20130230:102'
+ NAD+SU+++Hardwarequelle+Ladenstraße 1+Nirgendwo+NRW+54321+DE'
+ NAD+BY+++Lobster:GmbH+Münchnerstr.15a+Starnberg+BAY+82319+DE'
+ LIN+1++4711:SA'
+ IMD+++::USB-Stick'
+ QTY+1:100'
+ UNS+S'
+ CNT+2:1'
+ UNT+11+1'
+ UNZ+1+98765'
+CALL MainTransformer -edifact  $(DATA) -tee test/$(CASE).xml.tmp -edifact  $(DATA).tmp
+CALL MainTransformer -xml                   test/$(CASE).xml.tmp
+DIFF $(DATA) $(DATA).tmp                    
+
+TEST edifact2 TeleOrdering UK
+# from http://cpansearch.perl.org/src/KRAEHE/XML-Edifact-0.33/doc/NOTE-xml-edifact-19990807.html
+DATA
+ UNA:+.? '
+ UNB+UNOA:1+7349734757:12+5033075000007:14+990621:2200+00000000000627++B-ORD++1++1'
+ UNG+ORDERS+7349734757:12+5033075000007:14+990621:2200+00000000000627+UN+D:93A'
+ UNH+00000000035773+ORDERS:D:93A:UN'
+ BGM+220'
+ DTM+4:990621:101'
+ FTX+DEL+3+DUY'
+ RFF+ON:70678989'
+ DTM+153:000000:101'
+ NAD+OB+0091987:160:16'
+ LIN+1'
+ PIA+5+0711213046:IB'
+ QTY+21:4'
+ PRI+AAA:4.99:SR:DPR::LBR'
+ LIN+2'
+ PIA+5+0711214476:IB'
+ QTY+21:6'
+ PRI+AAA:12.99:SR:DPR::LBR'
+ LIN+3'
+ PIA+5+0711213496:IB'
+ QTY+21:8'
+ PRI+AAA:4.99:SR:DPR::LBR'
+ UNS+S'
+ CNT+2:18'
+ UNT+22+00000000035773'
+ UNE+1+00000000000627'
+ UNZ+1+00000000000627'
+CALL MainTransformer -edifact  $(DATA) -tee test/$(CASE).xml.tmp -edifact  $(DATA).tmp
+CALL MainTransformer -xml                   test/$(CASE).xml.tmp
+DIFF $(DATA) $(DATA).tmp                    
+
+TEST edifact3 - FINSTA
+DATA=test/edi/edifact/finsta.edi
+CALL MainTransformer -edifact  $(DATA) -tee test/$(CASE).xml.tmp -edifact  $(DATA).tmp
+CALL MainTransformer -xml                   test/$(CASE).xml.tmp
+DIFF $(DATA) $(DATA).tmp
+
+TEST x121
+# from http://www.mirthcorp.com/community/fisheye/browse/~raw,r=1739/Mirth/trunk/server/src/com/webreach/mirth/server/mule/adaptors/X12Adaptor.java
+DATA
+ ISA*00*          *00*          *ZZ*SUBMITTERS ID  *ZZ*RECEIVERS ID   *010122*1253*U*00401*000000905*1*T*:~
+ GS*HC*SenderID*ReceiverID*20010122*1310*1*X*004010X098~
+ ST*837*0021~
+ BHT*0019*00*0123*19981015*1023*RP~
+ REF*87*004010X098D~
+ NM1*41*2*JAMES A SMITH, M.D.*****46*TGJ23~
+ PER*IC*LINDA*TE*8015552222*EX*231~
+ NM1*40*2*ABC CLEARINGHOUSE*****46*66783JJT~
+ HL*1**20*1~
+ NM1*85*2*JAMES A SMITH, M.D.*****24*587654321~
+ N3*234 Seaway St~
+ N4*Miami*FL*33111~
+ HL*2*1*22*0~
+ SBR*P*18*******CI~
+ NM1*IL*1*SMITH*TED****MI*000221111A~
+ N3*236 N MAIN ST~
+ N4*MIAMI*FL*33413~
+ DMG*D8*19430501*M~
+ NM1*PR*2*AETNA*****PI*741234~
+ CLM*26462967*0***11::1*Y*A*Y*Y*C~
+ DTP*431*D8*19981003~
+ REF*D9*17312345600006351~
+ HI*BK:0340*BF:V7389~
+ NM1*82*1*KILDARE*BEN****34*112233334~
+ PRV*PE*ZZ*203BF0100Y~
+ LX*1~
+ SV1*HC:99024*0*UN*1***1**N~
+ DTP*472*D8*19981003~
+ SE*27*0021~
+ GE*1*1~
+ IEA*1*000000905~
+CALL MainTransformer -x12      $(DATA) -tee test/$(CASE).xml.tmp -x12      $(DATA).tmp
+CALL MainTransformer -xml                   test/$(CASE).xml.tmp
+DIFF $(DATA) $(DATA).tmp                    
+#---------------------------------
+# miscellaneous
+
+TEST morse1
+DATA 
+ THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.
+ ÖL IM ÜBERFLUß MACHT DEN SCHEICHEN ÄRGER.
+ ÀÄÈÉÖÜßÑ
+ .,:;?-()'=+/@
+CALL MainTransformer -morse    $(DATA) -tee test/$(CASE).xml.tmp -morse    $(DATA).tmp
+CALL MainTransformer -xml                   test/$(CASE).xml.tmp
+DIFF $(DATA) $(DATA).tmp                    
+#---------------------------------
+# proglang
+
+TEST java1
+DATA 
+ package org.teherba.xtrans.general;
+ package org.teherba.xtrans.proglang;
+ import  org.teherba.xtrans.proglang.ProgLangTransformer;
+ public class JavaTransformer extends ProgLangTransformer {
+     /* ... */
+ } // JavaTransformer
+CALL MainTransformer -java     $(DATA) -tee test/$(CASE).xml.tmp -java     $(DATA).tmp
+CALL MainTransformer -xml                   test/$(CASE).xml.tmp
+DIFF $(DATA) $(DATA).tmp                    

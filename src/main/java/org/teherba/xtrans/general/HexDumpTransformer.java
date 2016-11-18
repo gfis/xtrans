@@ -1,5 +1,6 @@
 /*  Transforms to/from a hexdump of a (binary) file
     @(#) $Id: HexDumpTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2016-10-16: did not cope with single character hex constants
     2007-03-30: more SAX handler methods
     2006-09-20, Dr. Georg Fischer <punctum@punctum.com>
 */
@@ -26,7 +27,7 @@ import  org.xml.sax.Attributes;
 import  org.xml.sax.SAXException;
 import  org.apache.log4j.Logger;
 
-/** Transformer for the hexdump of a (binary) file. 
+/** Transformer for the hexdump of a (binary) file.
  *  Read the binary file into portions of 16 bytes,
  *  and generate one XML element for each such portion.
  *  This class may be useful for test outputs, and for the
@@ -38,8 +39,8 @@ import  org.apache.log4j.Logger;
  *  <li>followed by the same bytes as human readable characters where possible ("-" otherwise)</li>
  *  </ul>
  *  Parameters are the <em>width</em> (default 16), and
- *  the <em>code</em> for the human readable representation 
- *  which can be <em>ascii</em> or <em>ebcdic</em>. 
+ *  the <em>code</em> for the human readable representation
+ *  which can be <em>ascii</em> or <em>ebcdic</em>.
  *  Unprintable and XML-metacharacters are replaced by "-" in the <em>str</em> attribute.
  *  <p />
  *  The serialization from XML to binary data does not regard the offsets -
@@ -72,7 +73,7 @@ import  org.apache.log4j.Logger;
  *  </pre>
  *  @author Dr. Georg Fischer
  */
-public class HexDumpTransformer extends ByteTransformer { 
+public class HexDumpTransformer extends ByteTransformer {
     public final static String CVSID = "@(#) $Id: HexDumpTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
@@ -87,14 +88,14 @@ public class HexDumpTransformer extends ByteTransformer {
         setFileExtensions("hex");
     } // Constructor
 
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = Logger.getLogger(HexDumpTransformer.class.getName());
-	} // initialize
+    } // initialize
 
     /** Root element tag */
     private static final String ROOT_TAG    = "hexdump";
@@ -102,14 +103,14 @@ public class HexDumpTransformer extends ByteTransformer {
     private static final String TABLE_TAG   = "table";
     /** Data element tag */
     private static final String DATA_TAG    = "data";
-    
+
     /** Transforms from the specified format to XML
      *  @return whether the transformation was successful
      */
     public boolean generate() {
         boolean result = true;
         try {
-            boolean isEBCDIC = getOption("code", "ascii").toLowerCase().startsWith("e") ; 
+            boolean isEBCDIC = getOption("code", "ascii").toLowerCase().startsWith("e") ;
             int width = getIntOption("width", 16); // print so many bytes on one line
             ByteRecord genByteRecord = new ByteRecord(width);
             fireStartDocument();
@@ -167,16 +168,16 @@ public class HexDumpTransformer extends ByteTransformer {
     private byte[] serBuffer;
     /** record for the specific format */
     protected ByteRecord serByteRecord;
-        
+
     /** Receive notification of the start of an element.
      *  Looks for the element which contains encoded strings.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      *  @throws NumberFormatException for invalid hex digits
      */
@@ -200,7 +201,11 @@ public class HexDumpTransformer extends ByteTransformer {
             while (pos < hexdump.length()) {
                 int value = 0;
                 try {
-                    value = Integer.parseInt(hexdump.substring(pos, pos+2), 16);
+                    int pos1 = pos;
+                    if (hexdump.charAt(pos1) == ' ') {
+                        pos1 ++;
+                    }
+                    value = Integer.parseInt(hexdump.substring(pos1, pos+2), 16);
                 } catch (NumberFormatException exc) {
                     log.error("off=" + attrs.getValue("off")
                             + " hex=\"" + hexdump + "\""
@@ -214,13 +219,13 @@ public class HexDumpTransformer extends ByteTransformer {
             serByteRecord.write(byteWriter, index);
         }
     } // startElement
-    
+
     /** Receive notification of the end of an element.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
@@ -230,11 +235,11 @@ public class HexDumpTransformer extends ByteTransformer {
      *  These are ignored - all content is transported with attributes.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param len the number of characters to use from the character array. 
-     *  @throws SAXException - any SAX exception, 
+     *  @param len the number of characters to use from the character array.
+     *  @throws SAXException - any SAX exception,
      *  possibly wrapping another exception
      */
-    public void characters(char[] ch, int start, int len) 
+    public void characters(char[] ch, int start, int len)
             throws SAXException {
     } // characters
 
