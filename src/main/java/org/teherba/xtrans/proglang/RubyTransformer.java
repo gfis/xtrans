@@ -1,8 +1,10 @@
 /*  Transforms Ruby program source files
     @(#) $Id: RubyTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2008-05-16, Georg Fischer: copied from JavaScriptTransformer
-    
+
     Caution, no valid turn-around test yet
+    c.f. https://www.ruby-lang.org
 */
 /*
  * Copyright 2008 Dr. Georg Fischer <punctum at punctum dot kom>
@@ -25,9 +27,9 @@ import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  java.util.regex.Pattern;
 import  org.apache.log4j.Logger;
 
-/** Transformer for programs in the 
- *	<a xref="http://">Ruby</a> 
- *	language.
+/** Transformer for programs in the
+ *  <a href="https://www.ruby-lang.org">Ruby</a>
+ *  language.
  *  See {@link ProgLangTransformer} for a general description of the
  *  the generated elements.
  *  @author Dr. Georg Fischer
@@ -48,20 +50,20 @@ public class RubyTransformer extends ProgLangTransformer {
         setFileExtensions("rb");
     } // Constructor
 
-	/** Initializes the (quasi-constant) global structures and variables
-	 *  common to generator and serializer.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables
+     *  common to generator and serializer.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         caseIndependant = false;
         doubleInnerApos = false;
         bothStringTypes = false; // true;
-	    lineEndComment  = "#";
+        lineEndComment  = "#";
         escapeCode      = LANG_RUBY;
-	} // initialize
-	
+    } // initialize
+
     /** Prepares the class.
      *  Does all heavy-weight initialization.
      */
@@ -71,47 +73,47 @@ public class RubyTransformer extends ProgLangTransformer {
                 ("\\,|\\.|[\\+\\-\\*\\>\\<\\&\\|\\^\\%\\$\\=\\:\\?\\!\\~\\\\\\@\\`]+");
                 // no slash! because it may start a comment
         keywords = new String[] { "()"
-		, "BEGIN"
-		, "END"
-		, "__FILE__"
-		, "__LINE__"
-		, "alias"
-		, "and"
-		, "begin"
-		, "break"
-		, "case"
-		, "class"
-		, "def"
-		, "defined?"
-		, "do"
-		, "else"
-		, "elsif"
-		, "end"
-		, "ensure"
-		, "false"
-		, "for"
-		, "if"
-		, "in"
-		, "module"
-		, "next"
-		, "nil"
-		, "not"
-		, "or"
-		, "redo"
-		, "rescue"
-		, "retry"
-		, "return"
-		, "self"
-		, "super"
-		, "then"
-		, "true"
-		, "undef"
-		, "unless"
-		, "until"
-		, "when"
-		, "while"
-		, "yield"
-		};
+        , "BEGIN"
+        , "END"
+        , "__FILE__"
+        , "__LINE__"
+        , "alias"
+        , "and"
+        , "begin"
+        , "break"
+        , "case"
+        , "class"
+        , "def"
+        , "defined?"
+        , "do"
+        , "else"
+        , "elsif"
+        , "end"
+        , "ensure"
+        , "false"
+        , "for"
+        , "if"
+        , "in"
+        , "module"
+        , "next"
+        , "nil"
+        , "not"
+        , "or"
+        , "redo"
+        , "rescue"
+        , "retry"
+        , "return"
+        , "self"
+        , "super"
+        , "then"
+        , "true"
+        , "undef"
+        , "unless"
+        , "until"
+        , "when"
+        , "while"
+        , "yield"
+        };
         storeWords();
     } // prepareGenerator
 

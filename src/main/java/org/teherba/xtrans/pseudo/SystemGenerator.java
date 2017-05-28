@@ -1,6 +1,7 @@
 /*  Pseudo transformer which generates elements
     for system properties, the environment, the current time etc.
     @(#) $Id: SystemGenerator.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2016-10-13: less imports
     2008-02-13: Java 1.5 types
     2008-02-02: character sets
@@ -43,15 +44,14 @@ import  org.apache.log4j.Logger;
  *  different pathes, the current date and time, etc.
  *  By default, only the time related elements are output.
  *  Each type of information is encoded by a specific bit
- *  in the integer option <em>mask<em> as follows:
- *  <table>
+ *  in the integer option <em>mask</em> as follows:
+ *  <table><caption>Mask Bits</caption>
  *  <tr><td align="right">  1</td><td>system properties in the JVM</td></tr>
  *  <tr><td align="right">  2</td><td>environment variables of the operating system</td></tr>
  *  <tr><td align="right">  4</td><td>pathes</td></tr>
  *  <tr><td align="right">  8</td><td>current date and time (default)</td></tr>
  *  <tr><td align="right"> 16</td><td>character sets supported by the JVM</td></tr>
  *  <tr><td align="right"> 32</td><td>available JDBC drivers and their properties</td></tr>
- *  </table>
  *  </table>
  *  <p>
  *  There is no round-trip identity.
@@ -74,6 +74,7 @@ public class SystemGenerator extends CharTransformer {
      *  <li>bit 0 = properties</li>
      *  <li>bit 1 = environment</li>
      *  <li>bit 2 = current time</li>
+     *  </ul>
      */
     private int bitMask;
 

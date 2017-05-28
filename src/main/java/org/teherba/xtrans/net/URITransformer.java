@@ -1,7 +1,8 @@
 /*  Transformer for files with one URI per line.
-    @(#) $Id: URITransformer.java 566 2010-10-19 16:32:04Z gfis $
-    2006-11-23, Dr. Georg Fischer
     caution, must be stored as UTF-8 (äöüÄÖÜß)
+    @(#) $Id: URITransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
+    2006-11-23, Dr. Georg Fischer
 */
 /*
  * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
@@ -30,17 +31,17 @@ import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
 import  org.apache.log4j.Logger;
 
-/**	Transformer for files with one Uniform Resource Identifier (URI) per line.
+/** Transformer for files with one Uniform Resource Identifier (URI) per line.
  *  The URIs are represented by an XML structure with elements for the individual
  *  components of the URI.
  *  @author Dr. Georg Fischer
  */
-public class URITransformer extends CharTransformer { 
+public class URITransformer extends CharTransformer {
     public final static String CVSID = "@(#) $Id: URITransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** No-args Constructor.
      */
     public URITransformer() {
@@ -49,16 +50,16 @@ public class URITransformer extends CharTransformer {
         setDescription("Universal Resource Identifiers on single lines");
         setFileExtensions("uri,txt");
     } // Constructor()
-    
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = Logger.getLogger(URITransformer.class.getName());
         putEntityReplacements();
-	} // initialize
+    } // initialize
 
     /** Tag for the root element */
     private static final String ROOT_TAG  = "uris";
@@ -72,69 +73,46 @@ public class URITransformer extends CharTransformer {
 
     /** tag for mediatype */
     private static final String MEDIA_TAG = "mediatype";
-    
+
     /** Generates XML for the "data" URI scheme described in RFC 2397.
      *  The syntax is
      *  <pre>
-     *  data:[<mediatype>][;base64],<data>
+     *  data:[&lt;mediatype&gt;][;base64],&lt;data&gt;
      *  </pre>
-     *  mediatype defaults to "text/plain;charset=US-ASCII", 
+     *  mediatype defaults to "text/plain;charset=US-ASCII",
      *  where "text/plain" can be omitted
      *  @param uri the URI parsed by general rules
      */
     protected void generateData(URIWrapper uri) {
         fireSimpleElement("unparsed", uri.getSchemeSpecificPart());
     } // generateData
-    
-    /** Generates XML for the "go" URI scheme described in RFC xxxx.
-     *  The syntax is
-     *  <pre>
-     *  </pre>
-     *  @param uri the URI parsed by general rules
-     */
-    protected void generateGo(URIWrapper uri) {
-        // fireSimpleElement("unparsed", uri.getSchemeSpecificPart());
-        generateURL(uri);
-    } // generateGo
-    
-    /** Generates XML for the "mailto"  
-     *  URI scheme described in RFC xxxx.
-     *  The syntax is
-     *  <pre>
-     *  data:[<mediatype>][;base64],<data>
-     *  </pre>
+
+    /** Generates XML for the "mailto"
+     *  URI scheme described in RFC 2368.
      *  @param uri the URI parsed by general rules
      */
     protected void generateMailto(URIWrapper uri) {
         fireSimpleElement("unparsed", uri.getSchemeSpecificPart());
     } // generateMailto
-    
-    /** Generates XML for the "tag"  
-     *  URI schemes described in RFC 4151 and 
+
+    /** Generates XML for the "tag"
+     *  URI schemes described in RFC 4151 and
      *  www.taguri.org
-     *  The syntax is
-     *  <pre>
-     *  data:[<mediatype>][;base64],<data>
-     *  </pre>
      *  @param uri the URI parsed by general rules
      */
     protected void generateTag(URIWrapper uri) {
         fireSimpleElement("unparsed", uri.getSchemeSpecificPart());
         generateURL(uri);
     } // generateTag
-    
-    /** Generates XML for the "tel", "fax" and "modem"  
+
+    /** Generates XML for the "tel", "fax" and "modem"
      *  URI schemes described in RFC xxxx.
-     *  The syntax is
-     *  <pre>
-     *  data:[<mediatype>][;base64],<data>
-     *  </pre>
      *  @param uri the URI parsed by general rules
      */
     protected void generateTel(URIWrapper uri) {
         fireSimpleElement("unparsed", uri.getSchemeSpecificPart());
     } // generateTel
-    
+
     /** Generates XML for the following URL schemes:
      *  <ul>
      *  <li>ftp</li>
@@ -142,9 +120,6 @@ public class URITransformer extends CharTransformer {
      *  <li>gopher</li>
      *  <li>http, https</li>
      *  </ul>
-     *  The syntax is
-     *  <pre>
-     *  </pre>
      *  @param uri the URI parsed by general rules
      */
     protected void generateURL(URIWrapper uri) {
@@ -180,19 +155,15 @@ public class URITransformer extends CharTransformer {
         }
         fireSimpleElement("fragment"    , uri.getFragment   ());
     } // generateURL
-    
+
     /** Generates XML for the "urn"
      *  URI scheme described in RFC xxxx.
-     *  The syntax is
-     *  <pre>
-     *  data:[<mediatype>][;base64],<data>
-     *  </pre>
      *  @param uri the URI parsed by general rules
      */
     protected void generateURN(URIWrapper uri) {
         fireSimpleElement("unparsed", uri.getSchemeSpecificPart());
     } // generateURN
-    
+
     /** Transforms from the specified format to XML
      *  @return whether the transformation was successful
      */
@@ -213,7 +184,7 @@ public class URITransformer extends CharTransformer {
                 if (line.startsWith("<") && line.endsWith(">")) {
                     line = line.substring(1, line.length() - 1); // remove "<" and ">"
                 }
-                if (line.startsWith("#") || line.length() == 0) { 
+                if (line.startsWith("#") || line.length() == 0) {
                     // ignore comments and empty lines
                 } else {
                     try {
@@ -245,12 +216,12 @@ public class URITransformer extends CharTransformer {
                         }
                         fireEndElement  (tag);
                         // fireEndElement  (ENTRY_TAG);
-                        fireLineBreak();                
+                        fireLineBreak();
                     } catch (URISyntaxException exc) {
                         fireStartElement(UNDEF_TAG, toAttribute("error", exc.getReason()));
                         fireCharacters (replaceInSource(line));
                         fireEndElement  (UNDEF_TAG);
-                        fireLineBreak();                
+                        fireLineBreak();
                     } // catch URISyntax
                 } // non-comment
             } // while not EOF
@@ -270,11 +241,11 @@ public class URITransformer extends CharTransformer {
 
     /** currently opened element */
     private String elem;
-    
+
     /** buffer for successive calls of method <em>characters</em> */
     private StringBuffer serBuffer;
-	/** number of current line */
-	private int serLineCount;
+    /** number of current line */
+    private int serLineCount;
 
     /** Receive notification of the beginning of the document.
      */
@@ -282,16 +253,16 @@ public class URITransformer extends CharTransformer {
         serLineCount = 0;
         serBuffer = new StringBuffer(296);
     } // startDocument
-    
+
     /** Receive notification of the start of an element.
      *  Looks for the element which contains raw lines.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
@@ -317,22 +288,22 @@ public class URITransformer extends CharTransformer {
             charWriter.print(":");
         }
     } // startElement
-    
+
     /** Receive notification of the end of an element.
      *  Looks for the element which contains raw lines.
      *  Terminates the line.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
         elem = ""; // no characters allowed outside <td> ... </td>
         if (false) {
-        } else if (qName.equals(ROOT_TAG )) { 
-        } else if (qName.equals(ENTRY_TAG )) { 
+        } else if (qName.equals(ROOT_TAG )) {
+        } else if (qName.equals(ENTRY_TAG )) {
         } else { // all format specific elements
             if (serBuffer.length() == 0) {
                 charWriter.println();
@@ -340,14 +311,14 @@ public class URITransformer extends CharTransformer {
         }
         serLineCount ++;
     } // endElement
-    
+
     /** Receive notification of character data inside an element.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param len the number of characters to use from the character array. 
+     *  @param len the number of characters to use from the character array.
      */
     public void characters(char[] ch, int start, int len) {
         serBuffer.append(new String(ch, start, len));
     } // characters
-    
+
 } // URITransformer

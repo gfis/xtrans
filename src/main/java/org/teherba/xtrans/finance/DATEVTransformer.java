@@ -1,9 +1,10 @@
 /*  Transformer for DATEV accounting data files
     @(#) $Id: DATEVTransformer.java 566 2010-10-19 16:32:04Z gfis $
     Caution, this file contains UTF-8 encoded characters: äöüÄÖÜß
+    2017-05-28: javadoc 1.8
     2016-10-13: import DatevField
     2010-07-13: 'attrs' in 'generate' renamed to 'alist'
-	2007-09-26: another sample file had no "f", "g" delimiters - totally revised
+    2007-09-26: another sample file had no "f", "g" delimiters - totally revised
     2007-03-30: more SAX handler methods
     2006-09-19: Georg Fischer
 */
@@ -26,8 +27,8 @@ package org.teherba.xtrans.finance;
 import  org.teherba.xtrans.finance.DATEVField;
 import  org.teherba.xtrans.ByteRecord;
 import  org.teherba.xtrans.ByteTransformer;
-import	java.util.ArrayList;
-import	java.util.HashMap;
+import  java.util.ArrayList;
+import  java.util.HashMap;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.SAXException;
 import  org.apache.log4j.Logger;
@@ -35,12 +36,12 @@ import  org.apache.log4j.Logger;
 /** Transforms DATEV accounting data files to/from XML.
  *  DE001 files consist of binary blocks of size 256 (0x100),
  *  filled with variable length accounting records, which in turn
- *	consist of a series of fields each terminated by a letter a - h, o, y and z.
- *	These letters must be in increasing order for an accounting record.
- *	After 'e' or 'g' there is a text field enclosed in 0x1e and 0x1c.
+ *  consist of a series of fields each terminated by a letter a - h, o, y and z.
+ *  These letters must be in increasing order for an accounting record.
+ *  After 'e' or 'g' there is a text field enclosed in 0x1e and 0x1c.
  *  The records are not spanned across block boundaries, but blocks
- *	are filled with nil bytes instead.
- *	Example:
+ *  are filled with nil bytes instead.
+ *  Example:
  *  <pre>
 hex="1d 18 31 20 20 20 31 31 47 46 30 30 37 33 31 39" str="..1   11GF007319"
 hex="36 31 33 30 38 30 30 30 30 30 30 31 30 31 30 31" str="6130800000010101"
@@ -62,7 +63,7 @@ hex=" 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0" str="................"
 hex="2d 33 31 35 32 35 38 61 32 30 30 31 36 30 30 62" str="-315258a2001600b"
 hex="30 30 30 30 30 32 63 30 30 30 30 30 30 64 30 31" str="000002c000000d01"
 hex="30 31 65 30 39 30 30 30 66 30 30 30 30 67 30 30" str="01e09000f0000g00"
-hex="30 30 1e 3c 53 74 6f 72 6e 6f 3e 20 53 61 6c 64" str="00.<Storno> Sald"
+hex="30 30 1e 3c 53 74 6f 72 6e 6f 3e 20 53 61 6c 64" str="00.&lt;Storno&gt; Sald"
 hex="6f 76 6f 72 74 72 61 67 1c 6f 32 79 2b 36 32 34" str="ovortrag.o2y+624"
 
 
@@ -88,7 +89,7 @@ resulting XML output:
 &lt;datev&gt;
 &lt;buch belnr=  "1" dat= "101" betr="+2468094" soll=   "9000" hab=   "1810" d="0" g="0" h="0" text="Saldovortrag" /&gt;
 &lt;buch belnr=  "2" dat= "101" betr= "+315258" soll=   "1600" hab=   "9000" d="0" g="0" h="0" text="Saldovortrag" /&gt;
-&lt;buch belnr=  "2" dat= "101" betr= "-315258" soll="2001600" hab=   "9000" d="0" g="0" h="0" text="<Storno&gt; Saldovortrag" /&gt;
+&lt;buch belnr=  "2" dat= "101" betr= "-315258" soll="2001600" hab=   "9000" d="0" g="0" h="0" text="&lt;Storno&gt; Saldovortrag" /&gt;
 &lt;buch belnr= "11" dat= "201" betr=   "+6240" soll=   "1810" hab=   "6430" d="0" g="0" h="0" text="Rundfunk" /&gt;
 &lt;buch belnr= "21" dat= "301" betr= "+240000" soll=   "1810" hab=   "6310" d="0" g="0" h="0" text="Miete Perla 01-03/2001" /&gt;
 &lt;buch belnr=  "1" dat= "901" betr=   "+7424" soll= "901600" hab=   "6815" d="0" g="0" h="0" text="Handsender" /&gt;
@@ -123,22 +124,22 @@ public class DATEVTransformer extends ByteTransformer {
     private static final String FOOT_TAG = "foot";
 
     /** Defines a DATEV field and places proper references into the
-     *	mapping arrays.
+     *  mapping arrays.
      *  @param delim delimiting character (at the end of the field)
      *  @param attrName attribute name
      *  @param width field width in bytes
      *  @param trimZeroes whether to remove leading zeroes
      */
     private void defineField(char delim, String attrName, int width, boolean trimZeroes) {
-		DATEVField field = new DATEVField(delim, attrName, width, trimZeroes);
-		delimMap.put(new Character(delim), field);
-		attrMap .put(attrName            , field);
+        DATEVField field = new DATEVField(delim, attrName, width, trimZeroes);
+        delimMap.put(new Character(delim), field);
+        attrMap .put(attrName            , field);
     } // defineField
 
     /** String of 64 spaces for padding; all width specifications below must be smaller than its length */
     private static final String SPACES = "                                                                ";
 
-    /**	No-args Constructor
+    /** No-args Constructor
      */
     public DATEVTransformer() {
         super();
@@ -146,15 +147,15 @@ public class DATEVTransformer extends ByteTransformer {
         setDescription("DATEV accounting file (DE001)");
     } // Constructor
 
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = Logger.getLogger(DATEVTransformer.class.getName());
-    	delimMap = new HashMap/*<1.5*/<Character, DATEVField>/*1.5>*/(16);
-    	attrMap  = new HashMap/*<1.5*/<String   , DATEVField>/*1.5>*/(16);
+        delimMap = new HashMap/*<1.5*/<Character, DATEVField>/*1.5>*/(16);
+        attrMap  = new HashMap/*<1.5*/<String   , DATEVField>/*1.5>*/(16);
         defineField('a'        , "amt"         , 0, true );
         defineField('b'        , "debt"        , 7, true );
         defineField('c'        , "nr"          , 6, true );
@@ -178,7 +179,7 @@ public class DATEVTransformer extends ByteTransformer {
         putReplacementMap("\u0099"  , "Ö"      ); // Oe
         putReplacementMap("\u009a"  , "Ü"      ); // Ue
         putReplacementMap("\u00e1"  , "ß"      ); // ss
-	} // initialize
+    } // initialize
 
     /*===========================*/
     /* Generator for SAX events  */
@@ -202,7 +203,7 @@ public class DATEVTransformer extends ByteTransformer {
      *  </pre>
      */
     private void evalHeader() {
-    	blockRecord.setPosition(0);
+        blockRecord.setPosition(0);
         fireEmptyElement(HEAD_TAG, toAttributes(new String[]
                 { "part1"   , blockRecord.getString(0x02,  8)
                 , "mandant" , blockRecord.getString(0x0a,  7)
@@ -213,15 +214,15 @@ public class DATEVTransformer extends ByteTransformer {
 
     /** Removes leading characters from a string, but keeps the last (zero).
      *  @param ch character to be removed
-     *	@param value string to be modified
+     *  @param value string to be modified
      *  @return modified string
      */
     public String trimLeading(char ch, String value) {
-    	int pos = 0;
-    	while (pos < value.length() - 1 && value.charAt(pos) == ch) {
-    		pos ++;
-    	}
-    	return value.substring(pos);
+        int pos = 0;
+        while (pos < value.length() - 1 && value.charAt(pos) == ch) {
+            pos ++;
+        }
+        return value.substring(pos);
     } // trimLeading
 
     /** state when a number is expected */
@@ -234,64 +235,64 @@ public class DATEVTransformer extends ByteTransformer {
     private static final int IN_CHECKSUM = 4;
 
     /** Êvaluates a field depending on its trailing delimiter,
-     *	and emits appropriate XML tags.
+     *  and emits appropriate XML tags.
      *  @param delimiter the single non-numeric character behind the field
-     *	@param value the numerical (or text) value of the field
+     *  @param value the numerical (or text) value of the field
      *  @return subsequent state of finite automaton
      */
     private int evaluateField(char delimiter, String value) {
         int result = IN_NUMBER;
         DATEVField field = (DATEVField) delimMap.get(new Character(delimiter));
         switch (delimiter) {
-        	case '\u0000':
-        		result = BLOCK_FILLER;
-        		break;
-        	case 'a':
-	            long amount = 0;
-    	        try {
-        	        amount = Long.parseLong(value.startsWith("+") ? value.substring(1) : value);
-            	} catch (Exception exc) {
-            	}
-            	controlSum += amount;
-            	// fall thru
-        	case 'b':
-        	case 'c':
-        	case 'd':
-        	case 'e':
-        	case 'f':
-        	case 'g':
-			case 'o':
-		        alist.add(field.attrName);
-				alist.add(field.trimZeroes ? trimLeading('0', value) : value);
-        		break;
-        	case '\u001e':
-		        alist.add(field.attrName);
-				alist.add(field.trimZeroes ? trimLeading('0', value) : value);
-				result = IN_STRING;
-        		break;
-        	case '\u001c':
-		        alist.add(field.attrName);
-        		alist.add(replaceInSource(value));
-				break;
-        	case 'x':
-       			alist = new ArrayList/*<1.5*/<String>/*1.5>*/(CAP_ATTR);
-        		result = IN_CHECKSUM;
-        		break;
-        	case 'y':
-		        alist.add(field.attrName);
-				alist.add(value);
+            case '\u0000':
+                result = BLOCK_FILLER;
+                break;
+            case 'a':
+                long amount = 0;
+                try {
+                    amount = Long.parseLong(value.startsWith("+") ? value.substring(1) : value);
+                } catch (Exception exc) {
+                }
+                controlSum += amount;
+                // fall thru
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
+            case 'f':
+            case 'g':
+            case 'o':
+                alist.add(field.attrName);
+                alist.add(field.trimZeroes ? trimLeading('0', value) : value);
+                break;
+            case '\u001e':
+                alist.add(field.attrName);
+                alist.add(field.trimZeroes ? trimLeading('0', value) : value);
+                result = IN_STRING;
+                break;
+            case '\u001c':
+                alist.add(field.attrName);
+                alist.add(replaceInSource(value));
+                break;
+            case 'x':
+                alist = new ArrayList/*<1.5*/<String>/*1.5>*/(CAP_ATTR);
+                result = IN_CHECKSUM;
+                break;
+            case 'y':
+                alist.add(field.attrName);
+                alist.add(value);
                 fireEmptyElement(DATA_TAG, toAttributes(alist));
                 fireLineBreak();
-       			alist = new ArrayList/*<1.5*/<String>/*1.5>*/(CAP_ATTR);
-        		result = IN_NUMBER;
-        		break;
-        	case 'z':
-        		result = BLOCK_FILLER;
-        		break;
-			default:
-				log.error("invalid delimiter " + delimiter);
-				break;
-		} // switch delimiter
+                alist = new ArrayList/*<1.5*/<String>/*1.5>*/(CAP_ATTR);
+                result = IN_NUMBER;
+                break;
+            case 'z':
+                result = BLOCK_FILLER;
+                break;
+            default:
+                log.error("invalid delimiter " + delimiter);
+                break;
+        } // switch delimiter
         return result;
     } // evaluateField
 
@@ -318,54 +319,54 @@ public class DATEVTransformer extends ByteTransformer {
                     evalHeader();
                     spos = 0x50; // start after header in 1st block
                 }
-				alist = new ArrayList/*<1.5*/<String>/*1.5>*/(CAP_ATTR);
-				int state = IN_NUMBER;
-				StringBuffer value = new StringBuffer(128);
-				char ch = '0';
+                alist = new ArrayList/*<1.5*/<String>/*1.5>*/(CAP_ATTR);
+                int state = IN_NUMBER;
+                StringBuffer value = new StringBuffer(128);
+                char ch = '0';
                 while (spos < len) {
-           			ch = (char) (block[spos ++] & 0xff);
-                	switch (state) {
-                		case IN_NUMBER:
-                			if (ch >= '+' && ch <= '9') {
-                				value.append(ch);
-                			} else { // end of field reached
-                				state = evaluateField(ch, value.toString());
-                				value.setLength(0);
-                			}
-                			break; // IN_NUMBER
+                    ch = (char) (block[spos ++] & 0xff);
+                    switch (state) {
+                        case IN_NUMBER:
+                            if (ch >= '+' && ch <= '9') {
+                                value.append(ch);
+                            } else { // end of field reached
+                                state = evaluateField(ch, value.toString());
+                                value.setLength(0);
+                            }
+                            break; // IN_NUMBER
 
-                		case IN_CHECKSUM:
-                			if (ch >= '+' && ch <= '9') {
-                				value.append(ch);
-                			} else { // y - end of field reached
-		                        fireEmptyElement(FOOT_TAG, toAttributes(new String[]
-        		                        { "sum", value.toString()
-                		                , "computed", String.valueOf(controlSum)
-                        		        }));
-		                        fireLineBreak();
-                				value.setLength(0);
-                        		state = IN_NUMBER;
-                			}
-                			break; // IN_CHECKSUM
+                        case IN_CHECKSUM:
+                            if (ch >= '+' && ch <= '9') {
+                                value.append(ch);
+                            } else { // y - end of field reached
+                                fireEmptyElement(FOOT_TAG, toAttributes(new String[]
+                                        { "sum", value.toString()
+                                        , "computed", String.valueOf(controlSum)
+                                        }));
+                                fireLineBreak();
+                                value.setLength(0);
+                                state = IN_NUMBER;
+                            }
+                            break; // IN_CHECKSUM
 
-                		case IN_STRING:
-                			if (ch != '\u001c') {
-                				value.append(ch);
-                			} else { // end of field reached
-                				state = evaluateField(ch, value.toString());
-                				value.setLength(0);
-                			}
-                			break; // IN_STRING
+                        case IN_STRING:
+                            if (ch != '\u001c') {
+                                value.append(ch);
+                            } else { // end of field reached
+                                state = evaluateField(ch, value.toString());
+                                value.setLength(0);
+                            }
+                            break; // IN_STRING
 
-                		case BLOCK_FILLER:
-                			spos = len; // force reading of next block
-                			state = IN_NUMBER;
-                			break;
+                        case BLOCK_FILLER:
+                            spos = len; // force reading of next block
+                            state = IN_NUMBER;
+                            break;
 
-                		default:
-                			System.out.println("invalid state " + state);
-                			break;
-                	} // switch state
+                        default:
+                            System.out.println("invalid state " + state);
+                            break;
+                    } // switch state
                 } // while spos
             } // while reading input file
             fireEndElement(ROOT_TAG);
@@ -380,10 +381,10 @@ public class DATEVTransformer extends ByteTransformer {
     /* SAX handler for XML input */
     /*===========================*/
 
-	/** computed sum of amounts */
-	private long saxSum;
-	/** buffer for the assembly of a new block */
-	private ByteRecord saxBlock;
+    /** computed sum of amounts */
+    private long saxSum;
+    /** buffer for the assembly of a new block */
+    private ByteRecord saxBlock;
 
     /** Puts a DATEV field with a trailing delimiter into the result
      *  @param attrs attributes of the XML element
@@ -448,7 +449,7 @@ public class DATEVTransformer extends ByteTransformer {
     /** Receive notification of the beginning of the document.
      */
     public void startDocument() {
-    	saxSum   = 0;
+        saxSum   = 0;
         saxBlock = new ByteRecord(BLOCK_SIZE);
     } // startDocument
 
@@ -462,11 +463,11 @@ public class DATEVTransformer extends ByteTransformer {
      *  or the empty string if qualified names are not available.
      *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
-     *  @throws SAX Exception
+     *  @throws SAXException for ßAX errors
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs)
             throws SAXException {
-		DATEVField field = null;
+        DATEVField field = null;
         if (namespace.length() > 0 && qName.startsWith(namespace)) {
             qName = qName.substring(namespace.length());
         }
@@ -483,18 +484,18 @@ public class DATEVTransformer extends ByteTransformer {
                 saxBlock.setString(0x4f, 1, "y"); // filled up to 0x50
             } else if (qName.equals(DATA_TAG)) {
                 StringBuffer entry = new StringBuffer(128);
-				int nattr = attrs.getLength();
-				int iattr = 0;
-				while (iattr < nattr) {
-					String name  = attrs.getLocalName(iattr);
-					field = (DATEVField) attrMap.get(name);
-					if (field != null) {
-	                    entry.append(putDATEVField(attrs, field));
-					} else {
-						log.error("unknown attribute " + name);
-					}
-					iattr ++;
-				} // while iattr
+                int nattr = attrs.getLength();
+                int iattr = 0;
+                while (iattr < nattr) {
+                    String name  = attrs.getLocalName(iattr);
+                    field = (DATEVField) attrMap.get(name);
+                    if (field != null) {
+                        entry.append(putDATEVField(attrs, field));
+                    } else {
+                        log.error("unknown attribute " + name);
+                    }
+                    iattr ++;
+                } // while iattr
                 int len = entry.length();
                 // log.debug(entry.toString());
                 if (saxBlock.getPosition() + len + 20 > BLOCK_SIZE) { // +12 for x...z entry (checksum)
@@ -509,7 +510,7 @@ public class DATEVTransformer extends ByteTransformer {
         } catch (Exception exc) {
             throw new SAXException("error in startElement ", exc);
         }
-    }
+    } // startElement
 
     /** Receive notification of the end of the document.
      */
@@ -518,5 +519,6 @@ public class DATEVTransformer extends ByteTransformer {
         saxBlock.setString(result.length(), result);
         saxBlock.fill('\u0000');
         saxBlock.write(byteWriter, BLOCK_SIZE);
-    }
-}
+    } // endDocument
+    
+} // DatevTransformer

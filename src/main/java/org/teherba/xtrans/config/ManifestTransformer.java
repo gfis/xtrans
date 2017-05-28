@@ -1,5 +1,6 @@
 /*  Transforms Java MANIFEST.MF files to and from XML
     @(#) $Id: ManifestTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2010-07-28, Dr. Georg Fischer: copied from IniTransformer
 */
 /*
@@ -22,7 +23,7 @@ import  org.teherba.xtrans.config.ConfigTransformer;
 
 /** Transforms Java MANIFEST.MF files to and from XML.
  *  The format is described in
- *	<a href="http://java.sun.com/javase/6/docs/technotes/guides/jar/jar.html#JAR Manifest">http://java.sun.com/javase/6/docs/technotes/guides/jar/jar.html#JAR Manifest</a>.
+ *  <a href="http://java.sun.com/javase/6/docs/technotes/guides/jar/jar.html">http://java.sun.com/javase/6/docs/technotes/guides/jar/jar.html#JAR Manifest</a>.
  *  Example:
 <pre>
 Manifest-Version: 1.0
@@ -42,7 +43,7 @@ Implementation-Vendor: Dr. Georg Fischer
 </pre>
 / *  @author Dr. Georg Fischer
  */
-public class ManifestTransformer extends ConfigTransformer { 
+public class ManifestTransformer extends ConfigTransformer {
     public final static String CVSID = "@(#) $Id: ManifestTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** Constructor.
@@ -53,17 +54,17 @@ public class ManifestTransformer extends ConfigTransformer {
         setDescription("Java MANIFEST.MF file");
         setFileExtensions("MF");
     } // Constructor()
-    
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         pairSeparator  = ":";
         nextContinue   = "";
         lineEndComment = new String[] { ";" };
         hardFoldLength = 70;
-	} // initialize
+    } // initialize
 
 } // ManifestTransformer

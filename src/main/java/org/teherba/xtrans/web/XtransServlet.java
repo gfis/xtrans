@@ -1,5 +1,6 @@
 /*  Servlet which transforms various file formats to and from XML.
     @(#) $Id: XtransServlet.java 796 2011-09-10 13:58:28Z gfis $
+    2017-05-28: javadoc 1.8
     2016-10-14: less imports
     2016-09-14: MultiFormatFactory back to dynamic XtransFactory
     2016-09-06: package xtrans.web; uses BasePage; completely revised
@@ -85,7 +86,7 @@ public class XtransServlet extends HttpServlet {
     /** Creates the response for a HTTP GET request.
      *  @param request fields from the client input form
      *  @param response data to be sent back the user's browser
-     *  @throws IOException
+     *  @throws IOException if an IO error occurs
      */
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException {
         generateResponse(request, response);
@@ -94,7 +95,7 @@ public class XtransServlet extends HttpServlet {
     /** Creates the response for a HTTP POST request.
      *  @param request fields from the client input form
      *  @param response data to be sent back the user's browser
-     *  @throws IOException
+     *  @throws IOException if an IO error occurs
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         generateResponse(request, response);
@@ -103,7 +104,7 @@ public class XtransServlet extends HttpServlet {
     /** Creates the response for a HTTP GET or POST request.
      *  @param request fields from the client input form
      *  @param response data to be sent back the user's browser
-     *  @throws IOException
+     *  @throws IOException if an IO error occurs
      */
     public void generateResponse(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -236,6 +237,7 @@ public class XtransServlet extends HttpServlet {
      *  @param fileItem handle for an uploaded file
      *  @param intext input String from a form field, overtakes <em>fileItem</em> if non-empty
      *  @param response wher to write the output
+     *  @throws IOException if an IO error occurs
      */
     private void doTransform(BaseTransformer generator
             , BaseTransformer serializer

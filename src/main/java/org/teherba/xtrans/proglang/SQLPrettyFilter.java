@@ -1,5 +1,6 @@
 /*  Filter which reformats ("pretty prints") SQL statements
     @(#) $Id: SQLPrettyFilter.java 616 2010-12-20 16:51:18Z gfis $
+    2017-05-28: javadoc 1.8
     2016-10-13: less imports
     2010-12-06: Dr. Georg Fischer: copied from 'LevelFilter'
 */
@@ -60,13 +61,13 @@ import  org.apache.log4j.Logger;
                 ,   'ohne Vorl.'  as adrepext
                 from XXRTOP op
                 left join XXRTJOB jo on jo.jobmemb = op.adropjn and jo.xxrdatinfo = op.xxrdatinfo
-                where op.adrid  = '<parm name="ADRID" />'
-                  and op.xxrdatinfo = '<parm name="PLEX" />'
+                where op.adrid  = '&lt;parm name="ADRID" /&gt;'
+                  and op.xxrdatinfo = '&lt;parm name="PLEX" /&gt;'
                   and not exists
                   ( select d2.adropead, d2.adrep_opno
                     from XXRTDEP d2
-                    where  d2.adrid = '<parm name="ADRID" />'
-                      and  d2.xxrdatinfo = '<parm name="PLEX" />'
+                    where  d2.adrid = '&lt;parm name="ADRID" /&gt;'
+                      and  d2.xxrdatinfo = '&lt;parm name="PLEX" /&gt;'
                       and  d2.adropno = op.adropno
                   )
 </pre>

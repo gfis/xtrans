@@ -1,7 +1,8 @@
 /*  Transforms text lines with characters into their
-    Morse code (sequences of "." and "-") wrapped into an XML table
-    caution, must be stored in UTF-8: ÄÖÜß
+    Morse code (sequences of "." and "-") wrapped into an XML table.
+    Caution, must be stored in UTF-8: ÄÖÜß
     @(#) $Id: MorseCodeTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2016-10-16: Aring was the same as Agrave
     2006-11-22, Dr. Georg Fischer
 */
@@ -30,7 +31,7 @@ import  org.apache.log4j.Logger;
 /**	Transformer for simple text to be encoded in Morse code.
  *  Creates an XML &lt;table&gt; with &lt;tr&gt; rows for words 
  *  and &lt;td&gt;cells for characters. 
- *  <p />
+ *  <p>
  *  Because a lot of ASCII characters are missing (they are 
  *  replaced by '?'), and because of the conversion to uppercase,
  *  a forward-backward transformation will normally not
@@ -309,4 +310,5 @@ public class MorseCodeTransformer extends CharTransformer {
             linePos += len;
         } // else ignore characters in unknown elements
     } // characters
+
 } // MorseCodeTransformer

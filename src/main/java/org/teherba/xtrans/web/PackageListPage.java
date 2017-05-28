@@ -1,5 +1,6 @@
 /*  PackageListPage.java - main web page for Xtrans
  *  @(#) $Id: 57d01d0860aef0c2f2783647be70c3c381710c86 $
+ *  2017-05-28: javadoc 1.8
  *  2016-10-13: less imports; skip over [0] = XMLTransformer
  *  2016-09-14: MultiFormatFactory back to dynamic XtransFactory
  *  2016-09-06: without session
@@ -58,6 +59,7 @@ public class PackageListPage implements Serializable {
      *  @param response response with writer
      *  @param basePage refrence to common methods and error messages
      *  @param language 2-letter code en, de etc.
+     *  @throws IOException if an IO error occurs
      */
     public void showList(HttpServletRequest request, HttpServletResponse response
             , BasePage basePage

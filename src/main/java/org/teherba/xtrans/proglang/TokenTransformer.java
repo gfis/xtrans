@@ -1,6 +1,7 @@
 /*  Transformer for a representation of tokens in programs which
     is ready to be loaded into a database table
     @(#) $Id: TokenTransformer.java 607 2010-12-11 21:19:25Z gfis $
+    2017-05-28: javadoc 1.8
     2016-10-13: less imports
     2010-06-09: collapse string and comment tags to one with mode attribute; se and ee
     2009-12-31: sprec, groupid
@@ -48,7 +49,6 @@ import  org.apache.log4j.Logger;
  *  <li>spacesBefore: number of spaces before the element</li>
  *  <li>val: main element attribute, content (identifier, number, operator ...)</li>
  *  </ul>
- *  <p />
  *  The output file will normally be loaded into a database table.
  *  @author Dr. Georg Fischer
  */

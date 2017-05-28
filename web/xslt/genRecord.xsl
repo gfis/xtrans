@@ -2,7 +2,8 @@
 <!--
     Transforms a record structure definition into a Java class
     with field definitions, setters, getters, XML parser and serializer methods
-    @(#) $Id: genRecord.xsl 801 2011-09-12 06:16:01Z gfis $
+    @ß(#) $Id: genRecord.xsl 801 2011-09-12 06:16:01Z gfis $
+    2017-05-28: javadoc 1.8
     2013-12-29: do not generate \t
     2011-09-12: addAttribute with localName = qName
     2008-06-21: with <choice>, UTF-8 äöüÄÖÜß
@@ -252,7 +253,7 @@
      *  or the empty string if qualified names are not available.
      *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
-     *  @throws SAX Exception
+     *  @throws SAXException for SAX errors
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) throws SAXException {
         try {
@@ -480,7 +481,7 @@
 
         <!-- javadoc for get method -->
         <xsl:value-of select="concat('    /** Gets ', @name, ' - ', @rem, '&#10;')" />
-        <xsl:if test="string-length(@aref) > 0">
+        <xsl:if test="string-length($dist) > 0">
             <xsl:value-of select="concat('     *  @param index index in array ', @aref, '&#10;')" />
         </xsl:if>
         <xsl:value-of select="concat('     *  @return ', @rem, '&#10;')" />

@@ -1,7 +1,8 @@
-/*  Transforms any (binary) file to the 
-    an XML representation of the Quoted-Printable format 
+/*  Transforms any (binary) file to the
+    an XML representation of the Quoted-Printable format
     of RFC 2045, Section 6.7, and vice versa
     @(#) $Id: QuotedPrintableTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2006-11-20, Dr. Georg Fischer <punctum@punctum.com>
 */
 /*
@@ -25,22 +26,20 @@ import  org.teherba.xtrans.ByteTransformer;
 import  org.xml.sax.Attributes;
 import  org.apache.log4j.Logger;
 
-/**
- *  Transformer which converts any (binary) file to an XML representation
+/** Transformer which converts any (binary) file to an XML representation
  *  of the "Quoted Printable" format, and back.
- *  Parallel to Base64, the Quoted Printable format is described in 
+ *  Parallel to Base64, the Quoted Printable format is described in
  *  <a href="http://tools.ietf.org/html/rfc2045#section-6.7">RFC 2045, section 6.7</a>.
  *  The transformer generates an XML &lt;table&gt; with &lt;tr&gt; rows that
- *  can be thought of being separated by hard linebreaks (CR/LF). 
+ *  can be thought of being separated by hard linebreaks (CR/LF).
  *  Each row contains one or more &lt;td&gt; cells, where all but the last
  *  cell in a row have a soft linebreak ("=" + CR/LF) at the end.
  *  All cell contents are no longer than 76 characters.
- *  The normal Quoted Printable format can be obtained from the XML 
+ *  The normal Quoted Printable format can be obtained from the XML
  *  by a subsequent serialization with <em>LineTransformer</em>.
- *  </p><p>
  *  The encoding parameter is irrelevant - the tranformation
  *  always converts between binary and US-ASCII.
- *  </p><p>
+ *  <p>
  *  Verbatim from RFC 2045:
  *  <pre>
    In this encoding, octets are to be represented as determined by the
@@ -123,12 +122,12 @@ import  org.apache.log4j.Logger;
  *  </pre>
  *  @author Dr. Georg Fischer
  */
-public class QuotedPrintableTransformer extends ByteTransformer { 
+public class QuotedPrintableTransformer extends ByteTransformer {
     public final static String CVSID = "@(#) $Id: QuotedPrintableTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** Data cell element tag */
     private static final String DATA_TAG    = "td";
     /** Root element tag */
@@ -137,7 +136,7 @@ public class QuotedPrintableTransformer extends ByteTransformer {
     private static final String TABLE_TAG   = "table";
     /** Row element tag */
     private static final String ROW_TAG     = "tr";
-    
+
     /** No-args Constructor.
      */
     public QuotedPrintableTransformer() {
@@ -146,34 +145,34 @@ public class QuotedPrintableTransformer extends ByteTransformer {
         setDescription("Quoted Printable format (RFC 2045, 6.7)");
         setFileExtensions("txt,qp");
     } // Constructor()
-    
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = Logger.getLogger(QuotedPrintableTransformer.class.getName());
         // setSourceEncoding("US-ASCII");
         // setResultEncoding("US-ASCII");
-	} // initialize
+    } // initialize
 
     /** number of data octets to be read from input */
-    private int width; 
+    private int width;
 
     /** Buffer where encoded lines are built */
     private StringBuffer lineBuffer;
 
     /** length of byte buffer */
     private static final int MAX_BUF = 4096;
-        
+
     /** record for the specific format */
     protected ByteRecord sourceRecord;
     /** Buffer for bytes of encoded lines */
     private byte[] sourceBuffer;
     /** current position in <em>sourceBuffer</em> */
     private int sourcePos;
-    
+
     /** Whether another row was started (1) or not (0) */
     private int parseState;
 
@@ -198,10 +197,10 @@ public class QuotedPrintableTransformer extends ByteTransformer {
     } // putLine
 
     /** Tests whether an octet's representation with some length (1 or 3)
-     *  still fits on the line, possibly, writes 
-     *  data element (partial line) with a trailing soft linebreak if not, 
+     *  still fits on the line, possibly, writes
+     *  data element (partial line) with a trailing soft linebreak if not,
      *  and finally appends (the representation of) the octet
-     *  @param octet octet to be encoded 
+     *  @param octet octet to be encoded
      *  @param len number of characters to be appended to the line (1 or 3)
      */
     private void testAppend(byte octet, int len) {
@@ -233,10 +232,10 @@ public class QuotedPrintableTransformer extends ByteTransformer {
                 }
                 lineBuffer.append(hex);
                 wasSpace = octet == 0x20 || octet == 0x09;
-            }       
+            }
         }
     } // testAppend
-    
+
     /** enumeration of values for <em>state</em> */
     private static final int IN_TEXT    = 0;
     private static final int IN_SP      = 1;
@@ -244,7 +243,7 @@ public class QuotedPrintableTransformer extends ByteTransformer {
 
     /** Whether the previous character was a space or tab */
     private boolean wasSpace;
-    
+
     /** Transforms from the specified format to XML
      *  @return whether the transformation was successful
      */
@@ -280,7 +279,7 @@ public class QuotedPrintableTransformer extends ByteTransformer {
                                     break;
                                 case 0x09: // tab
                                 case (byte) ' ': // ' '
-                                    testAppend(octet, 3); 
+                                    testAppend(octet, 3);
                                     break;
                                 case (byte) '=':
                                 case (byte) '<':
@@ -288,7 +287,7 @@ public class QuotedPrintableTransformer extends ByteTransformer {
                                 case (byte) '&':
                                 case (byte) '"':
                                 case (byte) '\'': // &apos;
-                                    testAppend(octet, 3); // must escape 
+                                    testAppend(octet, 3); // must escape
                                     break;
                                 default:
                                     if        (octet < 0x20) {
@@ -342,7 +341,7 @@ public class QuotedPrintableTransformer extends ByteTransformer {
 
     /** currently opened element */
     private String elem;
-    
+
     /** Whether another row was started (1) or not (0) */
     private int saxState;
 
@@ -357,7 +356,7 @@ public class QuotedPrintableTransformer extends ByteTransformer {
     private StringBuffer saxLineBuffer;
     /** current line number in SAX input */
     private int saxLineCount;
-    
+
     /** Receive notification of the beginning of the document.
      */
     public void startDocument() {
@@ -366,11 +365,11 @@ public class QuotedPrintableTransformer extends ByteTransformer {
         resultPos = 0;
         saxLineCount = 0;
         saxState = 0;
-        saxLineBuffer = new StringBuffer(128); 
+        saxLineBuffer = new StringBuffer(128);
     } // startDocument
-    
+
     /** Tests whether this line could fit into the byte buffer,
-     *  possibly writes the latter, and then decodes the string 
+     *  possibly writes the latter, and then decodes the string
      *  and appends its bytes to the byte buffer,
      */
     private void decode() {
@@ -387,33 +386,33 @@ public class QuotedPrintableTransformer extends ByteTransformer {
                         try {
                             code = Integer.parseInt(softLine.substring(decodePos, decodePos + 2), 16);
                         } catch (Exception exc) {
-                            log.error("invalid =xx escape sequence in <td> element #" 
+                            log.error("invalid =xx escape sequence in <td> element #"
                                     + saxLineCount + "\n" + softLine);
                         }
                         decodePos += 2;
                     } else {
-                        log.error("incomplete =xx escape sequence in <td> element #" 
+                        log.error("incomplete =xx escape sequence in <td> element #"
                             + saxLineCount + ", decodePos=" + decodePos + "\n" + softLine);
                     }
                     resultBuffer[resultPos ++] = (byte) code;
-                } 
+                }
             } else { // not '='
                 resultBuffer[resultPos ++] = (byte) ch;
             }
         } // while decodePos
         resultRecord.write(byteWriter, resultPos);
         resultPos = 0;
-    }
+    } // decode
 
     /** Receive notification of the start of an element.
      *  Looks for the element which contains raw lines.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
@@ -431,16 +430,16 @@ public class QuotedPrintableTransformer extends ByteTransformer {
         } else if (qName.equals(DATA_TAG )) {
             saxLineCount ++;
         } // else ignore unknown elements
-    }
-    
+    } // startElement
+
     /** Receive notification of the end of an element.
      *  Looks for the element which contains raw lines.
      *  Terminates the line.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
@@ -451,21 +450,22 @@ public class QuotedPrintableTransformer extends ByteTransformer {
         if (false) {
         } else if (qName.equals(ROW_TAG  )) { // now output this row
             saxState = 1;
-        } else if (qName.equals(DATA_TAG )) { // now finish this field 
+        } else if (qName.equals(DATA_TAG )) { // now finish this field
             decode();
-        } else if (qName.equals(ROOT_TAG )) { 
-        } else if (qName.equals(TABLE_TAG )) { 
+        } else if (qName.equals(ROOT_TAG )) {
+        } else if (qName.equals(TABLE_TAG )) {
         } // ignore unknown elements
-    }
-    
+    } // endElement
+
     /** Receive notification of character data inside an element.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param len the number of characters to use from the character array. 
+     *  @param len the number of characters to use from the character array.
      */
     public void characters(char[] ch, int start, int len) {
         if (elem .equals(DATA_TAG )) {
             saxLineBuffer.append(new String(ch, start, len));
         } // else ignore characters in unknown elements
-    }
-}
+    } // characters
+    
+} // QuotedPrintableTransformer

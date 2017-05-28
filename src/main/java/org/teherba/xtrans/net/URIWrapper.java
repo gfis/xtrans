@@ -1,5 +1,6 @@
 /*  Wrapper around java.net.URI which parses more schemes
     @(#) $Id: URIWrapper.java 305 2009-12-10 07:24:20Z gfis $
+    2017-05-28: javadoc 1.8
     2009-12-09: pctEncode (replaces ' ' with "%20" instead of '+')
     2008-02-13: Java 1.5 types
     2006-11-24, Dr. Georg Fischer
@@ -32,20 +33,20 @@ import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
 import  org.apache.log4j.Logger;
 
-/**	Wrapper around java.net.URI which parses more (IANA registered) schemes.
+/** Wrapper around java.net.URI which parses more (IANA registered) schemes.
  *  Unlike java.net.URI, this class can be subclassed and has public getters and setters
- *  for all properties of the URI. 
- *  The <em>query</em> is divided into the indivdual key=value pairs for 
+ *  for all properties of the URI.
+ *  The <em>query</em> is divided into the indivdual key=value pairs for
  *  the parameters which are stored in a hashmap.
  *  <em>authority</em> and <em>schemeSpecificPart</em> are also not stored
  *  directly, but in their component properties.
- *  <p />
- *  The class currently implements the schemes marked with 
- *  "s" (directly via java.net.URI) or "w" (by decorating/wrapping java.net.URI) 
+ *  <p>
+ *  The class currently implements the schemes marked with
+ *  "s" (directly via java.net.URI) or "w" (by decorating/wrapping java.net.URI)
  *  in the following list:
 <pre>
   URI Scheme       Description                                                Reference
-  
+
   acap             application configuration access protocol                  [RFC2244]
   cid              content identifier                                         [RFC2392]
   crid             TV-Anytime Content Reference Identifier                    [RFC4078]
@@ -97,7 +98,7 @@ w urn              Uniform Resource Names (click for registry)                [R
   xmpp             Extensible Messaging and Presence Protocol                 [RFC4622]
   z39.50r          Z39.50 Retrieval                                           [RFC2056]
   z39.50s          Z39.50 Session                                             [RFC2056]
-  
+
   Provisional URI Schemes
   afs              Andrew File System global file names                       [RFC1738]
   dtn              DTNRG research and development                             [draft-irtf-dtnrg-arch]
@@ -107,41 +108,41 @@ w urn              Uniform Resource Names (click for registry)                [R
                                                                               [draft-irtf-dtnrg-sec-overview]
   mailserver       Access to data available from mail servers                 [RFC1738]
   tn3270           Interactive 3270 emulation sessions                        [RFC1738]
-  
+
   Historical URI Schemes
   prospero         Prospero Directory Service                                 [RFC4157]
   wais             Wide Area Information Servers                              [RFC4156]
 </pre>
  *  @author Dr. Georg Fischer
  */
-public class URIWrapper { 
+public class URIWrapper {
     public final static String CVSID = "@(#) $Id: URIWrapper.java 305 2009-12-10 07:24:20Z gfis $";
 
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** Pattern for the initial scheme and ":" */
     private static final Pattern SCHEME_PATTERN = Pattern.compile("([\\w\\.]+)\\:");
 
     /** Standard encoding */
     private static final String UTF8 = "UTF-8";
-    
+
     /** No-args Constructor.
      */
     public URIWrapper() {
         log = Logger.getLogger(URIWrapper.class.getName());
-	} // constructor()
-	
+    } // constructor()
+
     /** Constructor from string.
      *  @param str - The string to be parsed into a URI.
-     *  @throws URISyntaxException
+     *  @throws URISyntaxException for URI syntax errors
      */
     public URIWrapper(String str) throws URISyntaxException {
-    	this();
+        this();
         String ssp = "";
         Matcher schemeMatcher = SCHEME_PATTERN.matcher(str);
         if (schemeMatcher.lookingAt()) {
-            scheme = schemeMatcher.group(1).toLowerCase();  
+            scheme = schemeMatcher.group(1).toLowerCase();
             ssp = str.substring(scheme.length() + 1); // scheme specific part
         } else { // relative path
             scheme = null;
@@ -172,34 +173,34 @@ public class URIWrapper {
         } else if (scheme.equals("tag"      ))  { parseTag      (ssp);
         } else if (scheme.equals("tel"      ))  { parseTel      (ssp);
         } else if (scheme.equals("urn"      ))  { parseURN      (ssp);
-        } else {            
+        } else {
             log.warn("URIWrapper: unknown scheme \"" + scheme + "\"");
         }
         // log.debug("URIWrapper - end");
     } // Constructor(String)
-    
-    /** Decodes a string with embedded sequences of "%" followed by 2 hex digits    
-     *  into the specified character set. 
-     *	The method is the opposite of {@link #pctEncode} and is similiar
+
+    /** Decodes a string with embedded sequences of "%" followed by 2 hex digits
+     *  into the specified character set.
+     *  The method is the opposite of {@link #pctEncode} and is similiar
      *  to URLDecoder.decode, but it does not convert "+" signs to spaces.
-     *	This is sometimes better for "data" URIs.
-	 *  The modified specification from java.net.URLEncoder follows:
-	 *	When encoding a String, the following rules apply:
-	 *	<ul>
-     *	<li>The alphanumeric characters "a" through "z", "A" through "Z" and "0" through "9" remain the same.</li>
-	 *  <li>The special characters ".", "-", "*", and "_" remain the same.</li>
-     *	<li>The space character " " is converted into "%20".</li>
-     * 	<li>All other characters are unsafe and are first converted into one or more bytes using some encoding scheme.
-     *	Then each byte is represented by the 3-character string "%xy", 
-     *	where xy is the two-digit hexadecimal representation of the byte.
-     *	The recommended encoding scheme to use is UTF-8. However, for compatibility reasons, 
-     *	if an encoding is not specified, then the default encoding of the platform is used. 
-     *	</li>
-     *	</ul>
-	 *	For example using UTF-8 as the encoding scheme the string "The string ü@foo-bar" 
-	 *	would get converted to "The%20string%20%C3%BC%40foo-bar" because in UTF-8 the 
-	 *	character ü is encoded as two bytes C3 (hex) and BC (hex), 
-	 *	and the character @ is encoded as one byte 40 (hex). 
+     *  This is sometimes better for "data" URIs.
+     *  The modified specification from java.net.URLEncoder follows:
+     *  When encoding a String, the following rules apply:
+     *  <ul>
+     *  <li>The alphanumeric characters "a" through "z", "A" through "Z" and "0" through "9" remain the same.</li>
+     *  <li>The special characters ".", "-", "*", and "_" remain the same.</li>
+     *  <li>The space character " " is converted into "%20".</li>
+     *  <li>All other characters are unsafe and are first converted into one or more bytes using some encoding scheme.
+     *  Then each byte is represented by the 3-character string "%xy",
+     *  where xy is the two-digit hexadecimal representation of the byte.
+     *  The recommended encoding scheme to use is UTF-8. However, for compatibility reasons,
+     *  if an encoding is not specified, then the default encoding of the platform is used.
+     *  </li>
+     *  </ul>
+     *  For example using UTF-8 as the encoding scheme the string "The string ü@foo-bar"
+     *  would get converted to "The%20string%20%C3%BC%40foo-bar" because in UTF-8 the
+     *  character ü is encoded as two bytes C3 (hex) and BC (hex),
+     *  and the character @ is encoded as one byte 40 (hex).
      *  @param str string to be decoded
      *  @param charset character set to be used, normally "UTF-8"
      *  @return string with decoded characters
@@ -239,7 +240,7 @@ public class URIWrapper {
     /** Encodes a string by replacing any non-URI character by embedded sequences of "%" followed by 2 hex digits.
      *  The method is the opposite of {@link #pctDecode} similiar
      *  to URLDecoder.encode, but it does not convert spaces to "+" signs.
-     *	This is sometimes better for "data" URIs.
+     *  This is sometimes better for "data" URIs.
      *  @param str string to be decoded
      *  @param charset character set to be used, normally "UTF-8"
      *  @return string with decoded characters
@@ -247,25 +248,25 @@ public class URIWrapper {
     public String pctEncode(String str, String charset) {
         StringBuffer result = new StringBuffer(str.length() * 2);
         try {
-	        byte byteBuffer[] = str.getBytes(charset); // will never be longer than 'str'
-    	    int bytePos = 0;
-        	int strPos = 0;
-	        while (bytePos < byteBuffer.length) {
-    	        char ch = (char) (byteBuffer[bytePos ++] & 0xff);
-        	    if (false) {
-            	} else if (ch < 128 && Character.isLetterOrDigit(ch)) {
-            		result.append(ch);
-	            } else if (".-*_".indexOf(ch) >= 0) {
-    	        	result.append(ch);
-        	    } else {
-            		result.append('%');
-            		String escape = String.valueOf(Integer.toHexString(ch));
-	            	if (escape.length() < 2) {
-    	        		escape = "0" + escape;
-        	    	}
-            		result.append(escape);
-	            }
-    	    } // while bytePos
+            byte byteBuffer[] = str.getBytes(charset); // will never be longer than 'str'
+            int bytePos = 0;
+            int strPos = 0;
+            while (bytePos < byteBuffer.length) {
+                char ch = (char) (byteBuffer[bytePos ++] & 0xff);
+                if (false) {
+                } else if (ch < 128 && Character.isLetterOrDigit(ch)) {
+                    result.append(ch);
+                } else if (".-*_".indexOf(ch) >= 0) {
+                    result.append(ch);
+                } else {
+                    result.append('%');
+                    String escape = String.valueOf(Integer.toHexString(ch));
+                    if (escape.length() < 2) {
+                        escape = "0" + escape;
+                    }
+                    result.append(escape);
+                }
+            } // while bytePos
         } catch (Exception exc) {
             log.error("invalid encoding " + charset + ": " + exc.getMessage());
         }
@@ -281,7 +282,7 @@ public class URIWrapper {
        data       := *urlchar
        parameter  := attribute "=" value
      *  </pre>
-     *  mediatype defaults to "text/plain;charset=US-ASCII", 
+     *  mediatype defaults to "text/plain;charset=US-ASCII",
      *  where "text/plain" can be omitted. ";base64" has no
      *  following "=" sign.
      *  @param ssp scheme specific part
@@ -293,8 +294,8 @@ public class URIWrapper {
             if (commaPos >= 0) { // with data
             } else { // degenerate: parameters only
                 commaPos = ssp.length();
-            } 
-            params = new HashMap/*<1.5*/<String, ArrayList<String>>/*1.5>*/(32);
+            }
+            params = new HashMap<String, ArrayList<String>>(32);
             if (commaPos > 0) {
                 String[] parameters = ssp.substring(0, commaPos).split(";");
                 int iparm = 0;
@@ -317,7 +318,7 @@ public class URIWrapper {
                 } // while iparm
             }
             String mediaType = "text/plain";
-            ArrayList/*<1.5*/<String>/*1.5>*/ al = getParam("mediatype");
+            ArrayList<String> al = getParam("mediatype");
             if (al != null) {
                 mediaType = (String) al.get(0);
             }
@@ -340,7 +341,7 @@ public class URIWrapper {
             log.error(exc.getMessage(), exc);
         }
     } // parseData
-    
+
     /** Parses the following URL schemes:
      *  <ul>
      *  <li>ftp</li>
@@ -348,9 +349,6 @@ public class URIWrapper {
      *  <li>gopher</li>
      *  <li>http, https</li>
      *  </ul>
-     *  The syntax is
-     *  <pre>
-     *  </pre>
      *  @param ssp scheme specific part
      */
     protected void parseGeneric(String ssp) {
@@ -363,11 +361,11 @@ public class URIWrapper {
             setSchemeSpecificPart(ssp);
         }
     } // parseGeneric
-    
+
     /** Parses the "go" URI scheme described in RFC 3368.
      *  The syntax is
      *  <pre>
-   		cnrp-uri      = "go:" (form1 / form2)
+        cnrp-uri      = "go:" (form1 / form2)
         form1         = "//" [server] ["?" ((common-name *avpair) / id-req) ]
         form2         = common-name *avpair
         id-req        = "id=" value
@@ -402,7 +400,7 @@ public class URIWrapper {
                 query = ssp.substring(qmPos + 1);
             } else { // form 2
                 query = ssp;
-            } 
+            }
             int semiPos = query.indexOf(";");
             if (semiPos < 0) {
                 semiPos = query.length();
@@ -417,19 +415,19 @@ public class URIWrapper {
             log.error("parseGo - error in ssp=\"" + ssp + "\": " + exc.getMessage());
         }
     } // parseGo
-    
-    /** Parses the "mailto"  
+
+    /** Parses the "mailto"
      *  URI scheme described in RFC 2368.
      *  The syntax is
      *  <pre>
      mailtoURL  =  "mailto:" [ to ] [ headers ]
-     to         =  #mailbox 
+     to         =  #mailbox
      headers    =  "?" header *( "&amp;" header )
      header     =  hname "=" hvalue
      hname      =  *urlc
      hvalue     =  *urlc
      *  </pre>
-     * "mailbox" consists of zero or more comma separated mail addresses, 
+     * "mailbox" consists of zero or more comma separated mail addresses,
      *  possibly with "phrase" and "comment" components
      *  @param ssp scheme specific part
      */
@@ -440,8 +438,8 @@ public class URIWrapper {
             if (qmPos >= 0) { // with headers
             } else { // list of addresses only, no headers
                 qmPos = ssp.length();
-            } 
-            params = new HashMap/*<1.5*/<String, ArrayList<String>>/*1.5>*/(32);
+            }
+            params = new HashMap<String, ArrayList<String>>(32);
             if (qmPos > 0) {
                 String[] addresses = ssp.substring(0, qmPos).split(",");
                 int iaddr = 0;
@@ -457,85 +455,85 @@ public class URIWrapper {
             log.error(exc.getMessage(), exc);
         }
     } // parseMailto
-    
-    /** Parses the "tag"  
-     *  URI schemes described in RFC 4151 and 
+
+    /** Parses the "tag"
+     *  URI schemes described in RFC 4151 and
      *  www.taguri.org.
      *  <pre>
-	    The general syntax of a tag URI, in ABNF [2], is:
-	 
-	       tagURI = "tag:" taggingEntity ":" specific [ "#" fragment ]
-	 
-	    Where:
-	 
-	       taggingEntity = authorityName "," date
-	       authorityName = DNSname / emailAddress
-	       date = year ["-" month ["-" day]]
-	       year = 4DIGIT
-	       month = 2DIGIT
-	       day = 2DIGIT
-	       DNSname = DNScomp *( "."  DNScomp ) ; see RFC 1035 [3]
-	       DNScomp = alphaNum [*(alphaNum /"-") alphaNum]
-	       emailAddress = 1*(alphaNum /"-"/"."/"_") "@" DNSname
-	       alphaNum = DIGIT / ALPHA
-	       specific = *( pchar / "/" / "?" ) ; pchar from RFC 3986 [1]
-	       fragment = *( pchar / "/" / "?" ) ; same as RFC 3986 [1]
+        The general syntax of a tag URI, in ABNF [2], is:
+
+           tagURI = "tag:" taggingEntity ":" specific [ "#" fragment ]
+
+        Where:
+
+           taggingEntity = authorityName "," date
+           authorityName = DNSname / emailAddress
+           date = year ["-" month ["-" day]]
+           year = 4DIGIT
+           month = 2DIGIT
+           day = 2DIGIT
+           DNSname = DNScomp *( "."  DNScomp ) ; see RFC 1035 [3]
+           DNScomp = alphaNum [*(alphaNum /"-") alphaNum]
+           emailAddress = 1*(alphaNum /"-"/"."/"_") "@" DNSname
+           alphaNum = DIGIT / ALPHA
+           specific = *( pchar / "/" / "?" ) ; pchar from RFC 3986 [1]
+           fragment = *( pchar / "/" / "?" ) ; same as RFC 3986 [1]
      *  </pre>
      *  @param ssp scheme specific part
      */
     protected void parseTag(String ssp) {
         parseGeneric(ssp);
     } // parseTag
-    
-    /** Parses the "tel" 
+
+    /** Parses the "tel"
      *  URI scheme described in RFC 3966. The obsolete "fax" and "modem"
      *  URI schemes from RFC 2806 are also mapped to this method.
      *  The syntax is
      *  <pre>
-	    telephone-uri        = "tel:" telephone-subscriber
-	    telephone-subscriber = global-number / local-number
-	    global-number        = global-number-digits *par
-	    local-number         = local-number-digits *par context *par
-	    par                  = parameter / extension / isdn-subaddress
-	    isdn-subaddress      = ";isub=" 1*uric
-	    extension            = ";ext=" 1*phonedigit
-	    context              = ";phone-context=" descriptor
-	    descriptor           = domainname / global-number-digits
-	    global-number-digits = "+" *phonedigit DIGIT *phonedigit
-	    local-number-digits  =
-	       *phonedigit-hex (HEXDIG / "*" / "#")*phonedigit-hex
-	    domainname           = *( domainlabel "." ) toplabel [ "." ]
-	    domainlabel          = alphanum
-	                           / alphanum *( alphanum / "-" ) alphanum
-	    toplabel             = ALPHA / ALPHA *( alphanum / "-" ) alphanum
-	    parameter            = ";" pname ["=" pvalue ]
-	    pname                = 1*( alphanum / "-" )
-	    pvalue               = 1*paramchar
-	    paramchar            = param-unreserved / unreserved / pct-encoded
-	    unreserved           = alphanum / mark
-	    mark                 = "-" / "_" / "." / "!" / "~" / "*" /
-	                           "'" / "(" / ")"
-	    pct-encoded          = "%" HEXDIG HEXDIG
-	    param-unreserved     = "[" / "]" / "/" / ":" / "&" / "+" / "$"
-	    phonedigit           = DIGIT / [ visual-separator ]
-	    phonedigit-hex       = HEXDIG / "*" / "#" / [ visual-separator ]
-	    visual-separator     = "-" / "." / "(" / ")"
-	    alphanum             = ALPHA / DIGIT
-	    reserved             = ";" / "/" / "?" / ":" / "@" / "&" /
-	                           "=" / "+" / "$" / ","
-	    uric                 = reserved / unreserved / pct-encoded
-	 
-	    Each parameter name ("pname"), the ISDN subaddress, the 'extension',
-	    and the 'context' MUST NOT appear more than once.  The 'isdn-
-	    subaddress' or 'extension' MUST appear first, if present, followed by
-	    the 'context' parameter, if present, followed by any other parameters
-	    in lexicographical order.
+        telephone-uri        = "tel:" telephone-subscriber
+        telephone-subscriber = global-number / local-number
+        global-number        = global-number-digits *par
+        local-number         = local-number-digits *par context *par
+        par                  = parameter / extension / isdn-subaddress
+        isdn-subaddress      = ";isub=" 1*uric
+        extension            = ";ext=" 1*phonedigit
+        context              = ";phone-context=" descriptor
+        descriptor           = domainname / global-number-digits
+        global-number-digits = "+" *phonedigit DIGIT *phonedigit
+        local-number-digits  =
+           *phonedigit-hex (HEXDIG / "*" / "#")*phonedigit-hex
+        domainname           = *( domainlabel "." ) toplabel [ "." ]
+        domainlabel          = alphanum
+                               / alphanum *( alphanum / "-" ) alphanum
+        toplabel             = ALPHA / ALPHA *( alphanum / "-" ) alphanum
+        parameter            = ";" pname ["=" pvalue ]
+        pname                = 1*( alphanum / "-" )
+        pvalue               = 1*paramchar
+        paramchar            = param-unreserved / unreserved / pct-encoded
+        unreserved           = alphanum / mark
+        mark                 = "-" / "_" / "." / "!" / "~" / "*" /
+                               "'" / "(" / ")"
+        pct-encoded          = "%" HEXDIG HEXDIG
+        param-unreserved     = "[" / "]" / "/" / ":" / "&amp;" / "+" / "$"
+        phonedigit           = DIGIT / [ visual-separator ]
+        phonedigit-hex       = HEXDIG / "*" / "#" / [ visual-separator ]
+        visual-separator     = "-" / "." / "(" / ")"
+        alphanum             = ALPHA / DIGIT
+        reserved             = ";" / "/" / "?" / ":" / "@" / "&amp;" /
+                               "=" / "+" / "$" / ","
+        uric                 = reserved / unreserved / pct-encoded
+
+        Each parameter name ("pname"), the ISDN subaddress, the 'extension',
+        and the 'context' MUST NOT appear more than once.  The 'isdn-
+        subaddress' or 'extension' MUST appear first, if present, followed by
+        the 'context' parameter, if present, followed by any other parameters
+        in lexicographical order.
      *  </pre>
      *  @param ssp scheme specific part
      */
     protected void parseTel(String ssp) {
         try {
-            String[] parameters = ssp.split(";"); 
+            String[] parameters = ssp.split(";");
             int iparm = 0;
             while (iparm < parameters.length) {
                 String pair = parameters[iparm ++];
@@ -558,34 +556,34 @@ public class URIWrapper {
             log.error(exc.getMessage(), exc);
         }
     } // parseTel
-    
+
     /** Parses the "urn"
      *  URI scheme described in RFC 2141.
      *  The syntax is
      *  <pre>
-	    <URN> ::= "urn:" <NID> ":" <NSS>
-	    <NID>         ::= <let-num> [ 1,31<let-num-hyp> ]
-	    <let-num-hyp> ::= <upper> | <lower> | <number> | "-"
-	    <let-num>     ::= <upper> | <lower> | <number>
-	    <NSS>         ::= 1*<URN chars>
-	    <URN chars>   ::= <trans> | "%" <hex> <hex>
-	    <trans>       ::= <upper> | <lower> | <number> | <other> | <reserved>
-	    <hex>         ::= <number> | "A" | "B" | "C" | "D" | "E" | "F" |
-	                      "a" | "b" | "c" | "d" | "e" | "f"
-	    <other>       ::= "(" | ")" | "+" | "," | "-" | "." |
-	                      ":" | "=" | "@" | ";" | "$" |
-	                      "_" | "!" | "*" | "'"
-	    <reserved>    ::= '%" | "/" | "?" | "#"
-	    <excluded> ::= octets 1-32 (1-20 hex) | "\" | """ | "&" | "<"
-	                   | ">" | "[" | "]" | "^" | "`" | "{" | "|" | "}" | "~"
-	                   | octets 127-255 (7F-FF hex)
+        &lt;URN&gt; ::= "urn:" &lt;NID&gt; ":" &lt;NSS&gt;
+        &lt;NID&gt;         ::= &lt;let-num&gt; [ 1,31&lt;let-num-hyp&gt; ]
+        &lt;let-num-hyp&gt; ::= &lt;upper&gt; | &lt;lower&gt; | &lt;number&gt; | "-"
+        &lt;let-num&gt;     ::= &lt;upper&gt; | &lt;lower&gt; | &lt;number&gt;
+        &lt;NSS&gt;         ::= 1*&lt;URN chars&gt;
+        &lt;URN chars&gt;   ::= &lt;trans&gt; | "%" &lt;hex&gt; &lt;hex&gt;
+        &lt;trans&gt;       ::= &lt;upper&gt; | &lt;lower&gt; | &lt;number&gt; | &lt;other&gt; | &lt;reserved&gt;
+        &lt;hex&gt;         ::= &lt;number&gt; | "A" | "B" | "C" | "D" | "E" | "F" |
+                          "a" | "b" | "c" | "d" | "e" | "f"
+        &lt;other&gt;       ::= "(" | ")" | "+" | "," | "-" | "." |
+                          ":" | "=" | "@" | ";" | "$" |
+                          "_" | "!" | "*" | "'"
+        &lt;reserved&gt;    ::= '%" | "/" | "?" | "#"
+        &lt;excluded&gt; ::= octets 1-32 (1-20 hex) | "\" | """ | "&amp;" | "&lt;"
+                       | "&gt;" | "[" | "]" | "^" | "`" | "{" | "|" | "}" | "~"
+                       | octets 127-255 (7F-FF hex)
      *  </pre>
      *  @param ssp scheme specific part
      */
     protected void parseURN(String ssp) {
         // log.debug("parseURN: " + ssp);
         try {
-            params = new HashMap/*<1.5*/<String, ArrayList<String>>/*1.5>*/(32);
+            params = new HashMap<String, ArrayList<String>>(32);
             int colonPos = ssp.indexOf(':'); // data start behind
             if (colonPos >= 0) { // with data
                 setParam("nid", ssp.substring(0, colonPos).toLowerCase());
@@ -593,16 +591,16 @@ public class URIWrapper {
             } else { // degenerate: parameters only
                 colonPos = ssp.length();
                 setParam("nid", ssp.substring(0, colonPos).toLowerCase());
-            } 
+            }
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
         }
     } // parseURN
-    
+
     //-----------------------------------------------
     /** URI - the generalized URI built from the properties of this class */
     private URI uri;
-    
+
     /** Sets the URI
      *  @param uri universal resource identifier (URL or URN)
      */
@@ -617,13 +615,13 @@ public class URIWrapper {
         port        = uri.getPort();
         path        = uri.getPath();
         query       = uri.getQuery();
-        params      = new HashMap/*<1.5*/<String, ArrayList<String>>/*1.5>*/(32);
+        params      = new HashMap<String, ArrayList<String>>(32);
         if (query != null) {
             splitParams(query);
         }
         fragment    = uri.getFragment();
     } // setURI
-    
+
     /** Gets the URI
      *  @return uri universal resource identifier (URL or URN)
      */
@@ -647,7 +645,7 @@ public class URIWrapper {
     //-----------------------------------------------
     /** scheme - scheme */
     private String scheme;
-    
+
     /** Sets the scheme
      *  @param scheme "http:", "tel:" etc.
      */
@@ -659,9 +657,9 @@ public class URIWrapper {
             log.error(exc.getMessage(), exc);
         }
     } // setScheme
-    
+
     /** Gets the scheme
-     *  @return "http:", "tel:" etc. 
+     *  @return "http:", "tel:" etc.
      */
     public String getScheme() {
         return scheme;
@@ -669,7 +667,7 @@ public class URIWrapper {
     //-----------------------------------------------
     /** scheme specific part */
     private String schemeSpecificPart;
-    
+
     /** Sets the scheme specific part
      *  @param schemeSpecificPart scheme specific part
      */
@@ -712,8 +710,8 @@ public class URIWrapper {
     //-----------------------------------------------
     /** user information (name, password) */
     private String userInfo;
-    /** Sets user information (name, password) 
-     *  @param userInfo user information (name, password) 
+    /** Sets user information (name, password)
+     *  @param userInfo user information (name, password)
      */
     public void setUserInfo(String userInfo) {
         this.userInfo = userInfo;
@@ -723,8 +721,8 @@ public class URIWrapper {
             log.error(exc.getMessage(), exc);
         }
     } // setUserInfo
-    /** Gets the user information (name, password) 
-     *  @return user information (name, password) 
+    /** Gets the user information (name, password)
+     *  @return user information (name, password)
      */
     public String getUserInfo() {
         return uri.getUserInfo();
@@ -792,13 +790,13 @@ public class URIWrapper {
     //-----------------------------------------------
     /** query - key=value pairs for parameters */
     private String query;
-    
+
     /** Sets the query to a list of "URL encoded" key=value pairs for parameters
      *  @param query key=value pairs for parameters
      */
     public void setQuery(String query) {
         this.query = query;
-        params = new HashMap/*<1.5*/<String, ArrayList<String>>/*1.5>*/(32);
+        params = new HashMap<String, ArrayList<String>>(32);
         splitParams(query);
         try {
             uri = new URI(scheme, userInfo, host, port, path, query, fragment);
@@ -806,7 +804,7 @@ public class URIWrapper {
             log.error(exc.getMessage(), exc);
         }
     } // setQuery
-    
+
     /** Gets the query as a list of key=value pairs for parameters
      *  @return key=value pairs for parameters
      */
@@ -816,12 +814,12 @@ public class URIWrapper {
     } // getQuery
     //-----------------------------------------------
     /** params - parameter map of pairs (String key, ArrayList&lt;String&gt; value) */
-    private HashMap/*<1.5*/<String, ArrayList<String>>/*1.5>*/ params;
+    private HashMap<String, ArrayList<String>> params;
 
     /** Sets the parameter map
      *  @param params parameter map which maps each key to one or more values
      */
-    public void setParams(HashMap/*<1.5*/<String, ArrayList<String>>/*1.5>*/ params) {
+    public void setParams(HashMap<String, ArrayList<String>> params) {
         this.params = params;
         query = joinParams();
     } // setParams
@@ -829,16 +827,16 @@ public class URIWrapper {
     /** Gets the parameter map
      *  @return parameter map
      */
-    public HashMap/*<1.5*/<String, ArrayList<String>>/*1.5>*/ getParams() {
+    public HashMap<String, ArrayList<String>> getParams() {
         return params;
     } // getParams
 
-    /** Sets the parameter to a single value 
+    /** Sets the parameter to a single value
      *  @param key parameter name
      *  @param value parameter value
      */
     public void setParam(String key, String value) {
-        ArrayList/*<1.5*/<String>/*1.5>*/ al = new ArrayList/*<1.5*/<String>/*1.5>*/(8);
+        ArrayList<String> al = new ArrayList<String>(8);
         al.add(value);
         params.put(key, al);
         query = joinParams();
@@ -849,23 +847,23 @@ public class URIWrapper {
      *  @param value parameter value
      */
     public void addParam(String key, String value) {
-        ArrayList/*<1.5*/<String>/*1.5>*/ al = params.get(key);
+        ArrayList<String> al = params.get(key);
         if (al == null) { // new key
-            al = new ArrayList/*<1.5*/<String>/*1.5>*/(8);
+            al = new ArrayList<String>(8);
         }
         al.add(value);
         params.put(key, al);
         query = joinParams();
     } // addParam
- 
+
     /** Gets a parameter's value(s)
      *  @param key parameter name
      *  @return parameter value(s)
      */
-    public ArrayList/*<1.5*/<String>/*1.5>*/ getParam(String key) {
+    public ArrayList<String> getParam(String key) {
         return params.get(key);
     } // getParam
-    
+
     /** Extracts the individual key=value pairs from a string,
      *  and returns a hashmap for them. The values are array lists,
      *  since keys may occur several times.
@@ -893,18 +891,18 @@ public class URIWrapper {
             log.error(exc.getMessage(), exc);
         }
     } // splitParams(String, String)
-    
+
     /** Extracts the individual key=value pairs from a string,
      *  and returns a hashmap for them. The values are array lists,
-     *  since keys may occur several times. 
-     *  The default URL parameter separator "&" is used.
+     *  since keys may occur several times.
+     *  The default URL parameter separator "&amp;" is used.
      *  @param str string to be splitted into key=value pairs
      */
     public void splitParams(String str) {
         splitParams(str, "&");
     } // splitParams(String)
-    
-    /** Concatenates the individual key=value pairs from the hashmap 
+
+    /** Concatenates the individual key=value pairs from the hashmap
      *  and returns a "URL encoded" string.
      *  @param separ separator for key=value pairs
      *  @return "URL encoded" list of key=value pairs for parameters
@@ -916,7 +914,7 @@ public class URIWrapper {
             boolean first = true;
             while (iter.hasNext()) {
                 String key = (String) iter.next();
-                ArrayList/*<1.5*/<String>/*1.5>*/ al = params.get(key);
+                ArrayList<String> al = params.get(key);
                 if (al != null) {
                     int ial = 0;
                     while (ial < al.size()) {
@@ -936,10 +934,10 @@ public class URIWrapper {
         }
         return result.toString();
     } // joinParams(String)
-    
-    /** Concatenates the individual key=value pairs from the hashmap 
+
+    /** Concatenates the individual key=value pairs from the hashmap
      *  and returns a "URL encoded" string.
-     *  The default URL parameter separator "&" is used.
+     *  The default URL parameter separator "&amp;" is used.
      *  @return "URL encoded" list of key=value pairs for parameters
      */
     public String joinParams() {
@@ -972,35 +970,35 @@ public class URIWrapper {
      */
     public static void main(String args[]) {
         Logger log = Logger.getLogger(URIWrapper.class.getName());
-		String word = "http://www.punctum.com:80/cgi-bin/test.cgi?parm1=val1&parm2=val2"; // default URI
-		if (args.length >= 1) { 
-	        word = args[0];
-		}
+        String word = "http://www.punctum.com:80/cgi-bin/test.cgi?parm1=val1&parm2=val2"; // default URI
+        if (args.length >= 1) {
+            word = args[0];
+        }
         URIWrapper wrapper = null;
-		try {
-	        if (word.matches("\\w+\\:.*")) { // starts with a scheme - assume URI
-		        wrapper = new URIWrapper(word);
-		        System.out.println("input: " + word);
-	        } else { // some string to be URI encoded
-		        wrapper = new URIWrapper();
-		        String uri  =  wrapper.pctEncode(word, "UTF-8");
-		        System.out.println("encoded: " + uri );
-		        word 		=  wrapper.pctDecode(uri , "UTF-8");
-		        System.out.println("decoded: " + word);
-		        wrapper = new URIWrapper(uri);
-		    }
-	        System.out.println("authority:\t"		+ wrapper.getAuthority	());
-	        System.out.println("fragment:\t"		+ wrapper.getFragment	());
-	        System.out.println("host:\t"			+ wrapper.getHost		());
-	        System.out.println("path:\t"			+ wrapper.getPath		());
-	        System.out.println("port:\t"			+ wrapper.getPort		());
-	        System.out.println("query:\t"			+ wrapper.getQuery		());
-	        System.out.println("scheme:\t"			+ wrapper.getScheme		());
-	        System.out.println("specific part:\t"	+ wrapper.getSchemeSpecificPart());
-	        System.out.println("user info:\t"		+ wrapper.getUserInfo	());
+        try {
+            if (word.matches("\\w+\\:.*")) { // starts with a scheme - assume URI
+                wrapper = new URIWrapper(word);
+                System.out.println("input: " + word);
+            } else { // some string to be URI encoded
+                wrapper = new URIWrapper();
+                String uri  =  wrapper.pctEncode(word, "UTF-8");
+                System.out.println("encoded: " + uri );
+                word        =  wrapper.pctDecode(uri , "UTF-8");
+                System.out.println("decoded: " + word);
+                wrapper = new URIWrapper(uri);
+            }
+            System.out.println("authority:\t"       + wrapper.getAuthority  ());
+            System.out.println("fragment:\t"        + wrapper.getFragment   ());
+            System.out.println("host:\t"            + wrapper.getHost       ());
+            System.out.println("path:\t"            + wrapper.getPath       ());
+            System.out.println("port:\t"            + wrapper.getPort       ());
+            System.out.println("query:\t"           + wrapper.getQuery      ());
+            System.out.println("scheme:\t"          + wrapper.getScheme     ());
+            System.out.println("specific part:\t"   + wrapper.getSchemeSpecificPart());
+            System.out.println("user info:\t"       + wrapper.getUserInfo   ());
         } catch (URISyntaxException exc) {
-   	        log.error(exc.getMessage(), exc);
-       	}
+            log.error(exc.getMessage(), exc);
+        }
     } // main
 
 } // URIWrapper

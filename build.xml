@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: build.xml 967 2012-08-29 18:22:10Z gfis $
+    2017-05-27: copy.dbat with DummyEntityResolver, TeeFilter
     2016-09-11: fill.lib
     2016-09-02: properties ${tomcat.*}, core.jar
     2014-11-16: tomcat.base|home extracted from build-import.xml
@@ -99,19 +100,21 @@
     <!-- as long as xtrans sources are compiled into dbat -->
     <target name="copy.dbat">
         <copy toDir="../dbat/src/main/java/org/teherba/xtrans/">
-            <fileset dir="./sources">
-                <include name="BaseTransformer.java" />
-                <include name="BaseRecord.java"      />
-                <include name="ByteRecord.java"      />
-                <include name="CharTransformer.java" />
-                <include name="CharRecord.java"      />
-                <include name="Field.java"           />
-                <include name="XMLTransformer.java"  />
-                <include name="XtransFactory.java"   />
+            <fileset dir="src/main/java/org/teherba/xtrans">
+                <include name="BaseTransformer.java"       />
+                <include name="BaseRecord.java"            />
+                <include name="ByteRecord.java"            />
+                <include name="CharTransformer.java"       />
+                <include name="CharRecord.java"            />
+                <include name="DummyEntityResolver.java"   />
+                <include name="Field.java"                 />
+                <include name="TeeFilter.java"             />
+                <include name="XMLTransformer.java"        />
+                <include name="XtransFactory.java"         />
             </fileset>          
         </copy>
         <copy toDir="../dbat/src/main/java/org/teherba/xtrans/pseudo">
-            <fileset dir="./sources/pseudo">
+            <fileset dir="src/main/java/org/teherba/xtrans/pseudo">
                 <include name="LevelFilter.java"     />
             </fileset>          
         </copy>
@@ -119,22 +122,7 @@
 
     <!-- ============= Source Code Generation =============================
     -->
-    <target name="generate" depends="gen.pack,gen.record,gen.dta,gen.aeb43,gen.cfonb,gen.coda">
-    <!--
-        <delete failonerror="false" quiet="true" verbose="true">
-            <fileset dir="${build.classes}/META-INF" includes="SUN_MICR.*" />
-        </delete>
-        <copy todir="${src.home}/org/teherba/dbat">
-            <fileset dir="../dbat/src/main/java/org/teherba/dbat">
-                <include name="*.java"/>
-            </fileset>
-        </copy>
-        <copy todir="${src.home}/org/teherba/dbat/format">
-            <fileset dir="../dbat/src/main/java/org/teherba/dbat/format">
-                <include name="*.java"/>
-            </fileset>
-        </copy>
-    -->
+    <target name="generate" depends="gen.pack,gen.record,gen.dta,gen.dta2,gen.aeb43,gen.cfonb,gen.coda,gen.gps.bean,gen.uri.bean,gen.schema">
     </target>
 
     <!--
@@ -296,21 +284,6 @@
         </uptodate>
     </target>
 
-<!--
-    <target name="gen.oeis.bean">
-        <xslt in="${web.home}/spec/misc/linkoeis.xml" style="${web.home}/xslt/genRecord.xsl"
-                out="${src.home}/org/teherba/xtrans/misc/LinkOEISBean.java"
-        />
-        but checking???
-    </target>
-
-    <target name="gen.orga.bean">
-        <xslt in="${web.home}/spec/misc/organuk.xml" style="${web.home}/xslt/genRecord.xsl"
-                out="${src.home}/org/teherba/xtrans/misc/OrganukBeanBase.java"
-        />
-        but checking???
-    </target>
--->
     <target name="dta.repair">
         <exec executable="xalan"
                 output="${test.home}/finance/dta/zuer5.repair.xml" >
@@ -344,17 +317,6 @@
          <xslt in="${web.home}/spec/finance/DTA.spec.xml" style="${web.home}/xslt/genW3CSchema.xsl"
                 out="${web.home}/schema/finance/DTA.xsd"
         />
-    <!--
-        <exec executable="xalan"
-                output="${web.home}/schema/finance/DTA.xsd" >
-            <arg line="-i 2 -e UTF-8 ${web.home}/spec/finance/DTA.spec.xml ${web.home}/xslt/genW3CSchema.xsl" />
-        </exec>
-        <schemavalidate file="${web.home}/schema/finance/DTA.xsd">
-            <schema namespace="http://www.w3.org/2001/XMLSchema"
-                    file="${web.home}/schema/XMLSchema.xsd"
-            />
-        </schemavalidate>
-    -->
         <exec executable="xmllint">
             <arg line="--noout --schema ${web.home}/schema/XMLSchema.xsd ${web.home}/schema/finance/DTA.xsd" />
         </exec>

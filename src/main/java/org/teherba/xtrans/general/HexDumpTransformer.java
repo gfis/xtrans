@@ -1,5 +1,6 @@
 /*  Transforms to/from a hexdump of a (binary) file
     @(#) $Id: HexDumpTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2016-10-16: did not cope with single character hex constants
     2007-03-30: more SAX handler methods
     2006-09-20, Dr. Georg Fischer <punctum@punctum.com>
@@ -42,11 +43,11 @@ import  org.apache.log4j.Logger;
  *  the <em>code</em> for the human readable representation
  *  which can be <em>ascii</em> or <em>ebcdic</em>.
  *  Unprintable and XML-metacharacters are replaced by "-" in the <em>str</em> attribute.
- *  <p />
+ *  <p>
  *  The serialization from XML to binary data does not regard the offsets -
  *  only the bytes represented by the <em>hex</em> attributes are written one
  *  after the other.
- *  <p />
+ *  <p>
  *  Example for the output:
  * <pre>
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;

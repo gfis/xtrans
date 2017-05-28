@@ -1,5 +1,6 @@
 /*  Transforms dBase II, III, IV and compatible database files.
     @(#) $Id: DBaseTransformer.java 967 2012-08-29 18:22:10Z gfis $
+    2017-05-28: javadoc 1.8
     2008-07-31, Dr. Georg Fischer: copied from JSONTransformer
     1992-05-05, Georg Fischer: in C, copied from 'pdsdf'
 
@@ -30,7 +31,7 @@ import  java.util.ArrayList;
 import  org.xml.sax.Attributes;
 import  org.apache.log4j.Logger;
 
-/** Transforms dBase II, III, IV and compatible database files to/from XML. 
+/** Transforms dBase II, III, IV and compatible database files to/from XML.
  *  <p>
  *  Example of a dBase III file header:
  *  <pre>
@@ -89,11 +90,11 @@ import  org.apache.log4j.Logger;
     a0: 53 54 52 41 5f 45                 43              STRA_E.....C....
     b0: 1c                                                ................
     c0: 50 4c 5a                          4e              PLZ........N....
-    d0:  5                                                ................      
+    d0:  5                                                ................
 </pre>
  *  @author Dr. Georg Fischer
  */
-public class DBaseTransformer extends ByteTransformer { 
+public class DBaseTransformer extends ByteTransformer {
     public final static String CVSID = "@(#) $Id: DBaseTransformer.java 967 2012-08-29 18:22:10Z gfis $";
 
     /** log4j logger (category) */
@@ -108,18 +109,18 @@ public class DBaseTransformer extends ByteTransformer {
         setFileExtensions("dbf");
         setMimeType("application/octet-stream");
     } // Constructor()
-    
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         setBinaryFormat(true);
         log = Logger.getLogger(DBaseTransformer.class.getName());
         // mustAmpEscape = false;
         putEntityReplacements();
-	} // initialize
+    } // initialize
 
     private static final String BOOLEAN_TAG     = "bool";
     private static final String COLUMN_TAG      = "col";
@@ -139,10 +140,10 @@ public class DBaseTransformer extends ByteTransformer {
     private static final String UPDATE_ATTR     = "last-update";
     private static final String WIDTH_ATTR      = "width";
     private static final String WITH_MEMO_ATTR  = "with-memo";
-    
+
     /** state of finite automaton */
     private int state;
-    /* values for <em>state</em> */ 
+    /* values for <em>state</em> */
     private static final int    IN_FILE_INIT    = 0;
     private static final int    IN_DESC_INIT    = 1;
     private static final int    IN_DESC         = 2;
@@ -154,46 +155,47 @@ public class DBaseTransformer extends ByteTransformer {
     private static final int    IN_FINISH       = 8;
 
     /** dBase 2, 3, 4 ... */
-    private  int genVersion; 
+    private  int genVersion;
     /** how many bytes are to be stored in 'content' */
     private  int storeLen;
     /** current number of bytes processed so far */
-    private  int bytesRead; 
+    private  int bytesRead;
     /** data start at this offset */
-    private  long dataStart; 
+    private  long dataStart;
     /** length of file header */
-    private  int headerSize; 
+    private  int headerSize;
     /** length of column descriptor */
-    private  int colDescSize; 
+    private  int colDescSize;
     /** total number of rows (records) */
-    private  int rowCount; 
+    private  int rowCount;
     /** current row number, 0 based */
     private  int irow;
     /** current column number, 0 based */
-    private  int rowSize; 
+    private  int rowSize;
     /** maximum length of a column name (nil padded) */
     private final int MAX_NAME = 11;
-    
+
     /** length of a row (record) */
     protected  int igenCol;
     /** description of all columns */
-    protected ArrayList/*<1.5*/<TableColumn>/*1.5>*/ genColumnList;
-    
+    protected ArrayList<TableColumn> genColumnList;
+
     /** record for the specific format */
     protected ByteRecord genRecord;
 
-	/** Maximum length of buffer for fields */
-	private static final int MAX_BUF = 296;
+    /** Maximum length of buffer for fields */
+    private static final int MAX_BUF = 296;
     /** Buffer for string content and descriptors */
     protected byte[] genContent;
-	/** index of 1st free byte in <em>genContent</em> */
+    /** index of 1st free byte in <em>genContent</em> */
     protected int gffContent;
-	/** source encoding */
+    /** source encoding */
     protected String genEncoding;
-	
+
     /** Gets a number from 2 bytes in a buffer (least significant byte order)
      *  @param buffer buffer containing the number
      *  @param start position of least significant byte = character
+     *  @return short int
      */
     private int getLSB2(byte [] buffer, int start) {
         return     (buffer[start    ] & 0xff)
@@ -222,8 +224,8 @@ public class DBaseTransformer extends ByteTransformer {
         genVersion    = buffer[ind ++]; // MGe; high bit = Memo file (.DBT) present
         boolean withMemo = (genVersion & 0x80) > 0;
         genVersion &= 0x07;
-        switch (genVersion) { // which dBase is it? 
-            case 0x02: // dBase II 
+        switch (genVersion) { // which dBase is it?
+            case 0x02: // dBase II
                 result     =  8;
                 colDescSize = 16;
                 rowCount   =  getLSB2(buffer, ind);        ind += 2; // max 65535 rows
@@ -233,35 +235,35 @@ public class DBaseTransformer extends ByteTransformer {
                 headerSize =  0;
                 rowSize    =  getLSB2(buffer, ind);        ind += 2; // max. 1000
                 break;
-            default: // dBase III and later 
+            default: // dBase III and later
                 result     = 32;
                 colDescSize = 32;
                 year       =  buffer[ind ++] & 0xff;
                 month      =  buffer[ind ++] & 0xff;
                 day        =  buffer[ind ++] & 0xff;
-                rowCount   =  getLSB2(buffer, ind)       ; ind += 2; 
+                rowCount   =  getLSB2(buffer, ind)       ; ind += 2;
                 rowCount  |= (getLSB2(buffer, ind) << 16); ind += 2;
                 headerSize =  getLSB2(buffer, ind);        ind += 2;
                 rowSize    =  getLSB2(buffer, ind);        ind += 2;
                 break;
-        } // switch genVersion 
+        } // switch genVersion
         year += (year <= 79) ? 2000 : 1900;
 
-        pushXML(TABLE_TAG, toAttributes(new String[] 
+        pushXML(TABLE_TAG, toAttributes(new String[]
                 { NAME_ATTR     , ""
                 , VERSION_ATTR  , String.valueOf(genVersion)
                 , ROWSIZE_ATTR  , String.valueOf(rowSize)
                 , NROWS_ATTR    , String.valueOf(rowCount)
                 , HEADSIZE_ATTR , String.valueOf(headerSize)
-                , UPDATE_ATTR   , String.valueOf(year       ) 
-                    	+ '-'   + String.valueOf(month + 100).substring(1) // with leading zero
-                    	+ '-'   + String.valueOf(day   + 100).substring(1)
+                , UPDATE_ATTR   , String.valueOf(year       )
+                        + '-'   + String.valueOf(month + 100).substring(1) // with leading zero
+                        + '-'   + String.valueOf(day   + 100).substring(1)
                 , WITH_MEMO_ATTR, (withMemo ? "true" : "false")
                 }));
         fireLineBreak();
         return result;
-    } // evalFileHeader 
-        
+    } // evalFileHeader
+
     /** Evaluates a column (field) description.
      *  @param genContent buffer containing the column description, 16 or 32 bytes.
      *  Properties of the column are stored in a new element of <em>genColumnList</em>.
@@ -286,28 +288,28 @@ public class DBaseTransformer extends ByteTransformer {
             }
         } // while busy
         String name = null;
-    	try {
-    		name = new String(genContent, 0, ind, genEncoding);
-    	} catch (Exception exc) {
-    		log.error(exc.getMessage(), exc);
-    		name = new String(genContent, 0, ind);
-    	}
+        try {
+            name = new String(genContent, 0, ind, genEncoding);
+        } catch (Exception exc) {
+            log.error(exc.getMessage(), exc);
+            name = new String(genContent, 0, ind);
+        }
         ind = MAX_NAME;
         char colType = (char) (genContent[ind ++] & 0xff);
         int width   = 0;
         int decimal = 0;
-        switch (genVersion) { // which dBase is it? 
-            case 0x02: // dBase II 
+        switch (genVersion) { // which dBase is it?
+            case 0x02: // dBase II
                 width   = genContent[ind ++] & 0xff;
                 ind += 2; // internal field data address
                 decimal = genContent[ind ++] & 0xff;
                 break;
-            default: // dBase III and later 
+            default: // dBase III and later
                 ind += 4; // internal field data address
                 width   = genContent[ind ++] & 0xff;
                 decimal = genContent[ind ++] & 0xff;
                 break;
-        } // switch genVersion 
+        } // switch genVersion
 
         TableColumn genColumn = new TableColumn();
         genColumnList.add(genColumn);
@@ -336,8 +338,8 @@ public class DBaseTransformer extends ByteTransformer {
                 break;
         } // switch colType
         genColumn.setTypeName(typeName);
-        
-        pushXML(COLUMN_TAG, toAttributes(new String[] 
+
+        pushXML(COLUMN_TAG, toAttributes(new String[]
                 { NAME_ATTR     , name
                 , TYPE_ATTR     , typeName
                 , WIDTH_ATTR    , String.valueOf(width  )
@@ -345,7 +347,7 @@ public class DBaseTransformer extends ByteTransformer {
                 }));
             fireCharacters(name);
         popXML(); // COLUMN_TAG
-        fireLineBreak();  
+        fireLineBreak();
     } // evalColumnDesc
 
     /** Evaluates the content of column <em>igenCol</em> in the current row.
@@ -356,8 +358,8 @@ public class DBaseTransformer extends ByteTransformer {
         pushXML(DATA_TAG);
             switch (genColumnList.get(igenCol).getDataType()) {
                 case 'L':
-                    // interpretation of character for logical value 
-                    switch (genContent[0]) { 
+                    // interpretation of character for logical value
+                    switch (genContent[0]) {
                         case 'y':
                         case 't':
                         case 'Y':
@@ -371,22 +373,22 @@ public class DBaseTransformer extends ByteTransformer {
                         case 'N':
                             fireCharacters("false");
                             break;
-                    } // switch 
+                    } // switch
                     break;
                 default:
                 case 'C':
                 case 'N':
-                	int len = gffContent - 1;
-                	while (len >= 0 && genContent[len] == ' ') { // rtrim
-                		len --;
-                	} // while
-					// System.out.println(new String(genContent, 0, len + 1));
-					try {
-                    	fireCharacters(new String (genContent, 0, len + 1, genEncoding));
-			    	} catch (Exception exc) {
-    					log.error(exc.getMessage(), exc);
-                    	fireCharacters(new String (genContent, 0, len + 1));
-    				}
+                    int len = gffContent - 1;
+                    while (len >= 0 && genContent[len] == ' ') { // rtrim
+                        len --;
+                    } // while
+                    // System.out.println(new String(genContent, 0, len + 1));
+                    try {
+                        fireCharacters(new String (genContent, 0, len + 1, genEncoding));
+                    } catch (Exception exc) {
+                        log.error(exc.getMessage(), exc);
+                        fireCharacters(new String (genContent, 0, len + 1));
+                    }
                     break;
                 case 'F':
                     fireCharacters(new String (genContent, 0, gffContent));
@@ -396,14 +398,14 @@ public class DBaseTransformer extends ByteTransformer {
                     break;
                 case 'D': // YYYYMMDD
                     //       012345678
-					String date = (new String(genContent, 0, gffContent)).trim();
-                	if (date.length() >= 8) {
-                    	fireCharacters(date.substring (0, 4) 
-                    			+ "-" + date.substring(4, 6) 
-                    			+ "-" + date.substring(6, 8));
-                	}
+                    String date = (new String(genContent, 0, gffContent)).trim();
+                    if (date.length() >= 8) {
+                        fireCharacters(date.substring (0, 4)
+                                + "-" + date.substring(4, 6)
+                                + "-" + date.substring(6, 8));
+                    }
                     break;
-            } // switch dtype 
+            } // switch dtype
         popXML(); // DATA_TAG
     } // evalDataCell
 
@@ -414,11 +416,11 @@ public class DBaseTransformer extends ByteTransformer {
         boolean result = true;
         try {
             genRecord = new ByteRecord(2906);
-			genEncoding = getSourceEncoding();
- 			genRecord.setEncoding(genEncoding);
-            genColumnList = new ArrayList/*<1.5*/<TableColumn>/*1.5>*/(16); // empty so far
+            genEncoding = getSourceEncoding();
+            genRecord.setEncoding(genEncoding);
+            genColumnList = new ArrayList<TableColumn>(16); // empty so far
             igenCol = 0;
-			
+
             bytesRead = 0;
             fireStartDocument();
             fireStartRoot(ROOT_TAG);
@@ -439,7 +441,7 @@ public class DBaseTransformer extends ByteTransformer {
                     ch = buffer[ind];
                     bytesRead ++;
                     // System.out.println("State " + state + ", char " + ch);
-    
+
                     switch (state) {
 
                         case IN_FILE_INIT: // at the very start of the file; assume that entire header was read
@@ -449,33 +451,33 @@ public class DBaseTransformer extends ByteTransformer {
                             ind = bytesRead - 1;
                             state = IN_DESC_INIT;
                             break; // IN_FILE_INIT
-                        
+
                         case IN_DESC_INIT:
                             if (false) {
                             } else if (ch == '\r') { // end of column descriptors in dBase III: (0d 00)
                                 dataStart = headerSize;
                                 if (bytesRead >= dataStart) {
-                                	state = IN_ROW_INIT;
-	                                irow = 0;
-    	                            gffContent = 0;
-        	                        fireEndElement(COLUMNS_TAG);
-            	                    fireLineBreak();
+                                    state = IN_ROW_INIT;
+                                    irow = 0;
+                                    gffContent = 0;
+                                    fireEndElement(COLUMNS_TAG);
+                                    fireLineBreak();
                                 } else {
-                                	state = IN_SKIP_HEADER;
+                                    state = IN_SKIP_HEADER;
                                 }
                             } else if (ch == '\u0000') { // end of column descriptors in dBase II
                                 dataStart = 520;
                                 state = IN_SKIP_HEADER;
                             } else {
-   	                            gffContent = 0;
+                                gffContent = 0;
                                 genContent[gffContent ++] = ch;
                                 state = IN_DESC;
                             }
                             break; // IN_DESC_INIT;
-        
+
                         case IN_DESC:
                             genContent[gffContent ++] = ch;
-                            if (gffContent >= colDescSize) { 
+                            if (gffContent >= colDescSize) {
                                 evalColumnDesc(genContent);
                                 state = IN_DESC_INIT;
                             }
@@ -492,20 +494,20 @@ public class DBaseTransformer extends ByteTransformer {
                                 } else {
                                     pushXML(ROW_TAG, toAttribute(MARK_ATTR, String.valueOf(ch)));
                                 }
-   	                            gffContent = 0;
+                                gffContent = 0;
                                 igenCol = 0;
                                 storeLen = genColumnList.get(igenCol).getWidth();
                                 state = IN_COL;
                             }
                             break; // IN_ROW_INIT;
-                            
+
                         case IN_COL:
                             genContent[gffContent ++] = ch;
                             if (gffContent >= storeLen) { // this column is finished
                                 evalDataCell(genContent, igenCol);
                                 igenCol ++;
-                                if (igenCol < genColumnList.size()) {                 
-	   	                            gffContent = 0;
+                                if (igenCol < genColumnList.size()) {
+                                    gffContent = 0;
                                     storeLen = genColumnList.get(igenCol).getWidth();
                                     state = IN_COL;
                                 } else {
@@ -520,28 +522,28 @@ public class DBaseTransformer extends ByteTransformer {
                                 }
                             } // column finished
                             break;
-    
+
                         case IN_SKIP_HEADER:
                             if (bytesRead >= dataStart) {
                                 state = IN_ROW_INIT;
                                 irow = 0;
-  	                            gffContent = 0;
+                                gffContent = 0;
                                 fireEndElement(COLUMNS_TAG);
                                 fireLineBreak();
                             }
                             break; // IN_SKIP_HEADER
-                                            
+
                         case IN_FINISH: // ignore rest of file
                             popXML(); // (TABLE_TAG);
                             fireLineBreak();
                             break; // IN_FINISH
-                                            
+
                         default:
                             fireComment("invalid state " + state);
                             break;
-    
+
                     } // switch state
-    
+
                     if (readOff) {
                         ind ++;
                     }
@@ -551,7 +553,7 @@ public class DBaseTransformer extends ByteTransformer {
             while (tagStack.size() > 0) { // flush XML stack
                 popXML();
             } // flush
-            
+
             fireEndElement(ROOT_TAG);
             fireLineBreak();
             fireEndDocument();
@@ -566,7 +568,7 @@ public class DBaseTransformer extends ByteTransformer {
     /*===========================*/
 
     /** column descriptors */
-    private  ArrayList/*<1.5*/<TableColumn>/*1.5>*/ serColumnList;
+    private  ArrayList<TableColumn> serColumnList;
     /** one column descriptor */
     private TableColumn serColumn;
     /** current column number, 0 based */
@@ -580,12 +582,12 @@ public class DBaseTransformer extends ByteTransformer {
     /** byte record for file header */
     private ByteRecord serRecord;
     /** current topmost element */
-    private String serElement;    
+    private String serElement;
     /** version of the output dBase file */
     private int serVersion;
-	/** result encoding */
+    /** result encoding */
     protected String serEncoding;
-	    
+
     /** Writes the attributes to the output file header
      *  @param attrs attributes of the table tag
      */
@@ -611,7 +613,7 @@ public class DBaseTransformer extends ByteTransformer {
                     day   = Integer.parseInt(value.substring(8,10)) % 100;
                 } catch (Exception exc) { }
             }
-            
+
             value = attrs.getValue(NROWS_ATTR);
             long rowCount = 1;
             if (value != null) {
@@ -709,9 +711,9 @@ public class DBaseTransformer extends ByteTransformer {
             typeLetter = 'M';
         } else if (typeName.startsWith("DATE"    )) {
             typeLetter = 'D';
-        } else { 
+        } else {
             typeLetter = 'C';
-        }   
+        }
 
         value = attrs.getValue(DECIMAL_ATTR);
         int decimal = 0;
@@ -726,7 +728,7 @@ public class DBaseTransformer extends ByteTransformer {
             switch (serVersion) {
                 case 2:
                     serRecord = new ByteRecord(16);
-		 			serRecord.setEncoding(serEncoding);
+                    serRecord.setEncoding(serEncoding);
                     serRecord.setPosition(0);
                     serRecord.setPadChar('\u0000'); // pad with nil bytes
                     serRecord.setString(MAX_NAME, name);
@@ -738,7 +740,7 @@ public class DBaseTransformer extends ByteTransformer {
                 case 3:
                 default:
                     serRecord = new ByteRecord(32);
-		 			serRecord.setEncoding(serEncoding);
+                    serRecord.setEncoding(serEncoding);
                     serRecord.setPosition(0);
                     serRecord.setPadChar('\u0000'); // pad with nil bytes
                     serRecord.setString(MAX_NAME, name);
@@ -792,26 +794,26 @@ public class DBaseTransformer extends ByteTransformer {
 
         try {
             // now we can write a data cell from 'serContent'
-            byteWriter.write(serContent, 0, width); 
+            byteWriter.write(serContent, 0, width);
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
         }
     } // writeDataCell
-    
+
     /** Receive notification of the beginning of the document.
      */
     public void startDocument() {
     } // startDocument
-    
+
     /** Receive notification of the start of an element.
      *  Looks for the element which contains raw lines.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
@@ -825,7 +827,7 @@ public class DBaseTransformer extends ByteTransformer {
             } else if (qName.equals(ROOT_TAG   )) {
                 serContent = new byte[MAX_BUF];
                 sffContent = 0;
-                serColumnList = new ArrayList/*<1.5*/<TableColumn>/*1.5>*/(16); // empty so far
+                serColumnList = new ArrayList<TableColumn>(16); // empty so far
                 iserCol = 0;
                 serEncoding = getResultEncoding();
             } else if (qName.equals(COLUMN_TAG )) {
@@ -850,15 +852,15 @@ public class DBaseTransformer extends ByteTransformer {
             log.error(exc.getMessage());
         }
     } // startElement
-    
+
     /** Receive notification of the end of an element.
      *  Looks for the element which contains raw lines.
      *  Terminates the line.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
@@ -881,7 +883,7 @@ public class DBaseTransformer extends ByteTransformer {
             } else if (qName.equals(ROW_TAG    )) {
                 iserCol = 0;
             } else if (qName.equals(TABLE_TAG  )) {
-            	sffContent = 0;
+                sffContent = 0;
                 serContent[sffContent ++] = (byte) 0x1a;
                 byteWriter.write(serContent, 0, sffContent);
             } else {
@@ -890,22 +892,22 @@ public class DBaseTransformer extends ByteTransformer {
             log.error(exc.getMessage(), exc);
         }
     } // endElement
-    
+
     /** Receive notification of character data inside an element.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param length the number of characters to use from the character array. 
+     *  @param length the number of characters to use from the character array.
      */
     public void characters(char[] ch, int start, int length) {
         if (serElement.equals(DATA_TAG)) {
             String chars = replaceInResult(new String(ch, start, length));
-	        try {
-	        	System.arraycopy(chars.getBytes(serEncoding), 0, serContent, sffContent, chars.length());
-	        	sffContent += chars.length();
-	        } catch (Exception exc) {
-    	        log.error(exc.getMessage(), exc);
-        	}
-        } 
+            try {
+                System.arraycopy(chars.getBytes(serEncoding), 0, serContent, sffContent, chars.length());
+                sffContent += chars.length();
+            } catch (Exception exc) {
+                log.error(exc.getMessage(), exc);
+            }
+        }
         // else ignore all whitespace
     } // characters
 

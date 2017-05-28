@@ -1,5 +1,6 @@
 /* ByteRecord.java - access methods for byte fields and EBCDIC conversion
  * @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
+ * 2017-05-27: javadoc 1.8
  * 2016-10-14: Date, Timestamp, Attributes and SAXException only for "a"
  * 2008-08-04: get|set1, setPadChar
  * 2008-06-23: get|setRecordTag, getRecordURI
@@ -112,7 +113,7 @@ public class ByteRecord extends BaseRecord {
            + "\u0070\u008f\u0070\u0070\u0070\u0070\u00a1\u0070"
            + "\u0090\u0070\u0041\u0070\u00fa\u00ea\u0070\u0000"
            ;
-   /** EBCDIC -> ISO-8859-1 conversion table */
+   /** EBCDIC -&gt; ISO-8859-1 conversion table */
    private static final String EBCDIC_TO_LATIN1 =
              "\u0000\u0001\u0002\u0003\u0020\u0009\u0020\u007f"
            + "\u0020\u0020\u0020\u000b\u000c\r\u000e\u000f"
@@ -776,6 +777,7 @@ public class ByteRecord extends BaseRecord {
     *  and update the read/write pointer;
     *  the field contains 2*<em>len</em> digits
     *  @param field field of record to be written (offset and length)
+    *  @param value value to be written
     *  @return modified position in buffer
     */
    public int setUnsignedDecimal(Field field, String value) {
@@ -876,6 +878,7 @@ public class ByteRecord extends BaseRecord {
     *  and update the read/write pointer;
     *  the field contains 2*<em>len</em> digits
     *  @param field field of record to be written (offset and length)
+    *  @param value value to be written
     *  @return modified position in buffer
     */
    public int setDecimal(Field field, String value) {

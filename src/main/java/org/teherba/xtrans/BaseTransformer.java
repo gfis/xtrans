@@ -1,5 +1,6 @@
 /*  (Pseudo-abstract) class for file format transformers
     @(#) $Id: BaseTransformer.java 855 2012-01-11 06:59:36Z gfis $
+ *  2017-05-27: javadoc 1.8
     2016-10-13: less imports
     2016-09-07: public setMimeType, getOption, getIntOption
     2012-01-10: instantiate Logger in Constructor
@@ -781,6 +782,7 @@ public class BaseTransformer
      *  Option names are used by internal methods which always specify them in lower case.
      *  @param name name of the option
      *  @param def default value if option is not set
+     *  @return option value
      */
     public String getOption(String name, String def) {
         String result = options.getProperty(name);
@@ -791,6 +793,7 @@ public class BaseTransformer
      *  Option names are used by internal methods which always specify them in lower case.
      *  @param name name of the option
      *  @param def default value if option is not set or invalid
+     *  @return option value
      */
     public int getIntOption(String name, int def) {
         int result = def;
@@ -828,9 +831,9 @@ public class BaseTransformer
     //--------------------------------
     // Conversion methods
     //--------------------------------
-    /** Converts a character to an XML entity of the form "&#x{hexstring};"
+    /** Converts a character to an XML entity of the form "&amp;#x{hexstring};"
      *  @param st1 character for the entity
-     *  @return XML entity, for example "&#xa;"
+     *  @return XML entity, for example "&amp;#xa;"
      */
     public String string1ToEntity(String st1) {
         StringBuffer result = new StringBuffer(8);
@@ -840,9 +843,9 @@ public class BaseTransformer
         return result.toString();
     } // string1ToEntity
 
-    /** Converts an XML entity of the form "&#x{hexstring};" or "&#{decimaldigits};"
+    /** Converts an XML entity of the form "&amp;#x{hexstring};" or "&amp;#{decimaldigits};"
      *  to the corresponding character
-     *  @param entity an XML entity, for example "&#xa;"
+     *  @param entity an XML entity, for example "&amp;#xa;"
      *  @return character for the entity
      */
     public String entityToString1(String entity) {
@@ -866,7 +869,7 @@ public class BaseTransformer
 
     /** Replaces any entities (in fact "character references") by their
      *  corresponding character equivalents
-     *  @param source a string containing XML entities, for example "&#xa;"
+     *  @param source a string containing XML entities, for example "&amp;#xa;"
      *  @return string with entities replaced
      */
     public static String replaceEntities(String source) {
@@ -1064,7 +1067,7 @@ public class BaseTransformer
 
     /** Replaces all strings stored by <em>putReplacement</em>
      *  during a transformation to XML.
-     *  "&" must be replaced <em>before</em> all other strings if their replacement contains "&".
+     *  "&amp;" must be replaced <em>before</em> all other strings if their replacement contains "&amp;".
      *  @param source string where to replace for transformation to XML
      *  @return resulting string after all replacements
      */
@@ -1106,7 +1109,7 @@ public class BaseTransformer
 
     /** Replaces all strings stored by <em>putReplacement</em>
      *  during a transformation from XML
-     *  "&amp;" must be replaced <em>after</em> all other strings if their replacement contains "&".
+     *  "&amp;" must be replaced <em>after</em> all other strings if their replacement contains "&amp;".
      *  @param source string where to replace for transformation from XML
      *  @return resulting string after all replacements
      */
@@ -1853,6 +1856,7 @@ public class BaseTransformer
 
     /** Constructs an Attributes list from a single key-value pair
      *  @param key name of the attribute (without namespace)
+     *  @param value value of the attribute
      *  @return Attributes2 list with a single attribute
      */
     public Attributes toAttribute(String key, String value) {
@@ -2341,6 +2345,7 @@ public class BaseTransformer
     } // popXML
 
     /** Determines the tag in the stack's top element
+     *  @return top element
      */
     protected String topXML() {
         String result = "";

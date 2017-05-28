@@ -1,5 +1,6 @@
 /*  Superclass for Transformers for Configuration formats
     @(#) $Id: ConfigTransformer.java 801 2011-09-12 06:16:01Z gfis $
+    2017-05-28: javadoc 1.8
     2010-10-19: unchecked additions; totally untested again, did 530 work???
     2010-07-27, Dr. Georg Fischer: copied from OrganizerTransformer
 */
@@ -55,7 +56,7 @@ InfoTip=Apache Cocoon, the XML application framework!
  *  See also:
  *  <ul>
  *  <li><a href="http://en.wikipedia.org/wiki/INI_file">http://en.wikipedia.org/wiki/INI_file</a></li>
- *  <li><a href="http://java.sun.com/javase/6/docs/technotes/guides/jar/jar.html#JAR Manifest">http://java.sun.com/javase/6/docs/technotes/guides/jar/jar.html#JAR Manifest</a></li>
+ *  <li><a href="http://java.sun.com/javase/6/docs/technotes/guides/jar/jar.html">http://java.sun.com/javase/6/docs/technotes/guides/jar/jar.html#JAR Manifest</a></li>
  *  </ul>
  *  @author Dr. Georg Fischer
  */
@@ -147,6 +148,8 @@ public class ConfigTransformer extends CharTransformer {
     } // initialize
 
     /** Constructs an attribute for a number of spaces to be inserted before the element.
+     *  @param spaceCount number of spaces to be generated
+     *  @return new attribute
      */
     protected Attributes spaceAttribute(int spaceCount) {
         AttributesImpl attrs = new AttributesImpl();
@@ -173,13 +176,13 @@ public class ConfigTransformer extends CharTransformer {
     /** Tries to split the input line into the following subsequences:
      *  <ol>
      *  <li>leading whitespace (maybe empty)</li>
-     *  <li>key(word)<br /></li>
+     *  <li>key(word)</li>
      *
      *  <li>whitespace before the separator (maybe empty)</li>
-     *  <li>separator(if present, empty othewise)<br /></li>
+     *  <li>separator(if present, empty othewise)</li>
      *
      *  <li>whitespace before the value (maybe empty)</li>
-     *  <li>value (maybe empty, not including any continuation character)<br /></li>
+     *  <li>value (maybe empty, not including any continuation character)</li>
      *
      *  <li>whitespace before the continuation sequence (if present)</li>
      *  <li>continuation sequence (if present, missing otherwise)</li>
@@ -395,6 +398,7 @@ public class ConfigTransformer extends CharTransformer {
 
     /** Determines whether the line is a section heading.
      *  @param line trimmed current line
+     *  @return false
      */
     protected boolean isSectionHeading(String line) {
         boolean result = false;
@@ -404,6 +408,7 @@ public class ConfigTransformer extends CharTransformer {
     /** Determines whether the line is empty and therefore is a section break
      *  and if so, terminates the current table.
      *  @param line current trimmed line
+     *  @return whether the line was empty
      */
     protected boolean isEmptyLine(String line) {
         boolean result = false;
@@ -419,6 +424,7 @@ public class ConfigTransformer extends CharTransformer {
     /** Determines whether the line is a comment
      *  and if so, terminates the preceeding row
      *  @param line current line
+     *  @return whether the line is a comment
      */
     protected boolean isComment(String line) {
         boolean result = false;

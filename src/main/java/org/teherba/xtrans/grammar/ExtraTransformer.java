@@ -1,5 +1,6 @@
 /*  Transforms grammar files of the EXTRA (Extensible Translator) system 
     @(#) $Id: ExtraTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2007-05-02, Georg Fischer: copied from JCLTransformer
 */
 /*
@@ -34,46 +35,46 @@ EOF IDENTIFIER NUMBER STRING ;
 /:------------------------------------------------------:/
 [AXIOM = EXTRA_INPUT
 .EXTRA_INPUT    = '[' GRAMMAR ']'
-.GRAMMAR        = RULES                         => #2
+.GRAMMAR        = RULES                         =&gt; #2
 .RULES          = RULE
                 | RULES '.' RULE
 .RULE           = LEFT_SIDE '=' RIGHT_SIDES
-.LEFT_SIDE      = IDENTIFIER                    => #3
+.LEFT_SIDE      = IDENTIFIER                    =&gt; #3
 .RIGHT_SIDES    = RIGHT_SIDE
                 | RIGHT_SIDES '|' RIGHT_SIDE
 .RIGHT_SIDE     = SYNTAX_PART SEMANTIC_PART
-.SYNTAX_PART    = MEMBERETIES                   => #6
-.MEMBERETIES    =                               => #7
+.SYNTAX_PART    = MEMBERETIES                   =&gt; #6
+.MEMBERETIES    =                               =&gt; #7
                 | MEMBERETIES MEMBER
 .MEMBER         = PRIMARY
-.PRIMARY        = IDENTIFIER                    => #8
-                | STRING                        => #9
-                | NUMBER                        => #8
-.SEMANTIC_PART  = TRANSFORMATIONS               => #11
-.TRANSFORMATIONS=                               => #12
-                | '=>' TRANSFORMATION           => #13
-                | TRANSFORMATIONS '->' TRANSFORMATION
-                                                => #14
+.PRIMARY        = IDENTIFIER                    =&gt; #8
+                | STRING                        =&gt; #9
+                | NUMBER                        =&gt; #8
+.SEMANTIC_PART  = TRANSFORMATIONS               =&gt; #11
+.TRANSFORMATIONS=                               =&gt; #12
+                | '=&gt;' TRANSFORMATION           =&gt; #13
+                | TRANSFORMATIONS '-&gt;' TRANSFORMATION
+                                                =&gt; #14
 .TRANSFORMATION = DESTINATION
-                | TRANSFORMATION ELEMENT        => #16
-.DESTINATION    = '='                           => #17
-                | ELEMENT                       => #18
-                | SYMBOL '='                    => #19
-.ELEMENT        = SYMBOL                        => #20
-                | '#' NUMBER                    => #21
-                | NUMBER                        => #22
-                | STRING                        => #23
-                | '@'                           => #24
-                | SYMBOL '(' COMBINED_LIST ')'  => #25
+                | TRANSFORMATION ELEMENT        =&gt; #16
+.DESTINATION    = '='                           =&gt; #17
+                | ELEMENT                       =&gt; #18
+                | SYMBOL '='                    =&gt; #19
+.ELEMENT        = SYMBOL                        =&gt; #20
+                | '#' NUMBER                    =&gt; #21
+                | NUMBER                        =&gt; #22
+                | STRING                        =&gt; #23
+                | '@'                           =&gt; #24
+                | SYMBOL '(' COMBINED_LIST ')'  =&gt; #25
 .SYMBOL         = INCARNATION
-                | INCARNATION '$' IDENTIFIER    => #27
-.INCARNATION    = IDENTIFIER                    => #28
-                | IDENTIFIER ':' NUMBER         => #29
-.COMBINED_LIST  =                               => #30
+                | INCARNATION '$' IDENTIFIER    =&gt; #27
+.INCARNATION    = IDENTIFIER                    =&gt; #28
+                | IDENTIFIER ':' NUMBER         =&gt; #29
+.COMBINED_LIST  =                               =&gt; #30
                 | COMBINED_LIST SYMBOL
-                | COMBINED_LIST NUMBER          => #32
-                | COMBINED_LIST STRING          => #33
-                | COMBINED_LIST '#' NUMBER      => #34
+                | COMBINED_LIST NUMBER          =&gt; #32
+                | COMBINED_LIST STRING          =&gt; #33
+                | COMBINED_LIST '#' NUMBER      =&gt; #34
 ]
 </pre>
  *  @author Dr. Georg Fischer

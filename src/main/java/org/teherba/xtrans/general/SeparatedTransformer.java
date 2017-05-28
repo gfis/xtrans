@@ -1,6 +1,6 @@
-/*  Transforms text lines with fields separated or delimited by some
-    character string
+/*  Transforms text lines with fields separated or delimited by some character string
     @(#) $Id: SeparatedTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2008-02-13: Java 1.5 types
     2006-11-04, Dr. Georg Fischer: Dresden -> Frankfurt -> Kenzingen
 */
@@ -34,16 +34,16 @@ import  org.apache.log4j.Logger;
  *  optionally preceeded by a line with &lt;th&gt; fields for labels (field names).
  *  The following options can be specified, or may be guessed from the input:
  *  <ul>
- *  <li>the separator/delimiter string (e.g. ",", ";", "&#x9;" = tab, "&#x20;" = whitespace)</li>
- *  <li>whether the line is surrounded by the separator on</li>
+ *  <li>the separator/delimiter string (e.g. ",", ";", "&amp;#x9;" = tab, "&amp;#x20;" = whitespace)</li>
+ *  <li>whether the line is surrounded by the separator on:
  *      <ul>
- *      <li>the left side</li>
- *      <li>the right side</li>
- *      <li>neither side</li>
- *      <li>both sides</li>
+ *          <li>the left side</li>
+ *          <li>the right side</li>
+ *          <li>neither side</li>
+ *          <li>both sides</li>
  *      </ul>
  *  <li>whether the first line contains labels = field names</li>
- *  <li>whether the field values may be surrounded by quotes (&quot;) or apostrophes (&apos;)
+ *  <li>whether the field values may be surrounded by quotes (&quot;) or apostrophes (&amp;apos;)
  *  <li>whether to remove whitespace on both ends of the fields (trim the fields)</li>
  *  </ul>
  *  @author Dr. Georg Fischer

@@ -1,5 +1,6 @@
 /*  Transformer for DTA (German payments exchange file)
     @(#) $Id: DTATransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2008-06-24: warning if some sum mismatch
     2007-09-05: compute E record from C12, C4, C5
     2006-10-11: Georg Fischer
@@ -59,16 +60,16 @@ public class DTATransformer extends ByteTransformer {
         setFileExtensions("dta");
     } // Constructor
 
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = Logger.getLogger(DTATransformer.class.getName());
         genRecord = new DTARecordBase();
-	} // initialize
-	
+    } // initialize
+
     /** DTA element tag */
     private static final String  DTA_TAG = "DTA";
 
@@ -130,7 +131,7 @@ public class DTATransformer extends ByteTransformer {
      *  or the empty string if qualified names are not available.
      *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
-     *  @throws SAX Exception
+     *  @throws SAXException for SAX errors
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs)
             throws SAXException {

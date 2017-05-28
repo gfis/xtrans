@@ -1,5 +1,6 @@
 /*  Transforms (generates and serializes) XML files; must be UTF-(: äöüÄÖÜß
     @(#) $Id: XMLTransformer.java 801 2011-09-12 06:16:01Z gfis $
+ *  2017-05-27: javadoc 1.8
     2016-10-14: ignore external DTDs with DummyEntityResolver
     2007-03-29, Georg Fischer: copied from SwiftTransformer
 */
@@ -100,7 +101,7 @@ public class XMLTransformer extends CharTransformer {
 
     /** Opens some input or output file, and in the case of XML output,
      *  configure Apache's serializer and set it as content handler.
-     *  If <em>handler></em> is null, some simple default serializing is done.
+     *  If <em>handler</em> is null, some simple default serializing is done.
      *  @param ifile 0 for source file, 1 for result file
      *  @param fileName name of the file to be opened, or null for stdin/stdout
      *  @return whether the operation was successful

@@ -1,5 +1,6 @@
 /*  Transforms Unix makefiles (input to the 'make' utility)
     @(#) $Id: MakefileTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2010-08-02, Dr. Georg Fischer: based on ConfigTransformer
 */
 /*
@@ -30,17 +31,17 @@ import  java.util.regex.Matcher;
 TOOL=../../../../../tool/
 .SUFFIXES: .des .htm
 .des.htm:
-    perl $(TOOL)desnatl.pl en $*.des > $*.htm
-    perl $(TOOL)prenatl.pl es $*.htm | perl $(TOOL)delnatl.pl es > $*.es.html
+    perl $(TOOL)desnatl.pl en $*.des &gt; $*.htm
+    perl $(TOOL)prenatl.pl es $*.htm | perl $(TOOL)delnatl.pl es &gt; $*.es.html
 
 $(THIS): $(THIS).htm $(THIS).tab.des
     cp $(THIS).en.html index.html
 #         in order to prevent directory browsing
 
 $(THIS).tab.des: $(THIS).dat
-    perl $(TOOL)datprep.pl $(THIS).dat | perl $(TOOL)datdes.pl table > $@
+    perl $(TOOL)datprep.pl $(THIS).dat | perl $(TOOL)datdes.pl table &gt; $@
 $(THIS).lis.des: $(THIS).dat
-    perl $(TOOL)datprep.pl $(THIS).dat | perl $(TOOL)datdes.pl list  > $@
+    perl $(TOOL)datprep.pl $(THIS).dat | perl $(TOOL)datdes.pl list  &gt; $@
 </pre>
  *  @author Dr. Georg Fischer
  */

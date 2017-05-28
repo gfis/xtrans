@@ -1,5 +1,6 @@
 /*  XslTransPage.java - main web page for Xtrans
  *  @(#) $Id: 57d01d0860aef0c2f2783647be70c3c381710c86 $
+ *  2017-05-28: javadoc 1.8
  *  2016-10-13: less imports
  *  2016-09-07, Dr. Georg Fischer: adopted from xslTrans.jsp
  */
@@ -39,7 +40,7 @@ public class XslTransPage implements Serializable {
 
     /** log4j logger (category) */
     private Logger log;
- 
+
     /** No-args Constructor
      */
     public XslTransPage() {
@@ -50,6 +51,7 @@ public class XslTransPage implements Serializable {
      *  @param request request with header fields
      *  @param response response with writer
      *  @param basePage refrence to common methods and error messages
+     *  @throws IOException if an IO error occurs
      */
     public void dialog(HttpServletRequest request, HttpServletResponse response
             , BasePage basePage

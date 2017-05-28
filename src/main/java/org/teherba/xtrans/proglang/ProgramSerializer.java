@@ -45,7 +45,7 @@ import  org.apache.log4j.Logger;
  *  </ul>
  *  Unimportant elements (the ones for line numbering, pre- and postfixes, and comments)
  *  are suppressed and not output.
- *  <p />
+ *  <p>
  *  The output file will normally be loaded into a database table.
  *  @author Dr. Georg Fischer
  */

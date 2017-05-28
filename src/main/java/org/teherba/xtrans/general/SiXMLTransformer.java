@@ -1,9 +1,11 @@
 /*  Transforms a reduced/compressed infoSet representation to/from XML. 
-    @(#) $Id: SiXMLTransformer.java 566 2010-10-19 16:32:04Z gfis $
-    2007-09-05, Dr. Georg Fischer
     Caution, this file is UTF-8 encoded: äöüÄÖÜß
+    @(#) $Id: SiXMLTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
+    2007-09-05, Dr. Georg Fischer
     
     Caution, not yet tested or working at all!
+    c.f. <a href="http://www.cs.le.ac.uk/SiXML/">University of Leicester</a>
 */
 /*
  * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
@@ -46,9 +48,6 @@ import  org.apache.log4j.Logger;
  *	<li>An identical (leaf) element value and the end element tag are replaced by "&gt;" only.</li>
  *	</ol>
  *	<p>
- *  Example:
- *  <pre>
-</pre>
  *  @author Dr. Georg Fischer
  */
 public class SiXMLTransformer extends CharTransformer { 

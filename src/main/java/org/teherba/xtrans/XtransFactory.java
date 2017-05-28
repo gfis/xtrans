@@ -1,5 +1,6 @@
 /*  Selects the applicable transformer, and creates transformation pipelines
     @(#) $Id: XtransFactory.java 966 2012-08-29 07:06:07Z gfis $
+ *  2017-05-27: javadoc 1.8
     2016-10-16: less imports; TeeFilter
     2016-09-17: dynamic ArrayList of transformers; MutiFormatFactory removed
     2014-11-07: private TransformerHandlers -> public
@@ -196,6 +197,7 @@ public class XtransFactory {
      *  transformer class.
      *  @param transformer the transformer to be tested
      *  @param format code for the desired format
+     *  @return whether to class can handle this format
      */
     private boolean isApplicable(BaseTransformer transformer, String format) {
         boolean result = false;
@@ -343,7 +345,6 @@ public class XtransFactory {
      *  the output filename is missing. There may be 0, 1 or 2 filenames.
      *  <p>
      *  The default format is "-xml" for input and output.
-     *  @throws some exeption, for example if the stylesheet could not be compiled
      */
     public void createPipeLine(String[] args) {
         if (true) { // try {

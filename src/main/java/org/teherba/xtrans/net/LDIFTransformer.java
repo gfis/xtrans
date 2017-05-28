@@ -1,11 +1,11 @@
-/*  Transforms LDIF (LDAP Data Interchange Format) 
+/*  Transforms LDIF (LDAP Data Interchange Format)
     used for example in addressbooks of Mozilla Thunderbird
+    Caution, must be stored as UTF-8 (äöüÄÖÜß)
     @(#) $Id: LDIFTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-28: javadoc 1.8
     2007-10-12: don't output ignorable whitespace space (around <url>),
-    			and expand/shrink entities in comments
+    2007-10-12: and expand/shrink entities in comments
     2006-11-04, Dr. Georg Fischer
-    
-    caution, must be stored as UTF-8 (äöüÄÖÜß)
 */
 /*
  * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
@@ -31,15 +31,14 @@ import  java.nio.charset.CharsetEncoder;
 import  org.xml.sax.Attributes;
 import  org.apache.log4j.Logger;
 
-/**
- *  Transformer for LDIF (LDAP Data Interchange Format) 
+/** Transformer for LDIF (LDAP Data Interchange Format)
  *  used for example in addressbooks of Mozilla Thunderbird.
  *  LDIF is an ASCII-based format for the description of entries in
- *  an LDAP directory, and is described in 
+ *  an LDAP directory, and is described in
  *  <a href="http://www.ietf.org/rfc/rfc2849.txt">RFC 2849</a>.
  *  The file consists of blocks separated by empty lines.
  *  Each block has lines which start with a key, a colon, and the value
- *  which in turn may consist of a comma separated list of "subkey=subvalue" pairs. 
+ *  which in turn may consist of a comma separated list of "subkey=subvalue" pairs.
  *  A double colon indicates a Base64 encoded value.
  *  Example:
  * <pre>
@@ -77,18 +76,18 @@ sn:: QsO8Y2hlcnd1cm0=
 cn:: QnVjaGhhbmRsdW5nIELDvGNoZXJ3dXJt
 mail: buecher.wurm@t-online.de
 modifytimestamp: 0Z
- * /pre>
+ *  </pre>
  *  @author Dr. Georg Fischer
  */
-public class LDIFTransformer extends CharTransformer { 
+public class LDIFTransformer extends CharTransformer {
     public final static String CVSID = "@(#) $Id: LDIFTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** the delimiter for keywords */
     private static String COLON = ":";
-    
+
     /** Tag for the whole address book  */
     private static final String ROOT_TAG    = "root";
     /** Tag for one address book entry */
@@ -109,22 +108,22 @@ public class LDIFTransformer extends CharTransformer {
         setFileExtensions("ldif,ldi");
     } // Constructor()
 
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = Logger.getLogger(LDIFTransformer.class.getName());
-	} // initialize
-    
+    } // initialize
+
     /** buffer for folded lines */
     private StringBuffer foldBuffer = new StringBuffer(512);
-    
+
     /** Number of lines read so far */
     protected int lineCount;
 
-    /** Generates all elements derived from one logical line 
+    /** Generates all elements derived from one logical line
      *  contained in <em>foldBuffer</em>
      *  (maybe folded from several physical lines).
      */
@@ -142,9 +141,9 @@ public class LDIFTransformer extends CharTransformer {
             fireLineBreak();
         } else {
             int pos = line.indexOf(":");
-            if (pos < 0) { 
+            if (pos < 0) {
                 log.warn("no keyword in line " + (lineCount - 1));
-                fireEmptyElement("error", toAttribute("text", "no keyword in line " + (lineCount - 1))); 
+                fireEmptyElement("error", toAttribute("text", "no keyword in line " + (lineCount - 1)));
                 fireLineBreak();
             } else {
                 String keyword = line.substring(0, pos ++);
@@ -152,10 +151,10 @@ public class LDIFTransformer extends CharTransformer {
                 if (semiPos < 0) { // no options
                     semiPos = keyword.length(); // for unified call to fireEndElement, below
                     fireStartElement(keyword);
-                } else { // with options 
+                } else { // with options
                     fireStartElement(keyword.substring(0, semiPos)
                             , toAttributes(((keyword.substring(semiPos + 1) + ";")
-                            .replaceAll(";", "=true=")).split("="))); 
+                            .replaceAll(";", "=true=")).split("=")));
                             // there is a remaining empty element in the string array returned by 'split'
                             // but 'toAttributes' takes complete pairs only
                 }
@@ -170,7 +169,7 @@ public class LDIFTransformer extends CharTransformer {
                             pos ++;
                         } // while skipping FILL
                         fireCharacters(base64ToString(line.substring(pos), this.getResultEncoding()));
-                    } else if (line.startsWith ("<", pos)) { 
+                    } else if (line.startsWith ("<", pos)) {
                         // URL follows
                         pos ++; // skip over "<"
                         while (pos < line.length() && line.charAt(pos) == ' ') { // skip FILL
@@ -194,7 +193,7 @@ public class LDIFTransformer extends CharTransformer {
         } // no comment
         foldBuffer.setLength(0);
     } // evaluateFoldedLine
-    
+
     /** Transforms from the specified format to XML
      *  @return whether the transformation was successful
      */
@@ -215,7 +214,7 @@ public class LDIFTransformer extends CharTransformer {
                 } else if (line.length() == 0) {
                     if (lineCount <= 1) {
                         log.warn("file starts with empty line");
-                        fireEmptyElement("error", toAttribute("text", "file starts with empty line")); 
+                        fireEmptyElement("error", toAttribute("text", "file starts with empty line"));
                         fireLineBreak();
                     }
                     if (state == 1) {
@@ -230,13 +229,13 @@ public class LDIFTransformer extends CharTransformer {
                     } else if (state == 0) {
                         fireStartElement(ENTRY_TAG);
                         fireLineBreak();
-                    }                       
+                    }
                     foldBuffer.append(line);
                     state = 1;
                 } else if (line.startsWith(" ")) { // continuation, logical line was folded
                     if (lineCount <= 1) {
                         log.warn("file starts with continuation line");
-                        fireEmptyElement("error", toAttribute("text", "file starts with continuation line")); 
+                        fireEmptyElement("error", toAttribute("text", "file starts with continuation line"));
                         fireLineBreak();
                         state = 1;
                     }
@@ -244,7 +243,7 @@ public class LDIFTransformer extends CharTransformer {
                 } else if (line.equals("-")) { // end of mod-spec
                     if (lineCount <= 1) {
                         log.warn("file starts with end of mod-spec");
-                        fireEmptyElement("error", toAttribute("text", "file starts with end of mod-spec")); 
+                        fireEmptyElement("error", toAttribute("text", "file starts with end of mod-spec"));
                         fireLineBreak();
                         state = 1;
                     }
@@ -288,10 +287,10 @@ public class LDIFTransformer extends CharTransformer {
     private int serLineCount;
     /** buffer for output line */
     private StringBuffer serBuffer;
-    
+
     /** currently opened element */
     private String elem;
-    
+
     /** Charset Encoder which tests for US-ASCII */
     private static final CharsetEncoder ASCII_ENCODER = Charset.forName("US-ASCII").newEncoder();
 
@@ -301,16 +300,16 @@ public class LDIFTransformer extends CharTransformer {
         serLineCount = 0;
         serBuffer = new StringBuffer(296); // not too long (max. 76 anyway?)
     } // startDocument
-    
+
     /** Receive notification of the start of an element.
      *  Looks for the element which contains raw lines.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
@@ -342,29 +341,29 @@ public class LDIFTransformer extends CharTransformer {
             charWriter.print(":");
         }
     } // startElement
-    
+
     /** Receive notification of the end of an element.
      *  Looks for the element which contains raw lines.
      *  Terminates the line.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
         elem = ""; // no characters allowed outside <td> ... </td>
         if (false) {
-        } else if (qName.equals(ROOT_TAG )) { 
-        } else if (qName.equals(ENTRY_TAG )) { 
+        } else if (qName.equals(ROOT_TAG )) {
+        } else if (qName.equals(ENTRY_TAG )) {
         } else if (qName.equals(COMMENT_TAG)) {
             charWriter.print("#");
             charWriter.println(serBuffer.toString()
-            		.replaceAll("&lt;" , "<")
-            		.replaceAll("&gt;" , ">")
-            		.replaceAll("&amp;", "&")
-            		);
+                    .replaceAll("&lt;" , "<")
+                    .replaceAll("&gt;" , ">")
+                    .replaceAll("&amp;", "&")
+                    );
         } else if (qName.equals(EOMS_TAG   )) {
             charWriter.println("-");
         } else if (qName.equals(URL_TAG    )) {
@@ -373,11 +372,11 @@ public class LDIFTransformer extends CharTransformer {
         } else { // all format specific elements
             if (serBuffer.length() == 0) {
                 charWriter.println();
-            } else if ( ASCII_ENCODER.canEncode(serBuffer) 
+            } else if ( ASCII_ENCODER.canEncode(serBuffer)
                         &&  serBuffer.indexOf("\u0000") < 0
                         &&  serBuffer.indexOf("\n") < 0
                         &&  serBuffer.indexOf("\r") < 0
-                    ) {             
+                    ) {
                 charWriter.println(" "  + serBuffer.toString());
             } else {
                 charWriter.print(": ");
@@ -402,17 +401,17 @@ public class LDIFTransformer extends CharTransformer {
         }
         serLineCount ++;
     } // endElement
-    
+
     /** Receive notification of character data inside an element.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param len the number of characters to use from the character array. 
+     *  @param len the number of characters to use from the character array.
      */
     public void characters(char[] ch, int start, int len) {
-    	String text = new String(ch, start, len);
-    	if (! text.matches("\\s+")) {
-        	serBuffer.append(text);
+        String text = new String(ch, start, len);
+        if (! text.matches("\\s+")) {
+            serBuffer.append(text);
         }
     } // characters
-    
+
 } // LDIFTransformer

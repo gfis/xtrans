@@ -1,5 +1,6 @@
 /*  IndexPage.java - main web page for Xtrans
  *  @(#) $Id: 57d01d0860aef0c2f2783647be70c3c381710c86 $
+ *  2017-05-28: javadoc 1.8
  *  2016-09-07, Dr. Georg Fischer: adopted from xslTrans.jsp
  *  2011-04-06: MultiFormatFactory
  *  2008-07-30: svn tests
@@ -55,6 +56,7 @@ public class IndexPage implements Serializable {
      *  @param request request with header fields
      *  @param response response with writer
      *  @param basePage refrence to common methods and error messages
+     *  @throws IOException if an IO error occurs
      */
     public void dialog(HttpServletRequest request, HttpServletResponse response
             , BasePage basePage
@@ -120,7 +122,7 @@ public class IndexPage implements Serializable {
         }
     } // dialog
 
-    /** Write the common part of the form with theirr input fields.
+    /** Write the common part of the form with its input fields.
      *  <ul>
      *  <li>options</li>
      *  <li>namespace</li>
@@ -129,7 +131,16 @@ public class IndexPage implements Serializable {
      *  <li>name of input file</li>
      *  <li>input field</li>
      *  </ul>
+     *  @param basePage refers to common web methods and messages
      *  @param out PrintWriter for response
+     *  @param language natural language for messages
+     *  @param dir "to" or "from"
+     *  @param options string of option for specific format
+     *  @param namespace namespace prefix
+     *  @param enc1 source encoding
+     *  @param enc2 target encoding
+     *  @param infile input file specifier
+     *  @param intext input string
      */
     public static void writeFormOptions(BasePage basePage, PrintWriter out
             , String language
