@@ -22,7 +22,7 @@
 <record name="CFONB" version="1.0"
         xmlns="http://www.teherba.org/2006/xtrans/Record"
         package="org.teherba.xtrans.finance" type="Char" order="LSB" code="ASCII" length="120" 
-        remark="CFONB French Account Statement File">
+        rem="CFONB French Account Statement File">
     <field  name="cdEnreg"                  len="2"     type="char" rem="code enregistrement"/>
 <choice>
 <variant name="c1" pos="2" test="cdEnreg" value="01" rem="ancien solde" >

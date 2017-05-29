@@ -1,7 +1,8 @@
 /*  Transforms Java program source files
     @(#) $Id: JavaTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2017-05-29: \r problem
     2007-10-19, Georg Fischer: copied from ExtraTransformer
-	Still to do:
+    Still to do:
     - '\0' leads to an error, '\u0000' is ok
     Caution, for the test case to work this source file must be stored
     - in UTF-8
@@ -27,7 +28,7 @@ package org.teherba.xtrans.proglang;
 import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  org.apache.log4j.Logger;
 
-/** Transformer for Sun's programming language Java 
+/** Transformer for Sun's programming language Java
  *  which is implemented on a wide range of systems, among them
  *  Unix (Linux, Sun Solaris, IBM AIX), IBM z/OS, Microsoft Windows,
  *  Apple MacOS.
@@ -54,17 +55,17 @@ public class JavaTransformer extends ProgLangTransformer {
         // the following apply to the generator AND the serializer
     } // Constructor
 
-	/** Initializes the (quasi-constant) global structures and variables
-	 *  common to generator and serializer.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables
+     *  common to generator and serializer.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         caseIndependant = false;
         doubleInnerApos = false;
-	} // initialize
-	
+    } // initialize
+
     /** Prepares the generator.
      *  Does all heavy-weight initialization.
      */

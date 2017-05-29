@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+    2006-09-27, Dr. Georg Fischer
+    @(#)$Id: DTA.bean.xml 9 2008-09-05 05:21:15Z gfis $
+-->
+<!--
  * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +18,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<!--
-    2006-09-27, Dr. Georg Fischer 
-    @(#)$Id: DTA.bean.xml 9 2008-09-05 05:21:15Z gfis $
--->
 <record xmlns="http://www.teherba.org/2006/xtrans/Record"
-		name="DTA" package="org.teherba.xtrans.finance" type="Bean" order="MSB" code="EBCDIC" length="585" 
-        remark="DTA MCV German Payments Exchange File" sql="true" >
+        name="DTA" package="org.teherba.xtrans.finance" type="Bean" order="MSB" code="EBCDIC" length="585"
+        rem="DTA MCV German Payments Exchange File" sql="true" >
     <field name="recordLen" rem="length of record"          len="2"     type="binary"   />
     <field name="len0"      rem="2 zero bytes"              len="2"     type="binary"   />
     <field name="satzTyp"   rem="A, C or E"                 len="1"     type="ebcdic"   key="1" />

@@ -8,6 +8,7 @@ URL=http://localhost:8080/xtrans/servlet
 # (2) Adjust the following line: default commandline arguments
 ARGS=
 # DIFF=diff -Z -s
+DIFF=diff -e -s
 PACKAGE=org.teherba.xtrans
 #======================================================================
 #---------------------------------

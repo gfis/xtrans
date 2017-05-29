@@ -23,7 +23,7 @@
 <record name="AEB43" version="1.0"
         xmlns="http://www.teherba.org/2006/xtrans/Record"
         package="org.teherba.xtrans.finance" type="Char" order="LSB" code="ASCII" length="80" 
-        remark="AEB43 Spanish Payments Exchange File">
+        rem="AEB43 Spanish Payments Exchange File">
     <field  name="recordCode"               len="2"     type="char" rem="id for the record"/>
 <choice>
 <variant name="ca" pos="2" test="recordCode" value="11" rem="customer account record" >
