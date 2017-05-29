@@ -1,0 +1,17 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<configuration>
+<table name="bcmath" seq="1">
+<co> Number of decimal digits for all bcmath functions.</co>
+<tr><th>bcmath.scale</th><td seps="1" s="1">0</td></tr>
+<tr><th></th><td seps="-1" sep=""></td></tr>
+</table>
+<table name="browscap" seq="2">
+<tr><th>browscap</th><td seps="1" s="1">&quot;D:\xampp\php\browscap\browscap.ini&quot;</td></tr>
+<tr><th></th><td seps="-1" sep=""></td></tr>
+</table>
+<table name="Informix" seq="3">
+<co> Default host for ifx_connect() (doesn&apos;t apply in safe mode).</co>
+<tr><th>ifx.default_host</th><td seps="1"></td></tr>
+<tr><th></th><td seps="-1" sep=""></td></tr>
+</table>
+</configuration>

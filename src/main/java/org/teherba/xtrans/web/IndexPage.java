@@ -141,6 +141,7 @@ public class IndexPage implements Serializable {
      *  @param enc2 target encoding
      *  @param infile input file specifier
      *  @param intext input string
+     *  @throws IOException if an IO error occurs
      */
     public static void writeFormOptions(BasePage basePage, PrintWriter out
             , String language
@@ -151,7 +152,7 @@ public class IndexPage implements Serializable {
             , String enc2
             , String infile
             , String intext
-        ) {
+            ) throws IOException {
         String border = "0";
         int index = 0;
         String[] optDir     = new String []

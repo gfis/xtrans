@@ -2,7 +2,7 @@
     @(#) $Id: XtransFactory.java 966 2012-08-29 07:06:07Z gfis $
  *  2017-05-27: javadoc 1.8
     2016-10-16: less imports; TeeFilter
-    2016-09-17: dynamic ArrayList of transformers; MutiFormatFactory removed
+    2016-09-17: dynamic ArrayList of transformers; MultiFormatFactory removed
     2014-11-07: private TransformerHandlers -> public
     2010-12-07: -sqlpretty
     2010-07-28: config
@@ -569,7 +569,7 @@ public class XtransFactory {
      *  The code is taken from <em>web/documentation.jsp</em>.
      *  @param args commandline arguments (none)
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         XtransFactory factory = new XtransFactory();
         Iterator iter = factory.getIterator();
         String appName = "xtrans";
