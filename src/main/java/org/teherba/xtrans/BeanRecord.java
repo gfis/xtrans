@@ -1,17 +1,18 @@
-/* BeanRecord.java - access methods for properties of a bean
- * @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
- * 2017-05-27: javadoc 1.8
- * 2016-10-14: Date, Timestamp, Attributes and SAXException only for "a"
- * 2008-08-04: get|set1, setPadChar
- * 2008-06-23: get|setRecordTag, getRecordURI
- * 2007-01-19: padForSet in char.setString
- * 2006-09-29, Dr. Georg Fischer: 4 classes combined and splitted by LineSplitter
- *
- * c.f. http://forum.java.sun.com/thread.jspa?threadID=530813&messageID=2557841 EBCDIC in Java
- * Cp037 or Cp1047
- *
- * Caution, this source file is generated from Records.txt by org.teherba.xtrans.LineSplitter -
- * do not edit here!
+/*  BeanRecord.java - access methods for properties of a bean
+ *  @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
+ *  2017-07-24: tabs and spaces
+ *  2017-05-27: javadoc 1.8
+ *  2016-10-14: Date, Timestamp, Attributes and SAXException only for "a"
+ *  2008-08-04: get|set1, setPadChar
+ *  2008-06-23: get|setRecordTag, getRecordURI
+ *  2007-01-19: padForSet in char.setString
+ *  2006-09-29, Dr. Georg Fischer: 4 classes combined and splitted by LineSplitter
+ *  
+ *  c.f. http://forum.java.sun.com/thread.jspa?threadID=530813&messageID=2557841 EBCDIC in Java
+ *  Cp037 or Cp1047
+ *  
+ *  Caution, this source file is generated from Records.txt by org.teherba.xtrans.LineSplitter -
+ *  do not edit here!
  */
 
 package org.teherba.xtrans;
@@ -35,276 +36,276 @@ import  org.apache.log4j.Logger;
  */
 
 public class BeanRecord extends BaseRecord {
-   public final static String CVSID = "@(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $";
-
-   /** log4j logger (category) */
-   private Logger log;
-
-   /** name of the element for a record */
-   private String recordTag;
-
-   /** Gets the record's element name
-    *  @return XML tag for one record
-    */
-   public String getRecordTag() {
-       return recordTag;
-   } // getRecordTag
-
-   /** Sets the record's element name
-    *  @param tag XML tag for one record
-    */
-   protected void setRecordTag(String tag) {
-       recordTag = tag;
-   } // setRecordTag
-
-   /** Internal buffer for the record */
-   protected StringBuffer buffer;
-
-   /** Constructor with specified size
-    *  @param bsize length of the buffer for the record
-    */
-   public BeanRecord(int bsize) {
-       buffer = new StringBuffer(bsize);
-       buffer.setLength(0); // empty at the beginning
-       log = Logger.getLogger(BeanRecord.class.getName());
-		padChar = ' ';
-       bufferSize = bsize;
-   } // BeanRecord
-
-
-   /** Constructor with default size
-    */
-   public BeanRecord() {
-       this(2906);
-   } // BeanRecord
-
-   /** Gets the internal buffer object
-    *  @return buffer
-    */
-   public StringBuffer getBuffer() {
-       return this.buffer;
-   } // getBuffer
-
-   /** Sets the internal buffer object
-    *  @param buffer for the record
-    */
-   public void setBuffer(StringBuffer buffer) {
-       this.buffer = buffer;
-   } // setBuffer
-
-   /*=====================================*/
-	/** character used for padding string fields */
-   private char padChar;
-
-	/** Sets the padding character for {@link #setString}
-	 *	@param pad character to be used to fill fields
-	 */
-	public void setPadChar(char pad) {
-		padChar = pad;
-	} // setPadChar
-
-   /** Writes the full length of the record
-    *  @param writer open output file handle
-    */
-   public void write(String writer) {
-       try {
-       } catch (Exception exc) {
-           log.error(exc.getMessage(), exc);
-       }
-   } // write
-
-   /** Writes an initial portion of the record
-    *  @param writer open output file
-    *  @param len length to be written
-    */
-   public void write(String writer, int len) {
-       try {
-       } catch (Exception exc) {
-           log.error(exc.getMessage(), exc);
-       }
-   } // write
-
-   /*===========*/
-   /*  1 (Char) */
-   /*===========*/
-
-   /** Gets a single character from the buffer,
-    *  starting at the current position
-    *  @return the character
-    */
-   public char             get1() {
-       char ch = padChar;
-       if (currentPos < buffer.length() && currentPos >= 0) { // as long as record buffer is not yet exhausted
-           ch = buffer.charAt(currentPos ++);
-       } // if in buffer
-       return ch;
-   } // get1
-   /** Gets a character from the buffer,
-    *  starting at the specified position
-    *  @param start starting position of the field
-    *  @return the character
-    */
-   public char get1(int start) {
-       currentPos = start;
-       return get1();
-   } // get1
-
-   /** Gets a character from the buffer,
-    *  @param field field to be read
-    *  @return the character
-    */
-   public char get1(Field field) {
-       currentPos = field.start;
-       return get1();
-   } // get1
-
-   /** Sets an integer into a field of length 1,
-    *  starting at the current read/write pointer,
-    *  and update the read/write pointer
-    *  @param value value to be written
-    *  @return modified position in buffer
-    */
-   public int          set1(int value) {
-       if (currentPos >= 0 && currentPos < buffer.length()) { // already and still in buffer
-            buffer.setCharAt(currentPos ++, (char) value);
-       }
-       return currentPos;
-   } // set1
-   public String           getString(int len) {
-       return null;
-   } // getString
-
-
-   /** Gets a string terminated by the specified character,
-    *  starting at the current position
-    *  @param term character which terminates the string
-    *  @return a string of characters
-    */
-   public String           getString(char term) {
-       return null;
-   } // getString
-
-   /** Sets a string into a field of length <em>len</em>,
-    *  starting at the current read/write pointer,
-    *  truncate or pad with spaces at the right end,
-    *  and update the read/write pointer
-    *  @param len width of field
-    *  @param value value to be written
-    *  @return modified position in buffer
-    */
-   public int          setString(int len, String value) {
-       if (value == null) {
-           value = "";
-       }
-       int index = 0;
-       while (index < value.length() && index < len) { // copy all source characters
-           if (currentPos >= 0) { // already in buffer
-               buffer.setCharAt(currentPos ++, value.charAt(index));
-           }
-           index ++;
-       } // while index
-       while (index < len) { // pad with spaces
-           if (currentPos >= 0) { // already in buffer
-               buffer.setCharAt(currentPos ++,  padChar);
-           }
-           index ++;
-       } // while padding
-       return currentPos;
-   } // setString
-
-   /*==========*/
-   /*  Number  */
-   /*==========*/
-
-   /** Gets a number from a field of length <em>len</em>,
-    *  starting at the current position,
-    *  right-aligned, with leading zeroes and possibly a negative sign,
-    *  and update the read/write pointer
-    *  @param len width of field
-    *  @return number read from the field
-    *  @throws NumberFormatException for invalid characters (no digit, comma, point, dash)
-    */
-   public          long getNumber(int len) throws NumberFormatException {
-       long result = 0; // assume no digit
-       int sign = 1; // assume positive
-       int start = (currentPos < 0) ? 0 : currentPos;
-       while (start < currentPos && start < buffer.length()) {
-           char ch = buffer.charAt(start);
-           if (Character.isDigit(ch)) {
-               result = result * 10 + Character.digit(ch, 10);
-           } else if (ch == '-') {
-               sign = -1;
-           } else if ("., ".indexOf(ch) < 0) { // ignore dot, comma, space
-               throw new NumberFormatException("invalid character (no digit, ',', '.', '-', '+')");
-           }
-           start ++;
-       } // while
-       return result * sign;
-   } // getNumber
-
-   /** Sets a number into a field of length <em>len</em>,
-    *  starting at the current position,
-    *  right-aligned, with leading zeroes and possibly a negative sign,
-    *  and update the read/write pointer
-    *  @param len width of field
-    *  @param value number to be written
-    *  @return modified position in buffer
-    */
-   public          int setNumber(int len, long value) {
-       int sign = 1;
-       if (value < 0) {
-           sign = -1;
-           value = - value;
-       }
-       String digits = Long.toString(value);
-       int start = (currentPos < 0) ? 0 : currentPos;
-       currentPos += len;
-       if (digits.length() > len) { // number too wide - truncate left
-           digits = digits.substring(digits.length() - len);
-       }
-       // number fits into field now
-       int fpos = start + len - digits.length();
-       buffer.replace(fpos, currentPos, digits);
-       if (sign < 0) { // negative sign in first position
-           buffer.setCharAt(start ++, '-');
-       }
-       while (start < fpos) { // pad with leading zeroes
-           buffer.setCharAt(start ++, '0');
-       } // while leading
-       return currentPos;
-   } // setNumber
-
-   /*=====================================*/
-
-   /** Converts <em>len</em> bytes starting at <em>start</em>
-    *  into a hexadecimal representation;
-    *  does <strong>not</strong> increment the record pointer
-    *  @param  start starting position (0, 1, ...)
-    *  @param  len length of the field in bytes
-    *  @return string of hex digits, separated by spaces
-    */
-   public String dump(int start, int len) {
-       return buffer.toString();
-   } // dump
-
-   /** Tests a condition, and writes an error message if it's not true
-    *  @param name name of testcase
-    *  @param cond condition to be tested
-    *  @param text text of error message to be printed
-    */
-   private void testCase(String name, boolean cond, String text) {
-       System.err.print(name);
-       if (! cond) {
-           System.err.println(":\t" + text + " " + this.dump(0, this.getBufferSize()));
-       } else {
-           System.err.println();
-       }
-   } // testCase
-
-   /** Test program
-    *  @param args commandline arguments
-    */
-   public static void main(String args[]) {
-   } // main
-
-}
+    public final static String CVSID = "@(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $";
+    
+    /** log4j logger (category) */
+    private Logger log;
+    
+    /** name of the element for a record */
+    private String recordTag;
+    
+    /** Gets the record's element name
+     *  @return XML tag for one record
+     */
+    public String getRecordTag() {
+        return recordTag;
+    } // getRecordTag
+    
+    /** Sets the record's element name
+     *  @param tag XML tag for one record
+     */
+    protected void setRecordTag(String tag) {
+        recordTag = tag;
+    } // setRecordTag
+    
+    /** Internal buffer for the record */
+    protected StringBuffer buffer;
+    
+    /** Constructor with specified size
+     *  @param bsize length of the buffer for the record
+     */
+    public BeanRecord(int bsize) {
+        buffer = new StringBuffer(bsize);
+        buffer.setLength(0); // empty at the beginning
+        log = Logger.getLogger(BeanRecord.class.getName());
+        padChar = ' ';
+        bufferSize = bsize;
+    } // BeanRecord
+    
+    
+    /** Constructor with default size
+     */
+    public BeanRecord() {
+        this(2906);
+    } // BeanRecord
+    
+    /** Gets the internal buffer object
+     *  @return buffer
+     */
+    public StringBuffer getBuffer() {
+        return this.buffer;
+    } // getBuffer
+    
+    /** Sets the internal buffer object
+     *  @param buffer for the record
+     */
+    public void setBuffer(StringBuffer buffer) {
+        this.buffer = buffer;
+    } // setBuffer
+    
+    /*=====================================*/
+    /** character used for padding string fields */
+    private char padChar;
+    
+    /** Sets the padding character for {@link #setString}
+     *  @param pad character to be used to fill fields
+     */
+    public void setPadChar(char pad) {
+        padChar = pad;
+    } // setPadChar
+    
+    /** Writes the full length of the record
+     *  @param writer open output file handle
+     */
+    public void write(String writer) {
+        try {
+        } catch (Exception exc) {
+            log.error(exc.getMessage(), exc);
+        }
+    } // write
+    
+    /** Writes an initial portion of the record
+     *  @param writer open output file
+     *  @param len length to be written
+     */
+    public void write(String writer, int len) {
+        try {
+        } catch (Exception exc) {
+            log.error(exc.getMessage(), exc);
+        }
+    } // write
+    
+    /*===========*/
+    /*  1 (Char) */
+    /*===========*/
+    
+    /** Gets a single character from the buffer,
+     *  starting at the current position
+     *  @return the character
+     */
+    public char             get1() {
+        char ch = padChar;
+        if (currentPos < buffer.length() && currentPos >= 0) { // as long as record buffer is not yet exhausted
+            ch = buffer.charAt(currentPos ++);
+        } // if in buffer
+        return ch;
+    } // get1
+    /** Gets a character from the buffer,
+     *  starting at the specified position
+     *  @param start starting position of the field
+     *  @return the character
+     */
+    public char get1(int start) {
+        currentPos = start;
+        return get1();
+    } // get1
+    
+    /** Gets a character from the buffer,
+     *  @param field field to be read
+     *  @return the character
+     */
+    public char get1(Field field) {
+        currentPos = field.start;
+        return get1();
+    } // get1
+    
+    /** Sets an integer into a field of length 1,
+     *  starting at the current read/write pointer,
+     *  and update the read/write pointer
+     *  @param value value to be written
+     *  @return modified position in buffer
+     */
+    public int          set1(int value) {
+        if (currentPos >= 0 && currentPos < buffer.length()) { // already and still in buffer
+             buffer.setCharAt(currentPos ++, (char) value);
+        }
+        return currentPos;
+    } // set1
+    public String           getString(int len) {
+        return null;
+    } // getString
+    
+    
+    /** Gets a string terminated by the specified character,
+     *  starting at the current position
+     *  @param term character which terminates the string
+     *  @return a string of characters
+     */
+    public String           getString(char term) {
+        return null;
+    } // getString
+    
+    /** Sets a string into a field of length <em>len</em>,
+     *  starting at the current read/write pointer,
+     *  truncate or pad with spaces at the right end,
+     *  and update the read/write pointer
+     *  @param len width of field
+     *  @param value value to be written
+     *  @return modified position in buffer
+     */
+    public int          setString(int len, String value) {
+        if (value == null) {
+            value = "";
+        }
+        int index = 0;
+        while (index < value.length() && index < len) { // copy all source characters
+            if (currentPos >= 0) { // already in buffer
+                buffer.setCharAt(currentPos ++, value.charAt(index));
+            }
+            index ++;
+        } // while index
+        while (index < len) { // pad with spaces
+            if (currentPos >= 0) { // already in buffer
+                buffer.setCharAt(currentPos ++,  padChar);
+            }
+            index ++;
+        } // while padding
+        return currentPos;
+    } // setString
+    
+    /*==========*/
+    /*  Number  */
+    /*==========*/
+    
+    /** Gets a number from a field of length <em>len</em>,
+     *  starting at the current position,
+     *  right-aligned, with leading zeroes and possibly a negative sign,
+     *  and update the read/write pointer
+     *  @param len width of field
+     *  @return number read from the field
+     *  @throws NumberFormatException for invalid characters (no digit, comma, point, dash)
+     */
+    public          long getNumber(int len) throws NumberFormatException {
+        long result = 0; // assume no digit
+        int sign = 1; // assume positive
+        int start = (currentPos < 0) ? 0 : currentPos;
+        while (start < currentPos && start < buffer.length()) {
+            char ch = buffer.charAt(start);
+            if (Character.isDigit(ch)) {
+                result = result * 10 + Character.digit(ch, 10);
+            } else if (ch == '-') {
+                sign = -1;
+            } else if ("., ".indexOf(ch) < 0) { // ignore dot, comma, space
+                throw new NumberFormatException("invalid character (no digit, ',', '.', '-', '+')");
+            }
+            start ++;
+        } // while
+        return result * sign;
+    } // getNumber
+    
+    /** Sets a number into a field of length <em>len</em>,
+     *  starting at the current position,
+     *  right-aligned, with leading zeroes and possibly a negative sign,
+     *  and update the read/write pointer
+     *  @param len width of field
+     *  @param value number to be written
+     *  @return modified position in buffer
+     */
+    public          int setNumber(int len, long value) {
+        int sign = 1;
+        if (value < 0) {
+            sign = -1;
+            value = - value;
+        }
+        String digits = Long.toString(value);
+        int start = (currentPos < 0) ? 0 : currentPos;
+        currentPos += len;
+        if (digits.length() > len) { // number too wide - truncate left
+            digits = digits.substring(digits.length() - len);
+        }
+        // number fits into field now
+        int fpos = start + len - digits.length();
+        buffer.replace(fpos, currentPos, digits);
+        if (sign < 0) { // negative sign in first position
+            buffer.setCharAt(start ++, '-');
+        }
+        while (start < fpos) { // pad with leading zeroes
+            buffer.setCharAt(start ++, '0');
+        } // while leading
+        return currentPos;
+    } // setNumber
+    
+    /*=====================================*/
+    
+    /** Converts <em>len</em> bytes starting at <em>start</em>
+     *  into a hexadecimal representation;
+     *  does <strong>not</strong> increment the record pointer
+     *  @param  start starting position (0, 1, ...)
+     *  @param  len length of the field in bytes
+     *  @return string of hex digits, separated by spaces
+     */
+    public String dump(int start, int len) {
+        return buffer.toString();
+    } // dump
+    
+    /** Tests a condition, and writes an error message if it's not true
+     *  @param name name of testcase
+     *  @param cond condition to be tested
+     *  @param text text of error message to be printed
+     */
+    private void testCase(String name, boolean cond, String text) {
+        System.err.print(name);
+        if (! cond) {
+            System.err.println(":\t" + text + " " + this.dump(0, this.getBufferSize()));
+        } else {
+            System.err.println();
+        }
+    } // testCase
+    
+    /** Test program
+     *  @param args commandline arguments
+     */
+    public static void main(String args[]) {
+    } // main
+    
+}   

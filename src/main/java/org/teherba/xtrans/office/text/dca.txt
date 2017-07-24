@@ -160,3 +160,32 @@ PUBLIC  char asc_ebc[256]
 			, '\u0070', '\u008f', '\u0070', '\u0070', '\u0070', '\u0070', '\u00a1', '\u0070' // f0 
 			, '\u0090', '\u0070', '\u0041', '\u0070', '\u00fa', '\u00ea', '\u0070', '\u0000' 
 			};
+/*
+https://stackoverflow.com/questions/368603/convert-string-from-ascii-to-ebcdic-in-java
+
+public static final int[] ebc2asc = new int[256];
+public static final int[] asc2ebc = new int[256];
+
+static
+{
+  byte[] values = new byte[256];
+  for (int i = 0; i < 256; i++)
+    values[i] = (byte) i;
+
+  try
+  {
+    String s = new String (values, "CP1047");
+    char[] chars = s.toCharArray ();
+    for (int i = 0; i < 256; i++)
+    {
+      int val = chars[i];
+      ebc2asc[i] = val;
+      asc2ebc[val] = i;
+    }
+  }
+  catch (UnsupportedEncodingException e)
+  {
+    e.printStackTrace ();
+  }
+}
+*/

@@ -1,5 +1,6 @@
 /*  Commandline tool which transforms various file formats to and from XML.
  *  @(#) $Id: MainTransformer.java 966 2012-08-29 07:06:07Z gfis $
+ *  2017-07-22: protected factory
  *  2016-09-14: MultiFormatFactory back to dynamic XtransFactory
  *  2011-04-06: configure, process methods moved to XtransFactory
  *  2010-07-09: XtransPipe incorporated
@@ -52,19 +53,8 @@ public class MainTransformer {
     public Logger log;
     
     /** Factory delivering transformers for different input and output file formats */
-    private XtransFactory factory;
+    protected XtransFactory factory;
 
-    /** Names of input and output file, or null for STDIN/STDOUT. */
-    // private String[] fileNames;
-    /** Input reader, generates SAX events */
-    // private BaseTransformer generator;
-    /** Output writer, consumes SAX events */
-    // private BaseTransformer serializer;
-    /** Factory for SAX XSLT transformers and translets */
-    // private static SAXTransformerFactory saxFactory;
-    /** real path to web context */
-    // private String realPath;
-    
     /** Constructor
      */
     public MainTransformer() {
@@ -102,14 +92,7 @@ public class MainTransformer {
         return factory.getSerializer();
     } // getSerializer
 
-    /** Runs an XML generator, a series of XSLT transformations
-     *  (either with a stylesheet or a translet) and an XML serializer.
-     */
-    public void process() {
-        factory.process();
-    } // process
-
-    /** Processes the commandline arguments and calls the applicable transformer
+    /** Processes the arguments of a single commandline and calls the applicable transformer
      *  @param args commandline arguments as strings
      */
     public void processArgs(String args[]) {
@@ -128,14 +111,11 @@ public class MainTransformer {
         }   
     } // processArgs 
 
-    /** Main program, processes the commandline arguments
-     *  @param args arguments; see {@link XtransFactory#createPipeLine} for a description
-     *  of a sequence of arguments. For the special case "-f filename",
-     *  the arguments are read and processed line by line from the specified file.
+    /** Processes the commandline arguments or a file with many commandlines
+     *  @param args commandline arguments as strings, or "-f filename"
      */
-    public static void main(String args[]) {
-        MainTransformer mainTransformer = new MainTransformer();
-        mainTransformer.setRealPath("");
+    public void processFile(String args[]) {
+        setRealPath("");
         if (args.length == 2 && args[0].equals("-f")) {
             String fileName = args[1];
             String line = null; // current line from text file
@@ -159,15 +139,25 @@ public class MainTransformer {
                 while (iter.hasNext()) { // process lines
                     line = (String) iter.next();
                     System.err.println("xtrans.MainTransformer " + line);
-                    mainTransformer.processArgs(line.split("\\s+"));
+                    processArgs(line.split("\\s+"));
                 } // while iter
             } catch (Exception exc) {
-                mainTransformer.log.error(exc.getMessage(), exc);
+                log.error(exc.getMessage(), exc);
             } // try
         } else {
-            mainTransformer.processArgs(args);
+            processArgs(args);
         }
-        mainTransformer.closeFiles();
+        closeFiles();
+    } // processFile
+
+    /** Main program, processes the commandline arguments
+     *  @param args arguments; see {@link XtransFactory#createPipeLine} for a description
+     *  of a sequence of arguments. For the special case "-f filename",
+     *  the arguments are read and processed line by line from the specified file.
+     */
+    public static void main(String args[]) {
+        MainTransformer mainTransformer = new MainTransformer();
+        mainTransformer.processFile(args);
     } // main
 
 } // MainTransformer

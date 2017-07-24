@@ -83,9 +83,9 @@ public class XtransFactory {
     /** Output writer, consumes SAX events */
     private BaseTransformer serializer;
     /** Factory for SAX XSLT transformers and translets */
-    private static SAXTransformerFactory saxFactory;
+    protected static SAXTransformerFactory saxFactory;
     /** real path to web context */
-    private String realPath;
+    protected String realPath;
     /** ArrayList of transformers for different formats */
     protected ArrayList<BaseTransformer> transformers;
 
@@ -93,7 +93,7 @@ public class XtransFactory {
      *  @param transformerName name of the class for the transformer,
      *  without the prefix "org.teherba.xtrans.".
      */
-    private void addClass(String transformerName) {
+    protected void addClass(String transformerName) {
         try {
             BaseTransformer transformer = (BaseTransformer) Class.forName("org.teherba.xtrans."
                     + transformerName).newInstance();
@@ -121,7 +121,6 @@ public class XtransFactory {
             transformers.add(new XMLTransformer());
             // the order here defines the order in documentation.jsp,
             // should be: "... group by package order by package, name"
-        //  this.addClass("XMLTransformer");
             this.addClass("config.IniTransformer");
             this.addClass("config.MakefileTransformer");
             this.addClass("config.ManifestTransformer");
@@ -237,7 +236,7 @@ public class XtransFactory {
   /** Gets a SAX transformer factory
      *  @return properly configured SAXTransformerFactory
      */
-    private SAXTransformerFactory getSAXFactory() {
+    protected SAXTransformerFactory getSAXFactory() {
         Properties props = System.getProperties();
         props.put("javax.xml.transform.TransformerFactory"
             //  , "org.apache.xalan.xsltc.trax.TransformerFactoryImpl");
