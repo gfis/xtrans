@@ -24,7 +24,8 @@ import  org.teherba.xtrans.ByteTransformer;
 import  org.teherba.xtrans.ISO6937Map;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.SAXException;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for the (Siemens/Sinix and InterFace) Hit text processing system.
  *  Hit ran on various Unix systems, especially Siemens MX series.
@@ -174,7 +175,7 @@ public class HitTransformer extends ByteTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(HitTransformer.class.getName());
+        log = LogManager.getLogger(HitTransformer.class.getName());
     } // initialize
 
     /** Emits document text, and writes its characters

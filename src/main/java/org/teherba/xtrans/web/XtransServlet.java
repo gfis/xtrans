@@ -48,7 +48,8 @@ import  javax.servlet.ServletException;
 import  javax.servlet.http.HttpServlet;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 import  org.apache.commons.fileupload.FileItem;
 
 /** Servlet which transforms various file formats to and from XML.
@@ -77,7 +78,7 @@ public class XtransServlet extends HttpServlet {
      */
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        log = Logger.getLogger(XtransServlet.class.getName());
+        log = LogManager.getLogger(XtransServlet.class.getName());
         factory = new XtransFactory();
         basePage = new BasePage(APP_NAME);
         Messages.addMessageTexts(basePage);

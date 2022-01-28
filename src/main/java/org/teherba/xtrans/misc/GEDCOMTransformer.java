@@ -26,7 +26,8 @@ import  java.io.BufferedReader;
 import  java.util.regex.Pattern;
 import  java.util.regex.Matcher;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for GEDCOM genealogical data communication file format.
  *  Simliar to: 
@@ -124,7 +125,7 @@ public class GEDCOMTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(GEDCOMTransformer.class.getName());
+        log = LogManager.getLogger(GEDCOMTransformer.class.getName());
         stack = new String[MAX_STACK];
         top = -1;
         gedpat = Pattern.compile("(\\d+)\\s+([\\@\\w]+)\\s*(.*)");

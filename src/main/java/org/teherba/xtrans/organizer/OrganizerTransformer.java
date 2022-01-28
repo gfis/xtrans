@@ -26,7 +26,8 @@ import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import	java.util.ArrayList;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /**	This class provides common features of transformers for some
  *  related formats like vCard or iCalendar. These features include:
@@ -78,7 +79,7 @@ public class OrganizerTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(OrganizerTransformer.class.getName());
+        log = LogManager.getLogger(OrganizerTransformer.class.getName());
 	} // initialize
     
     /** buffer for folded lines */

@@ -36,7 +36,8 @@ import  java.io.Serializable;
 import  java.util.Iterator;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** RaMath main dialog page
  *  @author Dr. Georg Fischer
@@ -51,7 +52,7 @@ public class PackageListPage implements Serializable {
     /** No-args Constructor
      */
     public PackageListPage() {
-        log      = Logger.getLogger(PackageListPage.class.getName());
+        log      = LogManager.getLogger(PackageListPage.class.getName());
     } // Constructor
 
     /** Output the main dialog page for Xtrans

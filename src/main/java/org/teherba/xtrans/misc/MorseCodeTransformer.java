@@ -26,7 +26,8 @@ package org.teherba.xtrans.misc;
 import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /**	Transformer for simple text to be encoded in Morse code.
  *  Creates an XML &lt;table&gt; with &lt;tr&gt; rows for words 
@@ -72,7 +73,7 @@ public class MorseCodeTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(MorseCodeTransformer.class.getName());
+        log = LogManager.getLogger(MorseCodeTransformer.class.getName());
         putReplacementMap("A",  ".-"        );
         putReplacementMap("B",  "-..."      );
         putReplacementMap("C",  "-.-."      );

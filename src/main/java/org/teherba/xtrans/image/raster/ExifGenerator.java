@@ -23,7 +23,8 @@
 package org.teherba.xtrans.image.raster;
 import  org.teherba.xtrans.ByteTransformer;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 /*
 import  com.drew.imaging.ImageMetadataReader;
 import  com.drew.metadata.Directory;
@@ -65,7 +66,7 @@ public class ExifGenerator extends ByteTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(ExifGenerator.class.getName());
+        log = LogManager.getLogger(ExifGenerator.class.getName());
     } // initialize
 
     /*===========================*/

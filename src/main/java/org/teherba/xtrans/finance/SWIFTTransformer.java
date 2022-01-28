@@ -28,7 +28,8 @@ import  java.io.BufferedReader;
 import  java.util.ArrayList;
 import  java.util.Stack;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for SWIFT FIN message types (MTxxx).
  *  The messages transferred by the <em>Society for
@@ -109,7 +110,7 @@ public class SWIFTTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log         = Logger.getLogger(SWIFTTransformer.class.getName());
+        log         = LogManager.getLogger(SWIFTTransformer.class.getName());
         newline     = System.getProperty("line.separator");
     } // initialize
 

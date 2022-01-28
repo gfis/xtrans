@@ -22,7 +22,8 @@
  */
 
 package org.teherba.xtrans;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Generates the code mappings for the ISO 6937 character set.
  *  The code tables stem from the article
@@ -38,7 +39,7 @@ public class ISO6937Map {
     /**	Initializes mappings for the ISO 6937 character set.
      */
     public ISO6937Map() {
-        log = Logger.getLogger(ISO6937Map.class.getName());
+        log = LogManager.getLogger(ISO6937Map.class.getName());
     	setAccents();
     	setCodes();
     } // Constructor 0

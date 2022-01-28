@@ -23,7 +23,8 @@
 package org.teherba.xtrans;
 import  org.teherba.xtrans.BaseTransformer;
 import  org.xml.sax.SAXException;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Base class for binary file format transformers 
  *  defining common properties and methods.
@@ -50,7 +51,7 @@ public abstract class ByteTransformer extends BaseTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(ByteTransformer.class.getName());
+        log = LogManager.getLogger(ByteTransformer.class.getName());
     } // initialize
     
     /** Tells that this specific format is a binary format

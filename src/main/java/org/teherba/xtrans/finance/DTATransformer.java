@@ -26,7 +26,8 @@ import  org.teherba.xtrans.finance.DTARecordBase;
 import  org.teherba.xtrans.ByteTransformer;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.SAXException;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transforms DTA (German payments exchange) files to/from XML.
  *  The records are defined by an <a href="/xtrans/spec/finance/DTA.spec.xml">XML record specification</a>.
@@ -66,7 +67,7 @@ public class DTATransformer extends ByteTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(DTATransformer.class.getName());
+        log = LogManager.getLogger(DTATransformer.class.getName());
         genRecord = new DTARecordBase();
     } // initialize
 

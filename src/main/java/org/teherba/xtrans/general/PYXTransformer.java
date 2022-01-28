@@ -24,7 +24,8 @@ import  java.io.BufferedReader;
 import  java.util.ArrayList;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.SAXException;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** PYX is a line-oriented representation of XML which is especially
  *  suitable for processing with Unix utilities like grep, sed, wc, diff etc.
@@ -97,7 +98,7 @@ public class PYXTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(PYXTransformer.class.getName());
+        log = LogManager.getLogger(PYXTransformer.class.getName());
         putEntityReplacements();
 	} // initialize
 

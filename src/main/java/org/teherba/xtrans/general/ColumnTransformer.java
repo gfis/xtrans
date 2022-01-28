@@ -22,7 +22,8 @@ package org.teherba.xtrans.general;
 import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for lines with fields of fixed width.
  *  Creates an XML &lt;table&gt; with &lt;tr&gt; rows and &lt;td&gt;cells. 
@@ -67,7 +68,7 @@ public class ColumnTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(ColumnTransformer.class.getName());
+        log = LogManager.getLogger(ColumnTransformer.class.getName());
         columns = "";
 	} // initialize
 

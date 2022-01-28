@@ -18,7 +18,8 @@
 package org.teherba.xtrans;
 import  org.teherba.xtrans.BaseRecord;
 import  org.teherba.xtrans.Field;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /**
  * Class for
@@ -67,7 +68,7 @@ public class BeanRecord extends BaseRecord {
     public BeanRecord(int bsize) {
         buffer = new StringBuffer(bsize);
         buffer.setLength(0); // empty at the beginning
-        log = Logger.getLogger(BeanRecord.class.getName());
+        log = LogManager.getLogger(BeanRecord.class.getName());
         padChar = ' ';
         bufferSize = bsize;
     } // BeanRecord

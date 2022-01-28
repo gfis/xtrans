@@ -27,7 +27,8 @@ import  java.io.BufferedReader;
 import  java.util.ArrayList;
 import  java.util.Stack;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for UN/Edifact messages as described in
  *  ISO 9735 Electronic data interchange for administration, commerce and transport (EDIFACT).
@@ -108,7 +109,7 @@ public class EdifactTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log         = Logger.getLogger(EdifactTransformer.class.getName());
+        log         = LogManager.getLogger(EdifactTransformer.class.getName());
     } // initialize
     
     /** Root element tag */

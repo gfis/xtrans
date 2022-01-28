@@ -28,7 +28,8 @@ import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  java.io.BufferedReader;
 import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Pseudo transformer which serializes an XML representation of a program;
  *  cannot generate XML. The input contains a few different XML elements, as
@@ -74,7 +75,7 @@ public class ProgramSerializer extends ProgLangTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(ProgramSerializer.class.getName());
+        log = LogManager.getLogger(ProgramSerializer.class.getName());
     } // initialize
 
     /** Transforms from the specified format to XML

@@ -24,7 +24,8 @@ package org.teherba.xtrans.general;
 import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Simple transformer for lines in a character file.
  *  Creates an XML table with rows and cells.
@@ -54,7 +55,7 @@ public class LineTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(LineTransformer.class.getName());
+        log = LogManager.getLogger(LineTransformer.class.getName());
         putEntityReplacements();
     } // initialize
 

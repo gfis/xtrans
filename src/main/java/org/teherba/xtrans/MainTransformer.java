@@ -33,7 +33,8 @@ import  java.io.InputStreamReader;
 import  java.util.ArrayList;
 import  java.util.Calendar;
 import  java.util.Iterator;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** This program is a filter which reads a file in some foreign format,
  *  converts it to XML, feeds that into one or more XSLT transformations
@@ -58,7 +59,7 @@ public class MainTransformer {
     /** Constructor
      */
     public MainTransformer() {
-        log = Logger.getLogger(MainTransformer.class.getName());
+        log = LogManager.getLogger(MainTransformer.class.getName());
         factory = new XtransFactory();
         // System.out.println(factory.toString());
     } // Constructor 0

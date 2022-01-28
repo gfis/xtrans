@@ -29,7 +29,8 @@ package org.teherba.xtrans.proglang;
 import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for the Structured Query Language (SQL) used in relational databases
  *	like DB2, Oracle, MySQL etc.
@@ -41,7 +42,7 @@ public class SQLTransformer extends ProgLangTransformer {
     public final static String CVSID = "@(#) $Id: SQLTransformer.java 611 2010-12-12 19:14:56Z gfis $";
 
     /** log4j logger (category) */
-    private static Logger log = Logger.getLogger(SQLTransformer.class.getName());
+    private static Logger log = LogManager.getLogger(SQLTransformer.class.getName());
 
     /** No-args Constructor.
      *  This should be as lightweight as possible.

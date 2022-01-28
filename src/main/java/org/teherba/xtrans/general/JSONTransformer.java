@@ -27,7 +27,8 @@ import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import  java.util.Stack;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transforms Java Script Object Notation to/from XML.
  *  JSON consists of objects, arrays, strings, numbers, true, false and null.
@@ -91,7 +92,7 @@ public class JSONTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(JSONTransformer.class.getName());
+        log = LogManager.getLogger(JSONTransformer.class.getName());
     } // initialize
 
     /** Root element tag */

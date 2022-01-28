@@ -21,7 +21,8 @@
 package org.teherba.xtrans.office.data;
 import  org.teherba.xtrans.CharTransformer;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /**
  *  Transformer for (Navy) DIF - Data Interchange Format.
@@ -108,7 +109,7 @@ public class DIFTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(DIFTransformer.class.getName());
+        log = LogManager.getLogger(DIFTransformer.class.getName());
         charBuffer = new char[MAX_BUF];
         content = new StringBuffer(MAX_BUF);
 	} // initialize

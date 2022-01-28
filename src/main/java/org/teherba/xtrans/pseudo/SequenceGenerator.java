@@ -21,7 +21,8 @@
 package org.teherba.xtrans.pseudo;
 import  org.teherba.xtrans.CharTransformer;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Pseudo transformer which generates a sequence of elements.
  *  @author Dr. Georg Fischer
@@ -52,7 +53,7 @@ public class SequenceGenerator extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(SequenceGenerator.class.getName());
+        log = LogManager.getLogger(SequenceGenerator.class.getName());
 	} // initialize
 
     /** Transforms from the specified format to XML

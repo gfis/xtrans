@@ -23,7 +23,8 @@ import  org.teherba.xtrans.finance.SWIFTTransformer;
 import	java.util.ArrayList;
 import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for the SWIFT FIN MT940 (statement) message type.
  *  Examples for an MT940:
@@ -102,7 +103,7 @@ public class MT940Transformer extends SWIFTTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(MT940Transformer.class.getName());
+        log = LogManager.getLogger(MT940Transformer.class.getName());
 	} // initialize
 	
     /*==================*/

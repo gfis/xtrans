@@ -25,7 +25,8 @@ import  java.io.FileInputStream;
 import  java.nio.channels.Channels;
 import  java.nio.channels.ReadableByteChannel;
 import  java.util.Stack;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Reads lines from a tree of nested include (text) files.
  *  @author Dr. Georg Fischer
@@ -34,7 +35,7 @@ public class NestedLineReader {
     public final static String CVSID = "@(#) $Id: NestedLineReader.java 9 2008-09-05 05:21:15Z gfis $";
 
     /** log4j logger (category) */
-    private static Logger log = Logger.getLogger(NestedLineReader.class.getName());;
+    private static Logger log = LogManager.getLogger(NestedLineReader.class.getName());;
 
     /** maximum nesting level */
     private static final int MAX_NEST = 16;

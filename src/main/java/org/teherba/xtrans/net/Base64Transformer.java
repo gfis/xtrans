@@ -25,7 +25,8 @@ import  org.teherba.xtrans.ByteRecord;
 import  org.teherba.xtrans.ByteTransformer;
 import  java.lang.System; // arraycopy
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /**
  *  Transformer for a Base64 encoding of a (binary) file
@@ -98,7 +99,7 @@ public class Base64Transformer extends ByteTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(Base64Transformer.class.getName());
+        log = LogManager.getLogger(Base64Transformer.class.getName());
         width = getIntOption("width", 57); // = 19*3, yields 19*4 = 76 encoded characters
     } // initialize
 

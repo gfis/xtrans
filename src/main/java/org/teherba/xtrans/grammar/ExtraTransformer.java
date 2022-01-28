@@ -23,7 +23,8 @@ package org.teherba.xtrans.grammar;
 import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for grammars of the EXTRA (Extensible Translator) system.
  *  Example for the metagrammar (translate all ":" to "*"):
@@ -83,7 +84,7 @@ public class ExtraTransformer extends CharTransformer {
     public final static String CVSID = "@(#) $Id: ExtraTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
-    private static Logger log = Logger.getLogger(ExtraTransformer.class.getName());;
+    private static Logger log = LogManager.getLogger(ExtraTransformer.class.getName());;
     
     /** Root element tag */
     protected static final String ROOT_TAG    = "grammar";

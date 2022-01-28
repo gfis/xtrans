@@ -28,7 +28,8 @@ import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import	java.util.Stack;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transforms a simplified XML notation of an infoset to/from ordinary XML. 
  *  Ordinary XML can transparently be transformed into SiXML and vice versa. 
@@ -71,7 +72,7 @@ public class SiXMLTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(SiXMLTransformer.class.getName());
+        log = LogManager.getLogger(SiXMLTransformer.class.getName());
 	} // initialize
 	
     /** Root element tag */

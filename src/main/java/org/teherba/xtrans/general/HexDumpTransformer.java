@@ -26,7 +26,8 @@ import  org.teherba.xtrans.ByteTransformer;
 import  org.teherba.xtrans.ByteRecord;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.SAXException;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for the hexdump of a (binary) file.
  *  Read the binary file into portions of 16 bytes,
@@ -95,7 +96,7 @@ public class HexDumpTransformer extends ByteTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(HexDumpTransformer.class.getName());
+        log = LogManager.getLogger(HexDumpTransformer.class.getName());
     } // initialize
 
     /** Root element tag */

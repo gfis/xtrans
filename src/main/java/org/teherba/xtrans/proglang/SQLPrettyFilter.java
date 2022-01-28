@@ -25,7 +25,8 @@ import  org.teherba.xtrans.parse.Token;
 import  org.teherba.xtrans.BaseTransformer;
 import  org.teherba.xtrans.proglang.TokenTransformer;
 import  java.util.HashMap;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Pseudo transformer which accepts a SAX stream of events,
  *  and removes and adds whitespace such that the resulting SQL code is
@@ -94,7 +95,7 @@ public class SQLPrettyFilter extends TokenTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(SQLPrettyFilter.class.getName());
+        log = LogManager.getLogger(SQLPrettyFilter.class.getName());
     } // initialize
 
     /** Transforms from the specified format to XML

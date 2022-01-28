@@ -33,7 +33,8 @@ import  java.sql.ResultSet;
 import  java.util.ArrayList; // prodNo -> production
 import  java.util.HashMap; // (state, item) -> (parserAction, nextInfo)
 import  java.util.Stack;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Maps from the parser's state and an input token to a 
  *  parser action and some additional info:
@@ -71,7 +72,7 @@ public class ParseTable {
     /** No-args Constructor
      */
     public ParseTable() {
-        log = Logger.getLogger(ParseTable.class.getName());
+        log = LogManager.getLogger(ParseTable.class.getName());
         items       = new HashMap  <String, Item>(256);
         productions = new ArrayList<Production      >(256);
         productions.add(null); // ignore element [0] = production for axiom = bop program eop;

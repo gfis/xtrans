@@ -21,7 +21,8 @@
 package org.teherba.xtrans.office.text;
 import  org.teherba.xtrans.CharTransformer;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /**
  *  Transformer for Microsoft's Rich Text Format (RTF) used in Word et al.
@@ -167,7 +168,7 @@ public class RichTextTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(RichTextTransformer.class.getName());
+        log = LogManager.getLogger(RichTextTransformer.class.getName());
 	} // initialize
 
     /** Emits document text, and writes its characters

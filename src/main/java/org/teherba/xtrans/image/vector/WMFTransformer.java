@@ -23,7 +23,8 @@ package org.teherba.xtrans.image.vector;
 import  org.teherba.xtrans.ByteTransformer;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.SAXException;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transforms WMF (Windows Meta Format) vector graphic files to/from XML.
  *  See
@@ -146,7 +147,7 @@ public class WMFTransformer extends ByteTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(WMFTransformer.class.getName());
+        log = LogManager.getLogger(WMFTransformer.class.getName());
     } // initialize
 
     /*===========================*/

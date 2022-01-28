@@ -32,7 +32,8 @@ import  java.security.MessageDigest;
 import  java.text.SimpleDateFormat;
 import  java.util.Date;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Pseudo transformer which generates an XML representation
  *  of a nested file directory structure. Serialization is not possible.
@@ -77,7 +78,7 @@ public class FileTreeGenerator extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(FileTreeGenerator.class.getName());
+        log = LogManager.getLogger(FileTreeGenerator.class.getName());
         dirName = null;
         level = 0;
     } // initialize

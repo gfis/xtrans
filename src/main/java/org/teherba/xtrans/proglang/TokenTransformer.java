@@ -28,7 +28,8 @@ import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  java.io.BufferedReader;
 import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for a representation of tokens in programs which
  *  is ready to be loaded into a database table.
@@ -77,7 +78,7 @@ public class TokenTransformer extends ProgLangTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(TokenTransformer.class.getName());
+        log = LogManager.getLogger(TokenTransformer.class.getName());
     } // initialize
 
     /** Transforms from the specified format to XML

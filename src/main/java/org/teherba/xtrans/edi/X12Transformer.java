@@ -23,7 +23,8 @@
 package org.teherba.xtrans.edi;
 import  org.teherba.xtrans.edi.EdifactTransformer;
 import	java.util.ArrayList;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for ANSI ASC X12 trade interchange messages.
  *	This class only handles the raw syntax of X12 messages and the separator 
@@ -110,7 +111,7 @@ public class X12Transformer extends EdifactTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(X12Transformer.class.getName());
+        log = LogManager.getLogger(X12Transformer.class.getName());
 	} // initialize
 	
     /*================*/

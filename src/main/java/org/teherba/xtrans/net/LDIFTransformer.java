@@ -29,7 +29,8 @@ import  java.io.BufferedReader;
 import  java.nio.charset.Charset;
 import  java.nio.charset.CharsetEncoder;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for LDIF (LDAP Data Interchange Format)
  *  used for example in addressbooks of Mozilla Thunderbird.
@@ -114,7 +115,7 @@ public class LDIFTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(LDIFTransformer.class.getName());
+        log = LogManager.getLogger(LDIFTransformer.class.getName());
     } // initialize
 
     /** buffer for folded lines */

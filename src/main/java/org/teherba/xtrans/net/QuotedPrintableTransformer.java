@@ -24,7 +24,8 @@ package org.teherba.xtrans.net;
 import  org.teherba.xtrans.ByteRecord;
 import  org.teherba.xtrans.ByteTransformer;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer which converts any (binary) file to an XML representation
  *  of the "Quoted Printable" format, and back.
@@ -152,7 +153,7 @@ public class QuotedPrintableTransformer extends ByteTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(QuotedPrintableTransformer.class.getName());
+        log = LogManager.getLogger(QuotedPrintableTransformer.class.getName());
         // setSourceEncoding("US-ASCII");
         // setResultEncoding("US-ASCII");
     } // initialize

@@ -38,7 +38,8 @@ import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.helpers.AttributesImpl;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Abstract transformer for various programming languages.
  *  This implementation works mainly unaltered for C and Java languages,
@@ -307,7 +308,7 @@ public abstract class ProgLangTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(ProgLangTransformer.class.getName());
+        log = LogManager.getLogger(ProgLangTransformer.class.getName());
         // log.error("ProgLangTransformer.initialize() was called");
     } // initialize
 

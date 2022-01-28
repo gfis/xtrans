@@ -31,7 +31,8 @@ import  java.util.HashMap;
 import  java.util.Iterator;
 import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Wrapper around java.net.URI which parses more (IANA registered) schemes.
  *  Unlike java.net.URI, this class can be subclassed and has public getters and setters
@@ -130,7 +131,7 @@ public class URIWrapper {
     /** No-args Constructor.
      */
     public URIWrapper() {
-        log = Logger.getLogger(URIWrapper.class.getName());
+        log = LogManager.getLogger(URIWrapper.class.getName());
     } // constructor()
 
     /** Constructor from string.
@@ -969,7 +970,7 @@ public class URIWrapper {
      *  @param args elements of the commandline separated by whitespace
      */
     public static void main(String args[]) {
-        Logger log = Logger.getLogger(URIWrapper.class.getName());
+        Logger log = LogManager.getLogger(URIWrapper.class.getName());
         String word = "http://www.punctum.com:80/cgi-bin/test.cgi?parm1=val1&parm2=val2"; // default URI
         if (args.length >= 1) {
             word = args[0];

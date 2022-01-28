@@ -50,7 +50,7 @@ c   public CharRecord(int bsize) {
 n   public BeanRecord(int bsize) {
         buffer = new StringBuffer (bsize);
         buffer.setLength(0); // empty at the beginning
-A       log = Logger.getLogger(ByteRecord.class.getName());
+A       log = LogManager.getLogger(ByteRecord.class.getName());
         bufferSize = bsize;
     }
  *  </pre>

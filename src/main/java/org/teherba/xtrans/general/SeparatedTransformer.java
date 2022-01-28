@@ -27,7 +27,8 @@ import  java.util.HashMap;
 import  java.util.Iterator;
 import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for lines with fields separated or delimited by character strings.
  *  Creates an XML &lt;table&gt; with &lt;tr&gt; rows and &lt;td&gt;cells,
@@ -84,7 +85,7 @@ public class SeparatedTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(SeparatedTransformer.class.getName());
+        log = LogManager.getLogger(SeparatedTransformer.class.getName());
         separator = ",";
         surround = "none";
         labels = false;

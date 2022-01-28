@@ -26,7 +26,8 @@ package org.teherba.xtrans.geo;
 import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for NMEA-0183 standard data (NMEA = National Marine Electronics Association)
  *  for measurements read from the Global Positioning System (GPS).
@@ -96,7 +97,7 @@ public class NMEATransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(NMEATransformer.class.getName());
+        log = LogManager.getLogger(NMEATransformer.class.getName());
 	} // initialize
 
     /** Element tag for altitude */

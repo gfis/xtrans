@@ -29,7 +29,8 @@ import  java.io.Serializable;
 import  javax.servlet.http.HttpServletRequest;
 import  javax.servlet.http.HttpServletResponse;
 import  org.apache.commons.fileupload.FileItem;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** RaMath main dialog page
  *  @author Dr. Georg Fischer
@@ -44,7 +45,7 @@ public class XslTransPage implements Serializable {
     /** No-args Constructor
      */
     public XslTransPage() {
-        log      = Logger.getLogger(XslTransPage.class.getName());
+        log      = LogManager.getLogger(XslTransPage.class.getName());
     } // Constructor
 
     /** Output the main dialog page for Xtrans

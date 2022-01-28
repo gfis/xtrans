@@ -29,7 +29,8 @@ import  org.teherba.xtrans.ByteTransformer;
 import  org.teherba.dbat.TableColumn;
 import  java.util.ArrayList;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transforms dBase II, III, IV and compatible database files to/from XML.
  *  <p>
@@ -117,7 +118,7 @@ public class DBaseTransformer extends ByteTransformer {
     public void initialize() {
         super.initialize();
         setBinaryFormat(true);
-        log = Logger.getLogger(DBaseTransformer.class.getName());
+        log = LogManager.getLogger(DBaseTransformer.class.getName());
         // mustAmpEscape = false;
         putEntityReplacements();
     } // initialize

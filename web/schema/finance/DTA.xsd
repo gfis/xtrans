@@ -21,7 +21,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="2"/>
 </xs:restriction>
 </xs:simpleType>
@@ -32,7 +32,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="12"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -44,7 +44,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="12"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -56,7 +56,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="27"/>
 </xs:restriction>
 </xs:simpleType>
@@ -67,7 +67,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="10"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -79,7 +79,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="8"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -91,7 +91,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="14"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -103,7 +103,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="10"/>
 </xs:restriction>
 </xs:simpleType>
@@ -114,7 +114,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="15"/>
 </xs:restriction>
 </xs:simpleType>
@@ -125,7 +125,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="8"/>
 </xs:restriction>
 </xs:simpleType>
@@ -136,7 +136,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="58"/>
 </xs:restriction>
 </xs:simpleType>
@@ -147,7 +147,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="1"/>
 </xs:restriction>
 </xs:simpleType>
@@ -160,7 +160,7 @@
 </xs:annotation>
 <xs:complexType>
 <xs:sequence>
-<xs:element minOccurs="0" name="CE" maxOccurs="15">
+<xs:element minOccurs="0" name="CE" maxOccurs="15" xmlns="">
 <xs:complexType>
 <xs:attribute name="CE01">
 <xs:annotation>
@@ -203,7 +203,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="12"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -215,7 +215,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="12"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -227,7 +227,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="14"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -239,7 +239,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="12"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -251,7 +251,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="16"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -263,7 +263,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="2"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -275,7 +275,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="6"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -287,7 +287,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="1"/>
 </xs:restriction>
 </xs:simpleType>
@@ -298,7 +298,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="14"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -310,7 +310,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="12"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -322,7 +322,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="14"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -334,7 +334,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="14"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -346,7 +346,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="3"/>
 </xs:restriction>
 </xs:simpleType>
@@ -357,7 +357,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="27"/>
 </xs:restriction>
 </xs:simpleType>
@@ -368,7 +368,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="27"/>
 </xs:restriction>
 </xs:simpleType>
@@ -379,7 +379,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="27"/>
 </xs:restriction>
 </xs:simpleType>
@@ -390,7 +390,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="1"/>
 </xs:restriction>
 </xs:simpleType>
@@ -401,7 +401,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="2"/>
 </xs:restriction>
 </xs:simpleType>
@@ -412,7 +412,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="6"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -432,7 +432,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="5"/>
 </xs:restriction>
 </xs:simpleType>
@@ -443,7 +443,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="10"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -455,7 +455,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="16"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -467,7 +467,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="20"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -479,7 +479,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="20"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -491,7 +491,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="16"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -503,7 +503,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="104"/>
 </xs:restriction>
 </xs:simpleType>
@@ -518,7 +518,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="6"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -530,7 +530,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="6"/>
 <xs:pattern value="[0-9]*"/>
 </xs:restriction>
@@ -542,7 +542,7 @@
 </xs:annotation>
 <xs:simpleType>
 <xs:restriction base="xs:string">
-<xs:minLength value="0"/>
+<xs:minLength value="0" xmlns=""/>
 <xs:maxLength value="1"/>
 </xs:restriction>
 </xs:simpleType>

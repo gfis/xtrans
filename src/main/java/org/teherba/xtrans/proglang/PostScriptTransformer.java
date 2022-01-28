@@ -27,7 +27,8 @@
 package org.teherba.xtrans.proglang;
 import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  java.util.regex.Pattern;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for Adobe's PostScript programming language for printers
  *	like Word, Excel, Access etc.
@@ -41,7 +42,7 @@ public class PostScriptTransformer extends ProgLangTransformer {
     public final static String CVSID = "@(#) $Id: PostScriptTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
-    private static Logger log = Logger.getLogger(PostScriptTransformer.class.getName());
+    private static Logger log = LogManager.getLogger(PostScriptTransformer.class.getName());
 
     /** No-args Constructor.
      *  This should be as lightweight as possible.

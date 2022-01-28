@@ -26,7 +26,8 @@ import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.helpers.AttributesImpl;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** This class provides common features of transformers for
  *  Unix configuration, property, manifest, ini, makefiles
@@ -137,7 +138,7 @@ public class ConfigTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(ConfigTransformer.class.getName());
+        log = LogManager.getLogger(ConfigTransformer.class.getName());
         // Unix-like defaults:
         pairSeparator   = getOption("sep"   , "=" );
         nextContinue    = getOption("cont"  , "\\");

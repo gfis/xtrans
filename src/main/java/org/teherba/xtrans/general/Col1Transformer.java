@@ -28,7 +28,8 @@ import  java.io.BufferedReader;
 import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transforms text lines to/from XML. 
  *  Lines start with a letter/word followed by whitespace, or whitespace only.
@@ -114,7 +115,7 @@ public class Col1Transformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(Col1Transformer.class.getName());
+        log = LogManager.getLogger(Col1Transformer.class.getName());
         putEntityReplacements();
 	} // initialize
 

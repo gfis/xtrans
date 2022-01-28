@@ -21,7 +21,8 @@
 
 package org.teherba.xtrans.proglang;
 import	org.teherba.xtrans.proglang.ProgLangTransformer;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for programs in the REXX language 
  *	implemented on IBM z/OS, AIX, AS/400, Windows and (via "Regina") Unix.
@@ -36,7 +37,7 @@ public class REXXTransformer extends ProgLangTransformer {
     public final static String CVSID = "@(#) $Id: REXXTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
-    private static Logger log = Logger.getLogger(REXXTransformer.class.getName());;
+    private static Logger log = LogManager.getLogger(REXXTransformer.class.getName());;
 
     /** No-args Constructor.
      *  This should be as lightweight as possible.

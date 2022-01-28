@@ -22,7 +22,8 @@ import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  java.util.TreeMap;
 import  java.util.Iterator;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** A serializer which reads XMLized Java source files and processes them in 3 phases:
  *  <ol>
@@ -54,7 +55,7 @@ public class JavaImportChecker extends ProgLangTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(JavaImportChecker.class.getName());
+        log = LogManager.getLogger(JavaImportChecker.class.getName());
     } // initialize
 
     /** Transforms from the specified format to XML

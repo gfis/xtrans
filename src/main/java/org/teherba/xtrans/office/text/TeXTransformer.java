@@ -23,7 +23,8 @@
 package org.teherba.xtrans.office.text;
 import  org.teherba.xtrans.CharTransformer;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /**
  *  Transformer for Donald Knuth's TeX typesetting system, and LaTeX
@@ -123,7 +124,7 @@ public class TeXTransformer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(TeXTransformer.class.getName());
+        log = LogManager.getLogger(TeXTransformer.class.getName());
 	} // initialize
 
     /** Emits document text, and writes its characters

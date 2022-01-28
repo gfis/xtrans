@@ -29,7 +29,8 @@ import  java.util.HashMap;
 import  java.util.Iterator;
 import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for files with one Uniform Resource Identifier (URI) per line.
  *  The URIs are represented by an XML structure with elements for the individual
@@ -57,7 +58,7 @@ public class URITransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(URITransformer.class.getName());
+        log = LogManager.getLogger(URITransformer.class.getName());
         putEntityReplacements();
     } // initialize
 

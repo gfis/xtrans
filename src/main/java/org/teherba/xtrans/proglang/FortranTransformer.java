@@ -47,7 +47,8 @@ import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  java.util.regex.Matcher;
 import  java.util.regex.Pattern;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for programs in the Fortran (FORTRAN IV, Fortran 77) language.
  *  The source files are column oriented:
@@ -73,7 +74,7 @@ public class FortranTransformer extends ProgLangTransformer {
     public final static String CVSID = "@(#) $Id: FortranTransformer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
-    private static Logger log = Logger.getLogger(FortranTransformer.class.getName());;
+    private static Logger log = LogManager.getLogger(FortranTransformer.class.getName());;
 
     /** No-args Constructor.
      *  This should be as lightweight as possible.

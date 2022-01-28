@@ -26,7 +26,8 @@ package org.teherba.xtrans.proglang;
 import  org.teherba.xtrans.CharTransformer;
 import  java.io.BufferedReader;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for IBM's z/OS Job Control Language (JCL).
  *  The file must already be translated to ASCII.
@@ -132,7 +133,7 @@ public class JCLTransformer extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(JCLTransformer.class.getName());
+        log = LogManager.getLogger(JCLTransformer.class.getName());
     } // initialize
 
     //////////////////////

@@ -37,7 +37,8 @@ import  java.util.Properties;
 import  java.util.TreeSet;
 import  java.text.SimpleDateFormat;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Pseudo transformer which generates elements
  *  for the system properties, the environment,
@@ -93,7 +94,7 @@ public class SystemGenerator extends CharTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(SystemGenerator.class.getName());
+        log = LogManager.getLogger(SystemGenerator.class.getName());
     } // initialize
 
     /** separator string for pathes */

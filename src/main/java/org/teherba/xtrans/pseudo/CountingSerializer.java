@@ -25,7 +25,8 @@ import  org.teherba.xtrans.CharTransformer;
 import  java.util.TreeMap;
 import  java.util.Iterator;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Pseudo transformer which cannot generate XML, 
  *  but which counts XML elements only.
@@ -52,7 +53,7 @@ public class CountingSerializer extends CharTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(CountingSerializer.class.getName());
+        log = LogManager.getLogger(CountingSerializer.class.getName());
 	} // initialize
 
     /** Transforms from the specified format to XML

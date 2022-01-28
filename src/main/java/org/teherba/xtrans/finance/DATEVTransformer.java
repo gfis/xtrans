@@ -31,7 +31,8 @@ import  java.util.ArrayList;
 import  java.util.HashMap;
 import  org.xml.sax.Attributes;
 import  org.xml.sax.SAXException;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transforms DATEV accounting data files to/from XML.
  *  DE001 files consist of binary blocks of size 256 (0x100),
@@ -153,7 +154,7 @@ public class DATEVTransformer extends ByteTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(DATEVTransformer.class.getName());
+        log = LogManager.getLogger(DATEVTransformer.class.getName());
         delimMap = new HashMap/*<1.5*/<Character, DATEVField>/*1.5>*/(16);
         attrMap  = new HashMap/*<1.5*/<String   , DATEVField>/*1.5>*/(16);
         defineField('a'        , "amt"         , 0, true );

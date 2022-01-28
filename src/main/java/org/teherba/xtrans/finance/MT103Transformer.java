@@ -21,7 +21,8 @@
 package org.teherba.xtrans.finance;
 import  org.teherba.xtrans.finance.SWIFTTransformer;
 import	java.util.ArrayList;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Transformer for the SWIFT FIN MT103 message type.
  *  Examples for an MT103:
@@ -67,7 +68,7 @@ public class MT103Transformer extends SWIFTTransformer {
 	 */
 	public void initialize() {
 		super.initialize();
-        log = Logger.getLogger(MT103Transformer.class.getName());
+        log = LogManager.getLogger(MT103Transformer.class.getName());
 	} // initialize
 	
     /*==================*/

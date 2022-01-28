@@ -20,7 +20,8 @@ import  org.teherba.xtrans.BaseRecord;
 import  org.teherba.xtrans.Field;
 import  java.io.BufferedReader;
 import  java.io.PrintWriter;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /**
  * Class for
@@ -69,7 +70,7 @@ public class CharRecord extends BaseRecord {
     public CharRecord(int bsize) {
         buffer = new StringBuffer(bsize);
         buffer.setLength(0); // empty at the beginning
-        log = Logger.getLogger(CharRecord.class.getName());
+        log = LogManager.getLogger(CharRecord.class.getName());
         padChar = ' ';
     } // CharRecord
     

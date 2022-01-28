@@ -25,7 +25,8 @@ package org.teherba.xtrans.parse;
 import  org.teherba.xtrans.parse.ParseTable;
 import  org.teherba.xtrans.proglang.ProgLangTransformer;
 import  org.xml.sax.Attributes;
-import  org.apache.log4j.Logger;
+import  org.apache.logging.log4j.Logger;
+import  org.apache.logging.log4j.LogManager;
 
 /** Filter which parses a SAX event stream for proper
  *  element ordering and nesting, and inserts or deletes start and end events
@@ -60,7 +61,7 @@ public class ParseFilter extends ProgLangTransformer {
      */
     public void initialize() {
         super.initialize();
-        log = Logger.getLogger(ParseFilter.class.getName());
+        log = LogManager.getLogger(ParseFilter.class.getName());
     } // initialize
 
     /** Transforms from the specified format to XML
