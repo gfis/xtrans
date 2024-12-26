@@ -1,5 +1,6 @@
 /*  Pseudo transformer which generates (a sequence of) tables from database queries.
     @(#) $Id: DatabaseTransformer.java 800 2011-09-11 21:00:35Z gfis $
+    2022-01-28: Dbat.processArguments had private access
     2017-05-28: javadoc 1.8
     2011-09-10, Georg Fischer: copied from SequenceGenerator
 */

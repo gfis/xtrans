@@ -1,6 +1,7 @@
 /*  (Pseudo-abstract) class for file format transformers
     @(#) $Id: BaseTransformer.java 855 2012-01-11 06:59:36Z gfis $
- *  2017-05-27: javadoc 1.8
+    2024-12-26: deprecations
+    2017-05-27: javadoc 1.8
     2016-10-13: less imports
     2016-09-07: public setMimeType, getOption, getIntOption
     2012-01-10: instantiate Logger in Constructor
@@ -20,7 +21,7 @@
  *  (c.f. http://www.perfectxml.com/Oreilly/chapter.asp?row_id=9)
  */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1336,7 +1337,7 @@ public class BaseTransformer
      */
     public void setFeature(String name, boolean value)
             throws SAXNotRecognizedException, SAXNotSupportedException {
-        this.featureMap.put(name, new Boolean(value));
+        this.featureMap.put(name, Boolean.valueOf(value));
     }
 
     /**

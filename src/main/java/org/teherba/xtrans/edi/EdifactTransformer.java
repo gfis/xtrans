@@ -1,12 +1,13 @@
 /*  Transforms UN/Edifact messages
     @(#) $Id: EdifactTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2024-12-26: deprecations
     2016-10-16: UNA was not properly transformed into XML
     2010-06-23: initialize -> setEditSeparators
     2008-07-07, Dr. Georg Fischer: copied from SWIFTTransformer
     caution, encoded in UTF-8: äöüÄÖÜß
 */
 /*
- * Copyright 2008 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2008 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -287,7 +288,7 @@ public class EdifactTransformer extends CharTransformer {
                         fireEmptyElement(COMPONENT_DATA_TAG + Integer.toString(++ componentDataIndex));                     
                         state = IN_DATA_ELEMENT;
                     } else if (ch == releaseIndicator) {
-                        stack.push(new Integer(state));
+                        stack.push(Integer.valueOf(state));
                         state = IN_RELEASE;
                     } else if (ch == decimalNotation) {
                         if (toISO20022) {
@@ -333,7 +334,7 @@ public class EdifactTransformer extends CharTransformer {
                         popXML();
                         // state = IN_COMPONENT_DATA_ELEMENT;
                     } else if (ch == releaseIndicator) {
-                        stack.push(new Integer(state));
+                        stack.push(Integer.valueOf(state));
                         state = IN_RELEASE;
                     } else if (ch == decimalNotation) {
                         if (toISO20022) {

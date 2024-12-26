@@ -8,7 +8,7 @@
     2007-12-18, Georg Fischer: copied from CountingSerializer
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,12 +47,12 @@ import  org.apache.logging.log4j.LogManager;
  *  Each type of information is encoded by a specific bit
  *  in the integer option <em>mask</em> as follows:
  *  <table><caption>Mask Bits</caption>
- *  <tr><td align="right">  1</td><td>system properties in the JVM</td></tr>
- *  <tr><td align="right">  2</td><td>environment variables of the operating system</td></tr>
- *  <tr><td align="right">  4</td><td>pathes</td></tr>
- *  <tr><td align="right">  8</td><td>current date and time (default)</td></tr>
- *  <tr><td align="right"> 16</td><td>character sets supported by the JVM</td></tr>
- *  <tr><td align="right"> 32</td><td>available JDBC drivers and their properties</td></tr>
+ *  <tr><td>  1</td><td>system properties in the JVM</td></tr>
+ *  <tr><td>  2</td><td>environment variables of the operating system</td></tr>
+ *  <tr><td>  4</td><td>pathes</td></tr>
+ *  <tr><td>  8</td><td>current date and time (default)</td></tr>
+ *  <tr><td> 16</td><td>character sets supported by the JVM</td></tr>
+ *  <tr><td> 32</td><td>available JDBC drivers and their properties</td></tr>
  *  </table>
  *  <p>
  *  There is no round-trip identity.

@@ -4,7 +4,7 @@
     2007-05-02, Georg Fischer: copied from JCLTransformer
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer atgmaildotcom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,14 +120,14 @@ public class ExtraTransformer extends CharTransformer {
         setFileExtensions("grm");
     } // Constructor()
 
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         putEntityReplacements();
-	} // initialize
+    } // initialize
 
     //////////////////////
     // SAX event generator
@@ -419,14 +419,14 @@ public class ExtraTransformer extends CharTransformer {
         String nl = System.getProperty("line.separator");
         openElement = "";
         ruleCount   = 0;
-		startGrammarToken = nl + "[";
-		endGrammarToken   = "]" + nl;
-		startRuleToken    = " = ";
-		endRuleToken      = nl + ".";
-		startProdToken    = "\t| ";
-		endProdToken      = "";
-		startTransToken   = " => ";
-		endTransToken     = "";
+        startGrammarToken = nl + "[";
+        endGrammarToken   = "]" + nl;
+        startRuleToken    = " = ";
+        endRuleToken      = nl + ".";
+        startProdToken    = "\t| ";
+        endProdToken      = "";
+        startTransToken   = " => ";
+        endTransToken     = "";
     }
     
     /** Receive notification of the start of an element.
@@ -514,9 +514,9 @@ public class ExtraTransformer extends CharTransformer {
         } else if (qName.equals(SYM_TAG    )) { 
             lineBuffer.append(" ");
         } else if (qName.equals(TRANS_TAG  )) {
-        	lineBuffer.append(endTransToken); 
+            lineBuffer.append(endTransToken); 
         } else if (qName.equals(PROD_TAG   )) { 
-        	lineBuffer.append(endProdToken); 
+            lineBuffer.append(endProdToken); 
             charWriter.print(lineBuffer.toString());
             lineBuffer.setLength(0);
         } else if (qName.equals(TERM_TAG   )) { 
