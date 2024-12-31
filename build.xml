@@ -22,7 +22,7 @@
     -ruby (anyway)
 -->
 <!--
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -111,12 +111,12 @@
                 <include name="TeeFilter.java"             />
                 <include name="XMLTransformer.java"        />
                 <include name="XtransFactory.java"         />
-            </fileset>          
+            </fileset>
         </copy>
         <copy toDir="../dbat/src/main/java/org/teherba/xtrans/pseudo">
             <fileset dir="src/main/java/org/teherba/xtrans/pseudo">
                 <include name="LevelFilter.java"     />
-            </fileset>          
+            </fileset>
         </copy>
     </target>
 
