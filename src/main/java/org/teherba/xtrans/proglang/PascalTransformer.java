@@ -4,7 +4,7 @@
     2008-01-21, Georg Fischer: copied from JavaTransformer
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,13 +46,13 @@ public class PascalTransformer extends ProgLangTransformer {
         setFileExtensions("pas,tpu");
     } // Constructor
 
-	/** Initializes the (quasi-constant) global structures and variables
-	 *  common to generator and serializer.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables
+     *  common to generator and serializer.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         minColumn   = 0; // take whole line for source text
         maxColumn   = HIGH_COLUMN;
         bothStringTypes = true;
@@ -60,15 +60,15 @@ public class PascalTransformer extends ProgLangTransformer {
         doubleInnerApos = true;
         pascalComments  = true;
         escapeCode      = LANG_PASCAL;
-	} // initialize
-	
+    } // initialize
+
     /** Prepares the class.
      *  Does all heavy-weight initialization.
      */
     protected void prepareGenerator() {
         super.prepareGenerator();
         keywords = new String[] { "()"
-		, "and"
+        , "and"
         , "array"
         , "begin"
         , "case"
@@ -120,38 +120,38 @@ public class PascalTransformer extends ProgLangTransformer {
     // SAX content handler //
     /////////////////////////
 
-	/** Writes the start of a target comment.
-	 *  @param qName the qualified name (with prefix),
-	 *  or the empty string if qualified names are not available.
-	 *  @param attrs the attributes attached to the element.
-	 *  If there are no attributes, it shall be an empty Attributes object.
-	 */
-	protected void writeCommentStart(String qName, Attributes attrs) {
-		commentModeAttr = attrs.getValue(MODE_ATTR);
-		if (qName.equals(COMMENT_TAG   )) {
-			if (false) {
-			} else if (commentModeAttr == null 
-					|| commentModeAttr.equals(COMMENT_MODE))  {
-	            saxBuffer.append      (PAS_COMMENT_START );
-	        } else if (commentModeAttr.equals(DOCUMENT_MODE)) {
-	            saxBuffer.append      (PAS_COMMENT2_START);
-	        } 
-		}
-	} // writeCommentStart
+    /** Writes the start of a target comment.
+     *  @param qName the qualified name (with prefix),
+     *  or the empty string if qualified names are not available.
+     *  @param attrs the attributes attached to the element.
+     *  If there are no attributes, it shall be an empty Attributes object.
+     */
+    protected void writeCommentStart(String qName, Attributes attrs) {
+        commentModeAttr = attrs.getValue(MODE_ATTR);
+        if (qName.equals(COMMENT_TAG   )) {
+            if (false) {
+            } else if (commentModeAttr == null
+                    || commentModeAttr.equals(COMMENT_MODE))  {
+                saxBuffer.append      (PAS_COMMENT_START );
+            } else if (commentModeAttr.equals(DOCUMENT_MODE)) {
+                saxBuffer.append      (PAS_COMMENT2_START);
+            }
+        }
+    } // writeCommentStart
 
-	/** Writes the end   of a target comment.
-	 *  @param qName tag which specifies the subtype of the comment
-	 */
-	protected void writeCommentEnd  (String qName) {
-		if (qName.equals(COMMENT_TAG  )) {
-			if (false) {
-			} else if (commentModeAttr == null 
-					|| commentModeAttr.equals(COMMENT_MODE)) {
-	            saxBuffer.append      (PAS_COMMENT_END   );
-	        } else if (commentModeAttr.equals(DOCUMENT_MODE)) {
-	            saxBuffer.append      (PAS_COMMENT2_END  );
-	        } 
-		}
-	} // writeCommentEnd
+    /** Writes the end   of a target comment.
+     *  @param qName tag which specifies the subtype of the comment
+     */
+    protected void writeCommentEnd  (String qName) {
+        if (qName.equals(COMMENT_TAG  )) {
+            if (false) {
+            } else if (commentModeAttr == null
+                    || commentModeAttr.equals(COMMENT_MODE)) {
+                saxBuffer.append      (PAS_COMMENT_END   );
+            } else if (commentModeAttr.equals(DOCUMENT_MODE)) {
+                saxBuffer.append      (PAS_COMMENT2_END  );
+            }
+        }
+    } // writeCommentEnd
 
 } // class PascalTransformer

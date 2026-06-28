@@ -158,7 +158,11 @@ public class MainTransformer {
      */
     public static void main(String args[]) {
         MainTransformer mainTransformer = new MainTransformer();
-        mainTransformer.processFile(args);
+        if (args.length == 0) {
+            mainTransformer.factory.printHelp();
+        } else {
+            mainTransformer.processFile(args);
+        }
     } // main
 
 } // MainTransformer

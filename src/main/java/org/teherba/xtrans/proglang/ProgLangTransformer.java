@@ -1,5 +1,6 @@
 /*  Abstract base class for all programming language transformers
     @(#) $Id: ProgLangTransformer.java 801 2011-09-12 06:16:01Z gfis $
+    2026-06-28: strings in backticks
     2017-05-28: javadoc 1.8
     2010-06-16: tokenStack (successor of tagStack)
     2010-06-09: collapse string and comment tags to one with mode attribute; se and ee
@@ -159,11 +160,11 @@ public abstract class ProgLangTransformer extends CharTransformer {
     public static final String VAL_ATTR             = "v";
 
     /** value for the mode attribute of a single (apostrophe) quoted string */
-    public static final String ASTRING_MODE         = "ap";
+    public static final String ASTRING_MODE         = "ap";   // apostrophes
     /** value for the mode attribute of a backticks           quoted string */
-    public static final String BSTRING_MODE         = "bt";
+    public static final String BSTRING_MODE         = "bt";   // backticks
     /** value for the mode attribute of a double              quoted string */
-    public static final String DSTRING_MODE         = "dq";
+    public static final String DSTRING_MODE         = "dq";   // double quotes
 
     /** value of the mode attribute for a normal comment starting with slash asterisk */
     public static final String COMMENT_MODE         = "cm";
@@ -196,12 +197,12 @@ public abstract class ProgLangTransformer extends CharTransformer {
     protected static final String PRAGMA_START      = "#";  // for C
     /** string for end   of comment */
     protected static final String COMMENT_END       = "*/";
-    /** string for end   of comment (Pascal) */
-    protected static final String PAS_COMMENT_END   = "}";
     /** string for end   of document comment */
     protected static final String DOCUMENT_START    = "/*";
     /** string for end   of document comment */
     protected static final String DOCUMENT_END      = "*/";
+    /** string for end   of comment (Pascal) */
+    protected static final String PAS_COMMENT_END   = "}";
     /** string for end   of comment (Pascal) */
     protected static final String PAS_COMMENT2_END  = "*)";
     /** string for end   of line comment */
@@ -223,33 +224,39 @@ public abstract class ProgLangTransformer extends CharTransformer {
     protected int language;
     // enumerations for 'language' in alphabetical order, codes in implementation order
     /** code for C language */
-    protected static final int LANG_C       =  5;
+    protected static final int LANG_C            =  5;
     /** code for Cobol language */
-    protected static final int LANG_COBOL   = 11;
+    protected static final int LANG_COBOL        = 11;
     /** code for C++ language */
-    protected static final int LANG_CPP     =  6;
-    /** code for the Cascaded Style Sheet language */
-    protected static final int LANG_CSS     =  8;
+    protected static final int LANG_CPP          =  6;
+    /** code for Cascaded Style Sheets */
+    protected static final int LANG_CSS          =  8;
     /** code for Java language */
-    protected static final int LANG_JAVA    =  1;
+    protected static final int LANG_JAVA         =  1;
     /** code for JavaScript language */
-    protected static final int LANG_JS      =  4;
+    protected static final int LANG_JS           =  4;
+    /** code for JavaScript language */
+    protected static final int LANG_MAPLE        = 14;
+    /** code for Java language */
+    protected static final int LANG_MATHEMATICA  = 15;
+    /** code for Java language */
+    protected static final int LANG_PARI         = 16;
     /** code for Pascal language */
-    protected static final int LANG_PASCAL  =  7;
+    protected static final int LANG_PASCAL       =  7;
     /** code for Perl language */
-    protected static final int LANG_PERL    = 12;
+    protected static final int LANG_PERL         = 12;
     /** code for PL/1 language */
-    protected static final int LANG_PL1     =  2;
+    protected static final int LANG_PL1          =  2;
     /** code for REXX language */
-    protected static final int LANG_REXX    =  3;
+    protected static final int LANG_REXX         =  3;
     /** code for Ruby language */
-    protected static final int LANG_RUBY    = 13;
+    protected static final int LANG_RUBY         = 13;
     /** code for SQL language */
-    protected static final int LANG_SQL     =  9;
+    protected static final int LANG_SQL          =  9;
     /** code for unspecified language */
-    protected static final int LANG_UNDEF   =  0;
+    protected static final int LANG_UNDEF        =  0;
     /** code for VisualBasic language */
-    protected static final int LANG_VBA     = 10;
+    protected static final int LANG_VBA          = 10;
 
     /** Gets the language.
      *  @return language code
@@ -412,7 +419,7 @@ public abstract class ProgLangTransformer extends CharTransformer {
     protected static final int IN_IDENTIFIER    =  5;
     /** state in a number (sequence of digits) */
     protected static final int IN_NUMBER        =  6;
-    /** state in a string */
+    /** state in a string enclosed in \" */
     protected static final int IN_QUOTE         =  7;
     /** state in a string */
     protected static final int IN_SINGLE_QUOTE  =  8;
@@ -422,6 +429,8 @@ public abstract class ProgLangTransformer extends CharTransformer {
     protected static final int IN_TABS          = 10;
     /** state after a "&lt;" */
     protected static final int IN_ANGLE         = 11;
+    /** state in a string enclosed in backticks */
+    protected static final int IN_BACKTICK      = 12;
 
     /** number of spaces before an element */
     protected int spaceCount;
@@ -863,7 +872,7 @@ public abstract class ProgLangTransformer extends CharTransformer {
                             fireEmptyElement(OPERATOR_TAG, spaceAndValAttr(line.substring(linePos, linePos + 1)));
                             break;
                         case '{':
-                            if (pascalComments) {
+                            if (escapeCode == LANG_PASCAL) { // if(pascalComments) {
                                 linePos = matchParenthesis(line, linePos, trap);
                             } else {
                                 // fireStartElement(CURLY_TAG , spaceAttribute());
@@ -932,7 +941,7 @@ public abstract class ProgLangTransformer extends CharTransformer {
                             tabCount = 1;
                             state = IN_TABS;
                             break;
-                        case '\'':
+                        case '\'': // apostrophe
                             switch (escapeCode) {
                                 case LANG_JAVA:
                                 case LANG_VBA:
@@ -953,7 +962,13 @@ public abstract class ProgLangTransformer extends CharTransformer {
                                     buffer.setLength(0);
                                     break;
                             } // switch escapeCode
-                        /*
+                            break;
+                        case '`': // backtick
+                            state = IN_BACKTICK;
+                            fireStartElement(STRING_TAG, spaceAndModeAttr(BSTRING_MODE));
+                            buffer.setLength(0);
+                            break;
+                      /*
                         */
                         /*
                             if (bothStringTypes) {
@@ -964,8 +979,7 @@ public abstract class ProgLangTransformer extends CharTransformer {
                                 linePos = matchCharacter(line, linePos, trap );
                             }
                         */
-                            break;
-                        case '\"':
+                        case '\"': // quote
                             state = IN_QUOTE;
                             fireStartElement(STRING_TAG, spaceAndModeAttr(DSTRING_MODE));
                             buffer.setLength(0);
@@ -1047,6 +1061,32 @@ public abstract class ProgLangTransformer extends CharTransformer {
                             break;
                     } // switch ch
                     break; // IN_APOS
+
+                case IN_BACKTICK:
+                    switch (ch) {
+                        case '`': // 2nd backtick
+                            state = IN_TEXT;
+                            fireCharacters(replaceInSource(buffer.toString()));
+                            fireEndElement(STRING_TAG);
+                            break;
+                        case '\\':
+                            switch (escapeCode) {
+                                case LANG_REXX:
+                                case LANG_PL1:
+                                case LANG_VBA:
+                                    buffer.append(ch);
+                                    break;
+                                default:
+                                    prevState = state;
+                                    state = IN_BACKSLASH;
+                                    break;
+                            } // switch escapeCode
+                            break;
+                        default:
+                            buffer.append(ch);
+                            break;
+                    } // switch ch
+                    break; // IN_BACKTICK
 
                 case IN_QUOTE:
                     switch (ch) {
@@ -1289,6 +1329,8 @@ public abstract class ProgLangTransformer extends CharTransformer {
     protected boolean saxInComment;
     /** character which encloses PL/1 string constants */
     protected char saxApos;
+    /** character which encloses commands to be executed */
+    protected char saxBacktick;
     /** character which encloses C string constants */
     protected char saxQuote;
     /** value of the mode attribute of some elements - which cannot be nested */
@@ -1325,7 +1367,7 @@ public abstract class ProgLangTransformer extends CharTransformer {
         while (pos < source.length()) {
             char ch = source.charAt(pos ++);
             switch (ch) {
-                case '\'':
+                case '\'': // apostrophe
                     if (saxInString) {
                         if (doubleInnerApos) {
                             result.append("\'\'");
@@ -1340,7 +1382,8 @@ public abstract class ProgLangTransformer extends CharTransformer {
                         result.append(ch);
                     }
                     break;
-                case '\"':
+                // leave backticks
+                case '\"': // double quote
                     if (saxInString) {
                         if (doubleInnerApos) {
                             result.append("\"\"");
@@ -1456,15 +1499,16 @@ public abstract class ProgLangTransformer extends CharTransformer {
             log.error(exc.getMessage(), exc);
         }
         putEntityReplacements();
-        saxApos     = '\''; // for PL/1, REXX ...
-        saxQuote    = '\"'; // for Java, C ...
-        saxBuffer   = new StringBuffer(MAX_BUF); // a rather long portion
-        saxLine     = new StringBuffer(MAX_BUF); // a rather long line
-        saxPrefix   = null;
-        saxPostfix  = null;
-        saxColumn   = 0;
-        saxInString = false;
-        saxInComment= false;
+        saxApos         = '\''; // for PL/1, REXX ...
+        saxBacktick     = '`'; // for Perl, Maple ...
+        saxQuote        = '\"'; // for Java, C ...
+        saxBuffer       = new StringBuffer(MAX_BUF); // a rather long portion
+        saxLine         = new StringBuffer(MAX_BUF); // a rather long line
+        saxPrefix       = null;
+        saxPostfix      = null;
+        saxColumn       = 0;
+        saxInString     = false;
+        saxInComment    = false;
         forceUpperCase  = ! getOption("uc", "false").startsWith("f");
     } // startDocument
 
@@ -1650,6 +1694,8 @@ public abstract class ProgLangTransformer extends CharTransformer {
             if (false) {
             } else if (modeAttr == null || modeAttr.equals(ASTRING_MODE)) {
                 saxBuffer.append(saxApos);
+            } else if (modeAttr.equals(BSTRING_MODE)) {
+                saxBuffer.append(saxBacktick);
             } else if (modeAttr.equals(DSTRING_MODE)) {
                 saxBuffer.append(saxQuote);
             }
@@ -1720,6 +1766,8 @@ public abstract class ProgLangTransformer extends CharTransformer {
             if (false) {
             } else if (modeAttr == null || modeAttr.equals(ASTRING_MODE)) {
                 saxBuffer.append(saxApos);
+            } else if (modeAttr.equals(BSTRING_MODE)) {
+                saxBuffer.append(saxBacktick);
             } else if (modeAttr.equals(DSTRING_MODE)) {
                 saxBuffer.append(saxQuote);
             }

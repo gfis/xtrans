@@ -1,6 +1,7 @@
 /*  Pseudo transformer which serializes an XML representation of a program;
     cannot generate XML
     @(#) $Id: ProgramSerializer.java 668 2011-04-06 06:43:17Z gfis $
+    2026-06-28: print "\n" only behind end tags
     2016-10-13: less imports
     2011-04-06: without processArgs, main
     2010-06-09: collapse string and comment tags to one with mode attribute; se and ee
@@ -202,7 +203,7 @@ public class ProgramSerializer extends ProgLangTransformer {
                 saxToken = new Token(false, qName, null, programName, saxTokenNo);
                 break;
         } // switch category
-        charWriter.println(saxToken.toString());
+        charWriter.print(saxToken.toString() + "\n");
     } // endElement
 
     /** Receive notification of character data inside an element.

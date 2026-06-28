@@ -364,8 +364,10 @@ public class XtransFactory {
             int iarg = 0;
             while (iarg < args.length) { // evaluate all commandline arguments
                 String arg = args[iarg ++];
-                if (arg.length() == 0) {
-                    // ignore empty string array elements
+                if (args.length == 0) {
+                    printHelp();
+                } else if (arg.startsWith("-help" )) {
+                    printHelp();
                 } else if (arg.startsWith("-filt" )) { // -filter
                     if (iarg >= args.length) {
                         log.error(arg + " must be followed by filter format");
@@ -499,6 +501,12 @@ public class XtransFactory {
         generator .closeAll(fileNames);
         serializer.closeAll(fileNames);
     } // closeFiles
+
+    /** Print program usage information on STDOUT.
+     */
+    public void printHelp() {
+        System.err.println(toString());
+    } // printHelp
 
     /** Runs an XML generator, a series of XSLT transformations
      *  (either with a stylesheet or a translet) and an XML serializer.
