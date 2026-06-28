@@ -4,7 +4,7 @@
     2006-10-02, Georg Fischer
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,11 +28,11 @@ import  java.nio.channels.Channels;
 import  java.nio.channels.ReadableByteChannel;
 import  java.nio.channels.WritableByteChannel;
 
-/** Filters lines depending on the characters in column 1 of the source file. 
+/** Filters lines depending on the characters in column 1 of the source file.
  *  The input file lines which should contain either:
  *  <ul>
  *  <li>a lowercase letter, which copies the line if and only if this letter is selected</li>
- *  <li>an uppercase letter, which copies the line for all selections <em>different from</em> 
+ *  <li>an uppercase letter, which copies the line for all selections <em>different from</em>
  *  the corresponding lowercase letter</li>
  *  <li>whitespace, which copies the line according to the previously active mode</li>
  *  <li>a punctuation character, which switches to unconditional line copy mode</li>
@@ -43,7 +43,7 @@ b   private byte[] buffer;
 c   private StringBuffer buffer;
 n   private StringBuffer buffer;
 b   public ByteRecord(int bsize) {
-        buffer = new byte[bsize]; 
+        buffer = new byte[bsize];
 c   public CharRecord(int bsize) {
         buffer = new StringBuffer (bsize);
         buffer.setLength(0); // empty at the beginning
@@ -56,17 +56,17 @@ A       log = LogManager.getLogger(ByteRecord.class.getName());
  *  </pre>
  *  @author Dr. Georg Fischer
  */
-public class LineSplitter { 
+public class LineSplitter {
     public final static String CVSID = "@(#) $Id: LineSplitter.java 9 2008-09-05 05:21:15Z gfis $";
 
-    /**	Filters lines depending on the characters in column 1.
+    /** Filters lines depending on the characters in column 1.
      *  @param args commandline arguments: -s char [file1 [file2]
      *  <pre>
      *  no  filename:  convert from stdin to stdout;
      *  one filename:  convert from file1 to stdout;
      *  two filenames: convert from file1 to file2;
      *  -s: character to be selected
-     *	</pre>
+     *  </pre>
      */
     public static void main(String args[]) {
         int iarg = 0;
@@ -74,7 +74,7 @@ public class LineSplitter {
         String enc1 = "ISO-8859-1";
         String enc2 = enc1; // "UTF-8";
         char selector = '=';
-        
+
         while (iarg < args.length && args[iarg].startsWith("-")) { // process options
             String option = args[iarg ++].substring(1);
             if (false) {}
@@ -86,12 +86,12 @@ public class LineSplitter {
                 }
             } // -s
         } // while options
-        
+
         try {
-            ReadableByteChannel source = iarg < args.length 
+            ReadableByteChannel source = iarg < args.length
                     ? (new FileInputStream (args[iarg ++])).getChannel()
                     : Channels.newChannel(System.in);
-            WritableByteChannel target = iarg < args.length 
+            WritableByteChannel target = iarg < args.length
                     ? (new FileOutputStream (args[iarg ++])).getChannel()
                     : Channels.newChannel(System.out);
             BufferedReader reader = new BufferedReader(Channels.newReader(source, enc1));
@@ -117,9 +117,9 @@ public class LineSplitter {
                 if (col1 == selector) { // right prefix
                     writer.println(line.substring(offset));
                     selected = true;
-                } else if (Character.isLowerCase(col1)) { 
+                } else if (Character.isLowerCase(col1)) {
                     // letter, but wrong prefix
-                } else if (Character.isUpperCase(col1)) { 
+                } else if (Character.isUpperCase(col1)) {
                     // do not copy if corresponding lowercase letter is selected
                     if (Character.toLowerCase(col1) != selector) {
                         writer.println(line.substring(offset));

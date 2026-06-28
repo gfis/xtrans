@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: build.xml 967 2012-08-29 18:22:10Z gfis $
+    2026-06-28: gen.record uses LineSplitter.java as source file, without xtrans.jar
     2017-05-27: copy.dbat with DummyEntityResolver, TeeFilter
     2016-09-11: fill.lib
     2016-09-02: properties ${tomcat.*}, core.jar
@@ -22,7 +23,7 @@
     -ruby (anyway)
 -->
 <!--
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2008 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +41,7 @@
 <project name="xtrans" default="all" basedir=".">
     <!-- the 5 needed for build-import.xml -->
     <property name="app.name"           value="xtrans" />
-    <property name="app.version"        value="2.0" />
+    <property name="app.version"        value="2.1" />
     <property name="app.main-class"     value="org.teherba.xtrans.MainTransformer"/>
     <property name="tomcat.base"        value="/var/lib/tomcat" />
     <property name="tomcat.home"        value="/usr/share/tomcat" />
@@ -111,12 +112,12 @@
                 <include name="TeeFilter.java"             />
                 <include name="XMLTransformer.java"        />
                 <include name="XtransFactory.java"         />
-            </fileset>          
+            </fileset>
         </copy>
         <copy toDir="../dbat/src/main/java/org/teherba/xtrans/pseudo">
             <fileset dir="src/main/java/org/teherba/xtrans/pseudo">
                 <include name="LevelFilter.java"     />
-            </fileset>          
+            </fileset>
         </copy>
     </target>
 
@@ -139,22 +140,22 @@
     -->
     <target name="gen.record" depends="check.gen.record" unless="no.gen.record">
         <echo message="generating BaseRecord.java, ByteRecord.java, CharRecord.java and BeanRecord.java" />
-        <java classname="org.teherba.xtrans.LineSplitter" classpathref="compile.classpath" fork="true">
+        <java sourcefile="${src.home}/org/teherba/xtrans/LineSplitter.java" fork="true">
             <arg value="-s" /><arg value="a" />
             <arg value="${src.home}/org/teherba/xtrans/Records.txt" />
             <arg value="${src.home}/org/teherba/xtrans/BaseRecord.java" />
         </java>
-        <java classname="org.teherba.xtrans.LineSplitter" classpathref="compile.classpath" fork="true">
+        <java sourcefile="${src.home}/org/teherba/xtrans/LineSplitter.java" fork="true">
             <arg value="-s" /><arg value="b" />
             <arg value="${src.home}/org/teherba/xtrans/Records.txt" />
             <arg value="${src.home}/org/teherba/xtrans/ByteRecord.java" />
         </java>
-        <java classname="org.teherba.xtrans.LineSplitter" classpathref="compile.classpath" fork="true">
+        <java sourcefile="${src.home}/org/teherba/xtrans/LineSplitter.java" fork="true">
             <arg value="-s" /><arg value="c" />
             <arg value="${src.home}/org/teherba/xtrans/Records.txt" />
             <arg value="${src.home}/org/teherba/xtrans/CharRecord.java" />
         </java>
-        <java classname="org.teherba.xtrans.LineSplitter" classpathref="compile.classpath" fork="true">
+        <java sourcefile="${src.home}/org/teherba/xtrans/LineSplitter.java" fork="true">
             <arg value="-s" /><arg value="n" />
             <arg value="${src.home}/org/teherba/xtrans/Records.txt" />
             <arg value="${src.home}/org/teherba/xtrans/BeanRecord.java" />

@@ -1,5 +1,6 @@
 /*  BaseRecord.java - common methods for record access
  *  @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
+ *  2026-06-28: new log package org.apache.logging.log4j 
  *  2017-07-24: tabs and spaces
  *  2017-05-27: javadoc 1.8
  *  2016-10-14: Date, Timestamp, Attributes and SAXException only for "a"

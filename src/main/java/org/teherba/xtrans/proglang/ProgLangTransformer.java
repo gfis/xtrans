@@ -12,7 +12,7 @@
     2007-10-29, Georg Fischer: extracted from JavaTransformer
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1315,7 +1315,7 @@ public abstract class ProgLangTransformer extends CharTransformer {
     } // flushBuffer
 
     /** Replaces all non-printable/non-ASCII characters by their
-     *  C-language escape (with backslash, unicode if &gt;= 0x80)
+     *  C-language escape (with backslash, Unicode if &gt;= 0x80)
      *  @param source string in which characters are replaced
      *  @return traget string with backslash escapes
      */
@@ -1419,7 +1419,7 @@ public abstract class ProgLangTransformer extends CharTransformer {
             }
             saxLine.append(saxPostfix);
         }
-        charWriter.println(saxLine.toString());
+        charWriter.print(saxLine.toString() + "\n");
         saxPrefix  = null;
         saxPostfix = null;
         saxLine.setLength(0);

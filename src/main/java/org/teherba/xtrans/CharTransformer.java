@@ -6,7 +6,7 @@
     2006-09-20: copied from BaseTransformer
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,23 +31,23 @@ import  org.xml.sax.SAXParseException;
 import  org.apache.logging.log4j.Logger;
 import  org.apache.logging.log4j.LogManager;
 
-/** Base class for character file format transformers 
+/** Base class for character file format transformers
  *  defining common properties and methods.
- *  
+ *
  *  @author Dr. Georg Fischer
  */
 public abstract class CharTransformer extends BaseTransformer {
     public final static String CVSID = "@(#) $Id: CharTransformer.java 566 2010-10-19 16:32:04Z gfis $";
-    
+
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** No-args Constructor
      */
     public CharTransformer() {
         super();
     } // Constructor
-    
+
     /** Initializes the (quasi-constant) global structures and variables.
      *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
      *  selected generator and serializer.
@@ -56,7 +56,7 @@ public abstract class CharTransformer extends BaseTransformer {
         super.initialize();
         log = LogManager.getLogger(CharTransformer.class.getName());
     } // initialize
-    
+
     /** Tells that this specific format is a binary format
      *  @return false if character format, true for binary
      */
@@ -67,7 +67,7 @@ public abstract class CharTransformer extends BaseTransformer {
 
     /** Some formats are based on a character record */
     protected CharRecord record;
-    
+
     /** Sets the underlying record
      *  @param subclassRecord character record for some subclass format
      */
@@ -84,7 +84,7 @@ public abstract class CharTransformer extends BaseTransformer {
     /*=============*/
     /* Generator   */
     /*=============*/
-    
+
     /** Transforms from the specified format to XML
      *  @return whether the transformation was successful
      */
@@ -113,7 +113,7 @@ public abstract class CharTransformer extends BaseTransformer {
 
     /** Some formats are based on a character record */
     protected CharRecord saxRecord;
-    
+
     /** Sets the underlying record for SAX event processing
      *  @param subclassRecord character record for some subclass format
      */
@@ -123,10 +123,10 @@ public abstract class CharTransformer extends BaseTransformer {
 
     /** Receive notification of the beginning of the document,
      *  and initialize the outgoing handler for a filter.
-     *  @throws SAXException - any SAX exception, 
+     *  @throws SAXException - any SAX exception,
      *  possibly wrapping another exception
      */
-    public void startDocument() 
+    public void startDocument()
             throws SAXException {
         try {
             super.startDocument();
@@ -134,20 +134,20 @@ public abstract class CharTransformer extends BaseTransformer {
             log.error(exc.getMessage(), exc);
         }
     } // startDocument
-    
+
     /** Receive notification of the start of an element.
      *  Pass processing to generated code in <em>AEB43RecordBase</em>.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      *  @throws SAXException for any SAX error
      */
-    public void startElement(String uri, String localName, String qName, Attributes attrs) 
+    public void startElement(String uri, String localName, String qName, Attributes attrs)
             throws SAXException {
         if (namespace.length() > 0 && qName.startsWith(namespace)) {
             qName = qName.substring(namespace.length());
@@ -158,13 +158,13 @@ public abstract class CharTransformer extends BaseTransformer {
             throw new SAXException("error in startElement ", exc);
         }
     } // startElement
-    
+
     /** Receive notification of the end of an element.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
@@ -179,7 +179,7 @@ public abstract class CharTransformer extends BaseTransformer {
     /** Receive notification of character data inside an element.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param length the number of characters to use from the character array. 
+     *  @param length the number of characters to use from the character array.
      */
     public void characters(char[] ch, int start, int length) {
         charWriter.print(replaceInResult(new String(ch, start, length)));

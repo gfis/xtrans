@@ -3,6 +3,7 @@ b/*  ByteRecord.java - access methods for byte fields and EBCDIC conversion
 c/*  CharRecord.java - access methods for character fields
 n/*  BeanRecord.java - access methods for properties of a bean
 = *  @(#) $Id: Records.txt 524 2010-07-28 18:23:40Z gfis $
+  *  2026-06-28: new log package org.apache.logging.log4j 
   *  2017-07-24: tabs and spaces
   *  2017-05-27: javadoc 1.8
   *  2016-10-14: Date, Timestamp, Attributes and SAXException only for "a"
@@ -41,7 +42,8 @@ aimport  java.sql.Date;
 aimport  java.text.SimpleDateFormat;
  import  org.xml.sax.Attributes;
  import  org.xml.sax.SAXException;
-=import  org.apache.log4j.Logger;
+=import  org.apache.logging.log4j.Logger;
+=import  org.apache.logging.log4j.LogManager;
 
  /**
 a * Abstract
@@ -129,18 +131,18 @@ A
       */
 b    public ByteRecord(int bsize) {
          buffer = new byte[bsize];
-         log = Logger.getLogger(ByteRecord.class.getName());
+         log = LogManager.getLogger(ByteRecord.class.getName());
          padChar = (byte) ' ';
          encoding = "ISO-8859-1";
 c    public CharRecord(int bsize) {
          buffer = new StringBuffer(bsize);
          buffer.setLength(0); // empty at the beginning
-         log = Logger.getLogger(CharRecord.class.getName());
+         log = LogManager.getLogger(CharRecord.class.getName());
          padChar = ' ';
 n    public BeanRecord(int bsize) {
          buffer = new StringBuffer(bsize);
          buffer.setLength(0); // empty at the beginning
-         log = Logger.getLogger(BeanRecord.class.getName());
+         log = LogManager.getLogger(BeanRecord.class.getName());
          padChar = ' ';
          bufferSize = bsize;
 b    } // ByteRecord

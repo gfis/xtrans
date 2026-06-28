@@ -10,7 +10,7 @@
  *  2006-10-12: copied from gramword
  */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,21 +38,21 @@ import  org.apache.logging.log4j.LogManager;
 
 /** This program is a filter which reads a file in some foreign format,
  *  converts it to XML, feeds that into one or more XSLT transformations
- *  (which may be supplied as stylesheet source files or as translets), 
+ *  (which may be supplied as stylesheet source files or as translets),
  *  and/or filter classes from this package,
- *  and finally serializes the output to a file in the same or some different 
- *  foreign format. 
+ *  and finally serializes the output to a file in the same or some different
+ *  foreign format.
  *  <p>
  *  The main method reads processing parameter (formats, filenames, filters,
  *  options) from the command line, or from lines in an input file (behind -f).
  *  @author Dr. Georg Fischer
  */
-public class MainTransformer { 
+public class MainTransformer {
     public final static String CVSID = "@(#) $Id: MainTransformer.java 966 2012-08-29 07:06:07Z gfis $";
 
     /** log4j logger (category) */
     public Logger log;
-    
+
     /** Factory delivering transformers for different input and output file formats */
     protected XtransFactory factory;
 
@@ -70,16 +70,16 @@ public class MainTransformer {
         factory.closeFiles();
     } // closeFiles()
 
-    /** Sets the real path to the context of the web application 
+    /** Sets the real path to the context of the web application
      *  @param path path to be set
      */
     public void setRealPath(String path) {
         factory.setRealPath(path);
     } // setRealPath
-    
+
     /** Gets the generator for further configuration,
-     *  for the redirection of the input reader to an uploaded file 
-     *  @return producer of XML 
+     *  for the redirection of the input reader to an uploaded file
+     *  @return producer of XML
      */
     public BaseTransformer getGenerator() {
         return factory.getGenerator();
@@ -87,7 +87,7 @@ public class MainTransformer {
 
     /** Gets the serializer for further configuration,
      *  for the redirection of the output reader to the servlet's response
-     *  @return consumer of XML 
+     *  @return consumer of XML
      */
     public BaseTransformer getSerializer() {
         return factory.getSerializer();
@@ -109,8 +109,8 @@ public class MainTransformer {
             }
         } catch (Exception exc) {
             log.error(exc.getMessage(), exc);
-        }   
-    } // processArgs 
+        }
+    } // processArgs
 
     /** Processes the commandline arguments or a file with many commandlines
      *  @param args commandline arguments as strings, or "-f filename"
@@ -128,14 +128,14 @@ public class MainTransformer {
                 BufferedReader lineReader = new BufferedReader
                         ( (fileName == null || fileName.length() <= 0 || fileName.equals("-"))
                         ? new InputStreamReader(System.in)
-                        : new FileReader(fileName) 
+                        : new FileReader(fileName)
                         );
                 ArrayList<String> list = new  ArrayList<String>(64);
                 while ((line = lineReader.readLine()) != null) { // read lines
                     list.add(line);
                 } // while ! eof
                 lineReader.close();
-                
+
                 Iterator<String> iter = list.iterator();
                 while (iter.hasNext()) { // process lines
                     line = (String) iter.next();

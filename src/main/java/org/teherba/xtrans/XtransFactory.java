@@ -30,7 +30,7 @@
         src/main/java/org/teherba/xtrans//package.html
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -279,9 +279,9 @@ public class XtransFactory {
         }
         return handler;
     } // getFilterHandler
-    
+
     /** Gets the "tee" (duplicating) transformer.
-     *  @param duplName name of the "T" output file 
+     *  @param duplName name of the "T" output file
      *  @return the duplicating transformer writing to that output file
      */
     public TransformerHandler getTeeFilterHandler(String duplName) {

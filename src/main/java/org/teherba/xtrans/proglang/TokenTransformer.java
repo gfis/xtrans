@@ -1,6 +1,6 @@
-/*  Transformer for a representation of tokens in programs which
-    is ready to be loaded into a database table
+/*  Transformer for a representation of tokens in programs which is ready to be loaded into a database table
     @(#) $Id: TokenTransformer.java 607 2010-12-11 21:19:25Z gfis $
+    2026-06-28: skip empty input lines
     2017-05-28: javadoc 1.8
     2016-10-13: less imports
     2010-06-09: collapse string and comment tags to one with mode attribute; se and ee
@@ -8,7 +8,7 @@
     2009-12-18, Dr. Georg Fischer: copied from pseudo/TokenTransformer.java
 */
 /*
- * Copyright 2008 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2008 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,8 +100,10 @@ public class TokenTransformer extends ProgLangTransformer {
                 if (programName.length() > 0 && line.indexOf("{$name}") >= 0) {
                     line = line.replaceAll("\\{\\$name\\}", programName);
                 }
-                Token token = new Token(line);
-                token.fire(this);
+                if (line.trim().length() != 0) {
+                    Token token = new Token(line);
+                    token.fire(this);
+                }
             } // while not EOF
             buffReader.close();
             fireEndElement(ROOT_TAG);

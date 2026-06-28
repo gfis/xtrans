@@ -1,6 +1,6 @@
-/*  Transforms C++ program source files
+/*  Transforms C program source files
     @(#) $Id: CTransformer.java 566 2010-10-19 16:32:04Z gfis $
-	2008-01-21: keywords only
+    2008-01-21: keywords only
     2007-10-19, Georg Fischer: copied from ExtraTransformer
 
     Caution, for the test case to work this source file must be stored
@@ -8,7 +8,7 @@
     - with all tabs expanded to spaces
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,62 +49,62 @@ public class CTransformer extends ProgLangTransformer {
         setFileExtensions("c,h");
     } // Constructor
 
-	/** Initializes the (quasi-constant) global structures and variables
-	 *  common to generator and serializer.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+    /** Initializes the (quasi-constant) global structures and variables
+     *  common to generator and serializer.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         minColumn   = 0; // take whole line for source text
         maxColumn   = HIGH_COLUMN;
         caseIndependant = false;
         doubleInnerApos = false;
-	} // initialize
-	
+    } // initialize
+    
     /** Prepares the class.
      *  Does all heavy-weight initialization.
      */
     protected void prepareGenerator() {
         super.prepareGenerator();
         keywords = new String[] { "()"
-		, "#define"
-		, "#elif"
-		, "#else"
-		, "#endif"
-		, "#if"
-		, "#ifdef"
-		, "#ifndef"
-		, "#include"
-		, "#undef"
-		, "auto"
-		, "break"
-		, "case"
-		, "char"
-		, "continue"
-		, "default"
-		, "do"
-		, "double"
-		, "else"
-		, "entry"
-		, "extern"
-		, "float"
-		, "for"
-		, "goto"
-		, "if"
-		, "int"
-		, "long"
-		, "register"
-		, "return"
-		, "short"
-		, "sizeof"
-		, "static"
-		, "struct"
-		, "switch"
-		, "typedef"
-		, "union"
-		, "unsigned"
-		, "while"
+        , "#define"
+        , "#elif"
+        , "#else"
+        , "#endif"
+        , "#if"
+        , "#ifdef"
+        , "#ifndef"
+        , "#include"
+        , "#undef"
+        , "auto"
+        , "break"
+        , "case"
+        , "char"
+        , "continue"
+        , "default"
+        , "do"
+        , "double"
+        , "else"
+        , "entry"
+        , "extern"
+        , "float"
+        , "for"
+        , "goto"
+        , "if"
+        , "int"
+        , "long"
+        , "register"
+        , "return"
+        , "short"
+        , "sizeof"
+        , "static"
+        , "struct"
+        , "switch"
+        , "typedef"
+        , "union"
+        , "unsigned"
+        , "while"
         };
         putEntityReplacements();
         storeWords();

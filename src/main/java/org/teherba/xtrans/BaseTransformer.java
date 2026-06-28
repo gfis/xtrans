@@ -20,7 +20,7 @@
  *  (c.f. http://www.perfectxml.com/Oreilly/chapter.asp?row_id=9)
  */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -244,7 +244,7 @@ public class BaseTransformer
         sourceReplaceMap    = new HashMap<String, String>(MAX_MAP);
         resultReplaceMap    = new HashMap<String, String>(MAX_MAP);
         tagStack            = new Stack<String>();
-        newline             = System.getProperty("line.separator");
+        newline             = "\n"; // System.getProperty("line.separator");
         rootTag             = "document";
         // putEntityReplacements();
     } // initialize
