@@ -1,11 +1,12 @@
 /*  Filter which reformats ("pretty prints") SQL statements
     @(#) $Id: SQLPrettyFilter.java 616 2010-12-20 16:51:18Z gfis $
+    2024-12-26: deprecations
     2017-05-28: javadoc 1.8
     2016-10-13: less imports
     2010-12-06: Dr. Georg Fischer: copied from 'LevelFilter'
 */
 /*
- * Copyright 2010 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2010 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,28 +156,28 @@ public class SQLPrettyFilter extends TokenTransformer {
             filterTransformer.setMaxColumn(72);
         */
             keywordMap   = new HashMap/*<1.5*/<String, Character>/*1.5>*/(32);
-            keywordMap.put("SELECT" , new Character('n'));
-            keywordMap.put("FROM"   , new Character('n'));
-            keywordMap.put("WHERE"  , new Character('n'));
-            keywordMap.put("ORDER"  , new Character('n'));
-            keywordMap.put("GROUP"  , new Character('n'));
-            keywordMap.put("HAVING" , new Character('n'));
-            keywordMap.put("UNION"  , new Character('n'));
-            keywordMap.put("LEFT"   , new Character('n'));
-            keywordMap.put("RIGHT"  , new Character('n'));
-            keywordMap.put("OUTER"  , new Character('n'));
-            keywordMap.put("AND"    , new Character('n'));
-            keywordMap.put("WITH"   , new Character('n'));
-            keywordMap.put("CREATE" , new Character('n'));
-            keywordMap.put("DROP"   , new Character('n'));
-            keywordMap.put("UPDATE" , new Character('n'));
-            keywordMap.put("INSERT" , new Character('n'));
-            keywordMap.put("DELETE" , new Character('n'));
-            keywordMap.put("CASE"   , new Character('s'));
-            keywordMap.put("WHEN"   , new Character('b'));
-            keywordMap.put("ELSE"   , new Character('b'));
-            keywordMap.put("END"    , new Character('e'));
-            keywordMap.put("COMMIT" , new Character('n'));
+            keywordMap.put("SELECT" , Character.valueOf('n'));
+            keywordMap.put("FROM"   , Character.valueOf('n'));
+            keywordMap.put("WHERE"  , Character.valueOf('n'));
+            keywordMap.put("ORDER"  , Character.valueOf('n'));
+            keywordMap.put("GROUP"  , Character.valueOf('n'));
+            keywordMap.put("HAVING" , Character.valueOf('n'));
+            keywordMap.put("UNION"  , Character.valueOf('n'));
+            keywordMap.put("LEFT"   , Character.valueOf('n'));
+            keywordMap.put("RIGHT"  , Character.valueOf('n'));
+            keywordMap.put("OUTER"  , Character.valueOf('n'));
+            keywordMap.put("AND"    , Character.valueOf('n'));
+            keywordMap.put("WITH"   , Character.valueOf('n'));
+            keywordMap.put("CREATE" , Character.valueOf('n'));
+            keywordMap.put("DROP"   , Character.valueOf('n'));
+            keywordMap.put("UPDATE" , Character.valueOf('n'));
+            keywordMap.put("INSERT" , Character.valueOf('n'));
+            keywordMap.put("DELETE" , Character.valueOf('n'));
+            keywordMap.put("CASE"   , Character.valueOf('s'));
+            keywordMap.put("WHEN"   , Character.valueOf('b'));
+            keywordMap.put("ELSE"   , Character.valueOf('b'));
+            keywordMap.put("END"    , Character.valueOf('e'));
+            keywordMap.put("COMMIT" , Character.valueOf('n'));
             lineNo       = 0;
             funcLevel    = 0;
             indentLevel  = 0;

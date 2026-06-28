@@ -1,5 +1,6 @@
 /*  Transforms Java Script Object Notation to/from XML.
     @(#) $Id: JSONTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2024-12-26: deprecations
     2016-10-16: </str> was missing
     2008-07-22: new version with nested nodes
     2007-10-19: tagStack in BaseTransformer
@@ -7,7 +8,7 @@
     Caution, this file is UTF-8 encoded: äöüÄÖÜß
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -157,7 +158,7 @@ public class JSONTransformer extends CharTransformer {
      *  @param newState new state to be entered
      */
     protected void push(int newState) {
-        parseStack.push(new Integer(parseState));
+        parseStack.push(Integer.valueOf(parseState));
         parseState = newState;
     } // push
 
@@ -166,7 +167,7 @@ public class JSONTransformer extends CharTransformer {
      *  @param otherState state to be returned by next <em>pop</em>
      */
     protected void push(int newState, int otherState) {
-        parseStack.push(new Integer(otherState));
+        parseStack.push(Integer.valueOf(otherState));
         parseState = newState;
     } // push
 

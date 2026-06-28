@@ -1,11 +1,12 @@
 /*  Pseudo transformer which counts XML elements
     @(#) $Id: CountingSerializer.java 566 2010-10-19 16:32:04Z gfis $
-	2010-06-05: print result line only if count > 0
+    2024-12-26: deprecations
+    2010-06-05: print result line only if count > 0
     2007-08-30: was in package 'general'
     2007-01-03, Dr. Georg Fischer
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,16 +29,16 @@ import  org.xml.sax.Attributes;
 import  org.apache.logging.log4j.Logger;
 import  org.apache.logging.log4j.LogManager;
 
-/** Pseudo transformer which cannot generate XML, 
+/** Pseudo transformer which cannot generate XML,
  *  but which counts XML elements only.
  *  @author Dr. Georg Fischer
  */
-public class CountingSerializer extends CharTransformer { 
+public class CountingSerializer extends CharTransformer {
     public final static String CVSID = "@(#) $Id: CountingSerializer.java 566 2010-10-19 16:32:04Z gfis $";
 
     /** log4j logger (category) */
     private Logger log;
-    
+
     /** No-args Constructor.
      */
     public CountingSerializer() {
@@ -46,15 +47,15 @@ public class CountingSerializer extends CharTransformer {
         setDescription("count XML elements");
         setFileExtensions("txt");
     } // Constructor()
-    
-	/** Initializes the (quasi-constant) global structures and variables.
-	 *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
-	 *  selected generator and serializer.
-	 */
-	public void initialize() {
-		super.initialize();
+
+    /** Initializes the (quasi-constant) global structures and variables.
+     *  This method is called by the {@link org.teherba.xtrans.XtransFactory} once for the
+     *  selected generator and serializer.
+     */
+    public void initialize() {
+        super.initialize();
         log = LogManager.getLogger(CountingSerializer.class.getName());
-	} // initialize
+    } // initialize
 
     /** Transforms from the specified format to XML
      *  @return whether the transformation was successful
@@ -74,7 +75,7 @@ public class CountingSerializer extends CharTransformer {
 
     /** number of characters in direct content */
     private int charCount;
-    
+
     /** Receive notification of the beginning of the document.
      */
     public void startDocument() {
@@ -89,21 +90,21 @@ public class CountingSerializer extends CharTransformer {
         while (iter.hasNext()) {
             String key = (String) iter.next();
             int count = ((Integer) counters.get(key)).intValue();
-			if (count > 0) {
-	            charWriter.println(key + "\t" + count);
-			}
+            if (count > 0) {
+                charWriter.println(key + "\t" + count);
+            }
         }
     } // endDocument
-    
+
     /** Receive notification of the start of an element.
      *  Looks for the element which contains raw lines.
-     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri The Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
-     *  @param attrs the attributes attached to the element. 
+     *  @param attrs the attributes attached to the element.
      *  If there are no attributes, it shall be an empty Attributes object.
      */
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
@@ -112,23 +113,23 @@ public class CountingSerializer extends CharTransformer {
         }
         qName += ".elem";
         Object obj = counters.get(qName);
-        if (obj != null) { 
-            Integer counter = new Integer(((Integer) obj).intValue() + 1);
+        if (obj != null) {
+            Integer counter = Integer.valueOf(((Integer) obj).intValue() + 1);
             counters.put(qName, counter);
         } else {
-            counters.put(qName, new Integer(1));
+            counters.put(qName, Integer.valueOf(1));
         }
         charCount = 0;
     } // startElement
-    
+
     /** Receive notification of the end of an element.
      *  Looks for the element which contains raw lines.
      *  Terminates the line.
-     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI 
+     *  @param uri the Namespace URI, or the empty string if the element has no Namespace URI
      *  or if Namespace processing is not being performed.
-     *  @param localName the local name (without prefix), 
+     *  @param localName the local name (without prefix),
      *  or the empty string if Namespace processing is not being performed.
-     *  @param qName the qualified name (with prefix), 
+     *  @param qName the qualified name (with prefix),
      *  or the empty string if qualified names are not available.
      */
     public void endElement(String uri, String localName, String qName) {
@@ -137,19 +138,19 @@ public class CountingSerializer extends CharTransformer {
         }
         qName += ".char";
         Object obj = counters.get(qName);
-        if (obj != null) { 
-            Integer counter = new Integer(((Integer) obj).intValue() + charCount);
+        if (obj != null) {
+            Integer counter = Integer.valueOf(((Integer) obj).intValue() + charCount);
             counters.put(qName, counter);
         } else {
-            counters.put(qName, new Integer(charCount));
+            counters.put(qName, Integer.valueOf(charCount));
         }
         charCount = 0;
     } // endElement
-    
+
     /** Receive notification of character data inside an element.
      *  @param ch the characters.
      *  @param start the start position in the character array.
-     *  @param length the number of characters to use from the character array. 
+     *  @param length the number of characters to use from the character array.
      */
     public void characters(char[] ch, int start, int length) {
         charCount += length;

@@ -1,11 +1,12 @@
 /*  Transforms text lines with fields separated or delimited by some character string
     @(#) $Id: SeparatedTransformer.java 566 2010-10-19 16:32:04Z gfis $
+    2024-12-26: deprecations
     2017-05-28: javadoc 1.8
     2008-02-13: Java 1.5 types
     2006-11-04, Dr. Georg Fischer: Dresden -> Frankfurt -> Kenzingen
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,9 +121,9 @@ public class SeparatedTransformer extends CharTransformer {
                     // log.debug("puncts[0]=" + puncts[0] + ", count=" + puncts.length);
                     for (int ipunct = 0; ipunct < puncts.length; ipunct ++) {
                         if (hash.get(puncts[ipunct]) != null) {
-                            hash.put(puncts[ipunct], new Integer(1 + ((Integer) hash.get(puncts[ipunct])).intValue()));
+                            hash.put(puncts[ipunct], Integer.valueOf(1 + ((Integer) hash.get(puncts[ipunct])).intValue()));
                         } else {
-                            hash.put(puncts[ipunct], new Integer(1));
+                            hash.put(puncts[ipunct], Integer.valueOf(1));
                             nmap ++;
                         }
                     } // for ipunct

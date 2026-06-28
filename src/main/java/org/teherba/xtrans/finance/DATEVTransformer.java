@@ -1,6 +1,7 @@
 /*  Transformer for DATEV accounting data files
     @(#) $Id: DATEVTransformer.java 566 2010-10-19 16:32:04Z gfis $
     Caution, this file contains UTF-8 encoded characters: äöüÄÖÜß
+    2024-12-26: deprecations
     2017-05-28: javadoc 1.8
     2016-10-13: import DatevField
     2010-07-13: 'attrs' in 'generate' renamed to 'alist'
@@ -9,7 +10,7 @@
     2006-09-19: Georg Fischer
 */
 /*
- * Copyright 2006 Dr. Georg Fischer <punctum at punctum dot kom>
+ * Copyright 2006 Dr. Georg Fischer <dr dot georg dot fischer at gmail dot kom>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -133,7 +134,7 @@ public class DATEVTransformer extends ByteTransformer {
      */
     private void defineField(char delim, String attrName, int width, boolean trimZeroes) {
         DATEVField field = new DATEVField(delim, attrName, width, trimZeroes);
-        delimMap.put(new Character(delim), field);
+        delimMap.put(Character.valueOf(delim), field);
         attrMap .put(attrName            , field);
     } // defineField
 
@@ -243,7 +244,7 @@ public class DATEVTransformer extends ByteTransformer {
      */
     private int evaluateField(char delimiter, String value) {
         int result = IN_NUMBER;
-        DATEVField field = (DATEVField) delimMap.get(new Character(delimiter));
+        DATEVField field = (DATEVField) delimMap.get(Character.valueOf(delimiter));
         switch (delimiter) {
             case '\u0000':
                 result = BLOCK_FILLER;
